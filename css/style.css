@@ -50,58 +50,66 @@ body {
     min-height: 100vh;
 }
 
+.container {
+    width: 100%;
+    max-width: 1440px;       /* Gornja granica širine za ceo sajt */
+    margin: 0 auto;          /* KLJUČ: Automatski centrira boks u sredinu pri odzumiranju */
+    padding: 0 5%;           /* Elastični razmak od ivica monitora na manjim ekranima */
+    box-sizing: border-box;
+}
+
 
 
 /* =========================================
    4. HEADER I NAVIGACIJA (Glassmorphism)
    ========================================= */
 
-/* Glavni kontejner cele navigacije */
-.main-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Drži tri celine (Logo, Kapsulu, Dugme) u istoj horizontalnoj osi */
-    padding: 25px 8%;
+/* Header je fiksna traka od ivice do ivice (100% širine) */
+header {
     width: 100%;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 1000;
+    
+    /* Ovde stavljaš pozadinu i staklo da se rasteže celom širinom monitora */
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Kontejner koji spaja sliku šestougla i tekst Overclock.rs */
+/* Main navigation je unutar .container-a, samo raspoređuje elemente */
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding-top: 20px;       /* Prostor iznad logoa i kapsule */
+    padding-bottom: 20px;    /* Prostor ispod logoa i kapsule */
+}
+
+/* --- LOGO, NAV i DUGMADI STILOVE ZADRŽAVAŠ ISTO KAO ŠTO SI IMRESIO --- */
 .logo-wrapper {
     display: flex;
-    align-items: center; /* KLJUČ: Poravnava sredinu slike i sredinu teksta u nulu */
-    gap: 12px;           /* Fiksni razmak između ikone i teksta */
-    height: 50px;        /* Izjednačavamo visinu logo zone sa visinom dugmeta (50px) */
+    align-items: center;
+    gap: 12px;
+    height: 50px;
 }
-
-/* Tvoja slika logoa (S-BOX šestougao) */
 .logo-wrapper img {
-    height: 70px;        /* Malo smanjujemo visinu same slike unutar 50px prostora */
-    width: auto;         /* Čuva proporciju */
-    display: block;      /* Eliminiše browserov fabrički prazan prostor ispod slika */
-    margin: 0;           /* Briše sve skrivene margine */
+    height: 70px;
+    width: auto;
+    display: block;
+    margin: 0;
 }
-
-/* Tekst Overclock.rs pored slike */
 .logo-text {
     font-family: 'ClaspoND', sans-serif;
-    font-weight: 700;    /* Tvoj Bold font */
-    font-size: 28px;     /* Moćna, a čitljiva veličina */
+    font-weight: 700;
+    font-size: 28px;
     color: #ffffff;
-    line-height: 1;      /* Reže nevidljivi prostor iznad i ispod slova da tekst ne "tone" */
-    margin: 0;           /* Resetujemo margine */
-    text-decoration: none; /* Uklanja podvlačenje ako je link */
-    
-    /* Fino inženjersko štelovanje (Zadnja odbrana): */
-    /* Ako zbog dizajna samog fonta tekst vizuelno deluje milimetar niže od slikovnog logoa, */
-    /* aktiviraj ovu liniju ispod da ga podigneš u osu: */
+    line-height: 1;
+    text-decoration: none;
     transform: translateY(-1px);
-
 }
-
-/* Kapsula sa linkovima */
 nav {
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 10px 30px;
@@ -110,18 +118,15 @@ nav {
     display: flex;
     gap: 25px;
 }
-
 nav a {
     text-decoration: none;
     color: #ffffff;
     font-size: 20px;
     transition: color 0.3s ease;
 }
-
 nav a:hover {
-    color: #7cafcd ; /* Neon Cyan efekat na prelaz mišem */
+    color: #7cafcd ;
 }
-
 /* =========================================
    5. DUGMAD (CTA)
    ========================================= */
@@ -197,40 +202,46 @@ nav a:hover {
 /* =========================================
    6. HERO SEKCIJA (Centriranje)
    ========================================= */
-/* ==========================================================
-   HERO SEKCIJA (Glavni tekst na sredini ekrana)
-   ========================================================== */
-
+/* Sama sekcija se širi 100% i drži pozadinsku sliku ili gradient */
 .hero {
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;   /* Ređa elemente (h1, p, dugmad) vertikalno, jedan ispod drugog */
-    align-items: center;      /* Centrira sav sadržaj horizontalno (levo-desno) u apsolutnu sredinu */
-    justify-content: center;  /* Centrira sadržaj vertikalno (gore-dole) na ekranu */
-    text-align: center;       /* Osigurava da se i sami redovi teksta poravnavaju u sredinu */
-    min-height: 100vh;        /* Tera sekciju da zauzme tačno 100% visine ekrana */
-    padding: 120px 5% 40px 5%; /* Gornji padding od 120px osigurava da tekst ne ode pod fiksni header */
+    align-items: center;      /* Drži unutrašnji .container centriran vertikalno na ekranu */
+    justify-content: center;
     box-sizing: border-box;
+}
+
+/* Unutrašnji sadržaj Hero-a koristi flexbox da ređa elemente vertikalno po sredini */
+.hero-content {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;      
+    justify-content: center;  
+    text-align: center;       
+    padding-top: 140px;       /* Bezbedna distanca od fiksnog headera na vrhu */
+    padding-bottom: 40px;
 }
 
 /* Glavni moćni naslov */
 .hero h1 {
     font-family: 'ClaspoND', sans-serif;
-    font-weight: 700;         /* Tvoj Bold font */
-    font-size: 64px;          /* Velika, dominantna slova kao na mockupu */
+    font-weight: 700;
+    font-size: 64px;
     color: #ffffff;
-    line-height: 1.1;         /* Blago sabija redove da naslov deluje kao jedna celina */
-    margin-bottom: 24px;      /* Razmak između naslova i podnaslova */
-    letter-spacing: -0.5px;   /* Suptilno sabijanje slova za moderniji tech izgled */
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
 }
 
-/* Podnaslov (Tekst ispod naslova) */
+/* Podnaslov */
 .hero p {       
     font-family: 'ClaspoND', sans-serif;
-    font-weight: 400;         /* Tvoj Regular font */
-    font-size: 20px;          /* Čitljiva, elegantna veličina */
+    font-weight: 400;
+    font-size: 20px;
     color: #ffffff;
-    text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.3);          /* Blago svetlo-siva kako ne bi blještala kao čist bel tekst */
-    max-width: 650px;         /* KLJUČNO: Ograničava širinu teksta tako da se automatski prelomi u dva-tri lepa reda umesto da se razvuče preko celog ekrana */
-    line-height: 1.6;         /* Daje prostora slovima da "dišu", što drastično poboljšava čitljivost */
-    margin-bottom: 40px;      /* Razmak između teksta i velikih hero dugmadi */
+    text-shadow: 0px 0px 10px rgba(0, 255, 255, 0.3);
+    max-width: 650px;         /* Ne dozvoljava tekstu da pobegne preširoko */
+    line-height: 1.6;
+    margin-bottom: 40px;
 }
