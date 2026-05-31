@@ -1396,3 +1396,83 @@ nav a:hover {
         var(--white-color) 100%        
     );
 }
+
+/* ===================================================
+   ULTIMATIVNI MOBILNI FIKS ZA PORAVNANJE I NASLOVE
+   =================================================== */
+@media (max-width: 900px) {
+
+    /* 1. FIKS ZA MARKERE I CENTRIRANJE NASLOVA SEKCIJA */
+    /* Smanjujemo naslov da bezuslovno stane u jedan red, čime se i plavi marker automatski centrira */
+    .title-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important; /* Sprečava da marker pobjegne iz reda */
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .section-title, .section-title.dark-text {
+        font-size: 2.1rem !important; /* Smanjeno sa 3rem da ne puca u dva reda */
+        text-align: center !important;
+        line-height: 1.2 !important;
+        padding-bottom: 4px !important;
+    }
+
+    .title-marker {
+        height: 26px !important; /* Smanjujemo i visinu markera da savršeno isprati manji tekst */
+        width: 6px !important;
+        margin-right: 12px !important;
+        flex-shrink: 0 !important; /* Ne dozvoljava pretraživaču da zgnječi marker */
+        margin-top: 0 !important; /* Resetujemo gornji pomak */
+    }
+
+    /* 2. FIKS ZA LOGO I CENTRIRANJE NAVIGACIJE */
+    /* Sređujemo visinu logoa koji je bio veći od svog kaveza i poravnavamo ga sa hamburgerom */
+    .main-navigation {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 15px 5% !important;
+    }
+
+    .logo-wrapper {
+        height: auto !important; /* Skidamo fiksni limit */
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .logo-wrapper img {
+        height: 38px !important; /* Smanjeno sa 70px - eliminiše vertikalno iskakanje */
+        width: auto !important;
+    }
+
+    .logo-text {
+        font-size: 22px !important; /* Blago smanjen tekst logotipa */
+        transform: none !important;
+    }
+
+    .hamburger-menu {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 38px !important; /* Savršeno se poklapa sa visinom logoa u ravni */
+        margin: 0 !important;
+    }
+
+    /* 3. FIKS ZA ZAJEDNICU (Dva reda umesto tri) */
+    /* Masivni tekst na dnu smanjujemo kako bi fraza "PRIDRUŽI SE" stala u svoj jedinstveni prvi red */
+    .massive-text {
+        font-size: 3.2rem !important; /* Smanjeno kako ekran telefona ne bi prelomio reč "SE" ispod */
+        line-height: 1.1 !important;
+        text-align: center !important;
+        letter-spacing: -0.5px !important;
+    }
+
+    .massive-text span {
+        display: inline-block !important;
+        white-space: nowrap !important; /* Garantuje da "ZAJEDNICI" ostaje u jednom komadu */
+    }
+}
