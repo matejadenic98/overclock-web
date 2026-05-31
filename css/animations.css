@@ -1,0 +1,23 @@
+/* MIKRO-HIRURŠKA ANIMACIJA BEZ LAYOUT SHIFT-A */
+@keyframes floatUpwardsTransform {
+    0% {
+        /* Kreću sa dna (0px) i malo smanjene */
+        transform: translateY(0) translateX(0) scale(0.7);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.55;
+    }
+    50% {
+        /* Na pola puta skreću malo udesno radi prirodnog talasanja */
+        transform: translateY(-40vh) translateX(15px) scale(1); 
+    }
+    85% {
+        opacity: 0.55;
+    }
+    100% {
+        /* Lete skroz do vrha sekcije i malo preko (-90vh jer je visina 80vh) */
+        transform: translateY(-92vh) translateX(-15px) scale(1.2);
+        opacity: 0;
+    }
+}
