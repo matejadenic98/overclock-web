@@ -1,3 +1,12 @@
+html {
+    scroll-behavior: smooth; /* Aktivira fluidno rolanje nagore i nadole kroz celu stranicu */
+}
+
+/* Selektuje samo <section> tagove koji na sebi imaju definisan ID */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
 :root {
     /* Glavne statične boje */
     --black-color: #000000;
@@ -110,6 +119,11 @@ header {
     padding-bottom: 20px;    /* Prostor ispod logoa i kapsule */
 }
 
+/* Sakrivanje mobilnih elemenata na desktop režimu */
+.menu-toggle-cb, .hamburger-menu {
+    display: none;
+}
+
 /* --- LOGO, NAV i DUGMADI STILOVE ZADRŽAVAŠ ISTO KAO ŠTO SI IMRESIO --- */
 .logo-wrapper {
     display: flex;
@@ -148,6 +162,74 @@ nav a {
 }
 nav a:hover {
     color: #7cafcd ;
+}
+
+@media (max-width: 900px) {
+    .main-navigation {
+        flex-wrap: wrap; /* Omogućava logou i hamburgeru da ostanu gore, a sadržaj ide ispod */
+    }
+
+    /* Prikaz i izgled hamburger dugmeta */
+    .hamburger-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+    }
+
+    .hamburger-menu span {
+        display: block;
+        width: 28px;
+        height: 3px;
+        background-color: var(--white-color);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    /* REŽIM ZA MANJE EKRANE: Transformacija glavnog menija */
+    .main-navigation nav {
+        display: none; /* Podrazumevano sakriven */
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 25px 0;
+        margin-top: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* REŽIM ZA MANJE EKRANE: Smeštanje akcionog dugmeta na dno panela */
+    .main-navigation .header-actions {
+        display: none; /* Podrazumevano sakriveno */
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    /* ČIST CSS MEHANIZAM: Otvaranje sadržaja kada se klikne na hamburger */
+    .menu-toggle-cb:checked ~ nav {
+        display: flex;
+    }
+
+    .menu-toggle-cb:checked ~ .header-actions {
+        display: flex;
+    }
+
+    /* ANIMACIJA: Pretvaranje hamburgera u oštar "X" znak */
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+        background-color: var(--premium-blue);
+    }
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+        background-color: var(--premium-blue);
+    }
 }
 
 /* =========================================
@@ -328,6 +410,40 @@ nav a:hover {
 }
 
 /* =========================================
+   RESPONSIVE PRILAGOĐAVANJE ZA HERO SEKCIJU
+   ========================================= */
+
+/* Za tablete i manje ekrane (bilo bi dobro da spojiš sa postojećim @media 900px ako želiš) */
+@media (max-width: 900px) {
+    .hero h1 {
+        font-size: 4rem; /* Smanjujemo masivni naslov sa 6.3rem da ne puca tekst */
+    }
+    .hero p {
+        font-size: 18px; /* Blago smanjujemo opis radi boljeg pakovanja */
+        padding: 0 20px;
+    }
+}
+
+/* Specifično za mobilne telefone */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 2.8rem; /* Agresivnije smanjenje naslova za male ekrane */
+    }
+    .hero-content {
+        padding-top: 120px; /* Smanjujemo gornji prored jer je i navigacija uža */
+    }
+    .hero-actions {
+        flex-direction: column; /* Ređamo dugmad jedno ispod drugog umesto horizontalno */
+        gap: 15px;
+    }
+    .hero-actions .btn-black, 
+    .hero-actions .btn-outline {
+        width: 100%; /* Dugmad se šire celom širinom na mobilnom */
+        max-width: 280px; /* Ali ih zaključavamo na max 280px da ne izgledaju preglomazno */
+    }
+}
+
+/* =========================================
    7. MAIN sekcija ( Galerija, Usluge )
    ========================================= */
 
@@ -384,7 +500,7 @@ nav a:hover {
 /* 3. Tvoj ORIGINALNI, netaknuti naslov sa prelivom */
 .section-title {
     font-family: 'ClaspoND', sans-serif;
-    font-size: 3rem; /* 48px */
+    font-size: 3.5rem; /* 48px */
     font-weight: 700;
     letter-spacing: -0.5px;
     background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);

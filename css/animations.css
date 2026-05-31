@@ -21,3 +21,54 @@
         opacity: 0;
     }
 }
+
+/* =========================================
+   CYSECOR SCROLL REVEAL (BLUR FOCUS) EFFECT
+   ========================================= */
+
+@keyframes blurFocusReveal {
+    0% {
+        filter: blur(15px);
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+    }
+    /* Sačuvano postepeno izoštravanje do 35% ekrana, ali sada tekst ostaje savršeno oštar i čist skroz do vrha (100%) */
+    35%, 100% {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.scroll-blur-reveal {
+    animation: blurFocusReveal linear both;
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+}
+
+/* =========================================
+   FIKS ZA ELEMENTE NA APSOLUTNOM DNU STRANICE
+   ========================================= */
+@keyframes ultimateBottomReveal {
+    0% {
+        filter: blur(12px);
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    /* Kada korisnik pređe 85% stranice, tekst počinje da se pomalja iz magle */
+    85% {
+        filter: blur(6px);
+        opacity: 0.4;
+    }
+    /* Na 98% (tik pred sam kraj skrola) tekst je potpuno oštar i na svom mestu */
+    98%, 100% {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-blur-reveal-final {
+    animation: ultimateBottomReveal linear both;
+    animation-timeline: scroll(root); /* Prati pomeranje skrolbara cele stranice */
+}
