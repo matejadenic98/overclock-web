@@ -1,0 +1,1282 @@
+:root {
+    /* Glavne statične boje */
+    --black-color: #000000;
+    --white-color: #ffffff;
+    --text-muted: #C6C6C6;
+    --dark-text: #1c1c1c;
+    
+    /* Naša glavna plava paleta */
+    --accent-blue: #7cafcd;          /* Tvoja odabrana plava */
+    --premium-blue: #2a8ec7;         /* Življa plava iz tutorijala */
+    --light-blue: #9bcce7;           /* Svetlo plava za vrh naslova */
+    --deep-navy: #081724;
+    --tech-black: #000000;
+    
+    /* RGB vrednosti (neophodne za rgba() gradijente i providnost) */
+    --rgb-black: 0, 0, 0;
+    --rgb-blue: 124, 175, 205;       /* RGB za #7cafcd */
+    --rgb-premium-blue: 42, 142, 199; /* RGB za #2a8ec7 */
+    --rgb-tech-black: 0, 0, 0;
+}
+
+/* =========================================
+   1. RESET I GLOBALNA PRAVILA
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Primoravamo dugmad i inpute da nasleđuju tvoj ClaspoND font */
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+/* =========================================
+   2. CUSTOM FONTOVI (Putanja sa ../)
+   ========================================= */
+
+@font-face {
+    font-family: 'ClaspoND';
+    src: url('../fonts/Claspo-ND-Regular.woff') format('woff');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ClaspoND';
+    src: url('../fonts/Claspo-ND-Bold.woff') format('woff');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* =========================================
+   3. BODY I POZADINA (Sloj preko slike)
+   ========================================= */
+   
+body {
+    font-family: 'ClaspoND', sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+    
+    /* Prekrivka (gradient) + Slika u pozadini */
+    background: linear-gradient(180deg, 
+                rgba(174, 214, 241, 1) 0%,   /* Gornja svetlo-plava */
+                rgba(235, 245, 251, 1) 100%  /* Donja ledeno-bela */);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;       /* Gornja granica širine za ceo sajt */
+    margin: 0 auto;          /* KLJUČ: Automatski centrira boks u sredinu pri odzumiranju */
+    padding: 0 5%;           /* Elastični razmak od ivica monitora na manjim ekranima */
+    box-sizing: border-box;
+}
+
+
+
+/* =========================================
+   4. HEADER I NAVIGACIJA (Glassmorphism)
+   ========================================= */
+
+/* Header je fiksna traka od ivice do ivice (100% širine) */
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+    /* Ovde stavljaš pozadinu i staklo da se rasteže celom širinom monitora */
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Main navigation je unutar .container-a, samo raspoređuje elemente */
+.main-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding-top: 20px;       /* Prostor iznad logoa i kapsule */
+    padding-bottom: 20px;    /* Prostor ispod logoa i kapsule */
+}
+
+/* --- LOGO, NAV i DUGMADI STILOVE ZADRŽAVAŠ ISTO KAO ŠTO SI IMRESIO --- */
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 50px;
+}
+.logo-wrapper img {
+    height: 70px;
+    width: auto;
+    display: block;
+    margin: 0;
+}
+.logo-text {
+    font-family: 'ClaspoND', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 1;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+nav {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 10px 30px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 25px;
+}
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+nav a:hover {
+    color: #7cafcd ;
+}
+
+/* =========================================
+   5. DUGMAD (CTA)
+   ========================================= */
+
+.header-actions, 
+.hero-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Zajednički stilovi za svu dugmad */
+.btn-black, .btn-outline , .btn-outline-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    /* PROMENE OVDE: */
+    width: 240px;               /* Fiksna širina umesto min-width */
+    height: 50px;              /* Fiksna visina */
+    box-sizing: border-box;    /* Sve unutar 50px i 240px */
+    line-height: 1;
+
+}
+
+.btn-outline-nav {
+    width: auto !important;     /* Poništava fiksnu širinu od 240px, dugme se skuplja oko teksta */
+    height: auto !important;    /* Poništava fiksnu visinu od 50px */
+    min-width: 0 !important;    /* Briše bilo kakvu minimalnu širinu */
+}
+
+/* Specifično za Crno dugme */
+.btn-black {
+    background: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+}
+
+.btn-black:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Specifično za Outline dugme */
+.btn-outline , .btn-outline-nav {
+    background: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.btn-outline:hover , .btn-outline-nav:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #7cafcd; /* Svetli u cyan boji */
+    color: #7cafcd;
+}
+
+.hero-actions {
+    display: flex;            /* Ređa dugmad u isti red (horizontalno) */
+    justify-content: center;  /* Centrira celu grupu dugmadi levo-desno u odnosu na ekran */
+    align-items: center;      /* Vertikalno ih poravnava */
+    gap: 20px;                /* Tačan, fiksni razmak između ta dva dugmeta */
+    width: 100%;              /* Širi se celom širinom hero sekcije radi lakšeg centriranja */
+    margin: 0 auto;           /* Osigurava da kontejner nema skrivenih bežanja u stranu */
+}
+
+/* =========================================
+   6. HERO SEKCIJA (Centriranje)
+   ========================================= */
+.hero {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;      
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative; 
+    overflow: hidden;   
+    background-color: #000000; /* Osnova je čista crna */
+}
+
+/* Kavez za video pozadinu */
+.hero .video-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero .video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Kapsula za sadržaj iznad videa */
+.hero .hero-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;   
+    align-items: center;      
+    justify-content: center;  
+    text-align: center;       
+    padding-top: 140px;       
+    padding-bottom: 40px;
+}
+
+/* Glavni naslov sa srebrno-plavim metalik prelivom */
+.hero h1 {
+    font-family: 'ClaspoND', sans-serif;
+    font-weight: 700;
+    font-size: 6.3rem;
+    line-height: 1.2; /* Malo opuštamo visinu linije (bilo je 1.1) */
+    
+    /* KLJUČ ZA SLOVO J: Širimo nevidljivu kutiju na dole da preliv siđe niže */
+    padding-bottom: 10px; 
+    
+    /* Smanjujemo donju marginu sa 24px na 14px 
+       kako bi ukupan razmak do pasusa ispod ostao isti (10 + 14 = 24) */
+    margin-bottom: 14px; 
+    letter-spacing: -0.5px;
+    
+    /* Postojeći metalik-plavi preliv */
+  background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Centriran i čitljiv podnaslov */
+.hero p {       
+    font-family: 'ClaspoND', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--white-color);/* Vraćen u belu boju */
+    max-width: 650px;         
+    line-height: 1.6;
+    margin: 0 auto 40px auto; /* Centriranje elementa i distanca od dugmića */
+    text-align: center;       /* Centriranje samog teksta */
+    
+    /* Blagi neon sjaj iza teksta za dodatnu čitljivost na dinamičnom videu */
+    text-shadow: 0px 0px 12px rgba(var(--rgb-premium-blue), 0.4);
+}
+
+/* Mračni filmski overlay - Blagi plavi sjaj na vrhu, potpuni mrak na dnu */
+.hero .video-wrapper .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /* Koristimo RGB varijable unutar rgba funkcije */
+    background: linear-gradient(
+        to bottom, 
+        rgba(var(--rgb-premium-blue), 0.15) 0%,  
+        rgba(var(--rgb-tech-black), 0.6) 60%,  /* Zamenjeno! */     
+        rgba(var(--rgb-tech-black), 1) 100%    /* Zamenjeno! Dno videa je sada tech-crno */     
+    );
+}
+
+/* =========================================
+   7. MAIN sekcija ( Galerija, Usluge )
+   ========================================= */
+
+   .gallery, .services, .portfolio {
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px 0;
+    background: transparent; 
+}
+
+/* Glavni kavez koji štiti naslov i podnaslov od spoljnih Flexbox pravila */
+.section-head {
+    display: flex;
+    flex-direction: column;  /* Ređa elemente strogo jedan ispod drugog */
+    align-items: center;     /* Zakucava sve za vertikalnu sredinu ekrana */
+    width: 100%;
+    margin-bottom: 40px;     /* Pravi razmak između teksta i galerije koja sledi */
+}
+
+/* Osvežen podnaslov (Sklanjamo mu donju marginu jer je sada drži section-head iznad) */
+.section-subtitle {
+    font-family: 'ClaspoND', sans-serif;
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 1.125rem; /* 18px */
+    margin-bottom: 0; 
+    margin-top: 10px; /* Mali razmak između glavnog naslova i podnaslova */
+}
+
+/* Ostatak tvog koda ostaje ISTI: */
+/* .title-wrapper, .title-marker, .section-title, itd... */
+
+/* 1. Potpuno nov, poseban kavez koji drži marker i naslov u ravni */
+.title-wrapper {
+    display: flex;
+    justify-content: center; /* Drži sve na sredini ekrana */
+    align-items: center;     /* Savršeno vertikalno poravnanje */
+    margin-bottom: 14px;
+}
+
+/* 2. Naš pravougaonik (sada potpuno odvojen element) */
+.title-marker {
+    width: 8px;
+    height: 38px;
+    background-color: var(--accent-blue);
+    border-radius: 4px;
+    margin-right: 18px;
+    
+    /* Fino štelovanje - fizički gura marker na dole da se poravna sa vizuelnom sredinom teksta */
+    margin-top: -2px;
+
+}
+
+/* 3. Tvoj ORIGINALNI, netaknuti naslov sa prelivom */
+.section-title {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 3rem; /* 48px */
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    padding-bottom: 10px; /* Čuva repiće za G i J */
+    margin-bottom: 0;     /* Margina je prešla na title-wrapper iznad */
+}
+
+/* Tamna varijanta ostaje ista */
+.section-title.dark-text {
+    background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* =========================================
+   NOVA GALERIJA - KRUPNE KARTICE & SLAJDER
+   ========================================= */
+
+.large-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 velike kolone na ekranu */
+    gap: 40px;
+    padding: 40px 0;
+}
+
+/* Kavez pojedinačnog projekta */
+.gallery-project {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Razmak između slike i teksta ispod */
+}
+
+/* OMOTAČ SLAJDERA */
+.slider-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* SAMA TRAKA SLAJDERA (Magija se dešava ovde) */
+.project-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* Tjera slike da se zalepe za ivicu */
+    scrollbar-width: none; /* Sakriva ruzan scrollbar (Firefox) */
+    -ms-overflow-style: none; /* IE */
+}
+.project-slider::-webkit-scrollbar {
+    display: none; /* Sakriva ruzan scrollbar (Chrome/Safari) */
+}
+
+/* POJEDINAČNA SLIKA/SLAJD U SLAJDERU */
+.slide {
+    flex: 0 0 100%; /* Svaka slika zauzima 100% širine kartice */
+    height: 400px;  /* Visina galerijske slike */
+    scroll-snap-align: start; /* Tačka lepljenja */
+    
+    /* Privremeni stilovi za placeholder dok ne ubaciš img tagove */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.4);
+}
+
+/* Privremene boje slajdova da vidiš prelaz */
+.slide-1 { background: #111; }
+.slide-2 { background: #1a1a1a; }
+.slide-3 { background: #222; }
+
+/* HINT: Mali natpis "Skroluj" na dnu slike */
+.slider-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    background: rgba(0,0,0,0.7);
+    color: var(--white-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    pointer-events: none; /* Da miš prolazi kroz njega */
+}
+
+/* TEKSTUALNI DEO ISPOD SLIKE */
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-tags {
+    display: flex;
+    gap: 10px;
+}
+
+.tag {
+    background: rgba(255,255,255,0.05); /* Skoro providna crna/siva */
+    color: var(--text-muted);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.project-title {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.8rem;
+    color: var(--white-color);
+    margin: 0;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responzivnost: 1 kolona na mobilnim uređajima */
+@media (max-width: 900px) {
+    .large-gallery-grid {
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* =========================================
+   SEKCIJA USLUGE - Bento video grid
+   ========================================= */
+
+.bento-light-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px; /* Wireframe linije */
+    background: rgba(0, 0, 0, 0.1); /* Blaga linija između */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1px;
+    margin: 40px 0;
+}
+
+.bento-light-card {
+    /* STAKLASTI EFEKAT */
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Za Safari */
+    
+    position: relative;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Tanki wireframe */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover stanje - kartica postaje "čistija" i fokusiranija */
+.bento-light-card:hover {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: var(--premium-blue); /* Ivica zasija plavo */
+}
+
+/* Video background - sada će se video videti kroz blago staklo */
+.bento-video-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.bento-light-card:hover .bento-video-bg {
+    opacity: 1;
+}
+
+/* Ostatak sadržaja ostaje isti, samo osiguravamo da je iznad stakla */
+.bento-top, .bento-bottom {
+    position: relative;
+    z-index: 2;
+}
+
+.indicator-circle {
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--dark-text);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.bento-light-card:hover .indicator-circle {
+    background: var(--premium-blue);
+    border-color: var(--premium-blue);
+}
+
+.bento-title {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.5rem;
+    color: var(--dark-text);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.bento-light-card:hover .bento-title {
+    color: var(--premium-blue);
+}
+
+/* Reveal efekat teksta */
+.bento-desc-wrapper {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bento-light-card:hover .bento-desc-wrapper {
+    max-height: 80px;
+    opacity: 1;
+    margin-top: 10px;
+}
+
+.bento-desc {
+    color: #444; /* Malo tamnija siva za čitljivost na staklu */
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.bento-bottom {
+    position: relative;
+    width: 100%;
+    display: block; /* Menjamo flex u block jer strelicu pozicioniramo apsolutno */
+}
+
+.bento-text {
+    /* Ključno: ostavljamo 40px praznog prostora sa desne strane da tekst nikada ne udari u strelicu */
+    padding-right: 40px; 
+}
+
+.bento-arrow {
+    position: absolute;
+    bottom: 0; /* Poravnava se sa dnom tekstualnog bloka */
+    right: 0;  /* Lepi se uz desnu ivicu unutrašnjeg paddinga karte */
+    font-size: 1.5rem;
+    color: var(--dark-text);
+    font-weight: 300;
+    transition: all 0.4s ease;
+}
+
+.bento-light-card:hover .bento-arrow {
+    transform: translate(5px, -5px);
+    color: var(--premium-blue);
+}
+
+/* Responzivnost */
+@media (max-width: 1024px) {
+    .bento-light-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-light-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   SEKCIJA CENOVNIK - TECH SPECIFIKATOR
+   ========================================= */
+
+.pricing-container {
+    width: 100%;
+    max-width: 1000px; /* Držimo tabelu fokusiranom u sredini ekrana */
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    /* Spajamo ivice redova da ne bi imali duple linije */
+    border-top: 1px solid rgba(0, 0, 0, 0.1); 
+}
+
+/* Pojedinačni red u cenovniku */
+.pricing-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 20px;
+    background: rgba(255, 255, 255, 0.2); /* Suptilno staklo */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Donja oštra wireframe linija */
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+/* Hover efekat: Red lagano "zasvetli" i raširi se */
+.pricing-row:hover {
+    background: rgba(255, 255, 255, 0.8);
+    padding-left: 30px; /* Blago pomeranje udesno daje premium dinamiku */
+    border-bottom-color: var(--premium-blue);
+}
+
+/* Leva strana: Naslov i tag */
+.pricing-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.pricing-service-title {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    margin: 0;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+/* Kada pređeš mišem, naslov poplavi */
+.pricing-row:hover .pricing-service-title {
+    color: var(--premium-blue);
+}
+
+/* Mali tehnički tag pored naslova */
+.pricing-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #777;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 4px 8px;
+    border-radius: 2px; /* Skoro potpuno oštre ivice taga */
+}
+
+/* Desna strana: Cena */
+.pricing-value {
+    font-family: monospace; /* Monospaced font daje onaj surovi "data/inženjerski" izgled cene */
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    transition: all 0.3s ease;
+}
+
+/* Cena dobija pun fokus na hover */
+.pricing-row:hover .pricing-value {
+    color: var(--premium-blue);
+    transform: scale(1.05);
+}
+
+/* Responzivnost za mobilne uređaje */
+@media (max-width: 600px) {
+    .pricing-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .pricing-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding-right: 0;
+    }
+    
+    .pricing-value {
+        align-self: flex-end; /* Cenu na mobilnom guramo skroz dole desno */
+    }
+}
+
+/* =========================================
+   SEKCIJA BLOG - DARK GLASSMORPHISM (Ažurirano)
+   ========================================= */
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 40px 0 60px 0;
+}
+
+/* Osnova ZATAMNJENE staklaste blog kartice */
+.blog-card {
+    /* Menjamo rgba(255,...) u rgba(0,0,0,...) za tamnu prozirnost */
+    background: rgba(0, 0, 0, 0.3); 
+    /* Čuvamo oštru, ali suptilnu wireframe ivicu */
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    border-radius: 16px;
+    overflow: hidden; 
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Malo sporije i mekše */
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/* HOVER EFEKAT - Kartica se "pali" iz mraka */
+.blog-card:hover {
+    transform: translateY(-12px); /* Malo veći skok za jači 3D efekat */
+    /* Na hover postaje čvršća crna da se bolje istakne */
+    background: rgba(0, 0, 0, 0.7); 
+    border-color: rgba(var(--rgb-premium-blue), 0.6); /* Jači plavi sjaj ivice */
+    /* Bogatija plava senka ispod koja projektuje svetlost na gradijent */
+    box-shadow: 0 20px 40px rgba(var(--rgb-premium-blue), 0.25); 
+}
+
+/* Sadržaj ostaje isti, ali smo sigurni da je tekst beo */
+.blog-image-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    /* Dodajemo blagi overlay na sliku da je "usidrimo" u tamnu kartu */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.blog-image-placeholder {
+    width: 100%;
+    height: 100%;
+    /* Malo tamniji gradijent za placeholder */
+    background: linear-gradient(45deg, #050a0e, #0d151d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.2);
+    font-family: 'ClaspoND', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+.blog-content {
+    padding: 26px; /* Malo više prostora */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.blog-badge {
+    display: inline-block;
+    align-self: flex-start;
+    /* Koristimo tvoju definisanu accent plavu boju */
+    background: rgba(var(--rgb-accent-blue), 0.15);
+    color: var(--accent-blue);
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.blog-title {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.45rem; /* Milimetar veći */
+    color: var(--white-color); /* Strogo bela na tamnom staklu */
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+}
+
+/* Naslov se menja u premium plavu na hover */
+.blog-card:hover .blog-title {
+    color: var(--premium-blue);
+}
+
+.blog-desc {
+    color: var(--text-muted); /* Prigušena siva za opis */
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================
+   SEKCIJA KONTAKT - PRILAGOĐENA GRADIENTU (CRNI TEKST)
+   ========================================= */
+
+.contact {
+    /* Ne diramo pozadinu, ostaje tvoj originalni gradient stranice */
+    padding: 80px 0;
+    position: relative;
+    z-index: 5;
+}
+
+/* Naslovi sekcije prilagođeni svetlijoj podlozi gradijenta */
+.contact .section-title {
+    /* Prelaz iz tvoje premium plave u duboku tamnu boju teksta */
+    background: linear-gradient(90deg, var(--premium-blue), var(--dark-text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.contact .section-subtitle {
+    color: #4a5560 !important; /* Čitljiva tamno siva */
+    margin-bottom: 40px;
+}
+
+.contact-split-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* --- LEVA STRANA: INFO BLOK (Svetlo staklo kao na cenovniku) --- */
+.contact-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    background: rgba(255, 255, 255, 0.4); /* Light staklo koje propušta tvoj gradient */
+    border: 1px solid rgba(0, 0, 0, 0.08); /* Oštra tamna wireframe linija */
+    border-radius: 20px !important;
+    padding: 40px;
+    border-radius: 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.info-segment {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.info-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--premium-blue); /* Zadržavamo plavu za akcente */
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+.info-data {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.4rem;
+    color: var(--dark-text); /* Strogo tamni tekst */
+    margin: 0 0 6px 0;
+    font-weight: 700;
+}
+
+.info-subdata {
+    color: #555555; /* Tamnija siva za bolju čitljivost */
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.contact-socials {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
+}
+
+.social-link {
+    color: #4a5560;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: var(--premium-blue);
+}
+
+/* --- DESNA STRANA: MINIMALISTIČKA FORMA (CRNI TEKST I LINIJE) --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+}
+
+.form-group {
+    position: relative;
+    flex: 1;
+}
+
+/* Input i Textarea - crni tekst i tamne oštre linije */
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18); /* Tamna horizontalna wireframe crta */
+    padding: 14px 0;
+    font-size: 1.05rem;
+    color: var(--dark-text); /* Tekst koji korisnik kuca je crn */
+    outline: none;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+/* Labele u stanju mirovanja - jasna tamno siva boja */
+.form-group label {
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: #555555; 
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    font-size: 1.05rem;
+}
+
+/* Kada se klikne, labela poleti iznad i postaje plava */
+.contact-form input:focus ~ label,
+.contact-form input:not(:placeholder-shown) ~ label,
+.contact-form textarea:focus ~ label,
+.contact-form textarea:not(:placeholder-shown) ~ label {
+    top: -16px;
+    font-size: 0.8rem;
+    color: var(--premium-blue);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Plava podvučena linija koja se širi pri kucanju */
+.form-group .input-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--premium-blue);
+    transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-form input:focus ~ .input-line,
+.contact-form textarea:focus ~ .input-line {
+    width: 100%;
+    box-shadow: 0 0 12px rgba(var(--rgb-premium-blue), 0.3); /* Suptilniji neonski sjaj za svetlu temu */
+}
+
+/* DUGME PRILAGOĐENO LIGHT OKRUŽENJU */
+.contact-submit-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--premium-blue);
+    border-radius: 50px;
+    color: var(--dark-text); /* Tamni tekst u stanju mirovanja */
+    padding: 16px 40px;
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.4s ease;
+}
+
+.btn-arrow {
+    transition: transform 0.3s ease;
+}
+
+.contact-submit-btn:hover {
+    background: var(--premium-blue);
+    box-shadow: 0 0 30px rgba(var(--rgb-premium-blue), 0.3);
+    color: #ffffff; /* Tekst prelazi u belu tek kada se pozadina dugmeta napuni plavom */
+}
+
+.contact-submit-btn:hover .btn-arrow {
+    transform: translateX(6px);
+}
+
+/* Responzivnost */
+@media (max-width: 900px) {
+    .contact-split-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
+
+
+/* =========================================
+   REFAKTORISANA ZAJEDNICA - FIX ZA SUB-PIXEL BLEED
+   ========================================= */
+
+.community-particles-extreme {
+    position: relative;
+    height: 80vh; 
+    min-height: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: center;
+    background: transparent; 
+    padding: 80px 0 30px 0; 
+    z-index: 5;
+    
+    /* KLJUČNI FIX: Potpuno izoluje ivice renderinga i ubija ghost razmake na dnu */
+    overflow: hidden;
+    contain: paint; 
+}
+
+.particles-mesh {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* FIX: Čestice pomerene 10px unutar zone izolacije */
+.p-node {
+    position: absolute;
+    top: calc(100% - 10px); 
+    background: var(--premium-blue);
+    border-radius: 50%;
+    opacity: 0;
+    animation: floatUpwardsTransform linear infinite;
+    
+    /* Šalje animaciju na GPU i sprečava trzanje layouta */
+    will-change: transform, opacity; 
+}
+
+/* Efekat dubine za veće čestice */
+.p-node[style*="width: 7px"],
+.p-node[style*="width: 8px"],
+.p-node[style*="width: 9px"] {
+    filter: blur(1px);
+    opacity: 0;
+}
+
+/* --- SADRŽAJ U CENTRU --- */
+.community-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: auto; 
+    margin-bottom: auto;
+}
+
+.massive-text {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 5.5rem;
+    line-height: 1.05;
+    color: var(--white-color);
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: 0 15px 35px rgba(0, 0, 0, 0.45); 
+}
+
+.massive-text span {
+    color: var(--premium-blue);
+    text-shadow: 0 15px 35px rgba(var(--rgb-premium-blue), 0.2);
+}
+
+.community-btn-particles {
+    display: inline-block;
+    padding: 18px 48px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.25); 
+    color: #000000;
+    text-decoration: none;
+    font-family: 'ClaspoND', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.05rem;
+    letter-spacing: 1.5px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    border-radius: 50px; /* Menja oblik iz pravougaonog u potpuno zaobljeni */
+}
+
+.community-btn-particles:hover {
+    background: var(--premium-blue);
+    border-color: var(--premium-blue);
+    color: #ffffff;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(var(--rgb-premium-blue), 0.3);
+}
+
+/* --- POTPUNO INTEGRISANI INLINE FUTER --- */
+.inline-footer {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px; 
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent !important;
+}
+
+.footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    text-align: left;
+}
+
+.footer-logo {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: var(--dark-text);
+}
+
+.footer-credits {
+    font-size: 0.8rem;
+    color: #555555;
+    margin: 0;
+}
+
+.back-to-top-btn {
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--dark-text);
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    padding: 6px 12px;
+}
+
+.back-to-top-btn:hover {
+    color: var(--premium-blue);
+    transform: translateY(-2px);
+}
+
+/* Responzivnost */
+@media (max-width: 900px) {
+    .massive-text { font-size: 3.5rem; }
+    .inline-footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-left { align-items: center; text-align: center; }
+}
+
+/* =========================================
+   SCROLL JOURNEY (Globalni preliv sajta)
+   ========================================= */
+
+.scroll-journey {
+    width: 100%;
+    
+    background: linear-gradient(
+        to bottom,
+        var(--tech-black) 0%,          /* Potpuna crna */
+        var(--tech-black) 10%,         /* Crna se zadržava ispod Hero sekcije */
+        var(--deep-navy) 30%,          /* Most (deep-navy) je tu da "umekša" prelaz u plavu */
+        var(--premium-blue) 60%,       
+        var(--accent-blue) 85%,        
+        var(--white-color) 98%,        /* Belo ostavljamo za sam kraj */
+        var(--white-color) 100%        
+    );
+}
