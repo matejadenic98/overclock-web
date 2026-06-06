@@ -565,6 +565,7 @@ nav a:hover {
     justify-content: center;
     align-items: center;
     background-color: #000000; /* Čista crna koja maskira prostor levo/desno od uspravnih slika */
+    scroll-snap-stop: always;
 }
 
 /* Podešavanja za slike - bez sečenja i zuma */
@@ -664,6 +665,107 @@ nav a:hover {
         grid-template-columns: 1fr;        /* Na manjim ekranima se vraćaju jedna ispod druge */
         gap: 30px;
     }
+}
+
+/* ===================================================
+   LIGHTBOX FULL-SCREEN MODAL
+   =================================================== */
+.lightbox {
+    display: none; /* Skriveno po defaultu */
+    position: fixed;
+    z-index: 10000; /* Iznad svih elemenata na sajtu */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.93); /* Duboka tamna providna pozadina */
+    backdrop-filter: blur(8px); /* Premium efekat zamućenja pozadine sajta */
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Kada je modal aktivan */
+.lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+/* Kontejner za sliku i animacija skale */
+.lightbox-content {
+    max-width: 85%;
+    max-height: 85vh;
+    transform: scale(0.92);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Blagi elastični pop-out efekat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Kada modal popuni ekran, slika skače na pravu veličinu */
+.lightbox.active .lightbox-content {
+    transform: scale(1);
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain; /* Garantuje da se slika nikada ne iseče na ekranu */
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Dugme za zatvaranje (X) */
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: #888;
+    font-size: 40px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    z-index: 10010;
+}
+.lightbox-close:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Strelice u Full-Screen-u */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10005;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, border-color 0.3s;
+}
+.lightbox-arrow:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+
+.lightbox-prev { left: 30px; }
+.lightbox-next { right: 30px; }
+
+/* Prilagođavanje za telefone - strelice se sklanjaju radi swipe prostora */
+@media (max-width: 768px) {
+    .lightbox-arrow { display: none; }
+    .lightbox-close { top: 15px; right: 20px; font-size: 35px; }
+    .lightbox-content { max-width: 95%; }
 }
 
 /* =========================================
