@@ -81,10 +81,10 @@
     /* 1. FIKS ZA NEVIDLJIVI NAVIGACIONI BAR (Slike 259944.jpg i 259945.jpg) */
     /* Na telefonima pojačavamo zatamnjenje pozadine headera da bela slova uvek budu čitljiva */
     header, .navbar { 
-        background: rgba(10, 10, 15, 0.94) !important;
-        backdrop-filter: blur(12px) !important;
-        -webkit-backdrop-filter: blur(12px) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(255, 255, 255, 0.03) !important;
+        backdrop-filter: blur(15px) !important;
+        -webkit-backdrop-filter: blur(15px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
 
     /* 2. FIKS ZA POLOMLJENE NASLOVE I DEFORMISANE MARKERE (Slika 259943.jpg) */

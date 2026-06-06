@@ -97,17 +97,17 @@ body {
 
 /* Header je fiksna traka od ivice do ivice (100% širine) */
 header {
-    width: 100%;
+width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    
-    /* Ovde stavljaš pozadinu i staklo da se rasteže celom širinom monitora */
-    background: rgba(255, 255, 255, 0.03); 
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.02); /* Ultra suptilan svetli veo */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    
+    /* GURAMO BLUR NA KOREN: Ovo sprečava mobilne pretraživače da pocrne sloj */
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
 }
 
 /* Main navigation je unutar .container-a, samo raspoređuje elemente */
@@ -162,74 +162,6 @@ nav a {
 }
 nav a:hover {
     color: #7cafcd ;
-}
-
-@media (max-width: 900px) {
-    .main-navigation {
-        flex-wrap: wrap; /* Omogućava logou i hamburgeru da ostanu gore, a sadržaj ide ispod */
-    }
-
-    /* Prikaz i izgled hamburger dugmeta */
-    .hamburger-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        cursor: pointer;
-    }
-
-    .hamburger-menu span {
-        display: block;
-        width: 28px;
-        height: 3px;
-        background-color: var(--white-color);
-        border-radius: 2px;
-        transition: all 0.3s ease;
-    }
-
-    /* REŽIM ZA MANJE EKRANE: Transformacija glavnog menija */
-    .main-navigation nav {
-        display: none; /* Podrazumevano sakriven */
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 25px 0;
-        margin-top: 20px;
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* REŽIM ZA MANJE EKRANE: Smeštanje akcionog dugmeta na dno panela */
-    .main-navigation .header-actions {
-        display: none; /* Podrazumevano sakriveno */
-        width: 100%;
-        justify-content: center;
-        margin-top: 15px;
-        padding-bottom: 10px;
-    }
-
-    /* ČIST CSS MEHANIZAM: Otvaranje sadržaja kada se klikne na hamburger */
-    .menu-toggle-cb:checked ~ nav {
-        display: flex;
-    }
-
-    .menu-toggle-cb:checked ~ .header-actions {
-        display: flex;
-    }
-
-    /* ANIMACIJA: Pretvaranje hamburgera u oštar "X" znak */
-    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(1) {
-        transform: translateY(9px) rotate(45deg);
-        background-color: var(--premium-blue);
-    }
-    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(3) {
-        transform: translateY(-9px) rotate(-45deg);
-        background-color: var(--premium-blue);
-    }
 }
 
 /* =========================================
@@ -1535,74 +1467,135 @@ nav a:hover {
 }
 
 /* ===================================================
-   ULTIMATIVNI MOBILNI FIKS ZA PORAVNANJE I NASLOVE
+   KONSOLIDOVANI I OČIŠĆENI MOBILNI STILOVI (900px)
    =================================================== */
 @media (max-width: 900px) {
 
-    /* 1. FIKS ZA MARKERE I CENTRIRANJE NASLOVA SEKCIJA */
-    /* Smanjujemo naslov da bezuslovno stane u jedan red, čime se i plavi marker automatski centrira */
-    .title-wrapper {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important; /* Sprečava da marker pobjegne iz reda */
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-    }
-
-    .section-title, .section-title.dark-text {
-        font-size: 2.1rem !important; /* Smanjeno sa 3rem da ne puca u dva reda */
-        text-align: center !important;
-        line-height: 1.2 !important;
-        padding-bottom: 4px !important;
-    }
-
-    .title-marker {
-        height: 26px !important; /* Smanjujemo i visinu markera da savršeno isprati manji tekst */
-        width: 6px !important;
-        margin-right: 12px !important;
-        flex-shrink: 0 !important; /* Ne dozvoljava pretraživaču da zgnječi marker */
-        margin-top: 0 !important; /* Resetujemo gornji pomak */
-    }
-
-    /* 2. FIKS ZA LOGO I CENTRIRANJE NAVIGACIJE */
-    /* Sređujemo visinu logoa koji je bio veći od svog kaveza i poravnavamo ga sa hamburgerom */
+    /* --- 1. NAVIGACIJA, LOGO I HAMBURGER --- */
     .main-navigation {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
         padding: 15px 5% !important;
+        flex-wrap: wrap !important; /* Omogućava prelamanje menija ispod gornje linije */
     }
 
     .logo-wrapper {
-        height: auto !important; /* Skidamo fiksni limit */
+        height: auto !important;
         display: flex !important;
         align-items: center !important;
         gap: 10px !important;
     }
 
     .logo-wrapper img {
-        height: 38px !important; /* Smanjeno sa 70px - eliminiše vertikalno iskakanje */
+        height: 38px !important;
         width: auto !important;
     }
 
     .logo-text {
-        font-size: 22px !important; /* Blago smanjen tekst logotipa */
+        font-size: 22px !important;
         transform: none !important;
     }
 
     .hamburger-menu {
         display: flex !important;
-        align-items: center !important;
+        flex-direction: column !important;
         justify-content: center !important;
-        height: 38px !important; /* Savršeno se poklapa sa visinom logoa u ravni */
+        align-items: center !important;
+        gap: 6px !important;
+        cursor: pointer;
+        height: 38px !important;
         margin: 0 !important;
     }
 
-    /* 3. FIKS ZA ZAJEDNICU (Dva reda umesto tri) */
-    /* Masivni tekst na dnu smanjujemo kako bi fraza "PRIDRUŽI SE" stala u svoj jedinstveni prvi red */
+    .hamburger-menu span {
+        display: block !important;
+        width: 28px !important;
+        height: 3px !important;
+        background-color: var(--white-color) !important;
+        border-radius: 2px !important;
+        transition: all 0.3s ease !important;
+    }
+
+    /* Kapsula mobilnog menija - očišćena od suvišnih !important oznaka */
+    .main-navigation nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 25px 0;
+        margin-top: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        /* Jedina opravdana izmena: ostavljamo blagi blur na samoj kapsuli menija, 
+           jer se ona spušta nisko van granica gornje trake i tako nezavisno muti pozadinu */
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+    }
+
+    .main-navigation .header-actions {
+        display: none;
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    /* CSS Mehanizam za otvaranje */
+    .menu-toggle-cb:checked ~ nav {
+        display: flex !important;
+    }
+
+    .menu-toggle-cb:checked ~ .header-actions {
+        display: flex !important;
+    }
+
+    /* Animacija hamburgera u X */
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg) !important;
+        background-color: var(--premium-blue) !important;
+    }
+    
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(2) {
+        opacity: 0 !important;
+    }
+    
+    .menu-toggle-cb:checked + .hamburger-menu span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg) !important;
+        background-color: var(--premium-blue) !important;
+    }
+
+    /* --- 2. FIKS ZA MARKERE I NASLOVE SEKCIJA --- */
+    .title-wrapper {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .section-title, .section-title.dark-text {
+        font-size: 2.1rem !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
+        padding-bottom: 4px !important;
+    }
+
+    .title-marker {
+        height: 26px !important;
+        width: 6px !important;
+        margin-right: 12px !important;
+        flex-shrink: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* --- 3. FIKS ZA SEKCIJU ZAJEDNICA --- */
     .massive-text {
-        font-size: 3.2rem !important; /* Smanjeno kako ekran telefona ne bi prelomio reč "SE" ispod */
+        font-size: 3.2rem !important;
         line-height: 1.1 !important;
         text-align: center !important;
         letter-spacing: -0.5px !important;
@@ -1610,6 +1603,6 @@ nav a:hover {
 
     .massive-text span {
         display: inline-block !important;
-        white-space: nowrap !important; /* Garantuje da "ZAJEDNICI" ostaje u jednom komadu */
+        white-space: nowrap !important;
     }
 }
