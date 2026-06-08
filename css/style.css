@@ -1469,6 +1469,7 @@ nav a:hover {
 /* ===================================================
    KONSOLIDOVANI I OČIŠĆENI MOBILNI STILOVI (900px)
    =================================================== */
+
 @media (max-width: 900px) {
 
     /* --- 1. NAVIGACIJA, LOGO I HAMBURGER --- */
@@ -1495,6 +1496,9 @@ nav a:hover {
     .logo-text {
         font-size: 22px !important;
         transform: none !important;
+        /* PODEŠAVANJE VERTIKALNE OSE: */
+        margin-top: -2px !important;    /* Negativna margina podiže tekst na gore. Menjaj na -2px, -4px... */
+        margin-bottom: 2px !important; /* Pozitivna donja margina održava balans i visinu celog zaglavlja */
     }
 
     .hamburger-menu {
@@ -1568,41 +1572,85 @@ nav a:hover {
         background-color: var(--premium-blue) !important;
     }
 
+    .section-title, .section-title.dark-text {
+        font-size: 2.1rem !important;
+        width: auto !important;             /* Ključno: naslov uzima samo prostor slova, ne širi se na 100% */
+        line-height: 1.4 !important;        /* Povećano na 1.4 — daje ClaspoND fontu prostor da se "ispiše" bez sečenja */
+        margin: 0 !important;               /* Resetuje margine koje guraju tekst */
+        padding: 0 !important;              /* Uklanja stari padding-bottom koji je krivio vertikalnu osu */
+        text-align: left !important;        /* Pošto Flexbox radi centriranje celog paketa, tekst unutar sebe ide prirodno */
+    }
+
+
+    /* --- 2. GLOBALNI I ČISTI FIKS ZA SVE NASLOVE --- */
+
+    .section-title, .section-title.dark-text {
+        font-size: 2.1rem !important;
+        width: auto !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
     /* --- 2. FIKS ZA MARKERE I NASLOVE SEKCIJA --- */
     .title-wrapper {
         display: flex !important;
         flex-direction: row !important;
         flex-wrap: nowrap !important;
-        justify-content: center !important;
-        align-items: center !important;
+        justify-content: center !important; /* Drži ceo paket (marker + reč) u apsolutnoj sredini ekrana */
+        align-items: center !important;     /* Savršeno vertikalno poravnanje */
         width: 100% !important;
+        padding: 6px 0 !important;          /* Daje vertikalni luft celoj kutiji da font ne udara u ivice */
     }
 
     .section-title, .section-title.dark-text {
         font-size: 2.1rem !important;
-        text-align: center !important;
-        line-height: 1.2 !important;
-        padding-bottom: 4px !important;
+        width: auto !important;             /* Ključno: naslov uzima samo prostor slova, ne širi se na 100% */
+        line-height: 1.4 !important;        /* Povećano na 1.4 — daje ClaspoND fontu prostor da se "ispiše" bez sečenja */
+        margin: 0 !important;               /* Resetuje margine koje guraju tekst */
+        padding: 0 !important;              /* Uklanja stari padding-bottom koji je krivio vertikalnu osu */
+        text-align: left !important;        /* Pošto Flexbox radi centriranje celog paketa, tekst unutar sebe ide prirodno */
     }
 
     .title-marker {
         height: 26px !important;
         width: 6px !important;
-        margin-right: 12px !important;
+        min-width: 6px !important;
         flex-shrink: 0 !important;
+        margin-right: 12px !important;
+        
+        /* 1. Resetujemo stare margine da krenemo od čiste nule */
         margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        
+        /* 2. MILIMETARSKO PODEŠAVANJE ZA POČETNO SLOVO */
+        /* Ako je marker previše NISKO: koristi negativnu vrednost (npr. -2px, -3px, -4px) */
+        /* Ako je marker previše VISOKO: koristi pozitivnu vrednost (npr. 1px, 2px) */
+        transform: translateY(1px) !important; 
     }
 
-    /* --- 3. FIKS ZA SEKCIJU ZAJEDNICA --- */
-    .massive-text {
-        font-size: 3.2rem !important;
-        line-height: 1.1 !important;
-        text-align: center !important;
-        letter-spacing: -0.5px !important;
+    /* PRISILNO PRIKAZIVANJE MARKERA U KONTAKT SEKCIJI */
+    .contact .title-wrapper,
+    #kontakt .title-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
-    .massive-text span {
-        display: inline-block !important;
-        white-space: nowrap !important;
+    .contact .title-marker,
+    #kontakt .title-marker {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 6px !important;
+        min-width: 6px !important;
+        height: 26px !important;
+        background-color: var(--premium-blue) !important;
+        flex-shrink: 0 !important;
+        margin-right: 12px !important;
+        margin-top: 2px !important;
     }
+
+
 }
