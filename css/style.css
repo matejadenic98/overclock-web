@@ -1621,7 +1621,7 @@ nav a:hover {
         margin-right: 12px !important;
         
         /* 1. Resetujemo stare margine da krenemo od čiste nule */
-        margin-top: 0 !important;
+        margin-top: -3px !important;
         margin-bottom: 0 !important;
         
         /* 2. MILIMETARSKO PODEŠAVANJE ZA POČETNO SLOVO */
@@ -1649,7 +1649,7 @@ nav a:hover {
         background-color: var(--premium-blue) !important;
         flex-shrink: 0 !important;
         margin-right: 12px !important;
-        margin-top: 2px !important;
+        margin-top: -3px !important;
     }
 
 
