@@ -1278,6 +1278,11 @@ nav a:hover {
         flex-direction: column;
         gap: 40px;
     }
+
+.contact-submit-btn {
+        display: flex;       /* Zadržava flex da bi strelica i tekst ostali u ravni */
+        margin: 20px auto 0 auto; /* Auto na levoj i desnoj margini ga gura u sredinu ekrana */
+    }
 }
 
 
@@ -1438,7 +1443,7 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-    .massive-text { font-size: 3.5rem; }
+    .massive-text { font-size: 3.3rem; }
     .inline-footer {
         flex-direction: column;
         gap: 16px;
@@ -1572,26 +1577,6 @@ nav a:hover {
         background-color: var(--premium-blue) !important;
     }
 
-    .section-title, .section-title.dark-text {
-        font-size: 2.1rem !important;
-        width: auto !important;             /* Ključno: naslov uzima samo prostor slova, ne širi se na 100% */
-        line-height: 1.4 !important;        /* Povećano na 1.4 — daje ClaspoND fontu prostor da se "ispiše" bez sečenja */
-        margin: 0 !important;               /* Resetuje margine koje guraju tekst */
-        padding: 0 !important;              /* Uklanja stari padding-bottom koji je krivio vertikalnu osu */
-        text-align: left !important;        /* Pošto Flexbox radi centriranje celog paketa, tekst unutar sebe ide prirodno */
-    }
-
-
-    /* --- 2. GLOBALNI I ČISTI FIKS ZA SVE NASLOVE --- */
-
-    .section-title, .section-title.dark-text {
-        font-size: 2.1rem !important;
-        width: auto !important;
-        line-height: 1.4 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        text-align: left !important;
-    }
 
     /* --- 2. FIKS ZA MARKERE I NASLOVE SEKCIJA --- */
     .title-wrapper {
