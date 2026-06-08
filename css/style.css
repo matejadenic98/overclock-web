@@ -1497,8 +1497,8 @@ nav a:hover {
         font-size: 22px !important;
         transform: none !important;
         /* PODEŠAVANJE VERTIKALNE OSE: */
-        margin-top: -2px !important;    /* Negativna margina podiže tekst na gore. Menjaj na -2px, -4px... */
-        margin-bottom: 2px !important; /* Pozitivna donja margina održava balans i visinu celog zaglavlja */
+        margin-top: 2px !important;    /* Probaj 1px, 2px ili 3px dok ne legne u osu */
+        margin-bottom: 0 !important;
     }
 
     .hamburger-menu {
