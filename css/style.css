@@ -1443,23 +1443,34 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-.massive-text {
-        font-size: 3.5rem !important;    /* Tvoja originalna veličina */
-        line-height: 1.1 !important;     /* Zbijamo redove da izgleda moćno */
+    .massive-text {
+        font-size: 3.5rem !important;    /* Veličina ostaje velika */
+        line-height: 1.1 !important;     
         text-align: center !important;
-        width: 100% !important;
         display: block !important;
-        
-        /* KLJUČNO: Poništavamo stari nowrap da dozvolimo prelazak u novi red */
-        white-space: normal !important;   
-        letter-spacing: -0.5px !important; /* Drži slova blago primaknuta za Xiaomi 17 Pro */
+        width: 100% !important;
+        white-space: normal !important;   /* Dozvoljavamo naslovu da se prelomi... */
+        letter-spacing: -0.7px !important; /* Još trunčicu primičemo slova radi bezbednosti */
     }
 
-    /* NATERAMO SPAN (REČ "ZAJEDNICI") DA UVEK IDE U NOVI RED */
-    .massive-text span {
-        display: block !important;       /* Ovo radi isto što i <br>, ali na čist CSS način */
-        width: 100% !important;
+    /* PRVI RED: Zabranjujemo da se "PRIDRUŽI SE" ikada razbije u dva reda */
+    .massive-text {
+        white-space: normal; 
     }
+    
+    /* CILJAMO DIREKTNO TEKST PRE SPAN-A (PRIDRUŽI SE) */
+    .massive-text {
+        /* Primenjujemo trik: nateraćemo pretraživač da prve dve reči drži spojene */
+        word-spacing: -1px; 
+    }
+
+    /* DRUGI RED: Moćan i čist prelazak reči "ZAJEDNICI" u novi red */
+    .massive-text span {
+        display: block !important;       /* Baca je u novi red */
+        width: 100% !important;
+        white-space: nowrap !important;  /* Zabranjuje da se reč "ZAJEDNICI" ikada polomi */
+    }
+    
     .inline-footer {
         flex-direction: column;
         gap: 16px;
