@@ -1444,33 +1444,24 @@ nav a:hover {
 /* Responzivnost */
 @media (max-width: 900px) {
     .massive-text {
-        font-size: 3.5rem !important;    /* Veličina ostaje velika */
-        line-height: 1.1 !important;     
-        text-align: center !important;
+        font-size: 3.5rem !important;    /* Tvoja puna veličina fonta */
+        line-height: 1.1 !important;     /* Moćan, sabijen razmak između redova */
+        text-align: center !important;   /* Vraćamo tekst u apsolutni centar ekrana */
         display: block !important;
         width: 100% !important;
-        white-space: normal !important;   /* Dozvoljavamo naslovu da se prelomi... */
-        letter-spacing: -0.7px !important; /* Još trunčicu primičemo slova radi bezbednosti */
+        white-space: normal !important;  /* Dozvoljavamo layoutu da prirodno diše */
+        letter-spacing: -0.5px !important; /* Blago primicanje slova specifično za Xiaomi ekrane */
+        margin: 0 auto 20px auto !important; /* Centriramo ceo boks i odvajamo ga od dugmeta ispod */
     }
 
-    /* PRVI RED: Zabranjujemo da se "PRIDRUŽI SE" ikada razbije u dva reda */
-    .massive-text {
-        white-space: normal; 
-    }
-    
-    /* CILJAMO DIREKTNO TEKST PRE SPAN-A (PRIDRUŽI SE) */
-    .massive-text {
-        /* Primenjujemo trik: nateraćemo pretraživač da prve dve reči drži spojene */
-        word-spacing: -1px; 
-    }
-
-    /* DRUGI RED: Moćan i čist prelazak reči "ZAJEDNICI" u novi red */
+    /* DRUGI RED (REČ "ZAJEDNICI") */
     .massive-text span {
-        display: block !important;       /* Baca je u novi red */
+        display: block !important;       /* Čisto CSS bacanje reči u novi red */
         width: 100% !important;
-        white-space: nowrap !important;  /* Zabranjuje da se reč "ZAJEDNICI" ikada polomi */
+        text-align: center !important;   /* Dupla sigurnost za centriranje reči na sredinu */
+        white-space: nowrap !important;  /* Zabranjujemo da se reč ikada iseče ili polomi */
     }
-    
+
     .inline-footer {
         flex-direction: column;
         gap: 16px;
