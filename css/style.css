@@ -1443,25 +1443,26 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
+    /* RESPONDIVNI DIZAJN ZA RAZDVOJENE REDOVE */
     .massive-text {
         font-size: 3.5rem !important;    /* Tvoja puna veličina fonta */
-        line-height: 1.1 !important;     /* Moćan, sabijen razmak između redova */
-        text-align: center !important;   /* Vraćamo tekst u apsolutni centar ekrana */
+        line-height: 1.0 !important;     /* Zbijamo razmak između ova dva naslova */
+        text-align: center !important;   /* Savršen centar */
         display: block !important;
         width: 100% !important;
-        white-space: normal !important;  /* Dozvoljavamo layoutu da prirodno diše */
-        letter-spacing: -0.5px !important; /* Blago primicanje slova specifično za Xiaomi ekrane */
-        margin: 0 auto 20px auto !important; /* Centriramo ceo boks i odvajamo ga od dugmeta ispod */
+        letter-spacing: -0.5px !important; /* Prilagođavanje za Xiaomi ekrane */
     }
 
-    /* DRUGI RED (REČ "ZAJEDNICI") */
-    .massive-text span {
-        display: block !important;       /* Čisto CSS bacanje reči u novi red */
-        width: 100% !important;
-        text-align: center !important;   /* Dupla sigurnost za centriranje reči na sredinu */
-        white-space: nowrap !important;  /* Zabranjujemo da se reč ikada iseče ili polomi */
+    /* Fino podešavanje razmaka između prvog i drugog reda */
+    .massive-text.first-line {
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;  /* Mali prostor pre nego što počne druga reč */
     }
 
+    .massive-text.second-line {
+        margin-top: 0 !important;
+        margin-bottom: 25px !important; /* Odvajanje od dugmeta ispod */
+    }
     .inline-footer {
         flex-direction: column;
         gap: 16px;
