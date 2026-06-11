@@ -1444,7 +1444,7 @@ nav a:hover {
 /* Responzivnost */
 @media (max-width: 900px) {
     .massive-text {
-        font-size: 3.4rem !important; /* Moćan font koji savršeno popunjava tablet širinu */
+        font-size: 3.6rem !important; /* Moćan font koji savršeno popunjava tablet širinu */
         line-height: 1.1 !important;
         text-align: center !important;
         margin: 0 auto 25px auto !important;
@@ -1467,7 +1467,7 @@ nav a:hover {
 
 @media (max-width: 480px) {
     .massive-text {
-        font-size: 2.7rem !important; /* Podignuto sa 2.6 na 2.7 - idealan balans za Xiaomi 17 Pro */
+        font-size: 2.9rem !important; /* Podignuto sa 2.6 na 2.7 - idealan balans za Xiaomi 17 Pro */
         line-height: 1.1 !important;
         letter-spacing: -0.5px !important; /* Minimalno primicanje slova za maksimalnu bezbednost ivica */
         margin-bottom: 20px !important;
