@@ -1443,26 +1443,26 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-    /* RESPONDIVNI DIZAJN ZA RAZDVOJENE REDOVE */
+/* VRAĆANJE MATRICE ZA ANIMACIJU I PORAVNANJE */
     .massive-text {
-        font-size: 3.5rem !important;    /* Tvoja puna veličina fonta */
-        line-height: 1.0 !important;     /* Zbijamo razmak između ova dva naslova */
+        font-size: 2.6rem !important;    /* Smanjujemo sa 3.5rem na bezbednih 2.6rem za telefone */
+        line-height: 1.2 !important;     /* Prirodan razmak koji animacija prepoznaje */
         text-align: center !important;   /* Savršen centar */
         display: block !important;
         width: 100% !important;
-        letter-spacing: -0.5px !important; /* Prilagođavanje za Xiaomi ekrane */
+        white-space: normal !important;  /* Dozvoljavamo normalan tok teksta */
+        letter-spacing: -0.5px !important;
+        margin: 0 auto 20px auto !important;
     }
 
-    /* Fino podešavanje razmaka između prvog i drugog reda */
-    .massive-text.first-line {
-        margin-top: 0 !important;
-        margin-bottom: 5px !important;  /* Mali prostor pre nego što počne druga reč */
+    /* DRUGI RED - REČ ZAJEDNICI */
+    .massive-text span {
+        display: block !important;       /* Prirodno spuštanje u drugi red */
+        width: 100% !important;
+        text-align: center !important;
+        white-space: normal !important;  /* Poništavamo kruti nowrap da ne seče ivice */
     }
-
-    .massive-text.second-line {
-        margin-top: 0 !important;
-        margin-bottom: 25px !important; /* Odvajanje od dugmeta ispod */
-    }
+    
     .inline-footer {
         flex-direction: column;
         gap: 16px;
