@@ -111,7 +111,7 @@ width: 100%;
 }
 
 header, .logo-text, .main-navigation nav a, .hamburger-menu span {
-    transition: all 0.5s ease;
+    transition: all 0.5s ease; /* Sluzi ako odlucim da zatamnim navigaciju prilikom prelazenja na svetao deo stranice */
 }
 
 /* Main navigation je unutar .container-a, samo raspoređuje elemente */

@@ -15,6 +15,10 @@
         flex-wrap: wrap; /* Omogućava prelamanje menija ispod gornje linije */
     }
 
+    header, .logo-text, .main-navigation nav a, .hamburger-menu span {
+    transition: all 0.5s ease;
+}
+
     body .logo-wrapper {
         height: auto;
         display: flex;
@@ -378,6 +382,9 @@
 /* --- TRANZICIJA BOJA KADA PROĐE KONTAKT FORMA --- */
 
 /* Menja tekst logoa u crnu boju */
+
+@media (max-width: 900px) {
+    
 body .nav-dark-theme .logo-text {
     color: #000000;
 }
@@ -441,4 +448,6 @@ body .btn-outline-nav:hover {
 body .nav-dark-theme .btn-outline-nav:hover {
     background-color: var(--premium-blue); /* Ista boja kao u belom modu */
     color: #ffffff;
+}
+
 }
