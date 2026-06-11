@@ -86,23 +86,6 @@
         -webkit-backdrop-filter: blur(15px) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     }
-
-    
-    /* 2. FIKS ZA POLOMLJENE NASLOVE I DEFORMISANE MARKERE (Slika 259943.jpg) */
-    /* Smanjujemo font naslova na telefonu da sve stane u jedan red i držimo marker u centru */
-    /*
-    .section-title {
-        font-size: 1.8rem !important; 
-        line-height: 1.2 !important;
-    }
-    .title-wrapper {
-        display: flex !important;
-        align-items: center !important;
-        gap: 12px !important;
-    }
-
-    /* 3. FIKS ZA MOBILNE ANIMACIJE - UKLANJANJE CRNIH PRIDAVAKA (Slike 259942.jpg i 259943.jpg) */
-    /* Menjamo opseg animacije za mobilne ekrane tako da se sadržaj otkriva znatno ranije */
     
     .scroll-blur-reveal {
         animation-range: cover 0% cover 85% !important;

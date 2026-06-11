@@ -1443,7 +1443,7 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-    .massive-text { font-size: 3.3rem; }
+    .massive-text { font-size: 3.5rem; white-space: nowrap; }
     .inline-footer {
         flex-direction: column;
         gap: 16px;
