@@ -1443,12 +1443,36 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-    .massive-text { font-size: 3.5rem; white-space: nowrap; }
+.massive-text {
+        font-size: 3.5rem !important;    /* Tvoja originalna veličina */
+        line-height: 1.1 !important;     /* Zbijamo redove da izgleda moćno */
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+        
+        /* KLJUČNO: Poništavamo stari nowrap da dozvolimo prelazak u novi red */
+        white-space: normal !important;   
+        letter-spacing: -0.5px !important; /* Drži slova blago primaknuta za Xiaomi 17 Pro */
+    }
+
+    /* NATERAMO SPAN (REČ "ZAJEDNICI") DA UVEK IDE U NOVI RED */
+    .massive-text span {
+        display: block !important;       /* Ovo radi isto što i <br>, ali na čist CSS način */
+        width: 100% !important;
+    }
     .inline-footer {
         flex-direction: column;
         gap: 16px;
         text-align: center;
     }
+
+    .community-content {
+        width: 100% !important;
+        padding-left: 16px !important;  /* Bezbedna zona da slova nikad ne dotaknu staklo ekrana */
+        padding-right: 16px !important;
+        box-sizing: border-box !important;
+    }
+
     .footer-left { align-items: center; text-align: center; }
 }
 
