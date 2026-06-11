@@ -291,7 +291,7 @@
 /* ==========================================================================
    8. KONTAKT FORMA (SADA SA FIKSOM ZA VERTIKALNU OSU DUGMETA)
    ========================================================================== */
-   
+
 @media (max-width: 900px) {
     body .contact-split-wrapper {
         grid-template-columns: 1fr;
@@ -304,11 +304,32 @@
     }
 
     body .contact-submit-btn {
-        display: flex;            /* Zadržava flex da bi strelica i tekst ostali u ravni */
-        align-items: center;      /* KLJUČNO: Poravnava tekst i strelicu idealno na sredinu (fiks za Xiaomi 12) */
-        justify-content: center;  /* Osigurava da je sadržaj unutar dugmeta horizontalno centriran */
-        line-height: normal;      /* Resetuje visinu linije koja je verovatno krivac što tekst beži nagore */
-        margin: 20px auto 0 auto; /* Auto na levoj i desnoj margini ga gura u sredinu ekrana */
+        display: flex;
+        align-items: center;      /* Vertikalno centriranje elemenata unutar dugmeta */
+        justify-content: center;  /* Horizontalno centriranje */
+        margin: 20px auto 0 auto; /* Gura dugme u sredinu ekrana */
+        
+        /* FIKS ZA ANIMACIJE: Sprečava da transform iz skripti/animacija poremeti unutrašnju osu */
+        transform: none; 
+        will-change: auto;
+    }
+
+    /* FIKS ZA SAM TEKST UNUTAR DUGMETA: 
+       Pretraživač na Xiaomi 12 nekada loše računa visinu fonta ako dugme ima fiksnu visinu ili padding.
+       Ovim osiguravamo da unutrašnja linija teksta bude savršeno centrirana. */
+    body .contact-submit-btn span,
+    body .contact-submit-btn text {
+        line-height: 1 !important;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* FIKS ZA STRELICU: Osigurava da i ikonica/strelica prati istu visinsku osu bez odstupanja */
+    body .contact-submit-btn i,
+    body .contact-submit-btn svg {
+        display: inline-flex;
+        align-items: center;
+        line-height: 1 !important;
     }
 }
 
