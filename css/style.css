@@ -1285,23 +1285,6 @@ nav a:hover {
     }
 }
 
-/* ==========================================================================
-   NOVI BLOK: PODEŠAVANJE ZA TELEFONE (Sve ispod 480px širine)
-   Čist kod, bez ijednog !important taga
-   ========================================================================== */
-@media (max-width: 480px) {
-    /* Dodajemo roditeljski omotač (.contact-split-wrapper ili klasu tvoje forme) 
-       ispred dugmeta da bi selektor bio prirodno jači od desktop verzije */
-    .contact-split-wrapper .contact-submit-btn {
-        font-size: 0.95rem;        /* Suptilno smanjenje da tekst dobije "vazduha" */
-        white-space: nowrap;       /* Zaključavamo tekst u jedan red */
-        padding-left: 20px;        /* Malo uži bočni padding ako zatreba na užim ekranima */
-        padding-right: 20px;
-        letter-spacing: 0px;       /* Resetujemo spacing da slova ne budu preširoka */
-        width: max-content;        /* Dugme se širi tačno onoliko koliko tekst zahteva */
-    }
-}
-
 
 /* =========================================
    REFAKTORISANA ZAJEDNICA - FIX ZA SUB-PIXEL BLEED
