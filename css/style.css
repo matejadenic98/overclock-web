@@ -1285,6 +1285,23 @@ nav a:hover {
     }
 }
 
+/* ==========================================================================
+   NOVI BLOK: PODEŠAVANJE ZA TELEFONE (Sve ispod 480px širine)
+   Čist kod, bez ijednog !important taga
+   ========================================================================== */
+@media (max-width: 480px) {
+    /* Dodajemo roditeljski omotač (.contact-split-wrapper ili klasu tvoje forme) 
+       ispred dugmeta da bi selektor bio prirodno jači od desktop verzije */
+    .contact-split-wrapper .contact-submit-btn {
+        font-size: 0.95rem;        /* Suptilno smanjenje da tekst dobije "vazduha" */
+        white-space: nowrap;       /* Zaključavamo tekst u jedan red */
+        padding-left: 20px;        /* Malo uži bočni padding ako zatreba na užim ekranima */
+        padding-right: 20px;
+        letter-spacing: 0px;       /* Resetujemo spacing da slova ne budu preširoka */
+        width: max-content;        /* Dugme se širi tačno onoliko koliko tekst zahteva */
+    }
+}
+
 
 /* =========================================
    REFAKTORISANA ZAJEDNICA - FIX ZA SUB-PIXEL BLEED
@@ -1443,11 +1460,11 @@ nav a:hover {
 
 /* Responzivnost */
 @media (max-width: 900px) {
-    .massive-text {
-        font-size: 3.6rem !important; /* Moćan font koji savršeno popunjava tablet širinu */
-        line-height: 1.1 !important;
-        text-align: center !important;
-        margin: 0 auto 25px auto !important;
+.community-content .massive-text {
+        font-size: 3.6rem; 
+        line-height: 1.1;
+        text-align: center;
+        margin: 0 auto 25px auto;
     }
     .inline-footer {
         flex-direction: column;
@@ -1466,11 +1483,10 @@ nav a:hover {
 }
 
 @media (max-width: 480px) {
-    .massive-text {
-        font-size: 2.9rem !important; /* Podignuto sa 2.6 na 2.7 - idealan balans za Xiaomi 17 Pro */
-        line-height: 1.1 !important;
-        letter-spacing: -0.5px !important; /* Minimalno primicanje slova za maksimalnu bezbednost ivica */
-        margin-bottom: 20px !important;
+.community-content .massive-text {
+        font-size: 2.9rem; 
+        letter-spacing: -0.5px;
+        margin-bottom: 20px;
     }
 }
 
