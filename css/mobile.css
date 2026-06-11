@@ -3,9 +3,9 @@
    ========================================================================== */
 
 /* ==========================================================================
-   1. NAVIGACIJA, LOGO I HAMBURGER MENE
+   1. NAVIGACIJA, LOGO I HAMBURGER MENI
    ========================================================================== */
-   
+
 @media (max-width: 900px) {
     body .main-navigation {
         display: flex;
@@ -289,21 +289,25 @@
 
 
 /* ==========================================================================
-   8. KONTAKT FORMA
+   8. KONTAKT FORMA (SADA SA FIKSOM ZA VERTIKALNU OSU DUGMETA)
    ========================================================================== */
-
+   
 @media (max-width: 900px) {
-    .contact-split-wrapper {
+    body .contact-split-wrapper {
         grid-template-columns: 1fr;
         gap: 50px;
     }
-    .form-row {
+    
+    body .form-row {
         flex-direction: column;
         gap: 40px;
     }
 
-    .contact-submit-btn {
-        display: flex;       /* Zadržava flex da bi strelica i tekst ostali u ravni */
+    body .contact-submit-btn {
+        display: flex;            /* Zadržava flex da bi strelica i tekst ostali u ravni */
+        align-items: center;      /* KLJUČNO: Poravnava tekst i strelicu idealno na sredinu (fiks za Xiaomi 12) */
+        justify-content: center;  /* Osigurava da je sadržaj unutar dugmeta horizontalno centriran */
+        line-height: normal;      /* Resetuje visinu linije koja je verovatno krivac što tekst beži nagore */
         margin: 20px auto 0 auto; /* Auto na levoj i desnoj margini ga gura u sredinu ekrana */
     }
 }
@@ -312,6 +316,7 @@
 /* ==========================================================================
    9. SEKCIJA IZNAD FOOTERA (ZAJEDNICA) I INLINE FOOTER
    ========================================================================== */
+
 @media (max-width: 900px) {
     .community-content .massive-text {
         font-size: 3.6rem; 
@@ -346,4 +351,5 @@
         letter-spacing: -0.5px;
         margin-bottom: 20px;
     }
+
 }
