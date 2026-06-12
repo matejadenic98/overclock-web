@@ -103,6 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
     if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
   });
+  
 
   // 3. SIGURAN MEHANIZAM ZA GRADUALNO ZATAMNJIVANJE NAVIGACIJE
   const navElement = document.querySelector(".main-navigation");
