@@ -55,40 +55,67 @@
         transition: all 0.3s ease;
     }
 
-    /* Kapsula mobilnog menija - očišćena od suvišnih !important oznaka */
+    /* Kapsula mobilnog menija - pripremljena za glatku animaciju */
     body .main-navigation nav {
-        display: none;
+        display: flex;             /* Uvek je flex da bi stavke bile u koloni, animaciju radimo preko visine */
         width: 100%;
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        padding: 25px 0;
-        margin-top: 20px;
         border-radius: 20px;
         background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
         
         /* Jedina opravdana izmena: ostavljamo blagi blur na samoj kapsuli menija, 
            jer se ona spušta nisko van granica gornje trake i tako nezavisno muti pozadinu */
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
+
+        /* POČETNO STANJE (ZATVORENO) */
+        max-height: 0;             /* Skuplja meni na nula piksela visine */
+        opacity: 0;                /* Čini ga potpuno providnim */
+        visibility: hidden;        /* Onemogućava klikove na nevidljive linkove */
+        overflow: hidden;          /* Skriva tekst linkova dok je meni skupljen */
+        padding: 0;                /* Skuplja unutrašnji vazduh na nulu */
+        margin-top: 0;             /* Skuplja gornju marginu da ne pravi prazninu */
+        border: 1px solid rgba(255, 255, 255, 0); /* Skriva ivicu dok je zatvoren */
+
+        /* DEFINISANJE TRANZICIJE: Sve komponente se otvaraju glatko za 0.4 sekunde */
+        transition: max-height 0.4s ease, opacity 0.3s ease, visibility 0.3s ease, padding 0.4s ease, margin-top 0.4s ease, border-color 0.4s ease;
     }
 
     body .main-navigation .header-actions {
-        display: none;
+        display: flex;             /* Prebačeno iz none u flex zbog animacije */
         width: 100%;
         justify-content: center;
-        margin-top: 15px;
-        padding-bottom: 10px;
+
+        /* POČETNO STANJE (ZATVORENO) */
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        margin-top: 0;
+        padding-bottom: 0;
+
+        /* DEFINISANJE TRANZICIJE */
+        transition: max-height 0.4s ease, opacity 0.3s ease, visibility 0.3s ease, margin-top 0.4s ease, padding-bottom 0.4s ease;
     }
 
-    /* CSS Mehanizam za otvaranje */
+    /* CSS Mehanizam za otvaranje (OTVORENO STANJE) */
     body .menu-toggle-cb:checked ~ nav {
-        display: flex;
+        max-height: 500px;         /* Dovoljno velika maksimalna visina da obuhvati sve linkove bez sečenja */
+        opacity: 1;                /* Meni postaje vidljiv */
+        visibility: visible;
+        padding: 25px 0;           /* Vraćamo tvoj originalni padding */
+        margin-top: 20px;          /* Vraćamo tvoju originalnu marginu */
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Vraćamo suptilnu ivicu */
     }
 
     body .menu-toggle-cb:checked ~ .header-actions {
-        display: flex;
+        max-height: 100px;         /* Proširuje prostor za glavno dugme */
+        opacity: 1;
+        visibility: visible;
+        margin-top: 15px;          /* Vraćamo tvoju originalnu marginu */
+        padding-bottom: 10px;       /* Vraćamo tvoj originalni padding */
     }
 
     /* Animacija hamburgera u X */

@@ -110,6 +110,10 @@ width: 100%;
     -webkit-backdrop-filter: blur(15px) !important;
 }
 
+header, .logo-text, .main-navigation nav a {
+    transition: all 0.5s ease; /* Sluzi ako odlucim da zatamnim navigaciju prilikom prelazenja na svetao deo stranice */
+}
+
 header, .logo-text, .main-navigation nav a, .hamburger-menu span {
     transition: all 0.5s ease; /* Sluzi ako odlucim da zatamnim navigaciju prilikom prelazenja na svetao deo stranice */
 }
@@ -1357,4 +1361,74 @@ nav a:hover {
         var(--white-color) 98%,        /* Belo ostavljamo za sam kraj */
         var(--white-color) 100%        
     );
+}
+
+/* =========================================
+   TRANZICIJA BOJA KADA PROĐE KONTAKT FORMA
+   ========================================= */
+
+/* Menja tekst logoa u crnu boju */
+body .nav-dark-theme .logo-text {
+    color: #000000;
+}
+
+/* Menja boju linkova u navigaciji u crnu boju */
+body .nav-dark-theme .main-navigation nav a {
+    color: #000000;
+}
+
+/* Menja sve tri linije hamburger menija u crnu boju */
+body .nav-dark-theme .hamburger-menu span {
+    background-color: #000000;
+}
+
+/* Ukoliko je hamburger meni otvoren (aktiviran X), zadržavamo premium plavu da se vidi selekcija */
+body .nav-dark-theme .menu-toggle-cb:checked + .hamburger-menu span {
+    background-color: var(--premium-blue);
+}
+
+/* Ako imaš SVG logo i želiš da i njega zatamniš (invertuješ) da bude crn */
+body .nav-dark-theme .logo-wrapper img {
+    filter: brightness(0); /* Pretvara beli logo u potpuno crn */
+}
+
+/* --- ZATAMNJIVANJE DUGMETA KADA SE AKTIVIRA TAMNA TEMA --- */
+
+/* Prilagodi selektor (.contact-submit-btn) zavisno od toga kako se tvoje dugme tačno zove u kodu */
+body .nav-dark-theme .btn-outline-nav {
+    background-color: #000000; /* Postavlja pozadinu dugmeta u crnu */
+    color: #ffffff;            /* Tekst postaje beo da bi se video na crnoj pozadini */
+    border: 1px solid #000000; /* Opciono: ako imaš ivicu, neka bude crna */
+}
+
+/* Ako dugme unutar sebe ima strelicu (ikonu) */
+body .nav-dark-theme .btn-outline-nav i,
+body .nav-dark-theme .btn-outline-nav svg {
+    fill: #ffffff;            /* Ako je SVG, menja boju ikone u belu */
+    color: #ffffff;            /* Ako je font-ikonica */
+}
+
+/* --- KONZISTENTNI HOVER EFEKTI --- */
+
+/* 1. Hover za navigacione linkove */
+body .main-navigation nav a:hover {
+    color: var(--premium-blue); /* Boja kada pređeš mišem */
+}
+
+/* 2. Hover za navigacione linkove kada je crna tema */
+body .nav-dark-theme .main-navigation nav a:hover {
+    color: var(--premium-blue); /* Zadržavamo istu boju i ovde */
+}
+
+/* 3. Hover za dugme (Contact Submit Button) */
+/* Kada je bela navigacija */
+body .btn-outline-nav:hover {
+    background-color: var(--premium-blue);
+    color: #ffffff;
+}
+
+/* Kada je crna navigacija (nav-dark-theme) */
+body .nav-dark-theme .btn-outline-nav:hover {
+    background-color: var(--premium-blue); /* Ista boja kao u belom modu */
+    color: #ffffff;
 }
