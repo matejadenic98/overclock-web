@@ -445,6 +445,19 @@ body .nav-dark-theme .btn-outline-nav svg {
     color: #ffffff;            /* Ako je font-ikonica */
 }
 
+/* --- DISKRETNO ZATAMNJIVANJE OMOTAČA (KAPSULE) U TAMNOJ TEMI --- */
+
+    /* Kada navigacija prođe u crni mod, kapsula menija menja beli sjaj u diskretni tamni sjaj */
+    body header.nav-dark-theme .main-navigation nav {
+        background: rgba(0, 0, 0, 0.03);             /* Veoma suptilna tamna tekstura umesto bele */
+        border: 1px solid rgba(0, 0, 0, 0.06);       /* Jedva primetna tamna ivica da se omotač odvoji od belog footera */
+    }
+
+    /* Osiguravamo da i u otvorenom (checked) stanju ivica zadrži tu diskretnu tamnu nijansu */
+    body header.nav-dark-theme .menu-toggle-cb:checked ~ nav {
+        border-color: rgba(0, 0, 0, 0.08);
+    }
+
 /* --- KONZISTENTNI HOVER EFEKTI --- */
 
 /* 1. Hover za navigacione linkove */
