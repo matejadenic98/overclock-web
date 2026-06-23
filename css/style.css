@@ -262,7 +262,7 @@ nav a:hover {
     background-color: #000000; /* Osnova je čista crna */
 }
 
-/* Kavez za video pozadinu */
+/* Kavez za video pozadinu (Ostaje skoro isti, dodata je samo izolacija) */
 .hero .video-wrapper {
     position: absolute;
     top: 0;
@@ -270,14 +270,22 @@ nav a:hover {
     width: 100%;
     height: 100%;
     z-index: 1;
+    overflow: hidden; /* Osigurava da višak videa koji se kropuje ne seče sajt */
 }
 
-.hero .video-wrapper video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* NOVI SELEKTOR: Prilagođen za Vimeo Iframe umesto video taga */
+.hero .video-wrapper iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;      /* 16:9 format (9 / 16 * 100) */
+    min-height: 100vh;
+    min-width: 177.77vh;  /* 16:9 format (16 / 9 * 100) */
+    transform: translate(-50%, -50%); /* Savršeno centriranje u kavezu */
+    border: none;
+    pointer-events: none; /* Klikovi prolaze kroz video na dugmiće */
 }
-
 
 /* Kapsula za sadržaj iznad videa */
 .hero .hero-overlay {
