@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function openLightbox() {
     if (!lightbox) return;
     lightbox.style.display = 'flex';
+
+    // OVDE POZIVAMO ZAKLJUČAVANJE:
+  lockScroll();
+
     setTimeout(() => {
         lightbox.classList.add('active');
     }, 10);
@@ -59,6 +63,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('active');
+
+    // OVDE POZIVAMO OTKLJUČAVANJE:
+  unlockScroll();
+
     setTimeout(() => {
         lightbox.style.display = 'none';
     }, 300);
@@ -131,3 +139,27 @@ document.addEventListener("DOMContentLoaded", function () {
     observer.observe(contactSection);
   }
 });
+
+// 4. FUNKCIJA ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
+
+function lockScroll() {
+  currentScrollY = window.scrollY || document.documentElement.scrollTop;
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+  // Postavljamo varijablu i klasu samo na BODY (html ne diramo da nema flash-a)
+  document.documentElement.style.setProperty('--scroll-y', `-${currentScrollY}px`);
+  document.body.style.paddingRight = `${scrollbarWidth}px`;
+  document.body.classList.add('is-locked');
+}
+
+function unlockScroll() {
+  document.body.classList.remove('is-locked');
+  document.body.style.paddingRight = '';
+
+  // Vraćamo scroll instant bez tranzicija
+  window.scrollTo({
+    top: currentScrollY,
+    left: 0,
+    behavior: 'instant'
+  });
+}

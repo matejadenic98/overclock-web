@@ -2,6 +2,43 @@ html {
     scroll-behavior: smooth; /* Aktivira fluidno rolanje nagore i nadole kroz celu stranicu */
 }
 
+/* =========================================
+   LIGHTBOX & LOCK SCROLL STILOVI
+   ========================================= */
+
+/* 1. Lightbox Modal - Sakriven po defaultu */
+#lightbox-modal {
+  display: none; /* KLJUČNO: Sakriven dok se ne klikne slika */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  z-index: 9999;
+  touch-action: none;
+  overscroll-behavior: contain;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Kada JS doda klasu .active (pri kliku na sliku) */
+#lightbox-modal.active {
+  display: flex !important;
+  opacity: 1 !important;
+}
+
+/* 2. Lock pozadine */
+body.is-locked {
+  position: fixed !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  top: var(--scroll-y) !important;
+  overflow: hidden !important;
+}
 /* Selektuje samo <section> tagove koji na sebi imaju definisan ID */
 section[id] {
     scroll-margin-top: 90px;
@@ -24,6 +61,7 @@ section[id] {
     /* RGB vrednosti (neophodne za rgba() gradijente i providnost) */
     --rgb-black: 0, 0, 0;
     --rgb-blue: 124, 175, 205;       /* RGB za #7cafcd */
+    --rgb-accent-blue: 124, 175, 205;/* Dodata zaboravljena varijabla */
     --rgb-premium-blue: 42, 142, 199; /* RGB za #2a8ec7 */
     --rgb-tech-black: 0, 0, 0;
 }
@@ -43,7 +81,7 @@ button, input, select, textarea {
 }
 
 /* =========================================
-   2. CUSTOM FONTOVI (Putanja sa ../)
+   2. CUSTOM FONTOVI
    ========================================= */
 
 @font-face {
@@ -63,7 +101,7 @@ button, input, select, textarea {
 }
 
 /* =========================================
-   3. BODY I POZADINA (Sloj preko slike)
+   3. BODY I POZADINA
    ========================================= */
    
 body {
@@ -73,8 +111,8 @@ body {
     
     /* Prekrivka (gradient) + Slika u pozadini */
     background: linear-gradient(180deg, 
-                rgba(174, 214, 241, 1) 0%,   /* Gornja svetlo-plava */
-                rgba(235, 245, 251, 1) 100%  /* Donja ledeno-bela */);
+                rgba(174, 214, 241, 1) 0%,   
+                rgba(235, 245, 251, 1) 100%);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -83,48 +121,40 @@ body {
 
 .container {
     width: 100%;
-    max-width: 1440px;       /* Gornja granica širine za ceo sajt */
-    margin: 0 auto;          /* KLJUČ: Automatski centrira boks u sredinu pri odzumiranju */
-    padding: 0 5%;           /* Elastični razmak od ivica monitora na manjim ekranima */
+    max-width: 1440px;       
+    margin: 0 auto;          
+    padding: 0 5%;           
     box-sizing: border-box;
 }
-
-
 
 /* =========================================
    4. HEADER I NAVIGACIJA (Glassmorphism)
    ========================================= */
 
-/* Header je fiksna traka od ivice do ivice (100% širine) */
 header {
-width: 100%;
+    width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.02); /* Ultra suptilan svetli veo */
+    background: rgba(255, 255, 255, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     
-    /* GURAMO BLUR NA KOREN: Ovo sprečava mobilne pretraživače da pocrne sloj */
     backdrop-filter: blur(15px) !important;
     -webkit-backdrop-filter: blur(15px) !important;
 }
 
-header, .logo-text, .main-navigation nav a {
-    transition: all 0.5s ease; /* Sluzi ako odlucim da zatamnim navigaciju prilikom prelazenja na svetao deo stranice */
-}
-
+/* Sređen duplirani transition selektor */
 header, .logo-text, .main-navigation nav a, .hamburger-menu span {
-    transition: all 0.5s ease; /* Sluzi ako odlucim da zatamnim navigaciju prilikom prelazenja na svetao deo stranice */
+    transition: all 0.5s ease; 
 }
 
-/* Main navigation je unutar .container-a, samo raspoređuje elemente */
 .main-navigation {
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    padding-top: 20px;       /* Prostor iznad logoa i kapsule */
-    padding-bottom: 20px;    /* Prostor ispod logoa i kapsule */
+    padding-top: 20px;       
+    padding-bottom: 20px;    
 }
 
 /* Sakrivanje mobilnih elemenata na desktop režimu */
@@ -132,7 +162,6 @@ header, .logo-text, .main-navigation nav a, .hamburger-menu span {
     display: none;
 }
 
-/* --- LOGO, NAV i DUGMADI STILOVE ZADRŽAVAŠ ISTO KAO ŠTO SI IMRESIO --- */
 .logo-wrapper {
     display: flex;
     align-items: center;
@@ -172,8 +201,6 @@ nav a:hover {
     color: #7cafcd ;
 }
 
-
-
 /* =========================================
    5. DUGMAD (CTA)
    ========================================= */
@@ -185,8 +212,7 @@ nav a:hover {
     align-items: center;
 }
 
-/* Zajednički stilovi za svu dugmad */
-.btn-black, .btn-outline , .btn-outline-nav {
+.btn-black, .btn-outline, .btn-outline-nav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,21 +225,18 @@ nav a:hover {
     transition: all 0.3s ease;
     cursor: pointer;
     
-    /* PROMENE OVDE: */
-    width: 240px;               /* Fiksna širina umesto min-width */
-    height: 50px;              /* Fiksna visina */
-    box-sizing: border-box;    /* Sve unutar 50px i 240px */
+    width: 240px;               
+    height: 50px;              
+    box-sizing: border-box;    
     line-height: 1;
-
 }
 
 .btn-outline-nav {
-    width: auto !important;     /* Poništava fiksnu širinu od 240px, dugme se skuplja oko teksta */
-    height: auto !important;    /* Poništava fiksnu visinu od 50px */
-    min-width: 0 !important;    /* Briše bilo kakvu minimalnu širinu */
+    width: auto !important;     
+    height: auto !important;    
+    min-width: 0 !important;    
 }
 
-/* Specifično za Crno dugme */
 .btn-black {
     background: #000000;
     color: #ffffff;
@@ -225,30 +248,29 @@ nav a:hover {
     color: #000000;
 }
 
-/* Specifično za Outline dugme */
-.btn-outline , .btn-outline-nav {
+.btn-outline, .btn-outline-nav {
     background: transparent;
     border: 1px solid #ffffff;
     color: #ffffff;
 }
 
-.btn-outline:hover , .btn-outline-nav:hover {
+.btn-outline:hover, .btn-outline-nav:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: #7cafcd; /* Svetli u cyan boji */
+    border-color: #7cafcd; 
     color: #7cafcd;
 }
 
 .hero-actions {
-    display: flex;            /* Ređa dugmad u isti red (horizontalno) */
-    justify-content: center;  /* Centrira celu grupu dugmadi levo-desno u odnosu na ekran */
-    align-items: center;      /* Vertikalno ih poravnava */
-    gap: 20px;                /* Tačan, fiksni razmak između ta dva dugmeta */
-    width: 100%;              /* Širi se celom širinom hero sekcije radi lakšeg centriranja */
-    margin: 0 auto;           /* Osigurava da kontejner nema skrivenih bežanja u stranu */
+    display: flex;            
+    justify-content: center;  
+    align-items: center;      
+    gap: 20px;                
+    width: 100%;              
+    margin: 0 auto;           
 }
 
 /* =========================================
-   6. HERO SEKCIJA (Centriranje)
+   6. HERO SEKCIJA
    ========================================= */
 .hero {
     width: 100%;
@@ -259,10 +281,9 @@ nav a:hover {
     box-sizing: border-box;
     position: relative; 
     overflow: hidden;   
-    background-color: #000000; /* Osnova je čista crna */
+    background-color: #000000; 
 }
 
-/* Kavez za video pozadinu (Ostaje skoro isti, dodata je samo izolacija) */
 .hero .video-wrapper {
     position: absolute;
     top: 0;
@@ -270,24 +291,22 @@ nav a:hover {
     width: 100%;
     height: 100%;
     z-index: 1;
-    overflow: hidden; /* Osigurava da višak videa koji se kropuje ne seče sajt */
+    overflow: hidden; 
 }
 
-/* NOVI SELEKTOR: Prilagođen za Vimeo Iframe umesto video taga */
 .hero .video-wrapper iframe {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
-    height: 56.25vw;      /* 16:9 format (9 / 16 * 100) */
+    height: 56.25vw;      
     min-height: 100vh;
-    min-width: 177.77vh;  /* 16:9 format (16 / 9 * 100) */
-    transform: translate(-50%, -50%); /* Savršeno centriranje u kavezu */
+    min-width: 177.77vh;  
+    transform: translate(-50%, -50%); 
     border: none;
-    pointer-events: none; /* Klikovi prolaze kroz video na dugmiće */
+    pointer-events: none; 
 }
 
-/* Kapsula za sadržaj iznad videa */
 .hero .hero-overlay {
     position: relative;
     z-index: 2;
@@ -304,44 +323,33 @@ nav a:hover {
     padding-bottom: 40px;
 }
 
-/* Glavni naslov sa srebrno-plavim metalik prelivom */
 .hero h1 {
     font-family: 'ClaspoND', sans-serif;
     font-weight: 700;
     font-size: 6.3rem;
-    line-height: 1.2; /* Malo opuštamo visinu linije (bilo je 1.1) */
-    
-    /* KLJUČ ZA SLOVO J: Širimo nevidljivu kutiju na dole da preliv siđe niže */
+    line-height: 1.2; 
     padding-bottom: 10px; 
-    
-    /* Smanjujemo donju marginu sa 24px na 14px 
-       kako bi ukupan razmak do pasusa ispod ostao isti (10 + 14 = 24) */
     margin-bottom: 14px; 
     letter-spacing: -0.5px;
     
-    /* Postojeći metalik-plavi preliv */
-  background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
+    background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
 
-/* Centriran i čitljiv podnaslov */
 .hero p {       
     font-family: 'ClaspoND', sans-serif;
     font-weight: 400;
     font-size: 20px;
-    color: var(--white-color);/* Vraćen u belu boju */
+    color: var(--white-color);
     max-width: 650px;         
     line-height: 1.6;
-    margin: 0 auto 40px auto; /* Centriranje elementa i distanca od dugmića */
-    text-align: center;       /* Centriranje samog teksta */
-    
-    /* Blagi neon sjaj iza teksta za dodatnu čitljivost na dinamičnom videu */
+    margin: 0 auto 40px auto; 
+    text-align: center;       
     text-shadow: 0px 0px 12px rgba(var(--rgb-premium-blue), 0.4);
 }
 
-/* Mračni filmski overlay - Blagi plavi sjaj na vrhu, potpuni mrak na dnu */
 .hero .video-wrapper .video-overlay {
     position: absolute;
     top: 0;
@@ -350,113 +358,89 @@ nav a:hover {
     bottom: 0;
     width: 100%;
     height: 100%;
-    /* Koristimo RGB varijable unutar rgba funkcije */
     background: linear-gradient(
         to bottom, 
         rgba(var(--rgb-premium-blue), 0.15) 0%,  
-        rgba(var(--rgb-tech-black), 0.6) 60%,  /* Zamenjeno! */     
-        rgba(var(--rgb-tech-black), 1) 100%    /* Zamenjeno! Dno videa je sada tech-crno */     
+        rgba(var(--rgb-tech-black), 0.6) 60%,     
+        rgba(var(--rgb-tech-black), 1) 100%       
     );
 }
 
 /* =========================================
-   7. MAIN sekcija ( Galerija, Usluge )
+   7. MAIN SEKCIJA ( Galerija, Usluge )
    ========================================= */
 
-   .gallery, .services, .portfolio {
+.gallery, .services, .portfolio {
     width: 100%;
     min-height: 100vh;
     padding: 100px 0;
     background: transparent; 
 }
 
-/* Glavni kavez koji štiti naslov i podnaslov od spoljnih Flexbox pravila */
 .section-head {
     display: flex;
-    flex-direction: column;  /* Ređa elemente strogo jedan ispod drugog */
-    align-items: center;     /* Zakucava sve za vertikalnu sredinu ekrana */
+    flex-direction: column;  
+    align-items: center;     
     width: 100%;
-    margin-bottom: 40px;     /* Pravi razmak između teksta i galerije koja sledi */
+    margin-bottom: 40px;     
 }
 
-/* Osvežen podnaslov (Sklanjamo mu donju marginu jer je sada drži section-head iznad) */
 .section-subtitle {
     font-family: 'ClaspoND', sans-serif;
     color: var(--text-muted);
     text-align: center;
-    font-size: 1.125rem; /* 18px */
+    font-size: 1.125rem; 
     margin-bottom: 0; 
-    margin-top: 10px; /* Mali razmak između glavnog naslova i podnaslova */
+    margin-top: 10px; 
 }
 
-/* Ostatak tvog koda ostaje ISTI: */
-/* .title-wrapper, .title-marker, .section-title, itd... */
-
-/* 1. Potpuno nov, poseban kavez koji drži marker i naslov u ravni */
 .title-wrapper {
     display: flex;
-    justify-content: center; /* Drži sve na sredini ekrana */
-    align-items: center;     /* Savršeno vertikalno poravnanje */
+    justify-content: center; 
+    align-items: center;     
     margin-bottom: 14px;
 }
 
-/* 2. Naš pravougaonik (sada potpuno odvojen element) */
 .title-marker {
     width: 8px;
     height: 38px;
     background-color: var(--accent-blue);
     border-radius: 4px;
     margin-right: 18px;
-    
-    /* Fino štelovanje - fizički gura marker na dole da se poravna sa vizuelnom sredinom teksta */
     margin-top: -2px;
-
 }
 
-/* 3. Tvoj ORIGINALNI, netaknuti naslov sa prelivom */
 .section-title {
     font-family: 'ClaspoND', sans-serif;
-    font-size: 3.5rem; /* 48px */
+    font-size: 3.5rem; 
     font-weight: 700;
     letter-spacing: -0.5px;
     background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    
-    padding-bottom: 10px; /* Čuva repiće za G i J */
-    margin-bottom: 0;     /* Margina je prešla na title-wrapper iznad */
-}
-
-/* Tamna varijanta ostaje ista */
-.section-title.dark-text {
-    background: linear-gradient(90deg, var(--light-blue) 0%, var(--white-color) 50%, var(--accent-blue) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    padding-bottom: 10px; 
+    margin-bottom: 0;     
 }
 
 /* ===================================================
-   SEKCIJA GALERIJE - PROČIŠĆEN I OPTIMIZOVAN KOD
+   SEKCIJA GALERIJE
    =================================================== */
 
-/* Kavez pojedinačnog projekta */
 .gallery-project {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* Omotač slajdera - kontroliše horizontalni oblik (3:2 razmera) */
 .slider-wrapper {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
     width: 100%;
-    aspect-ratio: 3 / 2; /* Čuva horizontalni format, promer fotoaparata */
+    aspect-ratio: 3 / 2; 
 }
 
-/* Sama traka slajdera sa glatkim kretanjem */
 .project-slider {
     display: flex;
     overflow-x: auto;
@@ -469,10 +453,9 @@ nav a:hover {
 }
 
 .project-slider::-webkit-scrollbar {
-    display: none; /* Sakriva scrollbar u Chrome/Safari/Edge */
+    display: none; 
 }
 
-/* Pojedinačna pozornica za sliku u slajderu */
 .slide {
     flex: 0 0 100%; 
     height: 100%;
@@ -480,21 +463,16 @@ nav a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000; /* Čista crna koja maskira prostor levo/desno od uspravnih slika */
+    background-color: #000000; 
     scroll-snap-stop: always;
 }
 
-/* Podešavanja za slike - bez sečenja i zuma */
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Horizontalne pune kavez, vertikalne dobijaju crne trake sa strana */
+    object-fit: contain; 
     display: block;
 }
-
-/* ===================================================
-   STRELICE ZA NAVIGACIJU (DESKTOP)
-   =================================================== */
 
 .slider-arrow {
     position: absolute;
@@ -527,8 +505,6 @@ nav a:hover {
 .prev-arrow { left: 15px; }
 .next-arrow { right: 15px; }
 
-
-/* TEKSTUALNI DEO ISPOD SLIKE */
 .project-info {
     display: flex;
     flex-direction: column;
@@ -541,7 +517,7 @@ nav a:hover {
 }
 
 .tag {
-    background: rgba(255,255,255,0.05); /* Skoro providna crna/siva */
+    background: rgba(255,255,255,0.05); 
     color: var(--text-muted);
     padding: 6px 12px;
     border-radius: 4px;
@@ -564,62 +540,37 @@ nav a:hover {
 
 .large-gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 velike, moćne kartice u redu na desktopu */
-    gap: 40px 30px;                        /* Razmak između redova i kolona */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px 30px;                        
     width: 100%;
 }
-
 
 /* ===================================================
-   LIGHTBOX FULL-SCREEN MODAL
+   LIGHTBOX UNUTRAŠNJI ELEMENTI (Bez dupliranog background-a)
    =================================================== */
-.lightbox {
-    display: none; /* Skriveno po defaultu */
-    position: fixed;
-    z-index: 10000; /* Iznad svih elemenata na sajtu */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.93); /* Duboka tamna providna pozadina */
-    backdrop-filter: blur(8px); /* Premium efekat zamućenja pozadine sajta */
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
 
-/* Kada je modal aktivan */
-.lightbox.active {
-    display: flex;
-    opacity: 1;
-}
-
-/* Kontejner za sliku i animacija skale */
 .lightbox-content {
     max-width: 85%;
     max-height: 85vh;
     transform: scale(0.92);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Blagi elastični pop-out efekat */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Kada modal popuni ekran, slika skače na pravu veličinu */
-.lightbox.active .lightbox-content {
+#lightbox-modal.active .lightbox-content {
     transform: scale(1);
 }
 
 .lightbox-content img {
     max-width: 100%;
     max-height: 85vh;
-    object-fit: contain; /* Garantuje da se slika nikada ne iseče na ekranu */
+    object-fit: contain; 
     border-radius: 6px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
 }
 
-/* Dugme za zatvaranje (X) */
 .lightbox-close {
     position: absolute;
     top: 25px;
@@ -631,12 +582,12 @@ nav a:hover {
     transition: color 0.2s, transform 0.2s;
     z-index: 10010;
 }
+
 .lightbox-close:hover {
     color: #fff;
     transform: scale(1.1);
 }
 
-/* Strelice u Full-Screen-u */
 .lightbox-arrow {
     position: absolute;
     top: 50%;
@@ -655,6 +606,7 @@ nav a:hover {
     justify-content: center;
     transition: background 0.3s, border-color 0.3s;
 }
+
 .lightbox-arrow:hover {
     background: #ffffff;
     color: #000000;
@@ -664,7 +616,6 @@ nav a:hover {
 .lightbox-prev { left: 30px; }
 .lightbox-next { right: 30px; }
 
-
 /* =========================================
    SEKCIJA USLUGE - Bento video grid
    ========================================= */
@@ -672,18 +623,17 @@ nav a:hover {
 .bento-light-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px; /* Wireframe linije */
-    background: rgba(0, 0, 0, 0.1); /* Blaga linija između */
+    gap: 1px; 
+    background: rgba(0, 0, 0, 0.1); 
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 1px;
     margin: 40px 0;
 }
 
 .bento-light-card {
-    /* STAKLASTI EFEKAT */
     background: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Za Safari */
+    -webkit-backdrop-filter: blur(15px); 
     
     position: relative;
     height: 350px;
@@ -693,17 +643,15 @@ nav a:hover {
     padding: 30px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Tanki wireframe */
+    border: 1px solid rgba(255, 255, 255, 0.3); 
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Hover stanje - kartica postaje "čistija" i fokusiranija */
 .bento-light-card:hover {
     background: rgba(255, 255, 255, 0.7);
-    border-color: var(--premium-blue); /* Ivica zasija plavo */
+    border-color: var(--premium-blue); 
 }
 
-/* Video background - sada će se video videti kroz blago staklo */
 .bento-video-bg {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -716,7 +664,6 @@ nav a:hover {
     opacity: 1;
 }
 
-/* Ostatak sadržaja ostaje isti, samo osiguravamo da je iznad stakla */
 .bento-top, .bento-bottom {
     position: relative;
     z-index: 2;
@@ -747,7 +694,6 @@ nav a:hover {
     color: var(--premium-blue);
 }
 
-/* Reveal efekat teksta */
 .bento-desc-wrapper {
     max-height: 0;
     opacity: 0;
@@ -762,7 +708,7 @@ nav a:hover {
 }
 
 .bento-desc {
-    color: #444; /* Malo tamnija siva za čitljivost na staklu */
+    color: #444; 
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0;
@@ -771,18 +717,17 @@ nav a:hover {
 .bento-bottom {
     position: relative;
     width: 100%;
-    display: block; /* Menjamo flex u block jer strelicu pozicioniramo apsolutno */
+    display: block; 
 }
 
 .bento-text {
-    /* Ključno: ostavljamo 40px praznog prostora sa desne strane da tekst nikada ne udari u strelicu */
     padding-right: 40px; 
 }
 
 .bento-arrow {
     position: absolute;
-    bottom: 0; /* Poravnava se sa dnom tekstualnog bloka */
-    right: 0;  /* Lepi se uz desnu ivicu unutrašnjeg paddinga karte */
+    bottom: 0; 
+    right: 0;  
     font-size: 1.5rem;
     color: var(--dark-text);
     font-weight: 300;
@@ -794,41 +739,36 @@ nav a:hover {
     color: var(--premium-blue);
 }
 
-
 /* =========================================
-   SEKCIJA CENOVNIK - TECH SPECIFIKATOR
+   SEKCIJA CENOVNIK
    ========================================= */
 
 .pricing-container {
     width: 100%;
-    max-width: 1000px; /* Držimo tabelu fokusiranom u sredini ekrana */
+    max-width: 1000px; 
     margin: 40px auto;
     display: flex;
     flex-direction: column;
-    /* Spajamo ivice redova da ne bi imali duple linije */
     border-top: 1px solid rgba(0, 0, 0, 0.1); 
 }
 
-/* Pojedinačni red u cenovniku */
 .pricing-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 24px 20px;
-    background: rgba(255, 255, 255, 0.2); /* Suptilno staklo */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Donja oštra wireframe linija */
+    background: rgba(255, 255, 255, 0.2); 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
     transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
 }
 
-/* Hover efekat: Red lagano "zasvetli" i raširi se */
 .pricing-row:hover {
     background: rgba(255, 255, 255, 0.8);
-    padding-left: 30px; /* Blago pomeranje udesno daje premium dinamiku */
+    padding-left: 30px; 
     border-bottom-color: var(--premium-blue);
 }
 
-/* Leva strana: Naslov i tag */
 .pricing-info {
     display: flex;
     align-items: center;
@@ -846,12 +786,10 @@ nav a:hover {
     transition: color 0.3s ease;
 }
 
-/* Kada pređeš mišem, naslov poplavi */
 .pricing-row:hover .pricing-service-title {
     color: var(--premium-blue);
 }
 
-/* Mali tehnički tag pored naslova */
 .pricing-tag {
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -860,27 +798,24 @@ nav a:hover {
     color: #777;
     background: rgba(0, 0, 0, 0.05);
     padding: 4px 8px;
-    border-radius: 2px; /* Skoro potpuno oštre ivice taga */
+    border-radius: 2px; 
 }
 
-/* Desna strana: Cena */
 .pricing-value {
-    font-family: monospace; /* Monospaced font daje onaj surovi "data/inženjerski" izgled cene */
+    font-family: monospace; 
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--dark-text);
     transition: all 0.3s ease;
 }
 
-/* Cena dobija pun fokus na hover */
 .pricing-row:hover .pricing-value {
     color: var(--premium-blue);
     transform: scale(1.05);
 }
 
-
 /* =========================================
-   SEKCIJA BLOG - DARK GLASSMORPHISM (Ažurirano)
+   SEKCIJA BLOG - DARK GLASSMORPHISM
    ========================================= */
 
 .blog-grid {
@@ -890,15 +825,12 @@ nav a:hover {
     padding: 40px 0 60px 0;
 }
 
-/* Osnova ZATAMNJENE staklaste blog kartice */
 .blog-card {
-    /* Menjamo rgba(255,...) u rgba(0,0,0,...) za tamnu prozirnost */
     background: rgba(0, 0, 0, 0.3); 
-    /* Čuvamo oštru, ali suptilnu wireframe ivicu */
     border: 1px solid rgba(255, 255, 255, 0.05); 
     border-radius: 16px;
     overflow: hidden; 
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); /* Malo sporije i mekše */
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
     backdrop-filter: blur(12px); 
     -webkit-backdrop-filter: blur(12px);
     position: relative;
@@ -908,30 +840,24 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* HOVER EFEKAT - Kartica se "pali" iz mraka */
 .blog-card:hover {
-    transform: translateY(-12px); /* Malo veći skok za jači 3D efekat */
-    /* Na hover postaje čvršća crna da se bolje istakne */
+    transform: translateY(-12px); 
     background: rgba(0, 0, 0, 0.7); 
-    border-color: rgba(var(--rgb-premium-blue), 0.6); /* Jači plavi sjaj ivice */
-    /* Bogatija plava senka ispod koja projektuje svetlost na gradijent */
+    border-color: rgba(var(--rgb-premium-blue), 0.6); 
     box-shadow: 0 20px 40px rgba(var(--rgb-premium-blue), 0.25); 
 }
 
-/* Sadržaj ostaje isti, ali smo sigurni da je tekst beo */
 .blog-image-wrapper {
     width: 100%;
     height: 220px;
     overflow: hidden;
     position: relative;
-    /* Dodajemo blagi overlay na sliku da je "usidrimo" u tamnu kartu */
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .blog-image-placeholder {
     width: 100%;
     height: 100%;
-    /* Malo tamniji gradijent za placeholder */
     background: linear-gradient(45deg, #050a0e, #0d151d);
     display: flex;
     justify-content: center;
@@ -944,7 +870,7 @@ nav a:hover {
 }
 
 .blog-content {
-    padding: 26px; /* Malo više prostora */
+    padding: 26px; 
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -954,7 +880,6 @@ nav a:hover {
 .blog-badge {
     display: inline-block;
     align-self: flex-start;
-    /* Koristimo tvoju definisanu accent plavu boju */
     background: rgba(var(--rgb-accent-blue), 0.15);
     color: var(--accent-blue);
     font-family: 'ClaspoND', sans-serif;
@@ -969,41 +894,36 @@ nav a:hover {
 
 .blog-title {
     font-family: 'ClaspoND', sans-serif;
-    font-size: 1.45rem; /* Milimetar veći */
-    color: var(--white-color); /* Strogo bela na tamnom staklu */
+    font-size: 1.45rem; 
+    color: var(--white-color); 
     margin: 0 0 12px 0;
     font-weight: 700;
     line-height: 1.3;
     transition: color 0.3s ease;
 }
 
-/* Naslov se menja u premium plavu na hover */
 .blog-card:hover .blog-title {
     color: var(--premium-blue);
 }
 
 .blog-desc {
-    color: var(--text-muted); /* Prigušena siva za opis */
+    color: var(--text-muted); 
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
 }
 
-
 /* =========================================
-   SEKCIJA KONTAKT - PRILAGOĐENA GRADIENTU (CRNI TEKST)
+   SEKCIJA KONTAKT
    ========================================= */
 
 .contact {
-    /* Ne diramo pozadinu, ostaje tvoj originalni gradient stranice */
     padding: 80px 0;
     position: relative;
     z-index: 5;
 }
 
-/* Naslovi sekcije prilagođeni svetlijoj podlozi gradijenta */
 .contact .section-title {
-    /* Prelaz iz tvoje premium plave u duboku tamnu boju teksta */
     background: linear-gradient(90deg, var(--premium-blue), var(--dark-text));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1012,7 +932,7 @@ nav a:hover {
 }
 
 .contact .section-subtitle {
-    color: #4a5560 !important; /* Čitljiva tamno siva */
+    color: #4a5560 !important; 
     margin-bottom: 40px;
 }
 
@@ -1023,16 +943,15 @@ nav a:hover {
     align-items: start;
 }
 
-/* --- LEVA STRANA: INFO BLOK (Svetlo staklo kao na cenovniku) --- */
+/* Sređen border-radius konflikt u .contact-info-block */
 .contact-info-block {
     display: flex;
     flex-direction: column;
     gap: 36px;
-    background: rgba(255, 255, 255, 0.4); /* Light staklo koje propušta tvoj gradient */
-    border: 1px solid rgba(0, 0, 0, 0.08); /* Oštra tamna wireframe linija */
-    border-radius: 20px !important;
+    background: rgba(255, 255, 255, 0.4); 
+    border: 1px solid rgba(0, 0, 0, 0.08); 
+    border-radius: 20px;
     padding: 40px;
-    border-radius: 0;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
@@ -1046,7 +965,7 @@ nav a:hover {
 .info-label {
     font-size: 0.75rem;
     text-transform: uppercase;
-    color: var(--premium-blue); /* Zadržavamo plavu za akcente */
+    color: var(--premium-blue); 
     font-weight: 700;
     letter-spacing: 1.5px;
     margin-bottom: 8px;
@@ -1055,13 +974,13 @@ nav a:hover {
 .info-data {
     font-family: 'ClaspoND', sans-serif;
     font-size: 1.4rem;
-    color: var(--dark-text); /* Strogo tamni tekst */
+    color: var(--dark-text); 
     margin: 0 0 6px 0;
     font-weight: 700;
 }
 
 .info-subdata {
-    color: #555555; /* Tamnija siva za bolju čitljivost */
+    color: #555555; 
     font-size: 0.95rem;
     margin: 0;
     line-height: 1.5;
@@ -1084,7 +1003,6 @@ nav a:hover {
     color: var(--premium-blue);
 }
 
-/* --- DESNA STRANA: MINIMALISTIČKA FORMA (CRNI TEKST I LINIJE) --- */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -1102,16 +1020,15 @@ nav a:hover {
     flex: 1;
 }
 
-/* Input i Textarea - crni tekst i tamne oštre linije */
 .contact-form input,
 .contact-form textarea {
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.18); /* Tamna horizontalna wireframe crta */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.18); 
     padding: 14px 0;
     font-size: 1.05rem;
-    color: var(--dark-text); /* Tekst koji korisnik kuca je crn */
+    color: var(--dark-text); 
     outline: none;
     font-family: inherit;
     transition: all 0.3s ease;
@@ -1121,7 +1038,6 @@ nav a:hover {
     resize: none;
 }
 
-/* Labele u stanju mirovanja - jasna tamno siva boja */
 .form-group label {
     position: absolute;
     left: 0;
@@ -1132,7 +1048,6 @@ nav a:hover {
     font-size: 1.05rem;
 }
 
-/* Kada se klikne, labela poleti iznad i postaje plava */
 .contact-form input:focus ~ label,
 .contact-form input:not(:placeholder-shown) ~ label,
 .contact-form textarea:focus ~ label,
@@ -1144,7 +1059,6 @@ nav a:hover {
     letter-spacing: 0.5px;
 }
 
-/* Plava podvučena linija koja se širi pri kucanju */
 .form-group .input-line {
     position: absolute;
     bottom: 0;
@@ -1158,16 +1072,15 @@ nav a:hover {
 .contact-form input:focus ~ .input-line,
 .contact-form textarea:focus ~ .input-line {
     width: 100%;
-    box-shadow: 0 0 12px rgba(var(--rgb-premium-blue), 0.3); /* Suptilniji neonski sjaj za svetlu temu */
+    box-shadow: 0 0 12px rgba(var(--rgb-premium-blue), 0.3); 
 }
 
-/* DUGME PRILAGOĐENO LIGHT OKRUŽENJU */
 .contact-submit-btn {
     align-self: flex-start;
     background: transparent;
     border: 1px solid var(--premium-blue);
     border-radius: 50px;
-    color: var(--dark-text); /* Tamni tekst u stanju mirovanja */
+    color: var(--dark-text); 
     padding: 16px 40px;
     font-family: 'ClaspoND', sans-serif;
     font-size: 1rem;
@@ -1188,16 +1101,15 @@ nav a:hover {
 .contact-submit-btn:hover {
     background: var(--premium-blue);
     box-shadow: 0 0 30px rgba(var(--rgb-premium-blue), 0.3);
-    color: #ffffff; /* Tekst prelazi u belu tek kada se pozadina dugmeta napuni plavom */
+    color: #ffffff; 
 }
 
 .contact-submit-btn:hover .btn-arrow {
     transform: translateX(6px);
 }
 
-
 /* =========================================
-   REFAKTORISANA ZAJEDNICA - FIX ZA SUB-PIXEL BLEED
+   ZAJEDNICA & FOOTER
    ========================================= */
 
 .community-particles-extreme {
@@ -1211,8 +1123,6 @@ nav a:hover {
     background: transparent; 
     padding: 80px 0 30px 0; 
     z-index: 5;
-    
-    /* KLJUČNI FIX: Potpuno izoluje ivice renderinga i ubija ghost razmake na dnu */
     overflow: hidden;
     contain: paint; 
 }
@@ -1224,7 +1134,6 @@ nav a:hover {
     pointer-events: none;
 }
 
-/* FIX: Čestice pomerene 10px unutar zone izolacije */
 .p-node {
     position: absolute;
     top: calc(100% - 10px); 
@@ -1232,12 +1141,9 @@ nav a:hover {
     border-radius: 50%;
     opacity: 0;
     animation: floatUpwardsTransform linear infinite;
-    
-    /* Šalje animaciju na GPU i sprečava trzanje layouta */
     will-change: transform, opacity; 
 }
 
-/* Efekat dubine za veće čestice */
 .p-node[style*="width: 7px"],
 .p-node[style*="width: 8px"],
 .p-node[style*="width: 9px"] {
@@ -1245,7 +1151,6 @@ nav a:hover {
     opacity: 0;
 }
 
-/* --- SADRŽAJ U CENTRU --- */
 .community-content {
     position: relative;
     z-index: 2;
@@ -1288,7 +1193,7 @@ nav a:hover {
     font-size: 1.05rem;
     letter-spacing: 1.5px;
     transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    border-radius: 50px; /* Menja oblik iz pravougaonog u potpuno zaobljeni */
+    border-radius: 50px; 
 }
 
 .community-btn-particles:hover {
@@ -1299,7 +1204,6 @@ nav a:hover {
     box-shadow: 0 15px 30px rgba(var(--rgb-premium-blue), 0.3);
 }
 
-/* --- POTPUNO INTEGRISANI INLINE FUTER --- */
 .inline-footer {
     position: relative;
     z-index: 3;
@@ -1351,105 +1255,83 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-
 /* =========================================
-   SCROLL JOURNEY (Globalni preliv sajta)
+   SCROLL JOURNEY
    ========================================= */
 
 .scroll-journey {
     width: 100%;
-    
     background: linear-gradient(
         to bottom,
-        var(--tech-black) 0%,          /* Potpuna crna */
-        var(--tech-black) 10%,         /* Crna se zadržava ispod Hero sekcije */
-        var(--deep-navy) 30%,          /* Most (deep-navy) je tu da "umekša" prelaz u plavu */
+        var(--tech-black) 0%,          
+        var(--tech-black) 10%,         
+        var(--deep-navy) 30%,          
         var(--premium-blue) 60%,       
         var(--accent-blue) 85%,        
-        var(--white-color) 98%,        /* Belo ostavljamo za sam kraj */
+        var(--white-color) 98%,        
         var(--white-color) 100%        
     );
 }
 
 /* =========================================
-   TRANZICIJA BOJA KADA PROĐE KONTAKT FORMA
+   TRANZICIJA BOJA (NAV DARK THEME)
    ========================================= */
 
-/* Menja tekst logoa u crnu boju */
 body .nav-dark-theme .logo-text {
     color: #000000;
 }
 
-/* Menja boju linkova u navigaciji u crnu boju */
 body .nav-dark-theme .main-navigation nav a {
     color: #000000;
 }
 
-/* Menja sve tri linije hamburger menija u crnu boju */
 body .nav-dark-theme .hamburger-menu span {
     background-color: #000000;
 }
 
-/* Ukoliko je hamburger meni otvoren (aktiviran X), zadržavamo premium plavu da se vidi selekcija */
 body .nav-dark-theme .menu-toggle-cb:checked + .hamburger-menu span {
     background-color: var(--premium-blue);
 }
 
-/* Ako imaš SVG logo i želiš da i njega zatamniš (invertuješ) da bude crn */
 body .nav-dark-theme .logo-wrapper img {
-    filter: brightness(0); /* Pretvara beli logo u potpuno crn */
+    filter: brightness(0); 
 }
 
-/* --- ZATAMNJIVANJE DUGMETA KADA SE AKTIVIRA TAMNA TEMA --- */
-
-/* Prilagodi selektor (.contact-submit-btn) zavisno od toga kako se tvoje dugme tačno zove u kodu */
 body .nav-dark-theme .btn-outline-nav {
-    background-color: #000000; /* Postavlja pozadinu dugmeta u crnu */
-    color: #ffffff;            /* Tekst postaje beo da bi se video na crnoj pozadini */
-    border: 1px solid #000000; /* Opciono: ako imaš ivicu, neka bude crna */
+    background-color: #000000; 
+    color: #ffffff;            
+    border: 1px solid #000000; 
 }
 
-/* Ako dugme unutar sebe ima strelicu (ikonu) */
 body .nav-dark-theme .btn-outline-nav i,
 body .nav-dark-theme .btn-outline-nav svg {
-    fill: #ffffff;            /* Ako je SVG, menja boju ikone u belu */
-    color: #ffffff;            /* Ako je font-ikonica */
+    fill: #ffffff;            
+    color: #ffffff;            
 }
 
-/* --- DISKRETNO ZATAMNJIVANJE OMOTAČA (KAPSULE) U TAMNOJ TEMI --- */
+body header.nav-dark-theme .main-navigation nav {
+    background: rgba(0, 0, 0, 0.03);             
+    border: 1px solid rgba(0, 0, 0, 0.06);       
+}
 
-    /* Kada navigacija prođe u crni mod, kapsula menija menja beli sjaj u diskretni tamni sjaj */
-    body header.nav-dark-theme .main-navigation nav {
-        background: rgba(0, 0, 0, 0.03);             /* Veoma suptilna tamna tekstura umesto bele */
-        border: 1px solid rgba(0, 0, 0, 0.06);       /* Jedva primetna tamna ivica da se omotač odvoji od belog footera */
-    }
+body header.nav-dark-theme .menu-toggle-cb:checked ~ nav {
+    border-color: rgba(0, 0, 0, 0.08);
+}
 
-    /* Osiguravamo da i u otvorenom (checked) stanju ivica zadrži tu diskretnu tamnu nijansu */
-    body header.nav-dark-theme .menu-toggle-cb:checked ~ nav {
-        border-color: rgba(0, 0, 0, 0.08);
-    }
-
-/* --- KONZISTENTNI HOVER EFEKTI --- */
-
-/* 1. Hover za navigacione linkove */
 body .main-navigation nav a:hover {
-    color: var(--premium-blue); /* Boja kada pređeš mišem */
+    color: var(--premium-blue); 
 }
 
-/* 2. Hover za navigacione linkove kada je crna tema */
 body .nav-dark-theme .main-navigation nav a:hover {
-    color: var(--premium-blue); /* Zadržavamo istu boju i ovde */
+    color: var(--premium-blue); 
 }
 
-/* 3. Hover za dugme (Contact Submit Button) */
-/* Kada je bela navigacija */
 body .btn-outline-nav:hover {
     background-color: var(--premium-blue);
     color: #ffffff;
 }
 
-/* Kada je crna navigacija (nav-dark-theme) */
 body .nav-dark-theme .btn-outline-nav:hover {
-    background-color: var(--premium-blue); /* Ista boja kao u belom modu */
+    background-color: var(--premium-blue); 
     color: #ffffff;
 }
