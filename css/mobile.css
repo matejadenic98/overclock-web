@@ -280,60 +280,94 @@
 }
 
 /* =========================================
-   MOBILNA OPTIMIZACIJA ZA LIGHTBOX (ZUMIRANJE)
+   MODERAN GLASSMORPHISM LIGHTBOX ZA MOBILNI
    ========================================= */
-@media (max-width: 768px) {
-  /* Slika zauzima više prostora na telefonu */
-  .lightbox-content {
-    max-width: 95%;
-    max-height: 75vh; /* Ostavljamo prostor pri dnu za komotne dugmiće */
-  }
 
-  .lightbox-content img {
+@media (max-width: 768px) {
+  #lightbox-modal .lightbox-content {
+    max-width: 92%;
     max-height: 75vh;
   }
 
-  /* Uočljivije dugme X u gornjem desnom uglu */
-  .lightbox-close {
-    top: 15px;
-    right: 20px;
-    font-size: 36px;
-    width: 44px;
-    height: 44px;
+  #lightbox-modal .lightbox-content img {
+    max-height: 75vh;
+    border-radius: 12px;
+  }
+
+  /* Elegatno X dugme sa staklastim krugom */
+ #lightbox-modal .lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(18, 18, 18, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  
+  /* Savršeno centriranje SVG-a u sredinu kruga */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 10010;
+  transition: all 0.2s ease;
+}
+
+#lightbox-modal .lightbox-close:active {
+  transform: scale(0.92);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#lightbox-modal .lightbox-close svg {
+  pointer-events: none; /* Klik prolazi kroz SVG direktno na dugme */
+}
+
+  /* Minimalističke glassmorphism strelice sa tankom ivicom */
+  #lightbox-modal .lightbox-arrow {
+    position: fixed;
+    top: auto;
+    bottom: 30px;
+    transform: none;
+    width: 48px;
+    height: 48px;
+    background: rgba(18, 18, 18, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    z-index: 10005;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    color: #fff;
+    padding: 0;
   }
 
-  /* Prilagođene, veće i uočljivije strelice za dodir prstom */
-  .lightbox-arrow {
-    width: 54px;
-    height: 54px;
-    font-size: 24px;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  #lightbox-modal .lightbox-arrow:active {
+    background: rgba(42, 142, 199, 0.8); /* Bljesne u plavu samo kad pritisneš prstom */
+    border-color: var(--premium-blue);
+    transform: scale(0.95);
   }
 
-  /* Pozicioniramo strelice pri dnu ekrana levo i desno radi lakšeg dohvatanja palcem */
-  .lightbox-prev {
-    left: 20px;
-    top: auto;
-    bottom: 25px;
-    transform: none;
+  #lightbox-modal .lightbox-prev {
+    left: 24px;
+    right: auto;
   }
 
-  .lightbox-next {
-    right: 20px;
-    top: auto;
-    bottom: 25px;
-    transform: none;
+  #lightbox-modal .lightbox-next {
+    right: 24px;
+    left: auto;
   }
 }
-
 
 /* ==========================================================================
    6. CENOVNIK SEKCIJA

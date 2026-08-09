@@ -1,10 +1,11 @@
 // Globalne varijable za praćenje slika u Lightboxu (Moraju biti na vrhu)
 let currentImagesArray = [];
 let currentImageIndex = 0;
+let currentScrollY = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
   
-  // 1. UPRAVLJANJE KARTICAMA PROJEKATA I GLERIJOM
+  // 1. UPRAVLJANJE KARTICAMA PROJEKATA I GALERIJOM
   const projects = document.querySelectorAll('.gallery-project');
   if (projects.length > 0) {
     projects.forEach(project => {
@@ -51,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!lightbox) return;
     lightbox.style.display = 'flex';
 
-    // OVDE POZIVAMO ZAKLJUČAVANJE:
-  lockScroll();
+    // Zaključavamo skrol pozadine
+    lockScroll();
 
     setTimeout(() => {
         lightbox.classList.add('active');
@@ -64,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!lightbox) return;
     lightbox.classList.remove('active');
 
-    // OVDE POZIVAMO OTKLJUČAVANJE:
-  unlockScroll();
+    // Otključavamo skrol pozadine
+    unlockScroll();
 
     setTimeout(() => {
         lightbox.style.display = 'none';
@@ -99,7 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (lightbox) {
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || e.target === lightboxClose) {
+      // Proverava da li je kliknuta pozadina ILI bilo šta unutar X dugmeta
+      if (e.target === lightbox || (lightboxClose && lightboxClose.contains(e.target))) {
           closeLightbox();
       }
     });
@@ -111,15 +113,39 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === 'ArrowRight' && lightboxNext) lightboxNext.click();
     if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
   });
-  
+
+  // SWIPE GESTOVI ZA MOBILNI LIGHTBOX (Sada unutar DOMContentLoaded!)
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 40; // Minimalna distanca u px da bi se priznao swipe
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Prevlačenje ulevo -> Sledeća slika
+      if (lightboxNext) lightboxNext.click();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Prevlačenje udesno -> Prethodna slika
+      if (lightboxPrev) lightboxPrev.click();
+    }
+  }
 
   // 3. SIGURAN MEHANIZAM ZA GRADUALNO ZATAMNJIVANJE NAVIGACIJE
   const navElement = document.querySelector(".main-navigation");
-  // Sigurna provera: uzmi parentElement samo ako navElement zapravo postoji
   const header = navElement ? navElement.parentElement : null; 
   const contactSection = document.querySelector(".contact-section") || document.querySelector("#kontakt");
 
-  // Skripta radi samo ako su oba ključna elementa uspešno pronađena na stranici
   if (contactSection && header) {
     const options = {
         root: null,
@@ -140,13 +166,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// 4. FUNKCIJA ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
-
+// 4. FUNKCIJE ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
 function lockScroll() {
   currentScrollY = window.scrollY || document.documentElement.scrollTop;
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-  // Postavljamo varijablu i klasu samo na BODY (html ne diramo da nema flash-a)
   document.documentElement.style.setProperty('--scroll-y', `-${currentScrollY}px`);
   document.body.style.paddingRight = `${scrollbarWidth}px`;
   document.body.classList.add('is-locked');
@@ -156,37 +180,9 @@ function unlockScroll() {
   document.body.classList.remove('is-locked');
   document.body.style.paddingRight = '';
 
-  // Vraćamo scroll instant bez tranzicija
   window.scrollTo({
     top: currentScrollY,
     left: 0,
     behavior: 'instant'
   });
 }
-
-// SVIPE GESTOVI ZA MOBILNI LIGHTBOX
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  if (lightbox) {
-    lightbox.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    lightbox.addEventListener('touchend', (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-    }, { passive: true });
-  }
-
-  function handleSwipe() {
-    const swipeThreshold = 50; // Minimalna distanca u px da bi se priznao swipe
-    if (touchEndX < touchStartX - swipeThreshold) {
-      // Prevlačenje ulevo -> Sledeća slika
-      if (lightboxNext) lightboxNext.click();
-    }
-    if (touchEndX > touchStartX + swipeThreshold) {
-      // Prevlačenje udesno -> Prethodna slika
-      if (lightboxPrev) lightboxPrev.click();
-    }
-  }
