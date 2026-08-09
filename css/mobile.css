@@ -279,6 +279,61 @@
     .lightbox-content { max-width: 95%; }
 }
 
+/* =========================================
+   MOBILNA OPTIMIZACIJA ZA LIGHTBOX (ZUMIRANJE)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Slika zauzima više prostora na telefonu */
+  .lightbox-content {
+    max-width: 95%;
+    max-height: 75vh; /* Ostavljamo prostor pri dnu za komotne dugmiće */
+  }
+
+  .lightbox-content img {
+    max-height: 75vh;
+  }
+
+  /* Uočljivije dugme X u gornjem desnom uglu */
+  .lightbox-close {
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    color: #fff;
+  }
+
+  /* Prilagođene, veće i uočljivije strelice za dodir prstom */
+  .lightbox-arrow {
+    width: 54px;
+    height: 54px;
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Pozicioniramo strelice pri dnu ekrana levo i desno radi lakšeg dohvatanja palcem */
+  .lightbox-prev {
+    left: 20px;
+    top: auto;
+    bottom: 25px;
+    transform: none;
+  }
+
+  .lightbox-next {
+    right: 20px;
+    top: auto;
+    bottom: 25px;
+    transform: none;
+  }
+}
+
 
 /* ==========================================================================
    6. CENOVNIK SEKCIJA

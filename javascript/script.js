@@ -163,3 +163,30 @@ function unlockScroll() {
     behavior: 'instant'
   });
 }
+
+// SVIPE GESTOVI ZA MOBILNI LIGHTBOX
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimalna distanca u px da bi se priznao swipe
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Prevlačenje ulevo -> Sledeća slika
+      if (lightboxNext) lightboxNext.click();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Prevlačenje udesno -> Prethodna slika
+      if (lightboxPrev) lightboxPrev.click();
+    }
+  }
