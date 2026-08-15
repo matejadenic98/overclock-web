@@ -312,20 +312,28 @@
     padding: 0;
   }
 
+   .lightbox-controls-dock {
+    bottom: 25px; /* Spuštamo je bliže dnu zbog pristupačnosti palcem */
+    gap: 15px;
+    padding: 6px 10px;
+    /* Povećavamo crnilo na mobilnom zbog jačeg kontrasta na dodirnim ekranima */
+    background: rgba(10, 15, 22, 0.85); 
+  }
+
+  #lightbox-modal .lightbox-arrow {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* Umesto hover-a, na mobilnom koristimo active (kada se pritisne prstom) */
   #lightbox-modal .lightbox-arrow:active {
-    background: rgba(42, 142, 199, 0.8);
+    background: var(--premium-blue);
     border-color: var(--premium-blue);
-    transform: scale(0.95);
+    transform: scale(0.95); /* Suptilno se uvuče pod prstom */
   }
 
-  #lightbox-modal .lightbox-prev {
-    left: 24px;
-    right: auto;
-  }
-
-  #lightbox-modal .lightbox-next {
-    right: 24px;
-    left: auto;
+  .lightbox-counter {
+    font-size: 0.9rem;
   }
 }
 

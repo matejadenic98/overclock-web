@@ -603,33 +603,78 @@ nav a:hover {
   pointer-events: none;
 }
 
-.lightbox-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    z-index: 10005;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s, border-color 0.3s;
+/* =========================================
+   LIGHTBOX KONTROLNA KAPSULA (FLOATING DOCK)
+   ========================================= */
+
+.lightbox-controls-dock {
+  position: absolute;
+  bottom: 40px; /* Lebdi iznad dna ekrana */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 12px;
+  
+  /* Premium Glassmorphism dizajn */
+  background: rgba(10, 15, 22, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  
+  /* Blagi plavi glow ispod cele kapsule */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 142, 199, 0.1);
+  
+  z-index: 10005;
+  transition: all 0.3s ease;
 }
 
-.lightbox-arrow:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
+#lightbox-modal .lightbox-arrow {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.05); /* Skoro providno dok se ne pređe mišem */
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  padding: 0;
 }
 
-.lightbox-prev { left: 30px; }
-.lightbox-next { right: 30px; }
+/* Hover na desktopu - strelica iskače uz premium plavu boju */
+#lightbox-modal .lightbox-arrow:hover {
+  background: var(--premium-blue);
+  border-color: var(--premium-blue);
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(42, 142, 199, 0.4);
+}
+
+#lightbox-modal .lightbox-arrow svg {
+  pointer-events: none; /* Osigurava da klik pogađa dugme */
+}
+
+/* Stil za numerički brojač slika */
+.lightbox-counter {
+  font-family: monospace; /* Daje tehnički, inženjerski izgled */
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.counter-divider {
+  color: rgba(255, 255, 255, 0.3); /* Slash je prigušen */
+  font-weight: 400;
+}
 
 /* =========================================
    SEKCIJA USLUGE - Bento video grid

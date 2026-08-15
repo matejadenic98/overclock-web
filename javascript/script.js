@@ -80,6 +80,13 @@ document.addEventListener("DOMContentLoaded", function () {
         lightboxImg.src = currentData.src;
         lightboxImg.alt = currentData.alt;
     }
+    // NOVA LOGIKA ZA DOCK BROJAČ
+    const currentNumEl = document.getElementById('current-slide-num');
+    const totalNumEl = document.getElementById('total-slides-num');
+    if (currentNumEl && totalNumEl) {
+        currentNumEl.textContent = currentImageIndex + 1; /* Prikazuje trenutnu sliku */
+        totalNumEl.textContent = currentImagesArray.length; /* Prikazuje ukupan broj slika u tom redu */
+    }
   }
 
   if (lightboxNext) {
