@@ -290,15 +290,15 @@
     background: rgba(18, 18, 18, 0.6);
   }
 
-  /* Široka bezbedna kapsula pri dnu */
+/* Široka bezbedna kapsula pri dnu */
   .lightbox-controls-dock {
-    box-sizing: border-box; /* Obezbeđuje tačno centriranje */
-    width: 85%; /* Širi kapsulu preko dna ekrana */
+    box-sizing: border-box; 
+    width: 85%; /* Na telefonu preuzima ovu širinu umesto max-content */
     max-width: 340px;
-    bottom: 25px; 
-    justify-content: space-between; /* Razdvaja strelice na krajeve */
+    bottom: 32px; /* Podignuto za nijansu zbog linije navigacije na modernim telefonima */
+    justify-content: space-between; 
     padding: 8px 12px;
-    background: rgba(10, 15, 22, 0.85); /* Tamnije za jači kontrast na touch */
+    background: rgba(10, 15, 22, 0.85); 
   }
 
   /* Masivne strelice na dodir unutar kapsule */
