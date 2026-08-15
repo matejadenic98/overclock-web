@@ -290,50 +290,34 @@
     background: rgba(18, 18, 18, 0.6);
   }
 
-  /* Glassmorphism strelice za dohvatanje palcem na dnu ekrana */
-  #lightbox-modal .lightbox-arrow {
-    position: fixed;
-    top: auto;
-    bottom: 30px;
-    transform: none;
-    width: 48px;
-    height: 48px;
-    background: rgba(18, 18, 18, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #ffffff;
-    border-radius: 50%;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    z-index: 10005;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
+  /* Široka bezbedna kapsula pri dnu */
+  .lightbox-controls-dock {
+    box-sizing: border-box; /* Obezbeđuje tačno centriranje */
+    width: 85%; /* Širi kapsulu preko dna ekrana */
+    max-width: 340px;
+    bottom: 25px; 
+    justify-content: space-between; /* Razdvaja strelice na krajeve */
+    padding: 8px 12px;
+    background: rgba(10, 15, 22, 0.85); /* Tamnije za jači kontrast na touch */
   }
 
-   .lightbox-controls-dock {
-    bottom: 25px; /* Spuštamo je bliže dnu zbog pristupačnosti palcem */
-    gap: 15px;
-    padding: 6px 10px;
-    /* Povećavamo crnilo na mobilnom zbog jačeg kontrasta na dodirnim ekranima */
-    background: rgba(10, 15, 22, 0.85); 
-  }
-
-  #lightbox-modal .lightbox-arrow {
-    width: 40px;
-    height: 40px;
+  /* Masivne strelice na dodir unutar kapsule */
+  #lightbox-modal .lightbox-controls-dock .lightbox-arrow {
+    width: 50px !important; /* Ogromna meta za palac */
+    height: 50px !important;
+    background: rgba(255, 255, 255, 0.08); /* Diskretno naglašavanje dugmeta */
   }
   
   /* Umesto hover-a, na mobilnom koristimo active (kada se pritisne prstom) */
-  #lightbox-modal .lightbox-arrow:active {
+  #lightbox-modal .lightbox-controls-dock .lightbox-arrow:active {
     background: var(--premium-blue);
     border-color: var(--premium-blue);
-    transform: scale(0.95); /* Suptilno se uvuče pod prstom */
+    transform: scale(0.92) !important; /* Uvuče se pod prstom */
   }
 
+  /* Povećan brojač u sredini */
   .lightbox-counter {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
   }
 }
 
