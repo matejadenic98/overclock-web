@@ -8,11 +8,11 @@ html {
 
 /* 1. Lightbox Modal - Sakriven po defaultu */
 #lightbox-modal {
-  display: none; /* KLJUČNO: Sakriven dok se ne klikne slika */
+  display: none; 
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%; /* KLJUČNO: Promenjeno sa 100vw na 100% */
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.85) !important;
   z-index: 9999;
@@ -609,22 +609,25 @@ nav a:hover {
 
 .lightbox-controls-dock {
   position: absolute;
-  bottom: 40px; /* Lebdi iznad dna ekrana */
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 40px; 
+  
+  /* NEUNIŠTIVO CENTRIRANJE (Bez transforma): */
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: max-content; 
+  
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   padding: 8px 12px;
   
-  /* Premium Glassmorphism dizajn */
   background: rgba(10, 15, 22, 0.65);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
-  
-  /* Blagi plavi glow ispod cele kapsule */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 142, 199, 0.1);
   
   z-index: 10005;
