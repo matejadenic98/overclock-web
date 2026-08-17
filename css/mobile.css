@@ -528,47 +528,42 @@ body .nav-dark-theme .btn-outline-nav:hover {
 }
 
 /* =========================================
-   ŠIROKO SVETLUCAVO DUGME (CTA) - MOBILNI
+   MOBILNA OPTIMIZACIJA ZA CTA DUGMAD (SAFE SPACING)
    ========================================= */
 
 @media (max-width: 768px) {
-    /* Smanjujemo gornji razmak i usklađujemo bočne margine sa ostalim elementima na telefonu */
+    /* Zatezanje vertikalnog proreda oko dugmadi */
     .gallery-cta-wrapper,
     .services-cta-wrapper {
-        margin-top: 40px; 
-        padding: 0 15px;
+        margin-top: 25px;    /* Smanjeno sa 40px/60px na 25px za bolju kompaktnost */
+        margin-bottom: 20px; /* Pravi čistiji prelaz ka sledećoj sekciji */
+        padding: 0 20px;     /* Daje malo više vazduha sa strana */
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* Prilagođavanje veličine dugmeta za prste */
+    /* Prilagođavanje izgleda samog dugmeta za mobilni */
     .btn-glow-wide {
-        font-size: 1rem; /* Malo manji font da se ne bi prelomio na malim ekranima */
-        padding: 16px 20px;
-        max-width: 100%; /* Širi se tačno do margina wrappera */
+        width: 100%;
+        max-width: 100%;     /* Iskorišćava punu širinu unutar paddinga */
+        padding: 14px 20px;  /* Blago smanjen visinski padding */
+        font-size: 0.92rem;  /* Font prilagođen širini mobilnog ekrana */
         letter-spacing: 1px;
+        justify-content: center;
     }
 
-    /* Malo smanjujemo ikonicu */
-    .btn-glow-wide svg {
-        width: 18px;
-        height: 18px;
+    /* Prilagođavanje dugmeta za svetlu sekciju (Usluge) */
+    .services-cta-wrapper .btn-glow-wide {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: var(--dark-text);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
     }
 
-    /* EFEKAT NA DODIR (ACTIVE) - Galerija */
-    /* Pošto nema miša (hover), dugme treba da se uvuče unutra kada ga pritisneš prstom */
-    .btn-glow-wide:active {
-        transform: scale(0.96); 
-        box-shadow: 0 5px 15px rgba(42, 142, 199, 0.4), inset 0 0 15px rgba(124, 175, 205, 0.3);
-    }
-    
-    .btn-glow-wide:active svg {
-        transform: translateX(4px); /* I na telefonu strelica beži kad se tapne */
-    }
-
-    /* EFEKAT NA DODIR (ACTIVE) - Usluge (Invert boje) */
-    .services-cta-wrapper .btn-glow-wide:active {
-        background: var(--deep-navy); 
-        border-color: var(--deep-navy);
-        color: #ffffff;
-        transform: scale(0.96);
+    /* Dodatni prostor iznad naslova "Cenovnik" da ne ide odmah ispod dugmeta */
+    .pricing-container,
+    #cenovnik .section-head,
+    .contact .section-head {
+        margin-top: 15px;
     }
 }
