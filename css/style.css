@@ -567,7 +567,8 @@ nav a:hover {
     width: 100%;
     max-width: 450px; /* Ograničava širinu na velikim ekranima, a na telefonu ide do ivica */
     padding: 18px 30px;
-    line-height: 1; /* Dodaj samo ovo */
+    line-height: 1; 
+    white-space: nowrap; /* SPREČAVA PRELAMANJE TEKSTA U DVA REDA */
     
     font-family: 'ClaspoND', sans-serif;
     font-size: 1.15rem;
@@ -648,8 +649,10 @@ nav a:hover {
 
 /* Animacija i milimetarsko centriranje strelice u dugmetu */
 .btn-glow-wide svg {
+    display: block;
+    flex-shrink: 0; /* SPREČAVA DEFORMACIJU STRELICE */
     position: relative;
-    top: 2px; /* Gura strelicu malo na dole. Ako treba gore, stavi -1px ili -2px */
+    top: 1px; /* Savršeno poravnanje strelice sa visinom fonta */
     transition: transform 0.3s ease;
 }
 

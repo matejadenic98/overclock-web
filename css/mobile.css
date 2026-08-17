@@ -535,9 +535,9 @@ body .nav-dark-theme .btn-outline-nav:hover {
     /* Zatezanje vertikalnog proreda oko dugmadi */
     .gallery-cta-wrapper,
     .services-cta-wrapper {
-        margin-top: 25px;    /* Smanjeno sa 40px/60px na 25px za bolju kompaktnost */
-        margin-bottom: 20px; /* Pravi čistiji prelaz ka sledećoj sekciji */
-        padding: 0 20px;     /* Daje malo više vazduha sa strana */
+        margin-top: 25px;
+        margin-bottom: 20px;
+        padding: 0 15px;
         width: 100%;
         box-sizing: border-box;
     }
@@ -545,11 +545,16 @@ body .nav-dark-theme .btn-outline-nav:hover {
     /* Prilagođavanje izgleda samog dugmeta za mobilni */
     .btn-glow-wide {
         width: 100%;
-        max-width: 100%;     /* Iskorišćava punu širinu unutar paddinga */
-        padding: 14px 20px;  /* Blago smanjen visinski padding */
-        font-size: 0.92rem;  /* Font prilagođen širini mobilnog ekrana */
-        letter-spacing: 1px;
-        justify-content: center;
+        max-width: 100%;
+        padding: 14px 12px; /* Dovoljno mesta za tekst i strelicu u jednom redu */
+        font-size: 0.85rem;  /* Veličina sa kojom sigurno staje na sve ekrane */
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .btn-glow-wide svg {
+        width: 16px;
+        height: 16px;
     }
 
     /* Prilagođavanje dugmeta za svetlu sekciju (Usluge) */
