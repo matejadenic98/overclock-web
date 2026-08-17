@@ -557,6 +557,11 @@ body .nav-dark-theme .btn-outline-nav:hover {
         height: 16px;
     }
 
+    .btn-glow-wide span {
+        position: relative;
+        top: 2px; /* Menjaj u 1px, 2px ili 3px dok ne spustiš tekst tačno koliko želiš */
+    }
+
     /* Prilagođavanje dugmeta za svetlu sekciju (Usluge) */
     .services-cta-wrapper .btn-glow-wide {
         background: rgba(255, 255, 255, 0.2);
