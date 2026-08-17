@@ -545,6 +545,118 @@ nav a:hover {
     width: 100%;
 }
 
+/* =========================================
+   ŠIROKO SVETLUCAVO DUGME (GALERIJA, USLUGE CTA)
+   ========================================= */
+
+.gallery-cta-wrapper, .services-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 60px; /* Pravi razmak između grida galerije i dugmeta */
+    padding: 0 20px;
+}
+
+.btn-glow-wide {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 450px; /* Ograničava širinu na velikim ekranima, a na telefonu ide do ivica */
+    padding: 18px 30px;
+    line-height: 1; /* Dodaj samo ovo */
+    
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    text-decoration: none;
+    
+    /* Suptilna tamna pozadina sa staklastim efektom */
+    background: linear-gradient(135deg, rgba(10, 15, 22, 0.8), rgba(8, 23, 36, 0.8));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Overclock plava ivica i osnovni sjaj */
+    border: 1px solid var(--premium-blue);
+    border-radius: 50px;
+    box-shadow: 0 0 15px rgba(42, 142, 199, 0.2), inset 0 0 10px rgba(42, 142, 199, 0.1);
+    
+    overflow: hidden; /* Skriva svetlucavi efekat van ivica dugmeta */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* =========================================
+   PRILAGOĐAVANJE DUGMETA ZA SVETLU SEKCIJU (USLUGE)
+   ========================================= */
+
+.services-cta-wrapper .btn-glow-wide {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--dark-text); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* NOVI HOVER EFEKAT - Visoki kontrast (Invert) */
+.services-cta-wrapper .btn-glow-wide:hover {
+    /* Dugme postaje puna, moćna tamna boja koja iskače sa pozadine */
+    background: var(--deep-navy); 
+    border-color: var(--deep-navy);
+    
+    /* Tekst i strelica postaju kristalno beli */
+    color: #ffffff;
+    
+    /* Elegantna tamna senka umesto plave koja se gubila */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-4px);
+}
+
+/* SVETLUCAVA ANIMACIJA (Shimmer Effect) */
+.btn-glow-wide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    /* Bela prozirna linija koja daje efekat refleksije */
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transform: skewX(-25deg);
+    animation: overclock-shimmer 3.5s infinite; /* Animacija se ponavlja na 3.5s */
+}
+
+@keyframes overclock-shimmer {
+    0% { left: -100%; }
+    20% { left: 200%; }
+    100% { left: 200%; }
+}
+
+/* EFEKAT PRELASKA MIŠEM (Hover) */
+.btn-glow-wide:hover {
+    transform: translateY(-4px); /* Lagano se podiže */
+    background: linear-gradient(135deg, rgba(8, 23, 36, 0.95), rgba(42, 142, 199, 0.25));
+    border-color: var(--light-blue);
+    /* Jako plavo isijavanje */
+    box-shadow: 0 10px 30px rgba(42, 142, 199, 0.5), inset 0 0 20px rgba(124, 175, 205, 0.3);
+    color: #ffffff;
+}
+
+/* Animacija i milimetarsko centriranje strelice u dugmetu */
+.btn-glow-wide svg {
+    position: relative;
+    top: 2px; /* Gura strelicu malo na dole. Ako treba gore, stavi -1px ili -2px */
+    transition: transform 0.3s ease;
+}
+
+.btn-glow-wide:hover svg {
+    transform: translateX(6px); /* Strelica beži desno na hover */
+}
+
 /* ===================================================
    LIGHTBOX UNUTRAŠNJI ELEMENTI (Bez dupliranog background-a)
    =================================================== */

@@ -322,6 +322,8 @@
   }
 }
 
+
+
 /* ==========================================================================
    6. CENOVNIK SEKCIJA
    ========================================================================== */
@@ -523,4 +525,50 @@ body .btn-outline-nav:hover {
 body .nav-dark-theme .btn-outline-nav:hover {
     background-color: var(--premium-blue); /* Ista boja kao u belom modu */
     color: #ffffff;
+}
+
+/* =========================================
+   ŠIROKO SVETLUCAVO DUGME (CTA) - MOBILNI
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* Smanjujemo gornji razmak i usklađujemo bočne margine sa ostalim elementima na telefonu */
+    .gallery-cta-wrapper,
+    .services-cta-wrapper {
+        margin-top: 40px; 
+        padding: 0 15px;
+    }
+
+    /* Prilagođavanje veličine dugmeta za prste */
+    .btn-glow-wide {
+        font-size: 1rem; /* Malo manji font da se ne bi prelomio na malim ekranima */
+        padding: 16px 20px;
+        max-width: 100%; /* Širi se tačno do margina wrappera */
+        letter-spacing: 1px;
+    }
+
+    /* Malo smanjujemo ikonicu */
+    .btn-glow-wide svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* EFEKAT NA DODIR (ACTIVE) - Galerija */
+    /* Pošto nema miša (hover), dugme treba da se uvuče unutra kada ga pritisneš prstom */
+    .btn-glow-wide:active {
+        transform: scale(0.96); 
+        box-shadow: 0 5px 15px rgba(42, 142, 199, 0.4), inset 0 0 15px rgba(124, 175, 205, 0.3);
+    }
+    
+    .btn-glow-wide:active svg {
+        transform: translateX(4px); /* I na telefonu strelica beži kad se tapne */
+    }
+
+    /* EFEKAT NA DODIR (ACTIVE) - Usluge (Invert boje) */
+    .services-cta-wrapper .btn-glow-wide:active {
+        background: var(--deep-navy); 
+        border-color: var(--deep-navy);
+        color: #ffffff;
+        transform: scale(0.96);
+    }
 }
