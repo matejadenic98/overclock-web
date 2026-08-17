@@ -814,7 +814,7 @@ nav a:hover {
     height: 350px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end; /* Sadržaj (tekst) je zakucan na dno */
     padding: 30px;
     overflow: hidden;
     cursor: pointer;
@@ -827,21 +827,46 @@ nav a:hover {
     border-color: var(--premium-blue); 
 }
 
+/* GRADIENT OVERLAY PRI HOVERU - Povećava kontrast i čitljivost teksta iznad videa */
+.bento-light-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bento-light-card:hover::before {
+    opacity: 1;
+}
+
+/* Pozadinski video / GIF */
 .bento-video-bg {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
     z-index: 1;
+    pointer-events: none;
 }
 
 .bento-light-card:hover .bento-video-bg {
     opacity: 1;
 }
 
-.bento-top, .bento-bottom {
-    position: relative;
-    z-index: 2;
+/* TAČKICA - Zakucana za gornji levi ugao kartice */
+.bento-top {
+    position: absolute !important;
+    top: 30px;
+    left: 30px;
+    z-index: 3;
 }
 
 .indicator-circle {
@@ -852,9 +877,12 @@ nav a:hover {
     transition: all 0.3s ease;
 }
 
-.bento-light-card:hover .indicator-circle {
-    background: var(--premium-blue);
-    border-color: var(--premium-blue);
+/* DONJI DEO (TEKST I STRELICA) */
+.bento-bottom {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    display: block; 
 }
 
 .bento-title {
@@ -862,11 +890,7 @@ nav a:hover {
     font-size: 1.5rem;
     color: var(--dark-text);
     margin: 0;
-    transition: color 0.3s ease;
-}
-
-.bento-light-card:hover .bento-title {
-    color: var(--premium-blue);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .bento-desc-wrapper {
@@ -887,12 +911,7 @@ nav a:hover {
     font-size: 0.95rem;
     line-height: 1.5;
     margin: 0;
-}
-
-.bento-bottom {
-    position: relative;
-    width: 100%;
-    display: block; 
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .bento-text {
@@ -909,9 +928,29 @@ nav a:hover {
     transition: all 0.4s ease;
 }
 
+/* =========================================
+   HOVER EFEKTI (Tekst, tačkica i strelica)
+   ========================================= */
+
+.bento-light-card:hover .indicator-circle {
+    background: #ffffff;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.bento-light-card:hover .bento-title {
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.bento-light-card:hover .bento-desc {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
 .bento-light-card:hover .bento-arrow {
     transform: translate(5px, -5px);
-    color: var(--premium-blue);
+    color: #ffffff;
 }
 
 /* =========================================
