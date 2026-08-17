@@ -317,7 +317,8 @@
 
   /* Povećan brojač u sredini */
   .lightbox-counter {
-    font-size: 1.1rem;
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.15rem;
   }
 }
 

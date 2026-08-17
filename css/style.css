@@ -660,11 +660,11 @@ nav a:hover {
 
 /* Stil za numerički brojač slika */
 .lightbox-counter {
-  font-family: monospace; /* Daje tehnički, inženjerski izgled */
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: 'ClaspoND', sans-serif; /* Prebačeno sa monospace na tvoj ClaspoND font */
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #ffffff;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   display: flex;
   align-items: center;
   gap: 6px;
