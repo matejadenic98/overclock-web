@@ -92,3 +92,12 @@
         animation-range: cover 0% cover 85% !important;
     } 
 }  
+
+/* ===================================================
+    ANIMACIJA - Zlatni Odsjaj (Shine)
+   =================================================== */
+
+@keyframes hoverShine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}

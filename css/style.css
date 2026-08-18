@@ -1075,6 +1075,86 @@ nav a:hover {
 }
 
 /* =========================================
+   CENOVNIK - Premium Zlatni Red 
+   ========================================= */
+
+.pricing-row.premium-gold-card {
+    /* 1. Suptilno zlatna osnova */
+    background: rgba(255, 215, 0, 0.08); 
+    border: 1px solid rgba(218, 165, 32, 0.25);
+    border-left: 4px solid #FFD700;
+    
+    /* 2. Zakucavamo granice da animacija ne curi */
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease;
+}
+
+/* Izdižemo tekst i cenu iznad svetlucave animacije */
+.pricing-row.premium-gold-card .pricing-info,
+.pricing-row.premium-gold-card .pricing-value {
+    position: relative;
+    z-index: 2;
+}
+
+/* Zlatni bedž da zameni sivi */
+.pricing-row.premium-gold-card .pricing-tag {
+    background: linear-gradient(135deg, #FFD700 0%, #DAA520 100%);
+    color: #111;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 2px 4px rgba(218, 165, 32, 0.3);
+}
+
+/* =========================================
+   ANIMACIJE - Suptilno svetlucanje
+   ========================================= */
+
+.pricing-row.premium-gold-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    /* Polu-providni beli zrak svetlosti */
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-25deg);
+    animation: subtleShine 6s infinite; /* Prelazi na svakih 6 sekundi */
+    pointer-events: none;
+    z-index: 1; /* Ispod teksta, iznad pozadine */
+}
+
+@keyframes subtleShine {
+    0% { left: -100%; }
+    15% { left: 200%; } /* Zrak proleti brzo... */
+    100% { left: 200%; } /* ...i napravi pauzu */
+}
+
+/* =========================================
+   HOVER EFEKAT - Jači efekat pri prelasku mišem
+   ========================================= */
+
+.pricing-row.premium-gold-card:hover {
+    background: rgba(255, 215, 0, 0.18); /* Pojačana zlatna pozadina */
+    border-color: rgba(218, 165, 32, 0.6);
+    box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
+    transform: scale(1.01); /* Jedva primetno se uveća */
+}
+
+/* Ubrzavamo i pojačavamo svetlucanje na hover */
+.pricing-row.premium-gold-card:hover::before {
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    animation: hoverShine 1.5s infinite; /* Stalno svetluca dok držiš miš */
+}
+
+.pricing-row.premium-gold-card:hover .pricing-service-title,
+.pricing-row.premium-gold-card:hover .pricing-value {
+    color: #111 !important; /* Zadržava tamnu boju i sprečava da postane plava */
+    text-shadow: none; /* Uklanjamo eventualne senke koje kvare čitljivost */
+}
+
+/* =========================================
    SEKCIJA BLOG - DARK GLASSMORPHISM
    ========================================= */
 
