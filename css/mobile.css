@@ -347,6 +347,26 @@
     }
 }
 
+/* =========================================
+   RESPONSIVE (Mobilni ekrani)
+   ========================================= */
+@media (max-width: 768px) {
+    .pricing-text-notice {
+        margin-top: 40px;
+        margin-bottom: 70px; /* Srazmeran razmak za telefone */
+        text-align: left; 
+    }
+
+    .pricing-text-notice p {
+        font-size: 1.15rem; /* Povećano za telefone */
+        line-height: 1.6;
+    }
+    
+    .notice-highlight {
+        font-size: 1.3rem;
+    }
+}
+
 
 /* ==========================================================================
    7. BLOG SEKCIJA
