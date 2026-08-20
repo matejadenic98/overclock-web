@@ -597,3 +597,17 @@ body .nav-dark-theme .btn-outline-nav:hover {
         margin-top: 15px;
     }
 }
+
+/* Posebno prilagođavanje za Pricing sekciju i mobilne ekrane */
+@media (max-width: 768px) {
+    /* Ubrzavamo tranziciju na mobilnom da se unblur desi trenutno */
+    .pricing .scroll-blur-reveal,
+    .pricing-text-notice {
+        transition-duration: 0.4s !important; 
+    }
+
+    /* Ako se koristi CSS-only scroll-driven animation ili fallback */
+    .pricing {
+        scroll-margin-top: 100px;
+    }
+}
