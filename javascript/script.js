@@ -4,38 +4,8 @@ let currentImageIndex = 0;
 let currentScrollY = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
-
-  // =========================================
-  // 1. SCROLL BLUR REVEAL OBSERVER (Sa CTA i mobilnim štimovanjem)
-  // =========================================
-  const blurRevealElements = document.querySelectorAll(
-    '.scroll-blur-reveal, .services-cta-wrapper, .gallery-cta-wrapper, .pricing-text-notice'
-  );
-
-  if (blurRevealElements.length > 0) {
-    const isMobile = window.innerWidth <= 768;
-
-    const blurObserverOptions = {
-      root: null,
-      // Na mobilnom telefonima okida znatno ranije (-5% od dna umesto -15%)
-      rootMargin: isMobile ? '0px 0px -5% 0px' : '0px 0px -15% 0px',
-      threshold: isMobile ? 0.02 : 0.15
-    };
-
-    const blurObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, blurObserverOptions);
-
-    blurRevealElements.forEach(el => blurObserver.observe(el));
-  }
-
-  // =========================================
-  // 2. UPRAVLJANJE KARTICAMA PROJEKATA I GALERIJOM
-  // =========================================
+  
+  // 1. UPRAVLJANJE KARTICAMA PROJEKATA I GALERIJOM
   const projects = document.querySelectorAll('.gallery-project');
   if (projects.length > 0) {
     projects.forEach(project => {
@@ -71,9 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // =========================================
-  // 3. LIGHTBOX ELEMENTI I FUNKCIJE
-  // =========================================
+  // 2. LIGHTBOX ELEMENTI I FUNKCIJE
   const lightbox = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
@@ -112,12 +80,12 @@ document.addEventListener("DOMContentLoaded", function () {
         lightboxImg.src = currentData.src;
         lightboxImg.alt = currentData.alt;
     }
-    // DOCK BROJAČ
+    // NOVA LOGIKA ZA DOCK BROJAČ
     const currentNumEl = document.getElementById('current-slide-num');
     const totalNumEl = document.getElementById('total-slides-num');
     if (currentNumEl && totalNumEl) {
-        currentNumEl.textContent = currentImageIndex + 1;
-        totalNumEl.textContent = currentImagesArray.length;
+        currentNumEl.textContent = currentImageIndex + 1; /* Prikazuje trenutnu sliku */
+        totalNumEl.textContent = currentImagesArray.length; /* Prikazuje ukupan broj slika u tom redu */
     }
   }
 
@@ -139,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (lightbox) {
     lightbox.addEventListener('click', (e) => {
+      // Proverava da li je kliknuta pozadina ILI bilo šta unutar X dugmeta
       if (e.target === lightbox || (lightboxClose && lightboxClose.contains(e.target))) {
           closeLightbox();
       }
@@ -152,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
   });
 
-  // SWIPE GESTOVI ZA MOBILNI LIGHTBOX
+  // SWIPE GESTOVI ZA MOBILNI LIGHTBOX (Sada unutar DOMContentLoaded!)
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -168,18 +137,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSwipe() {
-    const swipeThreshold = 40;
+    const swipeThreshold = 40; // Minimalna distanca u px da bi se priznao swipe
     if (touchEndX < touchStartX - swipeThreshold) {
+      // Prevlačenje ulevo -> Sledeća slika
       if (lightboxNext) lightboxNext.click();
     }
     if (touchEndX > touchStartX + swipeThreshold) {
+      // Prevlačenje udesno -> Prethodna slika
       if (lightboxPrev) lightboxPrev.click();
     }
   }
 
-  // =========================================
-  // 4. MEHANIZAM ZA GRADUALNO ZATAMNJIVANJE NAVIGACIJE
-  // =========================================
+  // 3. SIGURAN MEHANIZAM ZA GRADUALNO ZATAMNJIVANJE NAVIGACIJE
   const navElement = document.querySelector(".main-navigation");
   const header = navElement ? navElement.parentElement : null; 
   const contactSection = document.querySelector(".contact-section") || document.querySelector("#kontakt");
@@ -204,9 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// =========================================
-// 5. FUNKCIJE ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
-// =========================================
+// 4. FUNKCIJE ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
 function lockScroll() {
   currentScrollY = window.scrollY || document.documentElement.scrollTop;
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
