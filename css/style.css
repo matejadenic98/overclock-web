@@ -1,18 +1,28 @@
 
 
-html {
-  overflow-x: hidden; /* Sprečava pojavljivanje scrollbara sa strane */
+/* Lock pozadine kada je Lightbox otvoren */
+html.is-locked,
+body.is-locked {
+  overflow: hidden !important;
 }
 
-/* Stanje kada korisnik klikne na link (Stranica odleće u desnu stranu) */
-body.page-slide-out {
-  transform: translateX(100vw); /* Pomera ceo ekran skroz udesno */
-  opacity: 0;
+/* =========================================
+   RESET I SMOOTH SCROLL (VRAĆANJE ANIMACIJA)
+   ========================================= */
+
+html {
+  /* Omogućava glatki skrol na dugme 'Nazad na vrh' i navigaciju */
+  scroll-behavior: smooth !important;
+  /* Sprečava iskakanje horizontalnog scrollbara, ali NE blokira skrol observere */
+  overflow-x: clip; 
 }
 
-/* Sprečava pojavljivanje horizontalnog scrollbara tokom animacije */
-html {
-  overflow-x: hidden;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* Veoma važno: NE stavljati overflow-x: hidden ovde jer ubija scroll-blur animacije */
+  position: relative;
 }
 
 /* =========================================

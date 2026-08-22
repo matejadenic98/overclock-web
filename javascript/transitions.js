@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Stvaramo zavesu samo kao nezavisan overlay koji ne ometa skrol
   let curtain = document.getElementById('page-transition-curtain');
   if (!curtain) {
     curtain = document.createElement('div');
@@ -15,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (targetUrl && !targetUrl.startsWith('#') && !e.ctrlKey && !e.metaKey) {
         e.preventDefault();
 
-        // Podižemo zavesu sa dna
         curtain.classList.add('slide-up');
 
         setTimeout(() => {

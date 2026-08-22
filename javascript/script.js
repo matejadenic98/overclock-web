@@ -173,23 +173,23 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// 4. FUNKCIJE ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
+// 4. FUNKCIJE ZA ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA (Bez bagova i skakanja)
 function lockScroll() {
-  currentScrollY = window.scrollY || document.documentElement.scrollTop;
+  // Izračunavamo širinu scrollbara da stranica ne bi "poskočila" udesno
   const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-  document.documentElement.style.setProperty('--scroll-y', `-${currentScrollY}px`);
-  document.body.style.paddingRight = `${scrollbarWidth}px`;
+  if (scrollbarWidth > 0) {
+    document.body.style.paddingRight = `${scrollbarWidth}px`;
+  }
+  
+  // Zaključavamo skrol na nivou html i body elemenata
+  document.documentElement.classList.add('is-locked');
   document.body.classList.add('is-locked');
 }
 
 function unlockScroll() {
-  document.body.classList.remove('is-locked');
+  // Vraćamo sve u normalno stanje
   document.body.style.paddingRight = '';
-
-  window.scrollTo({
-    top: currentScrollY,
-    left: 0,
-    behavior: 'instant'
-  });
+  document.documentElement.classList.remove('is-locked');
+  document.body.classList.remove('is-locked');
 }
