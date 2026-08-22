@@ -68,9 +68,37 @@
     }
 }
 
-.scroll-blur-reveal-final {
-    animation: ultimateBottomReveal linear both;
-    animation-timeline: scroll(root); /* Prati pomeranje skrolbara cele stranice */
+/* =========================================
+   CENOVNIK SCROLL REVEAL (EKSPOSTRO IZOŠTRAVANJE)
+   ========================================= */
+
+@keyframes cenovnikBlurReveal {
+    0% {
+        filter: blur(15px);
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+    }
+    /* Blur i opacity se skroz sklanjaju već na 10% skrola (umesto na 35%),
+       tako da je tekst kristalno čist čim sekcija uđe na ekran */
+    20%, 100% {
+        filter: blur(0px);
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Primena nove animacije isključivo na #cenovnik sekciju */
+#cenovnik .scroll-blur-reveal {
+    animation-name: cenovnikBlurReveal;
+}
+
+/* =========================================
+   CENOVNIK SPECIFIČAN SCROLL REVEAL
+   ========================================= */
+#cenovnik .scroll-blur-reveal {
+    /* Podesava animaciju da pocne cim vrh cenovnika dotakne dno ekrana (entry 0%)
+       i da se ZAVRSI (tekst postaje 100% ostar i citljiv) vec na 15% ulaska */
+    animation-range: entry 0% entry 15%;
 }
 
 /* ===================================================
@@ -92,3 +120,12 @@
         animation-range: cover 0% cover 85% !important;
     } 
 }  
+
+/* ===================================================
+    ANIMACIJA - Zlatni Odsjaj (Shine)
+   =================================================== */
+
+@keyframes hoverShine {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}

@@ -317,9 +317,12 @@
 
   /* Povećan brojač u sredini */
   .lightbox-counter {
-    font-size: 1.1rem;
+    font-family: 'ClaspoND', sans-serif;
+    font-size: 1.15rem;
   }
 }
+
+
 
 /* ==========================================================================
    6. CENOVNIK SEKCIJA
@@ -341,6 +344,26 @@
     
     .pricing-value {
         align-self: flex-end; /* Cenu na mobilnom guramo skroz dole desno */
+    }
+}
+
+/* =========================================
+   RESPONSIVE (Mobilni ekrani)
+   ========================================= */
+@media (max-width: 768px) {
+    .pricing-text-notice {
+        margin-top: 40px;
+        margin-bottom: 70px; /* Srazmeran razmak za telefone */
+        text-align: left; 
+    }
+
+    .pricing-text-notice p {
+        font-size: 1.15rem; /* Povećano za telefone */
+        line-height: 1.6;
+    }
+    
+    .notice-highlight {
+        font-size: 1.3rem;
     }
 }
 
@@ -522,4 +545,55 @@ body .btn-outline-nav:hover {
 body .nav-dark-theme .btn-outline-nav:hover {
     background-color: var(--premium-blue); /* Ista boja kao u belom modu */
     color: #ffffff;
+}
+
+/* =========================================
+   MOBILNA OPTIMIZACIJA ZA CTA DUGMAD (SAFE SPACING)
+   ========================================= */
+
+@media (max-width: 768px) {
+    /* Zatezanje vertikalnog proreda oko dugmadi */
+    .gallery-cta-wrapper,
+    .services-cta-wrapper {
+        margin-top: 25px;
+        margin-bottom: 20px;
+        padding: 0 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Prilagođavanje izgleda samog dugmeta za mobilni */
+    .btn-glow-wide {
+        width: 100%;
+        max-width: 100%;
+        padding: 14px 12px; /* Dovoljno mesta za tekst i strelicu u jednom redu */
+        font-size: 0.85rem;  /* Veličina sa kojom sigurno staje na sve ekrane */
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .btn-glow-wide svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .btn-glow-wide span {
+        position: relative;
+        top: 2px; /* Menjaj u 1px, 2px ili 3px dok ne spustiš tekst tačno koliko želiš */
+    }
+
+    /* Prilagođavanje dugmeta za svetlu sekciju (Usluge) */
+    .services-cta-wrapper .btn-glow-wide {
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: var(--dark-text);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Dodatni prostor iznad naslova "Cenovnik" da ne ide odmah ispod dugmeta */
+    .pricing-container,
+    #cenovnik .section-head,
+    .contact .section-head {
+        margin-top: 15px;
+    }
 }

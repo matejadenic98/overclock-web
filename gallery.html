@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerija Projekata - Overclock</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body class="scroll-journey gallery-page" id="hero">
+
+  <!-- FIKSIRANA NAVIGACIJA -->
+  <header class="showcase-nav">
+    <a href="index.html#hero" class="nav-brand">
+      <img src="images/oc1.png" alt="Logo" class="showcase-logo">
+      <span class="logo-text">Overclock.rs</span>
+    </a>
+  </header>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox" id="lightbox-modal">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Zatvori">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Uvećani prikaz">
+    </div>
+
+    <!-- Plutajuća kontrolna kapsula (Dock) sa brojačem i strelicama -->
+    <div class="lightbox-controls-dock">
+      <button class="lightbox-arrow lightbox-prev" aria-label="Prethodna">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      
+      <div class="lightbox-counter">
+        <span id="current-slide-num">1</span>
+        <span class="counter-divider">/</span>
+        <span id="total-slides-num">1</span>
+      </div>
+
+      <button class="lightbox-arrow lightbox-next" aria-label="Sledeća">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- GLAVNI KONTEJNER -->
+  <main class="showcase-container">
+    
+    <div class="showcase-header">
+      <h1>Naši Projekti</h1>
+      <p>Premijum Showcase konfiguracija i modifikacija.</p>
+    </div>
+
+    <!-- FILTERI -->
+    <nav class="showcase-filters">
+      <button class="filter-btn active" data-tag="all">Sve</button>
+      <button class="filter-btn" data-tag="custom-pc">Custom PC</button>
+      <button class="filter-btn" data-tag="high-end">High-End PC</button>
+      <button class="filter-btn" data-tag="oc-konzola">OC Konzola</button>
+      <button class="filter-btn" data-tag="packdev">PackDev</button>
+      <button class="filter-btn" data-tag="meta-quest">Meta Quest</button>
+      <button class="filter-btn" data-tag="setup">Setup-ovi</button>
+      <button class="filter-btn" data-tag="moding">Moding</button>
+    </nav>
+
+    <!-- MREŽA PROJEKATA -->
+    <section class="showcase-layout">
+
+      <!-- PROJEKAT 1: Intel i7 -->
+      <article class="showcase-card" data-tags="custom-pc high-end setup">
+        <div class="showcase-card-inner">
+            
+            <div class="showcase-visuals">
+              <div class="showcase-image-wrapper">
+                <img src="images/galerija/i714700k_1.webp" alt="Intel Core i7-14700K" class="showcase-main-img" data-gal-id="project1">
+              </div>
+              <div class="showcase-thumbnails" data-gal-target="project1">
+                <img src="images/galerija/i714700k_1.webp" class="s-thumb active" alt="Detalj 1">
+                <img src="images/galerija/i714700k_2.webp" class="s-thumb" alt="Detalj 2">
+                <img src="images/galerija/i714700k_3.webp" class="s-thumb" alt="Detalj 3">
+                <img src="images/galerija/i714700k_4.webp" class="s-thumb" alt="Detalj 4">
+              </div>
+            </div>
+
+            <div class="showcase-info">
+              <div class="showcase-tags">
+                <span class="tag">#custom-pc</span>
+                <span class="tag">#high-end</span>
+                <span class="tag">#setup</span>
+              </div>
+              
+              <h3>Intel Core i7-14700K<br>ASUS ProArt Build</h3>
+              <p class="showcase-desc">Ekskluzivni workstation dizajniran za maksimalne performanse u renderingu i 4K gamingu. Fokus na besprekoran cable management i optimizaciju temperatura pod maksimalnim opterećenjem.</p>
+              
+              <ul class="showcase-specs">
+                <li><span>Procesor:</span> Intel Core i7-14700K</li>
+                <li><span>Matična:</span> ASUS ProArt Z790</li>
+                <li><span>Memorija:</span> 64GB DDR5 6000MHz</li>
+                <li><span>Grafika:</span> NVIDIA RTX 4080 Super</li>
+              </ul>
+            </div>
+
+        </div>
+      </article>
+
+      <!-- PROJEKAT 2: PackDev -->
+      <article class="showcase-card" data-tags="packdev setup high-end moding">
+        <div class="showcase-card-inner">
+            
+            <div class="showcase-visuals">
+              <div class="showcase-image-wrapper">
+                <img src="images/galerija/packdevpc_1.webp" alt="PackDev Workstation" class="showcase-main-img" data-gal-id="project2">
+              </div>
+              <div class="showcase-thumbnails" data-gal-target="project2">
+                <img src="images/galerija/packdevpc_1.webp" class="s-thumb active" alt="Detalj 1">
+                <img src="images/galerija/packdevpc_2.webp" class="s-thumb" alt="Detalj 2">
+                <img src="images/galerija/packdevpc_3.webp" class="s-thumb" alt="Detalj 3">
+                <img src="images/galerija/packdevpc_4.webp" class="s-thumb" alt="Detalj 4">
+                <img src="images/galerija/packdevpc_5.webp" class="s-thumb" alt="Detalj 5">
+              </div>
+            </div>
+
+            <div class="showcase-info">
+              <div class="showcase-tags">
+                <span class="tag">#packdev</span>
+                <span class="tag">#high-end</span>
+                <span class="tag">#moding</span>
+              </div>
+              
+              <h3>PackDev Developer<br>Workstation</h3>
+              <p class="showcase-desc">Specijalizovana mašina dizajnirana i sklopljena za PackDev tim. Optimizovana za kompleksno programiranje, rendering 3D modela i brzo testiranje igara u Unreal Engine okruženju.</p>
+              
+              <ul class="showcase-specs">
+                <li><span>Procesor:</span> AMD Ryzen 9 7950X</li>
+                <li><span>Matična:</span> ASUS ROG Strix</li>
+                <li><span>Memorija:</span> 64GB DDR5</li>
+                <li><span>Grafika:</span> NVIDIA RTX 4090</li>
+              </ul>
+            </div>
+
+        </div>
+      </article>
+      
+      <!-- PROJEKAT 3: OC Konzola -->
+      <article class="showcase-card" data-tags="oc-konzola setup">
+        <div class="showcase-card-inner">
+            
+            <div class="showcase-visuals">
+              <div class="showcase-image-wrapper">
+                <img src="images/galerija/ockonzola_1.webp" alt="OC Konzola" class="showcase-main-img" data-gal-id="project3">
+              </div>
+              <div class="showcase-thumbnails" data-gal-target="project3">
+                <img src="images/galerija/ockonzola_1.webp" class="s-thumb active" alt="Detalj 1">
+                <img src="images/galerija/ockonzola_2.webp" class="s-thumb" alt="Detalj 2">
+                <img src="images/galerija/ockonzola_3.webp" class="s-thumb" alt="Detalj 3">
+                <img src="images/galerija/ockonzola_4.webp" class="s-thumb" alt="Detalj 4">
+              </div>
+            </div>
+
+            <div class="showcase-info">
+              <div class="showcase-tags">
+                <span class="tag">#oc-konzola</span>
+                <span class="tag">#setup</span>
+              </div>
+              
+              <h3>Overclock Linux Konzola<br>SFF Build</h3>
+              <p class="showcase-desc">Naš unikatni pristup dnevnom gamingu - moćan PC hardver upakovan u kompaktno kućište veličine konzole. Pokreće ga specijalno podešen Linux sistem za iskustvo igranja direktno iz fotelje.</p>
+              
+              <ul class="showcase-specs">
+                <li><span>Procesor:</span> AMD Ryzen 7 7800X3D</li>
+                <li><span>Format:</span> Mini-ITX (SFF)</li>
+                <li><span>Grafika:</span> AMD Radeon RX 7900 XTX</li>
+                <li><span>OS:</span> Bazzite / SteamOS</li>
+              </ul>
+            </div>
+
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="inline-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo">Overclock.rs</span>
+          <p class="footer-credits">© 2026 Sva prava zadržana. Dizajn i optimizacija.</p>
+        </div>
+        <div class="footer-right">
+          <a href="#hero" class="back-to-top-btn">NAZAD NA VRH ↑</a>
+        </div>
+    </div>
+  </footer>
+
+  <script src="javascript/gallery.js"></script>
+  <script src="javascript/transitions.js"></script>
+
+</body>
+</html>
