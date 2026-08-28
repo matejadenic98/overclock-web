@@ -208,3 +208,65 @@ function unlockScroll() {
       }
     });
   }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.showcase-card');
+  const dividers = document.querySelectorAll('.tech-divider');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Menjanje aktivnog dugmeta
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      const selectedTag = button.getAttribute('data-tag');
+
+      // 1. Filtriranje kartica
+      cards.forEach(card => {
+        const cardTags = card.getAttribute('data-tags') || '';
+
+        if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
+          card.classList.remove('hidden-card');
+          card.style.display = ''; // Vraća podrazumevani prikaz
+        } else {
+          card.classList.add('hidden-card');
+          card.style.display = 'none'; // Osigurava da kartica ne zauzima prostor
+        }
+      });
+
+      // 2. Ažuriranje separatora na osnovu trenutno VIDLJIVIH kartica
+      updateDividers();
+    });
+  });
+
+  // Funkcija koja pametno prikazuje separatore samo između vidljivih kartica
+  function updateDividers() {
+    // Sakrivamo sve separatore prvo
+    dividers.forEach(div => (div.style.display = 'none'));
+
+    // Pronalazimo sve kartice koje su trenutno vidljive
+    const visibleCards = Array.from(cards).filter(
+      card => !card.classList.contains('hidden-card')
+    );
+
+    // Dodeljujemo separatore samo između vidljivih kartica
+    visibleCards.forEach((card, index) => {
+      // Ako nije poslednja vidljiva kartica, prikaži separator ispod nje
+      if (index < visibleCards.length - 1) {
+        // Tražimo prvi sledeći .tech-divider u DOM-u iza ove kartice
+        let nextElem = card.nextElementSibling;
+        while (nextElem && !nextElem.classList.contains('tech-divider')) {
+          nextElem = nextElem.nextElementSibling;
+        }
+
+        if (nextElem && nextElem.classList.contains('tech-divider')) {
+          nextElem.style.display = 'flex';
+        }
+      }
+    });
+  }
+
+  // Pokrećemo proveru i pri inicijalnom učitavanju stranice
+  updateDividers();
+});

@@ -1,20 +1,20 @@
 /* =========================================
-   FIKSIRANA NAVIGACIJA
+   FIKSIRANA NAVIGACIJA (Stapanje sa gradijentom)
    ========================================= */
 .showcase-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 3rem;
+  padding: 1.2rem 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(10, 10, 10, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .nav-brand {
@@ -63,17 +63,34 @@
 }
 
 /* =========================================
-   FILTER DUGMIĆI (U JEDNOM REDU)
+   FILTER KONTEJNER (Samo lebdeće linije)
    ========================================= */
 .showcase-filters {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: nowrap;
-  gap: 0.6rem;
+  gap: 1.5rem;
   margin-bottom: 4rem;
   overflow-x: auto;
   max-width: 100%;
-  padding-bottom: 10px;
+  padding: 15px 20px; 
+  
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important; 
+  border-radius: 0 !important;
+  
+  border-style: solid !important;
+  border-width: 1px 0 !important; 
+  border-color: transparent !important;
+  border-image: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(56, 189, 248, 0.7) 50%, 
+    transparent 100%
+  ) 1 !important;
 }
 
 .showcase-filters::-webkit-scrollbar {
@@ -85,24 +102,42 @@
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ccc;
-  padding: 8px 18px;
-  border-radius: 30px;
+  background: transparent !important;
+  border: none !important;
+  color: #777777;
+  padding: 8px 12px;
   cursor: pointer;
   font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   white-space: nowrap;
-  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
-  box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+  background: transparent !important;
+  color: #38bdf8 !important;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  box-shadow: none !important;
+}
+
+.filter-btn.active {
+  position: relative;
+}
+
+.filter-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: #38bdf8;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+  border-radius: 2px;
 }
 
 /* =========================================
@@ -122,19 +157,33 @@
   display: none !important;
 }
 
+/* =========================================
+   MINIMALISTIČKE KARTICE (Samo lebdeće linije)
+   ========================================= */
 .showcase-card-inner {
   display: flex;
   align-items: center; 
   gap: 60px;
-  background: rgba(10, 10, 15, 0.85); 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 40px;
-  backdrop-filter: blur(25px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+  
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+
+  border-style: solid !important;
+  border-width: 1px 0 !important; 
+  border-color: transparent !important;
+  border-image: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(56, 189, 248, 0.7) 50%, 
+    transparent 100%
+  ) 1 !important;
+
+  padding: 60px 0; 
 }
 
-/* Svaki parni projekat menja redosled (Tekst levo, Slika desno) */
 .showcase-card:nth-child(even) .showcase-card-inner {
   flex-direction: row-reverse;
 }
@@ -171,7 +220,6 @@
   transform: scale(1.03); 
 }
 
-/* Mreža za sličice (2 reda po 6 slika na desktopu) */
 .showcase-thumbnails {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -208,21 +256,49 @@
   text-align: left;
 }
 
-.showcase-tags {
+/* Kontejner u nivou tagova */
+.showcase-top-row {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  justify-content: flex-start; /* Poravnava sve sa leve strane */
+  align-items: center;
+  gap: 20px; /* Razmak između status bedža i tagova */
+  width: 100%;
+  margin-bottom: 18px;
+  flex-wrap: wrap; /* Da pređe u novi red ako je ekran preuzak */
 }
 
-.tag {
-  background: rgba(255, 255, 255, 0.08); 
-  color: #bbb;
-  padding: 6px 14px;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 700;
+/* =========================================
+   ČISTI TAGOVI (Bez pozadine)
+   ========================================= */
+.showcase-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.showcase-tags .tag {
+  background: transparent !important; 
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  
+  color: #38bdf8 !important; 
+  font-size: 0.85rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px; 
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3); 
+  display: inline-flex;
+  align-items: center;
+}
+
+.showcase-tags .tag:not(:last-child)::after {
+  content: '•';
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.3);
+  text-shadow: none;
 }
 
 .showcase-info h3 {
@@ -240,7 +316,6 @@
   margin-bottom: 30px;
 }
 
-/* Tabela specifikacija */
 .showcase-specs {
   list-style: none;
   width: 100%;
@@ -267,7 +342,135 @@
 }
 
 /* =========================================
-   FOOTER STILOVI (Zlatna sredina)
+   STATUS ZNAČKA (Iznad slike, levo)
+   ========================================= */
+.showcase-status {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 12px; 
+  border-radius: 30px;
+  background: rgba(10, 15, 22, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: none !important;
+  margin-bottom: 12px; /* Pravi tačan razmak iznad slike */
+  align-self: flex-start; /* Drži ga levo uz ivicu */
+}
+
+.showcase-status span:last-child {
+  color: #38bdf8;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1; 
+  display: inline-block;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  min-width: 6px; 
+  min-height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseStatus 2s infinite;
+  display: inline-block;
+  margin: 0; 
+}
+
+@keyframes pulseStatus {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* =========================================
+   OVERCLOCK TECH SEPARATOR (ANIMIRANI NEON)
+   ========================================= */
+.tech-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 100%;
+  max-width: 580px;
+  margin: 80px auto;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+@keyframes dividerGlow {
+  0% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 2px rgba(42, 142, 199, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
+  }
+  100% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 2px rgba(42, 142, 199, 0.4));
+  }
+}
+
+.tech-divider .divider-line,
+.tech-divider .divider-node {
+  animation: dividerGlow 3s ease-in-out infinite;
+}
+
+.tech-divider:nth-of-type(even) .divider-line,
+.tech-divider:nth-of-type(even) .divider-node {
+  animation-delay: 1.5s;
+}
+
+.tech-divider .divider-node {
+  width: 7px;
+  height: 7px;
+  background-color: #2a8ec7;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #2a8ec7, 0 0 16px rgba(42, 142, 199, 0.8);
+}
+
+.tech-divider .divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(42, 142, 199, 0.2) 15%, 
+    rgba(42, 142, 199, 0.95) 50%, 
+    rgba(42, 142, 199, 0.2) 85%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(42, 142, 199, 0.6);
+}
+
+.tech-divider:nth-of-type(even) .divider-node {
+  background-color: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 22px rgba(56, 189, 248, 0.9), 0 0 30px rgba(56, 189, 248, 0.5);
+}
+
+.tech-divider:nth-of-type(even) .divider-line {
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(56, 189, 248, 0.3) 15%, 
+    rgba(186, 230, 253, 1) 50%, 
+    rgba(56, 189, 248, 0.3) 85%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.8);
+}
+
+/* =========================================
+   FOOTER STILOVI
    ========================================= */
 .inline-footer {
   width: 100% !important;
@@ -308,11 +511,6 @@
   font-weight: 500;
 }
 
-.footer-right {
-  display: flex;
-  align-items: center;
-}
-
 .back-to-top-btn {
   color: #ffffff;
   background: #0a0a0a;
@@ -339,8 +537,8 @@
   .showcase-card-inner,
   .showcase-card:nth-child(even) .showcase-card-inner {
     flex-direction: column;
-    padding: 24px;
-    gap: 30px;
+    padding: 40px 15px; 
+    gap: 40px;          
   }
   
   .showcase-visuals, 
@@ -349,9 +547,12 @@
     width: 100%;
   }
 
-  .showcase-thumbnails {
-    grid-template-columns: repeat(4, 1fr); 
-  }
+.showcase-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  margin-top: 12px; /* Daje vazduha između glavne slike i sličica */
+}
 
   .footer-inner {
     flex-direction: column;
