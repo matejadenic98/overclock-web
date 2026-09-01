@@ -29,7 +29,7 @@
       <img id="lightbox-img" src="" alt="Uvećani prikaz">
     </div>
 
-    <!-- Plutajuća kontrolna kapsula (Dock) sa brojačem i strelicama -->
+    <!-- Plutajuća kontrolna kapsula -->
     <div class="lightbox-controls-dock">
       <button class="lightbox-arrow lightbox-prev" aria-label="Prethodna">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -58,55 +58,96 @@
     <!-- FILTERI -->
     <nav class="showcase-filters">
       <button class="filter-btn active" data-tag="all">Sve</button>
+      <button class="filter-btn" data-tag="premium-servis">Premium Servis</button>
       <button class="filter-btn" data-tag="custom-pc">Custom PC</button>
-      <button class="filter-btn" data-tag="high-end">High-End PC</button>
       <button class="filter-btn" data-tag="oc-konzola">OC Konzola</button>
-      <button class="filter-btn" data-tag="packdev">PackDev</button>
-      <button class="filter-btn" data-tag="meta-quest">Meta Quest</button>
-      <button class="filter-btn" data-tag="setup">Setup-ovi</button>
-      <button class="filter-btn" data-tag="moding">Moding</button>
+      <button class="filter-btn" data-tag="oc-pc">Overclock PC</button>
+      <button class="filter-btn" data-tag="optimizacija">Optimizacija</button>
+      <button class="filter-btn" data-tag="ciscenje">Čišćenje</button>
+      <button class="filter-btn" data-tag="upgrade-pc">Upgrade PC</button>
     </nav>
 
     <!-- MREŽA PROJEKATA -->
     <section class="showcase-layout">
 
-      <!-- PROJEKAT 1: Intel i7 -->
-      <article class="showcase-card" data-tags="custom-pc high-end setup">
-        <div class="showcase-card-inner">
+<!-- PROJEKAT 1: PREMIUM SERVIS & OPTIMIZACIJA i7 14700k -->
+      <article class="showcase-card new-layout" data-tags="premium-servis high-end moding">
+        <div class="showcase-card-inner-v2">
             
-            <div class="showcase-visuals">
-              <!-- Status bedž iznad slike (levo) -->
-              <div class="showcase-status">
-                <span class="status-dot"></span>
-                <span>Completed Build</span>
-              </div>
-              <div class="showcase-image-wrapper">
-                <img src="images/galerija/i714700k_1.webp" alt="Intel Core i7-14700K" class="showcase-main-img" data-gal-id="project1">
-              </div>
-              <div class="showcase-thumbnails" data-gal-target="project1">
-                <img src="images/galerija/i714700k_1.webp" class="s-thumb active" alt="Detalj 1">
-                <img src="images/galerija/i714700k_2.webp" class="s-thumb" alt="Detalj 2">
-                <img src="images/galerija/i714700k_3.webp" class="s-thumb" alt="Detalj 3">
-                <img src="images/galerija/i714700k_4.webp" class="s-thumb" alt="Detalj 4">
-              </div>
+            <!-- GORNJI DEO: Velika Hero Slika sa B/A slajderom -->
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Build Completed</span>
+                </div>
+
+                <!-- BEFORE/AFTER KONTEJNER -->
+                <div class="ba-slider-container">
+                  <!-- Slika PRE (Baza) -->
+                  <img src="images/gallery/rtx3090premiumservis1_2.webp" alt="Pre servisa" class="ba-img-before">
+                  
+                  <!-- Slika POSLE (Preko baze, sa maskom) -->
+                  <img src="images/gallery/rtx3090premiumservis1_16_1.webp" alt="Posle servisa" class="ba-img-after showcase-main-img" data-gal-id="project1" data-after-src="images/gallery/rtx3090premiumservis1_16.webp">
+                  
+                  <!-- ČIST BELI TEKST U UGLOVIMA -->
+                  <div class="ba-label ba-label-before">PRE</div>
+                  <div class="ba-label ba-label-after">POSLE</div>
+                  
+                  <input type="range" min="0" max="100" value="50" class="ba-slider-input">
+                  
+                  <div class="ba-slider-line">
+                    <div class="ba-slider-button">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
             </div>
 
-            <div class="showcase-info">
-              <div class="showcase-tags">
-                <span class="tag">#custom-pc</span>
-                <span class="tag">#high-end</span>
-                <span class="tag">#setup</span>
-              </div>
-              
-              <h3>Intel Core i7-14700K<br>ASUS ProArt Build</h3>
-              <p class="showcase-desc">Ekskluzivni workstation dizajniran za maksimalne performanse u renderingu i 4K gamingu. Fokus na besprekoran cable management i optimizaciju temperatura pod maksimalnim opterećenjem.</p>
-              
-              <ul class="showcase-specs">
-                <li><span>Procesor:</span> Intel Core i7-14700K</li>
-                <li><span>Matična:</span> ASUS ProArt Z790</li>
-                <li><span>Memorija:</span> 64GB DDR5 6000MHz</li>
-                <li><span>Grafika:</span> NVIDIA RTX 4080 Super</li>
-              </ul>
+            <div class="showcase-bottom-split">
+                <!-- LEVA STRANA: Sličice (12 komada) + Specifikacije -->
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project1">
+                    <img src="images/gallery/rtx3090premiumservis1_2.webp" class="s-thumb" alt="Detalj 2">
+                    <img src="images/gallery/rtx3090premiumservis1_4.webp" class="s-thumb" alt="Detalj 4">
+                    <img src="images/gallery/rtx3090premiumservis1_8.webp" class="s-thumb" alt="Detalj 8">
+                    <img src="images/gallery/rtx3090premiumservis1_9.webp" class="s-thumb" alt="Detalj 9">
+                    <img src="images/gallery/rtx3090premiumservis1_10.webp" class="s-thumb" alt="Detalj 10">
+                    <img src="images/gallery/rtx3090premiumservis1_12.webp" class="s-thumb" alt="Detalj 12">
+                    <img src="images/gallery/rtx3090premiumservis1_14.webp" class="s-thumb" alt="Detalj 14">
+                    <img src="images/gallery/rtx3090premiumservis1_15.webp" class="s-thumb" alt="Detalj 15">
+                    <img src="images/gallery/rtx3090premiumservis1_16.webp" class="s-thumb" alt="Detalj 16">
+                    <img src="images/gallery/rtx3090premiumservis1_23.webp" class="s-thumb" alt="Detalj 23">
+                    <img src="images/gallery/rtx3090premiumservis1_25.webp" class="s-thumb" alt="Detalj 25">
+                    <img src="images/gallery/rtx3090premiumservis1_26.webp" class="s-thumb" alt="Detalj 26">
+                    
+                    <!-- DUGME ZA POVRATAK NA B/A MOD -->
+                    <div class="s-thumb active ba-trigger-thumb" data-ba="true" title="Vrati na Before/After">B/A</div>
+                  </div>
+                  
+                  <ul class="showcase-specs">
+                    <li><span>Usluga:</span> Premium Servis & Termalna Revizija</li>
+                    <li><span>Problem:</span> Preterano grejanje i7-14700K</li>
+                    <li><span>Rešenje:</span> Improvizovani stand-off-ovi & Pozicioniranje</li>
+                    <li><span>Rezultat:</span> -20°C niže temperature bez gubitka performansi</li>
+                  </ul>
+                </div>
+
+                <!-- DESNA STRANA: Tekstualne informacije -->
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#custom-pc</span>
+                    <span class="tag">#high-end</span>
+                    <span class="tag">#moding</span>
+                  </div>
+                  
+                  <h3>Intel Core i7-14700K<br>Premium Servis & Rešenje Termike</h3>
+                  <p class="showcase-desc">Rešili smo problem ekstremnog pregrevanja i7-14700K procesora. Zbog izgubljenih fabričkih stand-off-ova, uspešno smo improvizovali sa gumicama, pravilno pozicionirali hlađenje i odradili detaljno čišćenje.</p>
+                  
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Uz svežu instalaciju sistema i duboku softversku optimizaciju, temperature su pale za više od 20 stepeni, a sistem radi stabilno pod maksimalnim opterećenjem bez ikakvog gubitka performansi.
+                  </p>
+                </div>
             </div>
 
         </div>
@@ -118,44 +159,52 @@
           <span class="divider-node"></span>
       </div>
 
-      <!-- PROJEKAT 2: PackDev -->
-      <article class="showcase-card" data-tags="packdev setup high-end moding">
-        <div class="showcase-card-inner">
+      <!-- PROJEKAT 2: PackDev (Standardni Hero raspored) -->
+      <article class="showcase-card new-layout" data-tags="custom-pc setup high-end moding">
+        <div class="showcase-card-inner-v2">
             
-            <div class="showcase-visuals">
-              <!-- Status bedž iznad slike (levo) -->
-              <div class="showcase-status">
-                <span class="status-dot"></span>
-                <span>Completed Build</span>
-              </div>
-              <div class="showcase-image-wrapper">
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Completed Build</span>
+                </div>
                 <img src="images/galerija/packdevpc_1.webp" alt="PackDev Workstation" class="showcase-main-img" data-gal-id="project2">
-              </div>
-              <div class="showcase-thumbnails" data-gal-target="project2">
-                <img src="images/galerija/packdevpc_1.webp" class="s-thumb active" alt="Detalj 1">
-                <img src="images/galerija/packdevpc_2.webp" class="s-thumb" alt="Detalj 2">
-                <img src="images/galerija/packdevpc_3.webp" class="s-thumb" alt="Detalj 3">
-                <img src="images/galerija/packdevpc_4.webp" class="s-thumb" alt="Detalj 4">
-                <img src="images/galerija/packdevpc_5.webp" class="s-thumb" alt="Detalj 5">
-              </div>
             </div>
 
-            <div class="showcase-info">
-              <div class="showcase-tags">
-                <span class="tag">#packdev</span>
-                <span class="tag">#high-end</span>
-                <span class="tag">#moding</span>
-              </div>
-              
-              <h3>PackDev Developer<br>Workstation</h3>
-              <p class="showcase-desc">Specijalizovana mašina dizajnirana i sklopljena za PackDev tim. Optimizovana za kompleksno programiranje, rendering 3D modela i brzo testiranje igara u Unreal Engine okruženju.</p>
-              
-              <ul class="showcase-specs">
-                <li><span>Procesor:</span> AMD Ryzen 9 7950X</li>
-                <li><span>Matična:</span> ASUS ROG Strix</li>
-                <li><span>Memorija:</span> 64GB DDR5</li>
-                <li><span>Grafika:</span> NVIDIA RTX 4090</li>
-              </ul>
+            <div class="showcase-bottom-split">
+                <!-- LEVA STRANA: Sličice + Specifikacije -->
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project2">
+                    <img src="images/galerija/packdevpc_1.webp" class="s-thumb active" alt="Detalj 1">
+                    <img src="images/galerija/packdevpc_2.webp" class="s-thumb" alt="Detalj 2">
+                    <img src="images/galerija/packdevpc_3.webp" class="s-thumb" alt="Detalj 3">
+                    <img src="images/galerija/packdevpc_4.webp" class="s-thumb" alt="Detalj 4">
+                    <img src="images/galerija/packdevpc_5.webp" class="s-thumb" alt="Detalj 5">
+                  </div>
+                  
+                  <ul class="showcase-specs">
+                    <li><span>Procesor:</span> AMD Ryzen 9 7950X</li>
+                    <li><span>Matična:</span> ASUS ROG Strix</li>
+                    <li><span>Memorija:</span> 64GB DDR5</li>
+                    <li><span>Grafika:</span> NVIDIA RTX 4090</li>
+                  </ul>
+                </div>
+
+                <!-- DESNA STRANA: Tekstualne informacije -->
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#packdev</span>
+                    <span class="tag">#high-end</span>
+                    <span class="tag">#moding</span>
+                  </div>
+                  
+                  <h3>PackDev Developer<br>Workstation</h3>
+                  <p class="showcase-desc">Specijalizovana mašina dizajnirana i sklopljena za PackDev tim. Optimizovana za kompleksno programiranje, rendering 3D modela i brzo testiranje igara u Unreal Engine okruženju.</p>
+                  
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Dodatni prostor spreman za specifične napomene, detalje o optimizaciji ili bilo koji tekst koji želiš ovde da istakneš.
+                  </p>
+                </div>
             </div>
 
         </div>
@@ -168,41 +217,49 @@
       </div>
       
       <!-- PROJEKAT 3: OC Konzola -->
-      <article class="showcase-card" data-tags="oc-konzola setup">
-        <div class="showcase-card-inner">
+      <article class="showcase-card new-layout" data-tags="oc-konzola setup">
+        <div class="showcase-card-inner-v2">
             
-            <div class="showcase-visuals">
-              <!-- Status bedž iznad slike (levo) -->
-              <div class="showcase-status">
-                <span class="status-dot"></span>
-                <span>Completed Build</span>
-              </div>
-              <div class="showcase-image-wrapper">
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Completed Build</span>
+                </div>
                 <img src="images/galerija/ockonzola_1.webp" alt="OC Konzola" class="showcase-main-img" data-gal-id="project3">
-              </div>
-              <div class="showcase-thumbnails" data-gal-target="project3">
-                <img src="images/galerija/ockonzola_1.webp" class="s-thumb active" alt="Detalj 1">
-                <img src="images/galerija/ockonzola_2.webp" class="s-thumb" alt="Detalj 2">
-                <img src="images/galerija/ockonzola_3.webp" class="s-thumb" alt="Detalj 3">
-                <img src="images/galerija/ockonzola_4.webp" class="s-thumb" alt="Detalj 4">
-              </div>
             </div>
 
-            <div class="showcase-info">
-              <div class="showcase-tags">
-                <span class="tag">#oc-konzola</span>
-                <span class="tag">#setup</span>
-              </div>
-              
-              <h3>Overclock Linux Konzola<br>SFF Build</h3>
-              <p class="showcase-desc">Naš unikatni pristup dnevnom gamingu - moćan PC hardver upakovan u kompaktno kućište veličine konzole. Pokreće ga specijalno podešen Linux sistem za iskustvo igranja direktno iz fotelje.</p>
-              
-              <ul class="showcase-specs">
-                <li><span>Procesor:</span> AMD Ryzen 7 7800X3D</li>
-                <li><span>Format:</span> Mini-ITX (SFF)</li>
-                <li><span>Grafika:</span> AMD Radeon RX 7900 XTX</li>
-                <li><span>OS:</span> Bazzite / SteamOS</li>
-              </ul>
+            <div class="showcase-bottom-split">
+                <!-- LEVA STRANA: Sličice + Specifikacije -->
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project3">
+                    <img src="images/galerija/ockonzola_1.webp" class="s-thumb active" alt="Detalj 1">
+                    <img src="images/galerija/ockonzola_2.webp" class="s-thumb" alt="Detalj 2">
+                    <img src="images/galerija/ockonzola_3.webp" class="s-thumb" alt="Detalj 3">
+                    <img src="images/galerija/ockonzola_4.webp" class="s-thumb" alt="Detalj 4">
+                  </div>
+
+                  <ul class="showcase-specs">
+                    <li><span>Procesor:</span> AMD Ryzen 7 7800X3D</li>
+                    <li><span>Format:</span> Mini-ITX (SFF)</li>
+                    <li><span>Grafika:</span> AMD Radeon RX 7900 XTX</li>
+                    <li><span>OS:</span> Bazzite / SteamOS</li>
+                  </ul>
+                </div>
+
+                <!-- DESNA STRANA: Tekstualne informacije -->
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#oc-konzola</span>
+                    <span class="tag">#setup</span>
+                  </div>
+                  
+                  <h3>Overclock Linux Konzola<br>SFF Build</h3>
+                  <p class="showcase-desc">Naš unikatni pristup dnevnom gamingu - moćan PC hardver upakovan u kompaktno kućište veličine konzole. Pokreće ga specijalno podešen Linux sistem za iskustvo igranja direktno iz fotelje.</p>
+                  
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Dodatni prostor spreman za specifične napomene, detalje o optimizaciji ili bilo koji tekst koji želiš ovde da istakneš.
+                  </p>
+                </div>
             </div>
 
         </div>
@@ -215,49 +272,83 @@
       </div>
 
       <!-- PROJEKAT 4: Raijintek Build -->
-      <article class="showcase-card" data-tags="custom-pc high-end setup moding">
-        <div class="showcase-card-inner">
+      <article class="showcase-card new-layout" data-tags="custom-pc high-end setup moding">
+        <div class="showcase-card-inner-v2">
             
-            <div class="showcase-visuals">
-              <div class="showcase-status">
-                <span class="status-dot"></span>
-                <span>Completed Build</span>
-              </div>
-              <div class="showcase-image-wrapper">
-                <img src="images/gallery/raijintek2_47.webp" alt="Raijintek Build" class="showcase-main-img" data-gal-id="project4">
-              </div>
-              <div class="showcase-thumbnails" data-gal-target="project4">
-                <img src="images/gallery/raijintek2_38.webp" class="s-thumb active" alt="Detalj 38">
-                <img src="images/gallery/raijintek2_39.webp" class="s-thumb" alt="Detalj 39">
-                <img src="images/gallery/raijintek2_40.webp" class="s-thumb" alt="Detalj 40">
-                <img src="images/gallery/raijintek2_42.webp" class="s-thumb" alt="Detalj 42">
-                <img src="images/gallery/raijintek2_45.webp" class="s-thumb" alt="Detalj 45">
-                <img src="images/gallery/raijintek2_46.webp" class="s-thumb" alt="Detalj 46">
-                <img src="images/gallery/raijintek2_47.webp" class="s-thumb" alt="Detalj 47">
-                <img src="images/gallery/raijintek2_53.webp" class="s-thumb" alt="Detalj 53">
-                <img src="images/gallery/raijintek2_55.webp" class="s-thumb" alt="Detalj 55">
-                <img src="images/gallery/raijintek2_59.webp" class="s-thumb" alt="Detalj 59">
-                <img src="images/gallery/raijintek2_62.webp" class="s-thumb" alt="Detalj 62">
-                <img src="images/gallery/raijintek2_63.webp" class="s-thumb" alt="Detalj 63">
-              </div>
+            <!-- GORNJI DEO: Velika Hero Slika sa B/A slajderom -->
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Completed Build</span>
+                </div>
+
+                <!-- BEFORE/AFTER KONTEJNER -->
+                <div class="ba-slider-container">
+                  <!-- Slika PRE (Baza) -->
+                  <img src="images/gallery/raijintek2_63.webp" alt="Pre modifikacije" class="ba-img-before">
+                  
+                  <!-- Slika POSLE (Preko baze, sa maskom) -->
+                  <img src="images/gallery/raijintek2_47.webp" alt="Posle modifikacije" class="ba-img-after showcase-main-img" data-gal-id="project4" data-after-src="images/gallery/raijintek2_47.webp">
+                  
+                  <!-- ČIST BELI TEKST U UGLOVIMA -->
+                  <div class="ba-label ba-label-before">PRE</div>
+                  <div class="ba-label ba-label-after">POSLE</div>
+                  
+                  <input type="range" min="0" max="100" value="50" class="ba-slider-input">
+                  
+                  <div class="ba-slider-line">
+                    <div class="ba-slider-button">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                  </div>
+                </div>
             </div>
 
-            <div class="showcase-info">
-              <div class="showcase-tags">
-                <span class="tag">#custom-pc</span>
-                <span class="tag">#high-end</span>
-                <span class="tag">#moding</span>
-              </div>
-              
-              <h3>Raijintek Custom Build<br>Performance Rig</h3>
-              <p class="showcase-desc">Moćna custom konfiguracija spakovana u Raijintek kućište. Fokus je na vrhunskim performansama, unikatnom custom modingu i besprekornom vizuelnom identitetu sistema.</p>
-              
-              <ul class="showcase-specs">
-                <li><span>Procesor:</span> Intel / AMD Ryzen</li>
-                <li><span>Kućište:</span> Raijintek Custom</li>
-                <li><span>Memorija:</span> DDR5 High-End</li>
-                <li><span>Grafika:</span> NVIDIA RTX Series</li>
-              </ul>
+            <div class="showcase-bottom-split">
+                <!-- LEVA STRANA: Sličice + Specifikacije -->
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project4">
+                    <img src="images/gallery/raijintek2_38.webp" class="s-thumb" alt="Detalj 38">
+                    <img src="images/gallery/raijintek2_39.webp" class="s-thumb" alt="Detalj 39">
+                    <img src="images/gallery/raijintek2_40.webp" class="s-thumb" alt="Detalj 40">
+                    <img src="images/gallery/raijintek2_42.webp" class="s-thumb" alt="Detalj 42">
+                    <img src="images/gallery/raijintek2_45.webp" class="s-thumb" alt="Detalj 45">
+                    <img src="images/gallery/raijintek2_46.webp" class="s-thumb" alt="Detalj 46">
+                    <img src="images/gallery/raijintek2_47.webp" class="s-thumb" alt="Detalj 47">
+                    <img src="images/gallery/raijintek2_53.webp" class="s-thumb" alt="Detalj 53">
+                    <img src="images/gallery/raijintek2_55.webp" class="s-thumb" alt="Detalj 55">
+                    <img src="images/gallery/raijintek2_59.webp" class="s-thumb" alt="Detalj 59">
+                    <img src="images/gallery/raijintek2_62.webp" class="s-thumb" alt="Detalj 62">
+                    <img src="images/gallery/raijintek2_63.webp" class="s-thumb" alt="Detalj 63">
+                    
+                    <!-- DUGME ZA POVRATAK NA B/A MOD -->
+                    <div class="s-thumb active ba-trigger-thumb" data-ba="true" title="Vrati na Before/After">B/A</div>
+                  </div>
+                  
+                  <ul class="showcase-specs">
+                    <li><span>Procesor:</span> Intel / AMD Ryzen</li>
+                    <li><span>Kućište:</span> Raijintek Custom</li>
+                    <li><span>Memorija:</span> DDR5 High-End</li>
+                    <li><span>Grafika:</span> NVIDIA RTX Series</li>
+                  </ul>
+                </div>
+
+                <!-- DESNA STRANA: Tekstualne informacije -->
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#custom-pc</span>
+                    <span class="tag">#high-end</span>
+                    <span class="tag">#moding</span>
+                  </div>
+                  
+                  <h3>Raijintek Custom Build<br>Performance Rig</h3>
+                  <p class="showcase-desc">Moćna custom konfiguracija spakovana u Raijintek kućište. Fokus je na vrhunskim performansama, unikatnom custom modingu i besprekornom vizuelnom identitetu sistema.</p>
+                  
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Dodatni prostor spreman za specifične napomene, detalje o optimizaciji ili bilo koji tekst koji želiš ovde da istakneš.
+                  </p>
+                </div>
             </div>
 
         </div>
@@ -268,6 +359,119 @@
           <div class="divider-line"></div>
           <span class="divider-node"></span>
       </div>
+
+      <!-- PROJEKAT: Ryzen 9 7950X Custom PC -->
+      <article class="showcase-card new-layout" data-tags="custom-pc">
+        <div class="showcase-card-inner-v2">
+            
+            <!-- GORNJI DEO: Standardna Hero Slika (Bez B/A slajdera) -->
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Build Completed</span>
+                </div>
+                <img src="images/gallery/7950x1_10.webp" alt="Ryzen 9 7950X Custom PC" class="showcase-main-img" data-gal-id="project5">
+            </div>
+
+            <div class="showcase-bottom-split">
+                <!-- LEVA STRANA: Sličice (10 komada) + Specifikacije -->
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project2">
+                    <img src="images/gallery/7950x1_10.webp" class="s-thumb active" alt="Detalj 10">
+                    <img src="images/gallery/7950x1_1.webp" class="s-thumb" alt="Detalj 1">
+                    <img src="images/gallery/7950x1_2.webp" class="s-thumb" alt="Detalj 2">
+                    <img src="images/gallery/7950x1_3.webp" class="s-thumb" alt="Detalj 3">
+                    <img src="images/gallery/7950x1_4.webp" class="s-thumb" alt="Detalj 4">
+                    <img src="images/gallery/7950x1_5.webp" class="s-thumb" alt="Detalj 5">
+                    <img src="images/gallery/7950x1_6.webp" class="s-thumb" alt="Detalj 6">
+                    <img src="images/gallery/7950x1_7.webp" class="s-thumb" alt="Detalj 7">
+                    <img src="images/gallery/7950x1_8.webp" class="s-thumb" alt="Detalj 8">
+                    <img src="images/gallery/7950x1_9.webp" class="s-thumb" alt="Detalj 9">
+                  </div>
+                  
+                  <ul class="showcase-specs">
+                    <li><span>Matična ploča:</span> TUF Gaming X670</li>
+                    <li><span>Procesor:</span> AMD Ryzen 9 7950X</li>
+                    <li><span>Memorija:</span> 32GB DDR5 RAM</li>
+                    <li><span>Grafička:</span> NVIDIA RTX 3080 Ti</li>
+                  </ul>
+                </div>
+
+                <!-- DESNA STRANA: Tekstualne informacije -->
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#custom-pc</span>
+                    <span class="tag">#high-end</span>
+                    <span class="tag">#moding</span>
+                  </div>
+                  
+                  <h3>AMD Ryzen 9 7950X<br>TUF Gaming High-End Rig</h3>
+                  <p class="showcase-desc">Moćna radna i gejming mašina bazirana na AM5 platformi. Kombinacija 16 jezgara procesora i robusne TUF komponente obezbeđuje vrhunske performanse i dugovečnost pod punim opterećenjem.</p>
+                  
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Sistem sklopljen uz perfektan cable management, optimalan protok vazduha i stabilan rad u zahtevnim aplikacijama.
+                  </p>
+                </div>
+            </div>
+
+        </div>
+      </article>
+
+      <!-- PROJEKAT: Raijintek AM4 white build -->
+      <article class="showcase-card new-layout" data-tags="custom-pc raijintek white-build">
+        <div class="showcase-card-inner-v2">
+            
+            <div class="showcase-hero">
+                <div class="showcase-status">
+                  <span class="status-dot"></span>
+                  <span>Build Completed</span>
+                </div>
+                <img src="images/gallery/raijintekwhite1_6.webp" alt="Raijintek AM4 white build" class="showcase-main-img" data-gal-id="project6">
+            </div>
+
+            <div class="showcase-bottom-split">
+                <div class="showcase-left-column">
+                  <div class="showcase-thumbnails-grid" data-gal-target="project6">
+                    <img src="images/gallery/raijintekwhite1_1.webp" class="s-thumb" alt="Detalj 1">
+                    <img src="images/gallery/raijintekwhite1_2.webp" class="s-thumb" alt="Detalj 2">
+                    <img src="images/gallery/raijintekwhite1_3.webp" class="s-thumb" alt="Detalj 3">
+                    <img src="images/gallery/raijintekwhite1_4.webp" class="s-thumb" alt="Detalj 4">
+                    <img src="images/gallery/raijintekwhite1_5.webp" class="s-thumb" alt="Detalj 5">
+                    <img src="images/gallery/raijintekwhite1_6.webp" class="s-thumb active" alt="Detalj 6">
+                    <img src="images/gallery/raijintekwhite1_7.webp" class="s-thumb" alt="Detalj 7">
+                    <img src="images/gallery/raijintekwhite1_8.webp" class="s-thumb" alt="Detalj 8">
+                    <img src="images/gallery/raijintekwhite1_9.webp" class="s-thumb" alt="Detalj 9">
+                    <img src="images/gallery/raijintekwhite1_10.webp" class="s-thumb" alt="Detalj 10">
+                    <img src="images/gallery/raijintekwhite1_11.webp" class="s-thumb" alt="Detalj 11">
+                    <img src="images/gallery/raijintekwhite1_12.webp" class="s-thumb" alt="Detalj 12">
+                  </div>
+                  
+                  <ul class="showcase-specs">
+                    <li><span>Kućište:</span> Raijintek Atreus BT4 White</li>
+                    <li><span>Procesor:</span> AMD Ryzen 7 5700X</li>
+                    <li><span>Grafička kartica:</span> AMD 6900XT XFX</li>
+                    <li><span>Vodeno hladjenje:</span> Raijintek Cyclops 360 Lite White</li>
+                  </ul>
+                </div>
+
+                <div class="showcase-info-panel">
+                  <div class="showcase-tags">
+                    <span class="tag">#custom-pc</span>
+                    <span class="tag">#raijintek</span>
+                    <span class="tag">#white-build</span>
+                  </div>
+                  
+                  <h3>Raijintek AM4 white build</h3>
+                  <p class="showcase-desc">Premium brendirani custom računar sa Raijintek kućistem, vodenim hlađenjem i napajanjem, cini savršen spoj sa belom RX 6900XT AMD karticom za idealan 1440p gaming, uparen sa 32GB RAM za osiguranu dugocečnost računara. Računar je primarno sklapan za gaming, takodje projektovanje.</p>
+
+                  <p class="showcase-desc-extra" style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">
+                    Sistem sklopljen uz perfektan cable management, optimalan protok vazduha i stabilan rad u zahtevnim aplikacijama.
+                  </p>
+                </div>
+            </div>
+
+        </div>
+      </article>
 
     </section>
   </main>
