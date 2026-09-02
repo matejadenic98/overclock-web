@@ -112,6 +112,7 @@
   box-shadow: none !important;
 }
 
+
 .filter-btn.active { position: relative; }
 .filter-btn.active::after {
   content: '';
@@ -124,21 +125,6 @@
   background: #38bdf8;
   box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
   border-radius: 2px;
-}
-
-/* PRILAGOĐAVANJE ZA MOBILNE UREĐAJE (Lako povlačenje prstom) */
-@media (max-width: 768px) {
-  .showcase-filters {
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Omogućava gladak swipe na telefonima */
-    gap: 0.5rem;
-    padding: 10px;
-  }
-  
-  .showcase-filters::-webkit-scrollbar { display: none; }
-  .showcase-filters { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 /* =========================================
@@ -667,26 +653,3 @@
   border-bottom: none !important;
 }
 
-/* =========================================
-   MOBILNI RESPONSIVE
-   ========================================= */
-@media (max-width: 992px) {
-  .showcase-bottom-split {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .showcase-hero {
-    aspect-ratio: 16 / 9;
-  }
-  
-  .showcase-card-inner-v2 {
-    padding: 40px 15px; 
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 2rem;
-  }
-}

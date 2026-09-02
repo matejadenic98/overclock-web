@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-// 3. BEFORE / AFTER SLIDER LOGIKA (SA TIMEROM ZA TEKST OD 3 SEKUNDE)
+  // 3. BEFORE / AFTER SLIDER LOGIKA (SA TIMEROM ZA TEKST OD 3 SEKUNDE)
   const sliders = document.querySelectorAll('.ba-slider-container');
   sliders.forEach(slider => {
       const input = slider.querySelector('.ba-slider-input');
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
   });
 
-  // 5. ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA (Ovo je nedostajalo!)
+  // 5. ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
   function lockScroll() {
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -269,4 +269,40 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // 7. MOBILNI OFF-CANVAS MENI LOGIKA
+  const openBtn = document.getElementById('mobile-filter-open');
+  const closeBtn = document.getElementById('mobile-filter-close');
+  const filtersMenu = document.getElementById('showcase-filters-menu');
+  const overlay = document.getElementById('mobile-filter-overlay');
+
+  function openFilters() {
+    if (filtersMenu && overlay) {
+      filtersMenu.classList.add('mobile-active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeFilters() {
+    if (filtersMenu && overlay) {
+      filtersMenu.classList.remove('mobile-active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openFilters);
+  if (closeBtn) closeBtn.addEventListener('click', closeFilters);
+  if (overlay) overlay.addEventListener('click', closeFilters);
+
+  // Zatvori meni automatski na mobilnom kada se klikne bilo koje filter dugme
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (window.innerWidth <= 992) {
+        closeFilters();
+      }
+    });
+  });
+
 });

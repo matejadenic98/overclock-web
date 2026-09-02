@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/mobilegallery.css">
 </head>
 <body class="scroll-journey gallery-page" id="hero">
 
@@ -17,7 +18,17 @@
       <img src="images/oc1.png" alt="Logo" class="showcase-logo">
       <span class="logo-text">Overclock.rs</span>
     </a>
+
+    <!-- HAMBURGER DUGME (Prikazuje se samo na mobilnom) -->
+    <button class="mobile-nav-toggle" id="mobile-filter-open" aria-label="Otvori meni">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
   </header>
+
+  <!-- OVERLAY ZA ZATAMNJENJE POZADINE NA MOBILNOM -->
+  <div class="mobile-filter-overlay" id="mobile-filter-overlay"></div>
 
   <!-- LIGHTBOX MODAL -->
   <div class="lightbox" id="lightbox-modal">
@@ -55,8 +66,11 @@
       <p>Premijum Showcase konfiguracija i modifikacija.</p>
     </div>
 
-    <!-- FILTERI -->
-    <nav class="showcase-filters">
+    <!-- FILTERI NAVIGACIJA (Dodat ID i mobilne komponente) -->
+    <nav class="showcase-filters" id="showcase-filters-menu">
+      <button class="mobile-filter-close" id="mobile-filter-close" aria-label="Zatvori">&times;</button>
+      <div class="mobile-menu-header">Kategorije Projekata</div>
+
       <button class="filter-btn active" data-tag="all">Sve</button>
       <button class="filter-btn" data-tag="premium-servis">Premium Servis</button>
       <button class="filter-btn" data-tag="custom-pc">Custom PC</button>
