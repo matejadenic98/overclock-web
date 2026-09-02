@@ -604,6 +604,70 @@
 }
 
 /* =========================================
+   DVA ODVOJENA MODULA IZA TEKSTA I SPECIFIKACIJA
+   ========================================= */
+
+/* Glavna kartica ostaje potpuno bez okvira i pozadine */
+.showcase-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Desni modul: Tekstualni panel */
+.showcase-info-panel {
+  background: rgba(10, 15, 26, 0.65) !important;
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Levi modul: Specifikacije */
+.showcase-specs {
+  background: rgba(10, 15, 26, 0.65) !important;
+  backdrop-filter: blur(12px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Beli i plavi tekst ostaju izuzetno oštar unutar tamnog modula */
+.showcase-info-panel h3 {
+  color: #ffffff !important;
+}
+
+.showcase-desc {
+  color: #e2e8f0 !important;
+}
+
+.showcase-desc-extra {
+  color: #94a3b8 !important;
+}
+
+.showcase-tags .tag,
+.showcase-specs li span:first-child {
+  color: #38bdf8 !important;
+}
+
+.showcase-specs li span:last-child {
+  color: #ffffff !important;
+}
+
+.showcase-specs li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.showcase-specs li:last-child {
+  border-bottom: none !important;
+}
+
+/* =========================================
    MOBILNI RESPONSIVE
    ========================================= */
 @media (max-width: 992px) {
