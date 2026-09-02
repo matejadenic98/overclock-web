@@ -63,18 +63,18 @@
 }
 
 /* =========================================
-   FILTER KONTEJNER
+   KOMPAKTNA FILTER NAVIGACIJA (Bez skrolovanja na desktopu)
    ========================================= */
 .showcase-filters {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Savršeno centrirano na desktopu */
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-  overflow-x: auto;
-  max-width: 100%;
-  padding: 15px 20px; 
+  flex-wrap: wrap; /* Ako zatreba, automatski prelaze u novi red umesto da se seku */
+  gap: 0.5rem 0.8rem; /* Znatno smanjen razmak (vertikalno / horizontalno) */
+  margin: 0 auto 3rem auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px 15px; 
   
   background: transparent !important;
   backdrop-filter: none !important;
@@ -88,28 +88,27 @@
   border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.7) 50%, transparent 100%) 1 !important;
 }
 
-.showcase-filters::-webkit-scrollbar { display: none; }
-.showcase-filters { -ms-overflow-style: none; scrollbar-width: none; }
-
+/* Smanjene dimenzije i font dugmića */
 .filter-btn {
   background: transparent !important;
   border: none !important;
   color: #777777;
-  padding: 8px 12px;
+  padding: 5px 10px; /* Smanjen padding sa 8px 12px na 5px 10px */
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.78rem; /* Smanjen font sa 0.9rem na 0.78rem */
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px; /* Smanjen letter-spacing radi uštede prostora */
   white-space: nowrap;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
   background: transparent !important;
   color: #38bdf8 !important;
-  text-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
   box-shadow: none !important;
 }
 
@@ -117,14 +116,29 @@
 .filter-btn.active::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 50%;
   transform: translateX(-50%);
-  width: 50%;
+  width: 60%;
   height: 2px;
   background: #38bdf8;
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
   border-radius: 2px;
+}
+
+/* PRILAGOĐAVANJE ZA MOBILNE UREĐAJE (Lako povlačenje prstom) */
+@media (max-width: 768px) {
+  .showcase-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Omogućava gladak swipe na telefonima */
+    gap: 0.5rem;
+    padding: 10px;
+  }
+  
+  .showcase-filters::-webkit-scrollbar { display: none; }
+  .showcase-filters { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 /* =========================================
@@ -366,6 +380,7 @@
   align-items: flex-start;
   text-align: left;
 }
+
 
 /* =========================================
    ČISTI TAGOVI (Bez pozadine i okvira)
