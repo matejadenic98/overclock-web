@@ -252,10 +252,10 @@
     margin: 40px auto !important;
   }
 
-/* --- 7. FOOTER (FIX 2 - IDENTIČAN GLAVNOJ STRANICI) --- */
+/* --- 7. FOOTER (IDENTIČAN KAO NA INDEX.HTML) --- */
   .inline-footer {
     border-top: none !important; 
-    margin: 2rem auto 0 auto !important;
+    margin: 1.5rem auto 0 auto !important;
   }
 
   .footer-inner {
@@ -263,29 +263,29 @@
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 1rem !important; /* Malo manji razmak između elemenata */
-    padding: 2rem 1rem 3rem 1rem !important;
+    gap: 0.8rem !important; 
+    padding: 1.5rem 1rem 2.5rem 1rem !important;
   }
 
   .footer-left {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 0.3rem !important; /* Primetno manji razmak između logotipa i teksta */
+    gap: 0.2rem !important; 
   }
 
-  /* Smanjen logotip */
+  /* Usklađena tačna veličina logotipa sa index stranice */
   .footer-logo {
-    font-size: 1.25rem !important; 
-    font-weight: 800 !important;
-    color: #000 !important;
+    font-size: 1.15rem !important; 
+    font-weight: 700 !important;
+    color: #ffffff !important;
   }
 
-  /* Smanjen tekst ispod logotipa */
+  /* Usklađen sitniji tekst ispod logotipa sa index stranice */
   .footer-credits {
-    font-size: 0.8rem !important; 
-    font-weight: 500 !important;
-    color: #888888 !important; /* Ili rgba(255, 255, 255, 0.6) ako želiš malo svetlije */
+    font-size: 0.75rem !important; 
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.7) !important;
     margin: 0 !important;
   }
 
@@ -293,7 +293,15 @@
     display: flex !important;
     justify-content: center !important;
     width: 100% !important;
-    margin-top: 8px !important;
+    margin-top: 5px !important;
+  }
+
+  /* Usklađeno manje dugme "NAZAD NA VRH" */
+  .back-to-top-btn {
+    font-size: 0.7rem !important; 
+    padding: 7px 18px !important; 
+    letter-spacing: 0.5px !important;
+    border-radius: 20px !important;
   }
 
   /* Primetno manje dugme "NAZAD NA VRH" */
