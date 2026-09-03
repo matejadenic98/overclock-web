@@ -253,7 +253,7 @@
   }
 
 /* --- 7. FOOTER (IDENTIČAN KAO NA INDEX.HTML) --- */
-  .inline-footer {
+ .inline-footer {
     border-top: none !important; 
     margin: 1.5rem auto 0 auto !important;
   }
@@ -274,18 +274,17 @@
     gap: 0.2rem !important; 
   }
 
-  /* Usklađena tačna veličina logotipa sa index stranice */
   .footer-logo {
     font-size: 1.15rem !important; 
     font-weight: 700 !important;
-    color: #000 !important;
+    color: #ffffff !important;
   }
 
-/* Eksplicitno primenjujemo sivu boju sa najjačim prioritetom */
-  .inline-footer .footer-inner .footer-left .footer-credits {
+  /* Koristimo čvrstu sivu boju (#94a3b8) sa eksplicitnim prioritetom */
+  p.footer-credits {
     font-size: 0.75rem !important; 
     font-weight: 400 !important;
-    color: rgba(255, 255, 255, 0.6) !important; /* Možeš pojačati na 0.65 ili 0.7 ako želiš svetlije */
+    color: #94a3b8 !important; 
     margin: 0 !important;
   }
 
@@ -296,19 +295,11 @@
     margin-top: 5px !important;
   }
 
-  /* Usklađeno manje dugme "NAZAD NA VRH" */
   .back-to-top-btn {
     font-size: 0.7rem !important; 
     padding: 7px 18px !important; 
     letter-spacing: 0.5px !important;
     border-radius: 20px !important;
-  }
-
-  /* Primetno manje dugme "NAZAD NA VRH" */
-  .back-to-top-btn {
-    font-size: 0.75rem !important; 
-    padding: 8px 20px !important; 
-    letter-spacing: 0.5px !important;
   }
 
   /* --- 8. LIGHTBOX MODAL (FIX 4 - BLAGI PADDING KAO NA GLAVNOJ STRANICI) --- */
