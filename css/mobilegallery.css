@@ -252,9 +252,9 @@
     margin: 40px auto !important;
   }
 
-  /* --- 7. FOOTER (FIX 2) --- */
+/* --- 7. FOOTER (FIX 2 - IDENTIČAN GLAVNOJ STRANICI) --- */
   .inline-footer {
-    border-top: none !important; /* Uklanjamo liniju iznad footera na mobilnom */
+    border-top: none !important; 
     margin: 2rem auto 0 auto !important;
   }
 
@@ -263,7 +263,7 @@
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 1.2rem !important;
+    gap: 1rem !important; /* Malo manji razmak između elemenata */
     padding: 2rem 1rem 3rem 1rem !important;
   }
 
@@ -271,19 +271,36 @@
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    gap: 0.5rem !important;
+    gap: 0.3rem !important; /* Primetno manji razmak između logotipa i teksta */
   }
 
+  /* Smanjen logotip */
   .footer-logo {
-    font-size: 1.5rem !important;
-    color: #000000 !important;
+    font-size: 1.25rem !important; 
+    font-weight: 800 !important;
+    color: #000 !important;
+  }
+
+  /* Smanjen tekst ispod logotipa */
+  .footer-credits {
+    font-size: 0.8rem !important; 
+    font-weight: 500 !important;
+    color: #888888 !important; /* Ili rgba(255, 255, 255, 0.6) ako želiš malo svetlije */
+    margin: 0 !important;
   }
 
   .footer-right {
     display: flex !important;
     justify-content: center !important;
     width: 100% !important;
-    margin-top: 10px !important;
+    margin-top: 8px !important;
+  }
+
+  /* Primetno manje dugme "NAZAD NA VRH" */
+  .back-to-top-btn {
+    font-size: 0.75rem !important; 
+    padding: 8px 20px !important; 
+    letter-spacing: 0.5px !important;
   }
 
   /* --- 8. LIGHTBOX MODAL (FIX 4 - BLAGI PADDING KAO NA GLAVNOJ STRANICI) --- */
