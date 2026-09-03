@@ -156,7 +156,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -6px; /* Blago podiže logo nagore u ravan sa X dugmetom */
+    margin-top: -8px; /* Blago podiže logo nagore u ravan sa X dugmetom */
   }
 
   #hero .mobile-menu-brand img {
