@@ -17,21 +17,34 @@
    ========================================= */
 @media (max-width: 992px) {
 
-  /* --- 1. FIKSIRANA NAVIGACIJA & HAMBURGER DUGME --- */
+  /* --- 1. FIKSIRANA NAVIGACIJA, LOGO & HAMBURGER DUGME (FIX 1) --- */
   .showcase-nav {
-    justify-content: space-between !important; /* Separira logo levo i dugme desno */
-    padding: 0.8rem 1.5rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 1.2rem !important;
+  }
+
+  .nav-brand {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
   .showcase-logo {
-    height: 35px !important;
+    height: 32px !important;
+    display: block !important;
+    margin: 0 !important;
   }
 
   .logo-text {
-    font-size: 1.3rem !important;
+    font-size: 1.35rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding-top: 3px !important; /* Fino vertikalno centriranje teksta u odnosu na ikonicu */
+    display: block !important;
   }
 
-  /* Hamburger ikonica sa desne strane logotipa */
   .mobile-nav-toggle {
     display: flex !important;
     flex-direction: column;
@@ -42,6 +55,7 @@
     border: none !important;
     cursor: pointer;
     padding: 0;
+    margin-top: 2px !important; /* Vizuelno poravnanje sa tekstom */
     z-index: 1001;
   }
 
@@ -96,11 +110,11 @@
     visibility: visible;
   }
 
-  /* --- 4. OFF-CANVAS MENI ZA FILTERE (DESNO NA LEVO) --- */
+  /* --- 4. OFF-CANVAS MENI ZA FILTERE --- */
   .showcase-filters {
     position: fixed !important;
     top: 0 !important;
-    right: -100% !important; /* Sakriveno van ekrana desno */
+    right: -100% !important;
     width: 82% !important;
     max-width: 320px !important;
     height: 100vh !important;
@@ -120,10 +134,9 @@
   }
 
   .showcase-filters.mobile-active {
-    right: 0 !important; /* Otklizava sa desne strane */
+    right: 0 !important;
   }
 
-  /* Dugme X za zatvaranje menija */
   .mobile-filter-close {
     display: flex !important;
     position: absolute;
@@ -137,7 +150,6 @@
     cursor: pointer;
   }
 
-  /* Naslov zaglavlja unutar otvorenog menija */
   .mobile-menu-header {
     display: block !important;
     color: #38bdf8;
@@ -150,7 +162,6 @@
     border-left: 2px solid #38bdf8;
   }
 
-  /* Dugmići filtera unutar otvorenog menija */
   .filter-btn {
     width: 100% !important;
     text-align: left !important;
@@ -168,7 +179,7 @@
   }
 
   .filter-btn.active::after {
-    display: none !important; /* Izbacuje podvučenu liniju na mobilnom prikazu */
+    display: none !important;
   }
 
   /* --- 5. STRUKTURA KARTICA I MODULA --- */
@@ -181,7 +192,6 @@
     gap: 20px !important;
   }
 
-  /* Hero slika sa prilagođenim omjerom stranica za mobilne */
   .showcase-hero {
     aspect-ratio: 4 / 3 !important;
     border-radius: 10px !important;
@@ -192,17 +202,35 @@
     gap: 20px !important;
   }
 
-  /* Mreža thumbnail sličica presložena u 4 kolone */
   .showcase-thumbnails-grid {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 6px !important;
   }
 
-  /* Moduli za specifikacije i tekst */
   .showcase-info-panel,
   .showcase-specs {
     padding: 18px !important;
     border-radius: 12px !important;
+  }
+
+  /* --- 6. SPECIFIKACIJE TEKST (FIX 3) --- */
+  .showcase-specs li {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important; /* Drži naslov na vrhu ako dugačak tekst ide u dva reda */
+    gap: 15px !important; /* Obezbeđuje prazan prostor između "USLUGA:" i "Premium..." */
+    padding: 12px 0 !important;
+    font-size: 0.85rem !important;
+    text-align: right !important; /* Vrednosti ravna uz desnu ivicu */
+    line-height: 1.4 !important;
+  }
+
+  .showcase-specs li span:first-child {
+    flex-shrink: 0 !important; /* Sprečava da se labela sabije i pukne */
+    font-size: 0.75rem !important;
+    text-align: left !important;
+    margin-top: 2px !important; /* Ravnanje za lepši vizuelni izgled */
   }
 
   .showcase-info-panel h3 {
@@ -220,25 +248,96 @@
     font-size: 0.82rem !important;
   }
 
-  .showcase-specs li {
-    padding: 10px 0 !important;
-    font-size: 0.85rem !important;
-  }
-
-  .showcase-specs li span:first-child {
-    font-size: 0.75rem !important;
-  }
-
-  /* Separator */
   .tech-divider {
     margin: 40px auto !important;
   }
 
-  /* Footeri */
+  /* --- 7. FOOTER (FIX 2) --- */
+  .inline-footer {
+    border-top: none !important; /* Uklanjamo liniju iznad footera na mobilnom */
+    margin: 2rem auto 0 auto !important;
+  }
+
   .footer-inner {
+    display: flex !important;
     flex-direction: column !important;
+    align-items: center !important;
     text-align: center !important;
-    gap: 1.5rem !important;
-    padding: 2rem 1rem !important;
+    gap: 1.2rem !important;
+    padding: 2rem 1rem 3rem 1rem !important;
+  }
+
+  .footer-left {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .footer-logo {
+    font-size: 1.5rem !important;
+    color: #000000 !important;
+  }
+
+  .footer-right {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+  }
+
+  /* --- 8. LIGHTBOX MODAL (FIX 4 - BLAGI PADDING KAO NA GLAVNOJ STRANICI) --- */
+  .lightbox {
+    padding: 0 !important; 
+  }
+  
+  .lightbox-content {
+    width: 100% !important;
+    height: 100vh !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 15px !important; /* Dodat blagi padding da slika ne udara direktno u ivice ekrana */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+  }
+  
+  #lightbox-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 85vh !important; /* Ostavlja siguran prostor gore za X dugme i dole za kontrole */
+    max-width: 100% !important;
+    object-fit: contain !important; 
+    border-radius: 8px !important; /* Blago zaobljene ivice jer slika više nije u fullscreen-u */
+    margin: 0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; /* Dodaje blagu dubinu slici */
+  }
+  
+  /* Dugmići prebačeni preko same slike u dnu */
+  .lightbox-controls-dock {
+    position: absolute !important;
+    bottom: 20px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2005 !important;
+    width: auto !important;
+  }
+  
+  /* Standardizovano veliko "X" za zatvaranje u gornjem desnom uglu */
+  .lightbox-close {
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    z-index: 2010 !important;
+    background: rgba(10, 15, 26, 0.7) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 }
