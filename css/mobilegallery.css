@@ -281,11 +281,11 @@
     color: #000 !important;
   }
 
-  /* Usklađen sitniji tekst ispod logotipa sa index stranice */
-  .footer-credits {
+/* Eksplicitno primenjujemo sivu boju sa najjačim prioritetom */
+  .inline-footer .footer-inner .footer-left .footer-credits {
     font-size: 0.75rem !important; 
     font-weight: 400 !important;
-    color: rgba(255, 255, 255, 0.7) !important;
+    color: rgba(255, 255, 255, 0.6) !important; /* Možeš pojačati na 0.65 ili 0.7 ako želiš svetlije */
     margin: 0 !important;
   }
 
