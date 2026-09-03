@@ -277,14 +277,13 @@
   .footer-logo {
     font-size: 1.15rem !important; 
     font-weight: 700 !important;
-    color: #ffffff !important;
+    color: #000000 !important;
   }
 
-  /* Koristimo čvrstu sivu boju (#94a3b8) sa eksplicitnim prioritetom */
   p.footer-credits {
     font-size: 0.75rem !important; 
     font-weight: 400 !important;
-    color: #94a3b8 !important; 
+    color: #555555 !important; 
     margin: 0 !important;
   }
 
