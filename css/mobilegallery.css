@@ -140,26 +140,26 @@
     right: 0;
   }
 
-/* Gornji deo menija - sada sa istom elegantnom linijom kao na dnu */
+/* Gornji deo menija (Logo i X u istoj ravni, podignuto na vrh) */
   #hero .mobile-menu-top {
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 25px 20px 15px 20px;
+    position: relative;
+    padding: 15px 20px 5px 20px; /* Smanjen gornji padding da se sve podigne */
     width: 100%;
-    border-bottom: 1px solid;
-    border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.4) 50%, transparent 100%) 1;
+    box-sizing: border-box;
   }
 
   #hero .mobile-menu-brand {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
   }
 
   #hero .mobile-menu-brand img {
-    height: 36px;
+    height: 34px; /* Blago korigovana visina da bude u savršenoj ravni sa X dugmetom */
     width: auto;
     display: block;
   }
@@ -176,6 +176,8 @@
     line-height: 1;
     cursor: pointer;
     z-index: 2010;
+    margin: 0;
+    padding: 0;
   }
 
   /* Tekst "Kategorije Projekata" - poravnat levo, bliže tagovima i uvučen */
@@ -347,7 +349,7 @@
   #hero .footer-logo {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #000000;
   }
 
   #hero p.footer-credits {
