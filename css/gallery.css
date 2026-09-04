@@ -653,3 +653,21 @@
   border-bottom: none !important;
 }
 
+/* =========================================
+   SPECIFIČNO ZA GALERIJU (BEZ UTICAJA NA OSTATAK SAJTA)
+   ========================================= */
+
+/* 1. Prva kartica na galeriji je OMAH 100% bistra pri učitavanju */
+.gallery-page .showcase-layout .showcase-card:first-of-type {
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: translateY(0) !important;
+}
+
+/* 2. Blaži i brži blur efekat za ostale kartice u galeriji */
+.gallery-page .scroll-blur-reveal {
+  filter: blur(4px);            /* Blaži blur pa se brže razbistri */
+  transform: translateY(15px);  /* Manji pomak na gore */
+  transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
+}
+

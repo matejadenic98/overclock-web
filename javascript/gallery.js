@@ -306,4 +306,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // OSETLJIVIJI SCROLL-BLUR-REVEAL SAMO ZA GALERIJU
+document.addEventListener('DOMContentLoaded', () => {
+  const galleryCards = document.querySelectorAll('.gallery-page .scroll-blur-reveal');
+
+  if (galleryCards.length === 0) return;
+
+  // rootMargin od 250px širi zonu detekcije za 20-25% ranije
+  const galleryObserverOptions = {
+    root: null,
+    rootMargin: '250px 0px 100px 0px',
+    threshold: 0.01
+  };
+
+  const galleryObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, galleryObserverOptions);
+
+  galleryCards.forEach((card, index) => {
+    // PRVA KARTICA: Otkriva se instant pri učitavanju stranice
+    if (index === 0) {
+      card.classList.add('revealed');
+    } else {
+      galleryObserver.observe(card);
+    }
+  });
+});
+
 });
