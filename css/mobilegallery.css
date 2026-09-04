@@ -17,33 +17,21 @@
    ========================================= */
 @media (max-width: 992px) {
 
-  /* Sprečava skrolovanje pozadinske stranice dok je meni otvoren */
-  body[style*="overflow: hidden"] {
-  height: 100vh;
-  touch-action: none;
-}
-
-  /* Sprečavanje skrolovanja pozadine kada je meni otvoren */
-  body.no-scroll {
-  overflow: hidden !important;
-  height: 100vh !important;
-  }
-
-  /* --- 1. FIKSIRANA NAVIGACIJA (Usklađena visina na 71px kao na indexu) --- */
+  /* --- 1. FIKSIRANA NAVIGACIJA (Visina 71px kao na indexu) --- */
   #hero .showcase-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 71px; /* Identična visina kao glavna navigacija sa slike 3 */
+    min-height: 71px;
     height: 71px;
-    padding: 0 1.5rem;
+    padding: 0 1.2rem;
     box-sizing: border-box;
   }
 
   #hero .nav-brand {
     display: inline-flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
   }
 
@@ -54,6 +42,7 @@
     margin: 0;
   }
 
+  /* Tekst logotipa spušten u tačnu vertikalnu os sa ikonom */
   #hero .logo-text {
     font-size: 1.35rem;
     font-weight: 800;
@@ -62,7 +51,7 @@
     padding: 0;
     display: block;
     color: #ffffff;
-    transform: translateY(1.5px); /* Spušta tekst nadole tačno u središnju osu sa ikonicom */
+    transform: translateY(1.5px);
   }
 
   #hero .mobile-nav-toggle {
@@ -164,7 +153,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 71px; /* Usklađeno sa visinom glavne navigacije */
+    min-height: 71px;
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
@@ -214,13 +203,13 @@
     border: none;
   }
 
-  /* CYBER DUGMIĆI - TEKST I LINIJA U SAVRŠENOJ RAVNI OD PRVOG SLOVA */
+  /* CYBER DUGMIĆI I TAGOVI */
   #hero .filter-btn {
     width: calc(100% - 48px);
-    margin: 0 24px; /* Dugme i tekst kreću tačno u ravni sa naslovom "KATEGORIJE PROJEKATA" */
-    display: block; 
+    margin: 0 24px;
+    display: block;
     text-align: left;
-    padding: 14px 0; /* Nema levog paddinga, prvo slovo lepi na nulu */
+    padding: 14px 0;
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -234,11 +223,10 @@
     position: relative;
   }
 
-  /* Span tag služi kao precizan okvir oko samih slova */
   #hero .filter-btn span {
     position: relative;
     display: inline-block;
-    padding-bottom: 5px; /* Odmak plave linije od slova */
+    padding-bottom: 5px;
   }
 
   #hero .filter-btn:first-of-type {
@@ -256,18 +244,17 @@
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
   }
 
-  /* Gasimo staru liniju na dugmetu da ne pravi duplikate */
   #hero .filter-btn.active::after {
     display: none;
   }
 
-  /* NOVA LINIJA: Zakačena za SPAN, kreće od prvog slova i uzima 100% širine teksta */
+  /* Plava linija podvučena direktno pod tekstom */
   #hero .filter-btn.active span::after {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 0; 
-    width: 100%; /* Ovo sada garantuje dužinu tačno kolika je reč! */
+    left: 0;
+    width: 100%;
     height: 2px;
     background: #38bdf8;
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
@@ -378,7 +365,7 @@
   #hero .footer-logo {
     font-size: 1.15rem;
     font-weight: 700;
-    color: #000000;
+    color: #ffffff;
   }
 
   #hero p.footer-credits {
@@ -455,9 +442,15 @@
     justify-content: center;
   }
 
-  /* 9. SAKRIVANJE STATUS ZNAČKE NA MOBILNOM PRIKAZU */
-  #hero .showcase-layout .showcase-card.new-layout .showcase-card-inner-v2 .showcase-hero .showcase-status {
-    display: none;
+  /* --- 9. SAKRIVANJE STATUS ZNAČKE NA MOBILNOM --- */
+  #hero .showcase-status,
+  #hero .showcase-hero .showcase-status {
+    display: none !important;
   }
+}
 
+/* --- 10. SPREČAVANJE SKROLOVANJA STRANICE DOK JE MENI OTVOREN --- */
+  body[style*="overflow: hidden"] {
+  height: 100vh;
+  touch-action: none;
 }
