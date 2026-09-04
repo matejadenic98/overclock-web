@@ -455,7 +455,8 @@
     justify-content: center;
   }
 
-  #hero .showcase-status {
+/* 9. SAKRIVANJE STATUS ZNAČKE NA MOBILNOM PRIKAZU */
+  #hero .showcase-card .showcase-hero .showcase-status {
     display: none;
   }
 }
