@@ -42,7 +42,6 @@
     margin: 0;
   }
 
-  /* Tekst logotipa spušten u tačnu vertikalnu os sa ikonom */
   #hero .logo-text {
     font-size: 1.35rem;
     font-weight: 800;
@@ -51,6 +50,7 @@
     padding: 0;
     display: block;
     color: #ffffff;
+    transform: translateY(3px); /* Spušta tekst nadole tačno u središnju osu sa ikonicom */
   }
 
   #hero .mobile-nav-toggle {
@@ -203,9 +203,12 @@
   /* DUGMIĆI I TAGOVI - Čisto poravnanje sa linijom koja kreće od prvog slova */
   #hero .filter-btn {
     width: calc(100% - 48px);
-    margin: 0 auto;
+    margin: 0 24px; /* Poravnava sve dugmiće na istu levu marginu kao i naslov */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     text-align: left;
-    padding: 14px 0;
+    padding: 14px 0; /* Uklonjen levi padding da tekst počne tačno na ivici */
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -234,15 +237,15 @@
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
   }
 
-  /* Plava linija podvučena direktno od prvog slova taga sa fade-out efektom prema desnoj strani */
+  /* Linija kreće direktno od pozicije 0 (ispod prvog slova) i prostire se udesno */
   #hero .filter-btn.active::after {
     content: '';
     position: absolute;
     bottom: -1px;
-    left: 0;
+    left: 0; /* Počinje tačno ispod prvog slova 'S' ili 'P' */
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
+    background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.5) 60%, transparent 100%);
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
     border-radius: 2px;
   }
