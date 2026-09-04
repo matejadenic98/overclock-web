@@ -200,15 +200,13 @@
     border: none;
   }
 
-  /* DUGMIĆI I TAGOVI - Čisto poravnanje sa linijom koja kreće od prvog slova */
+  /* CYBER DUGMIĆI - TEKST I LINIJA U SAVRŠENOJ RAVNI OD PRVOG SLOVA */
   #hero .filter-btn {
     width: calc(100% - 48px);
-    margin: 0 24px; /* Poravnava sve dugmiće na istu levu marginu kao i naslov */
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    margin: 0 24px; /* Dugme i tekst kreću tačno u ravni sa naslovom "KATEGORIJE PROJEKATA" */
+    display: block; 
     text-align: left;
-    padding: 14px 0; /* Uklonjen levi padding da tekst počne tačno na ivici */
+    padding: 14px 0; /* Nema levog paddinga, prvo slovo lepi na nulu */
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -220,6 +218,13 @@
     border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.25) 50%, transparent 100%) 1;
     transition: all 0.3s ease;
     position: relative;
+  }
+
+  /* Span tag služi kao precizan okvir oko samih slova */
+  #hero .filter-btn span {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px; /* Odmak plave linije od slova */
   }
 
   #hero .filter-btn:first-of-type {
@@ -237,15 +242,20 @@
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
   }
 
-  /* Linija kreće direktno od pozicije 0 (ispod prvog slova) i prostire se udesno */
+  /* Gasimo staru liniju na dugmetu da ne pravi duplikate */
   #hero .filter-btn.active::after {
+    display: none;
+  }
+
+  /* NOVA LINIJA: Zakačena za SPAN, kreće od prvog slova i uzima 100% širine teksta */
+  #hero .filter-btn.active span::after {
     content: '';
     position: absolute;
-    bottom: -1px;
-    left: 0; /* Počinje tačno ispod prvog slova 'S' ili 'P' */
-    width: 100%;
+    bottom: 0;
+    left: 0; 
+    width: 100%; /* Ovo sada garantuje dužinu tačno kolika je reč! */
     height: 2px;
-    background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.5) 60%, transparent 100%);
+    background: #38bdf8;
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
     border-radius: 2px;
   }
