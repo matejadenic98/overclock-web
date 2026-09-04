@@ -449,8 +449,8 @@
   }
 }
 
-/* --- 10. SPREČAVANJE SKROLOVANJA STRANICE DOK JE MENI OTVOREN --- */
-  body[style*="overflow: hidden"] {
-  height: 100vh;
-  touch-action: none;
+/* --- 10. OČIŠĆENA POZADINA ZA MOBILNI MENI --- */
+html, 
+body {
+  background-color: #060913;
 }

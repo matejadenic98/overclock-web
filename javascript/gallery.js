@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // 7. MOBILNI OFF-CANVAS MENI LOGIKA
+// 7. MOBILNI OFF-CANVAS MENI LOGIKA (ČISTA I JEDNOSTAVNA)
   const openBtn = document.getElementById('mobile-filter-open');
   const closeBtn = document.getElementById('mobile-filter-close');
   const filtersMenu = document.getElementById('showcase-filters-menu');
@@ -280,29 +280,30 @@ document.addEventListener("DOMContentLoaded", function () {
     if (filtersMenu && overlay) {
       filtersMenu.classList.add('mobile-active');
       overlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
     }
   }
 
-  function closeFilters() {
+  function closeFilters(scrollToTop = false) {
     if (filtersMenu && overlay) {
       filtersMenu.classList.remove('mobile-active');
       overlay.classList.remove('active');
-      document.body.style.overflow = '';
+
+      if (scrollToTop) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     }
   }
 
   if (openBtn) openBtn.addEventListener('click', openFilters);
-  if (closeBtn) closeBtn.addEventListener('click', closeFilters);
-  if (overlay) overlay.addEventListener('click', closeFilters);
+  if (closeBtn) closeBtn.addEventListener('click', () => closeFilters(false));
+  if (overlay) overlay.addEventListener('click', () => closeFilters(false));
 
-  // Zatvori meni automatski na mobilnom kada se klikne bilo koje filter dugme
+  // Klik na tag zatvara meni i prebacuje na vrh
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       if (window.innerWidth <= 992) {
-        closeFilters();
+        closeFilters(true);
       }
     });
   });
-
 });
