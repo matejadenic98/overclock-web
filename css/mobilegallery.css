@@ -1,6 +1,5 @@
 /* =========================================
    OVERCLOCK.RS - MOBILE GALLERY OPTIMIZATION
-   (100% CLEAN - NO !IMPORTANT FLAGS)
    ========================================= */
 
 /* --- SAKRIVANJE MOBILNIH ELEMENATA NA DESKTOPU --- */
@@ -18,19 +17,21 @@
    ========================================= */
 @media (max-width: 992px) {
 
-  /* --- 1. FIKSIRANA NAVIGACIJA, LOGO & HAMBURGER DUGME --- */
+  /* --- 1. FIKSIRANA NAVIGACIJA (Usklađena visina na 71px kao na indexu) --- */
   #hero .showcase-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.8rem 1.2rem;
+    min-height: 71px; /* Identična visina kao glavna navigacija sa slike 3 */
+    height: 71px;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
   }
 
-  /* Savršeno centriranje slike i teksta na glavnoj navigaciji */
   #hero .nav-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
   }
 
@@ -41,10 +42,11 @@
     margin: 0;
   }
 
+  /* Tekst logotipa spušten u tačnu vertikalnu os sa ikonom */
   #hero .logo-text {
     font-size: 1.35rem;
     font-weight: 800;
-    line-height: 32px; /* Apsolutno poravnato sa visinom vodoravne ose logo slike */
+    line-height: 1;
     margin: 0;
     padding: 0;
     display: block;
@@ -142,14 +144,14 @@
     right: 0;
   }
 
-  /* Gornji bar menija: Flexbox zaključava Logo i X u tačnu horizontalnu ravan */
+  /* Gornji bar menija */
   #hero .mobile-menu-top {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 65px;
-    padding: 10px 20px;
+    min-height: 71px; /* Usklađeno sa visinom glavne navigacije */
+    padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
     border-bottom: 1px solid;
@@ -193,14 +195,14 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin: 20px 20px 8px 20px;
+    margin: 20px 24px 10px 24px;
     padding: 0;
     border: none;
   }
 
-  /* CYBER DUGMIĆI - Sa linijom koja tačno prati dužinu slova */
+  /* DUGMIĆI I TAGOVI - Čisto poravnanje sa linijom koja kreće od prvog slova */
   #hero .filter-btn {
-    width: calc(100% - 40px);
+    width: calc(100% - 48px);
     margin: 0 auto;
     text-align: left;
     padding: 14px 0;
@@ -215,12 +217,6 @@
     border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.25) 50%, transparent 100%) 1;
     transition: all 0.3s ease;
     position: relative;
-  }
-
-  #hero .filter-btn span {
-    position: relative;
-    display: inline-block; /* Obezbeđuje da linija uzima tačnu širinu slova */
-    padding-bottom: 4px;
   }
 
   #hero .filter-btn:first-of-type {
@@ -238,15 +234,15 @@
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
   }
 
-  /* Plava linija podvučena direktno pod reči (od prvog do poslednjeg slova) */
-  #hero .filter-btn.active span::after {
+  /* Plava linija podvučena direktno od prvog slova taga sa fade-out efektom prema desnoj strani */
+  #hero .filter-btn.active::after {
     content: '';
     position: absolute;
     bottom: -1px;
     left: 0;
     width: 100%;
     height: 2px;
-    background: #38bdf8;
+    background: linear-gradient(90deg, #38bdf8 0%, rgba(56, 189, 248, 0.6) 50%, transparent 100%);
     box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
     border-radius: 2px;
   }
