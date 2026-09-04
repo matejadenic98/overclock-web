@@ -17,6 +17,18 @@
    ========================================= */
 @media (max-width: 992px) {
 
+  /* Sprečava skrolovanje pozadinske stranice dok je meni otvoren */
+  body[style*="overflow: hidden"] {
+  height: 100vh;
+  touch-action: none;
+}
+
+  /* Sprečavanje skrolovanja pozadine kada je meni otvoren */
+  body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  }
+
   /* --- 1. FIKSIRANA NAVIGACIJA (Usklađena visina na 71px kao na indexu) --- */
   #hero .showcase-nav {
     display: flex;
@@ -138,6 +150,8 @@
     box-shadow: -15px 0 40px rgba(0, 0, 0, 0.95);
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-y: auto;
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 
   #hero .showcase-filters.mobile-active {
