@@ -50,7 +50,7 @@
     padding: 0;
     display: block;
     color: #ffffff;
-    transform: translateY(1.2px); /* Spušta tekst nadole tačno u središnju osu sa ikonicom */
+    transform: translateY(1.5px); /* Spušta tekst nadole tačno u središnju osu sa ikonicom */
   }
 
   #hero .mobile-nav-toggle {
