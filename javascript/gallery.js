@@ -339,4 +339,43 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// --- TOUCH / SWIPE PODRŠKA ZA LIGHTBOX NA MOBILNOM ---
+  const lightboxModal = document.getElementById('lightbox-modal');
+  let touchStartX = 0;
+  let touchEndX = 0;
+  let touchStartY = 0;
+  let touchEndY = 0;
+
+  if (lightboxModal) {
+    lightboxModal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    lightboxModal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleLightboxSwipe();
+    }, { passive: true });
+  }
+
+  function handleLightboxSwipe() {
+    const xDiff = touchStartX - touchEndX;
+    const yDiff = touchStartY - touchEndY;
+    const minSwipeDistance = 40; // Minimalna dužina poteza prstom
+
+    // Proveravamo da li je potez bio pretežno horizontalan (da ne okida pri vertikalnom skrolu)
+    if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > minSwipeDistance) {
+      if (xDiff > 0) {
+        // Prevlačenje ulevo -> Sledeća slika
+        const nextBtn = document.querySelector('.lightbox-next');
+        if (nextBtn) nextBtn.click();
+      } else {
+        // Prevlačenje udesno -> Prethodna slika
+        const prevBtn = document.querySelector('.lightbox-prev');
+        if (prevBtn) prevBtn.click();
+      }
+    }
+  }
+  
 });

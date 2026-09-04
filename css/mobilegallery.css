@@ -454,3 +454,55 @@ html,
 body {
   background-color: #060913;
 }
+
+/* =========================================
+   PERFEKTNO CENTRIRAN I STABILAN LIGHTBOX (TELEFONI)
+   ========================================= */
+@media (max-width: 768px) {
+  .lightbox-controls-dock {
+    position: fixed !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Centriranje u tačnu sredinu ekrana */
+    margin: 0 !important;
+    
+    display: grid !important;
+    grid-template-columns: 38px auto 38px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    
+    width: max-content !important;
+    height: 50px !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    z-index: 10001 !important;
+  }
+
+  .lightbox-counter {
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    padding: 0 4px !important;
+  }
+
+  .lightbox-controls-dock .lightbox-arrow {
+    width: 38px !important;
+    height: 38px !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .lightbox-controls-dock .lightbox-arrow svg {
+    width: 18px !important;
+    height: 18px !important;
+    pointer-events: none !important;
+  }
+}
