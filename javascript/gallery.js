@@ -4,11 +4,31 @@ let currentScrollY = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
   
-  // 1. FILTRIRANJE PROJEKATA
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.showcase-card');
   const dividers = document.querySelectorAll('.tech-divider');
 
+  // --- 1. INTERSECTION OBSERVER ZA SCROLL-BLUR-REVEAL ---
+  const galleryObserverOptions = {
+    root: null,
+    rootMargin: '250px 0px 100px 0px',
+    threshold: 0.01
+  };
+
+  const galleryObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        // Čistimo inline stilove da prepustimo sve čistoj CSS animaciji
+        entry.target.style.opacity = '';
+        entry.target.style.filter = '';
+        entry.target.style.transform = '';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, galleryObserverOptions);
+
+  // --- 2. JEDINSTVENA LOGIKA FILTRIRANJA I OTKRIVANJA PRVE KARTICE ---
   function updateDividers() {
     dividers.forEach(div => (div.style.display = 'none'));
     const visibleCards = Array.from(projectCards).filter(
@@ -27,43 +47,70 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+function applyFilterAndAnimations(selectedTag) {
+    let firstVisibleFound = false;
+
+    projectCards.forEach(card => {
+      const cardTags = card.getAttribute('data-tags') || "";
+      const isMatch = selectedTag === 'all' || cardTags.includes(selectedTag);
+
+      // Sklanjamo prethodna posmatranja i klase
+      galleryObserver.unobserve(card);
+      card.classList.remove('instant-show');
+
+      if (isMatch) {
+        card.classList.remove('hidden-card');
+        card.style.display = '';
+
+        if (!firstVisibleFound) {
+          // PRVA TRENUTNO VIDLJIVA KARTICA:
+          // Dodajemo instant-show koja u CSS-u gasi transition i blur momenalno
+          card.classList.add('revealed', 'instant-show');
+          firstVisibleFound = true;
+        } else {
+          // OSTALE VIDLJIVE KARTICE ISPOD NJE:
+          // Primenjuju standardnu skrol animaciju
+          card.classList.remove('revealed');
+          galleryObserver.observe(card);
+        }
+      } else {
+        // SAKRIVENE KARTICE
+        card.classList.add('hidden-card');
+        card.style.display = 'none'; 
+        card.classList.remove('revealed');
+      }
+    });
+
+    updateDividers();
+  }
+
+  // EVENT LISTENERI ZA FILTER DUGMAD
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const selectedTag = btn.getAttribute('data-tag');
 
-      projectCards.forEach(card => {
-        const cardTags = card.getAttribute('data-tags') || "";
-        if (selectedTag === 'all' || cardTags.includes(selectedTag)) {
-          card.classList.remove('hidden-card');
-          card.style.display = '';
-        } else {
-          card.classList.add('hidden-card');
-          card.style.display = 'none'; 
-        }
-      });
-      updateDividers();
+      applyFilterAndAnimations(selectedTag);
     });
   });
-  updateDividers();
 
-  // 2. UPRAVLJANJE SLIKAMA U KARTICAMA I LIGHTBOX INTEGRACIJA
+  // Pokretanje pri prvom učitavanju (prikaz svih projekata)
+  applyFilterAndAnimations('all');
+
+  // --- 3. UPRAVLJANJE SLIKAMA U KARTICAMA I LIGHTBOX INTEGRACIJA ---
   projectCards.forEach(card => {
     const mainImg = card.querySelector('.showcase-main-img');
     const thumbs = card.querySelectorAll('.s-thumb');
 
-    // Sigurnosna provera: Čuvamo originalnu sliku za B/A mod
     if (mainImg && !mainImg.hasAttribute('data-after-src')) {
         mainImg.setAttribute('data-after-src', mainImg.getAttribute('src'));
     }
 
-    // Klik na malu sličicu
     thumbs.forEach(thumb => {
       thumb.addEventListener('click', () => {
         if (!mainImg) return;
         
-        // Elementi za Before/After (Mogu biti null na običnim karticama)
         const baBefore = card.querySelector('.ba-img-before');
         const baInput = card.querySelector('.ba-slider-input');
         const baLine = card.querySelector('.ba-slider-line');
@@ -77,7 +124,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         setTimeout(() => {
           if (isBA) {
-            // PALIMO B/A MOD
             if (baBefore) baBefore.style.display = 'block';
             if (baInput) baInput.style.display = 'block';
             if (baLine) baLine.style.display = 'block';
@@ -87,10 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (afterSrc) mainImg.setAttribute('src', afterSrc);
             
             const sliderValue = baInput ? baInput.value : 50;
-            // PRAVILAN clip-path: "After" slika se otkriva sa desne strane!
             mainImg.style.clipPath = `polygon(${sliderValue}% 0, 100% 0, 100% 100%, ${sliderValue}% 100%)`;
           } else {
-            // GASIMO B/A MOD (I isključujemo liniju da ne ide preko slika)
             if (baBefore) baBefore.style.display = 'none';
             if (baInput) baInput.style.display = 'none';
             if (baLine) baLine.style.display = 'none';
@@ -108,14 +152,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Otvaranje Lightboxa klikom na Hero sliku
     const heroSection = card.querySelector('.showcase-hero');
     if (heroSection && mainImg) {
       heroSection.addEventListener('click', (e) => {
-        // Blokiramo otvaranje ako je kliknuto tačno na slajder dugme/liniju
         if (e.target.classList.contains('ba-slider-input') || e.target.closest('.ba-slider-button')) return;
 
-        // Pravimo niz samo od pravih sličica koristeći čiste atribute
         currentImagesArray = Array.from(thumbs)
           .filter(i => i.getAttribute('data-ba') !== 'true' && !i.classList.contains('ba-trigger-thumb'))
           .map(i => ({ src: i.getAttribute('src'), alt: i.getAttribute('alt') }));
@@ -124,11 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
           currentImagesArray = [{ src: mainImg.getAttribute('src'), alt: mainImg.getAttribute('alt') }];
         }
         
-        // Gađamo tačno onu sliku koja je trenutno na Hero panelu
         const currentSrc = mainImg.getAttribute('src');
         currentImageIndex = currentImagesArray.findIndex(item => item.src === currentSrc);
         
-        // Ako je iz nekog razloga nema, vraća na nultu
         if (currentImageIndex === -1) currentImageIndex = 0;
         
         openLightbox();
@@ -136,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // 3. BEFORE / AFTER SLIDER LOGIKA (SA TIMEROM ZA TEKST OD 3 SEKUNDE)
+  // --- 4. BEFORE / AFTER SLIDER LOGIKA ---
   const sliders = document.querySelectorAll('.ba-slider-container');
   sliders.forEach(slider => {
       const input = slider.querySelector('.ba-slider-input');
@@ -145,12 +184,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const labelBefore = slider.querySelector('.ba-label-before');
       const labelAfter = slider.querySelector('.ba-label-after');
 
-      // Inicijalni set za "After" na desnoj strani i da tekstovi budu sakriveni dok se ne pomera
       if (input && imgAfter && sliderLine) {
          imgAfter.style.clipPath = `polygon(${input.value}% 0, 100% 0, 100% 100%, ${input.value}% 100%)`;
       }
       
-      // Timer promenljiva za svaku karticu ponaosob
       let hideTimeout = null;
 
       if (!input || !imgAfter || !sliderLine) return;
@@ -158,18 +195,14 @@ document.addEventListener("DOMContentLoaded", function () {
       input.addEventListener('input', (e) => {
           const sliderValue = e.target.value;
           
-          // Pomeranje maske i linije
           imgAfter.style.clipPath = `polygon(${sliderValue}% 0, 100% 0, 100% 100%, ${sliderValue}% 100%)`;
           sliderLine.style.left = `${sliderValue}%`;
 
-          // 1. Čim korisnik pomeri slajder, prikaži slova (i ispoštuj pravilo da nestaju blizu samih ivica)
           if (labelBefore) labelBefore.style.opacity = sliderValue < 15 ? '0' : '1';
           if (labelAfter) labelAfter.style.opacity = sliderValue > 85 ? '0' : '1';
 
-          // 2. Restartujemo prethodni tajmer da se ne bi sudarili
           clearTimeout(hideTimeout);
 
-          // 3. Palimo novi tajmer na 3 sekunde (3000 ms)
           hideTimeout = setTimeout(() => {
               if (labelBefore) labelBefore.style.opacity = '0';
               if (labelAfter) labelAfter.style.opacity = '0';
@@ -177,7 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-  // 4. LIGHTBOX ELEMENTI I KONTROLE
+  // --- 5. LIGHTBOX ELEMENTI I KONTROLE ---
   const lightbox = document.getElementById('lightbox-modal');
   const lightboxImg = document.getElementById('lightbox-img');
   const lightboxClose = document.querySelector('.lightbox-close');
@@ -245,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (e.key === 'ArrowLeft' && lightboxPrev) lightboxPrev.click();
   });
 
-  // 5. ZAKLJUČAVANJE I OTKLJUČAVANJE SKROLANJA
+  // --- 6. ZAKLJUČAVANJE SKROLA ---
   function lockScroll() {
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
     document.body.style.paddingRight = `${scrollbarWidth}px`;
@@ -259,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove('is-locked');
   }
 
-  // 6. POVRATAK NA VRH
+  // --- 7. POVRATAK NA VRH ---
   const backToTopBtn = document.querySelector('.back-to-top-btn');
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', (e) => {
@@ -270,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-// 7. MOBILNI OFF-CANVAS MENI LOGIKA (ČISTA I JEDNOSTAVNA)
+  // --- 8. MOBILNI OFF-CANVAS MENI ---
   const openBtn = document.getElementById('mobile-filter-open');
   const closeBtn = document.getElementById('mobile-filter-close');
   const filtersMenu = document.getElementById('showcase-filters-menu');
@@ -298,7 +331,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (closeBtn) closeBtn.addEventListener('click', () => closeFilters(false));
   if (overlay) overlay.addEventListener('click', () => closeFilters(false));
 
-  // Klik na tag zatvara meni i prebacuje na vrh
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       if (window.innerWidth <= 992) {
@@ -307,52 +339,19 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // OSETLJIVIJI SCROLL-BLUR-REVEAL SAMO ZA GALERIJU
-document.addEventListener('DOMContentLoaded', () => {
-  const galleryCards = document.querySelectorAll('.gallery-page .scroll-blur-reveal');
-
-  if (galleryCards.length === 0) return;
-
-  // rootMargin od 250px širi zonu detekcije za 20-25% ranije
-  const galleryObserverOptions = {
-    root: null,
-    rootMargin: '250px 0px 100px 0px',
-    threshold: 0.01
-  };
-
-  const galleryObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, galleryObserverOptions);
-
-  galleryCards.forEach((card, index) => {
-    // PRVA KARTICA: Otkriva se instant pri učitavanju stranice
-    if (index === 0) {
-      card.classList.add('revealed');
-    } else {
-      galleryObserver.observe(card);
-    }
-  });
-});
-
-// --- TOUCH / SWIPE PODRŠKA ZA LIGHTBOX NA MOBILNOM ---
-  const lightboxModal = document.getElementById('lightbox-modal');
+  // --- 9. TOUCH / SWIPE PODRŠKA ZA LIGHTBOX NA MOBILNOM ---
   let touchStartX = 0;
   let touchEndX = 0;
   let touchStartY = 0;
   let touchEndY = 0;
 
-  if (lightboxModal) {
-    lightboxModal.addEventListener('touchstart', (e) => {
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
       touchStartY = e.changedTouches[0].screenY;
     }, { passive: true });
 
-    lightboxModal.addEventListener('touchend', (e) => {
+    lightbox.addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
       touchEndY = e.changedTouches[0].screenY;
       handleLightboxSwipe();
@@ -362,20 +361,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleLightboxSwipe() {
     const xDiff = touchStartX - touchEndX;
     const yDiff = touchStartY - touchEndY;
-    const minSwipeDistance = 40; // Minimalna dužina poteza prstom
+    const minSwipeDistance = 40;
 
-    // Proveravamo da li je potez bio pretežno horizontalan (da ne okida pri vertikalnom skrolu)
     if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > minSwipeDistance) {
       if (xDiff > 0) {
-        // Prevlačenje ulevo -> Sledeća slika
-        const nextBtn = document.querySelector('.lightbox-next');
-        if (nextBtn) nextBtn.click();
+        if (lightboxNext) lightboxNext.click();
       } else {
-        // Prevlačenje udesno -> Prethodna slika
-        const prevBtn = document.querySelector('.lightbox-prev');
-        if (prevBtn) prevBtn.click();
+        if (lightboxPrev) lightboxPrev.click();
       }
     }
   }
-  
+
 });
