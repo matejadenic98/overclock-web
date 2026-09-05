@@ -69,57 +69,58 @@
 }
 
 /* =========================================
-   CENOVNIK SCROLL REVEAL (EKSPOSTRO IZOŠTRAVANJE)
+   CENOVNIK SCROLL REVEAL (GLAVNO PRAVILO)
    ========================================= */
-
 @keyframes cenovnikBlurReveal {
     0% {
         filter: blur(15px);
         opacity: 0;
         transform: translateY(40px) scale(0.97);
     }
-    /* Blur i opacity se skroz sklanjaju već na 10% skrola (umesto na 35%),
-       tako da je tekst kristalno čist čim sekcija uđe na ekran */
-    20%, 100% {
+    50% {
+        filter: blur(6px);
+        opacity: 0.6;
+    }
+    100% {
         filter: blur(0px);
         opacity: 1;
         transform: translateY(0) scale(1);
     }
 }
 
-/* Primena nove animacije isključivo na #cenovnik sekciju */
 #cenovnik .scroll-blur-reveal {
     animation-name: cenovnikBlurReveal;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
 }
 
 /* =========================================
-   CENOVNIK SPECIFIČAN SCROLL REVEAL
+   SPECIFIČNI SCROLL REVEAL PO SEKCIJAMA (MOBILNI)
    ========================================= */
-#cenovnik .scroll-blur-reveal {
-    /* Podesava animaciju da pocne cim vrh cenovnika dotakne dno ekrana (entry 0%)
-       i da se ZAVRSI (tekst postaje 100% ostar i citljiv) vec na 15% ulaska */
-    animation-range: entry 0% entry 15%;
+@media (max-width: 768px) {
+    /* Blog se otvara ranije na 85% i izgleda odlicno */
+    #blog .scroll-blur-reveal,
+    .blog-grid .scroll-blur-reveal {
+        animation-range: cover 0% cover 85%;
+    }
+
+    /* Cenovnik ima brz i cist ulaz na mobilnom */
+    #cenovnik .scroll-blur-reveal {
+        animation-range: entry 0% cover 25%;
+    }
 }
 
-/* ===================================================
-   HIRURŠKI MOBILNI FIKS ZA CHROME (Slike 259941-259945)
-   =================================================== */
-    
-@media (max-width: 768px) {
-    
-    /* 1. FIKS ZA NEVIDLJIVI NAVIGACIONI BAR (Slike 259944.jpg i 259945.jpg) */
-    /* Na telefonima pojačavamo zatamnjenje pozadine headera da bela slova uvek budu čitljiva */
-    header, .navbar { 
-        background: rgba(255, 255, 255, 0.03) !important;
-        backdrop-filter: blur(15px) !important;
-        -webkit-backdrop-filter: blur(15px) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    }
-    
-    .scroll-blur-reveal {
-        animation-range: cover 0% cover 85% !important;
-    } 
-}  
+/* =========================================
+   SPECIFIČNO ZA GALERIJA STRANICU (BEZ UTICAJA NA OSTATAK SAJTA)
+   ========================================= */
+
+/* 2. Blaži i brži blur efekat za ostale kartice u galeriji */
+.gallery-page .scroll-blur-reveal {
+  filter: blur(4px);            /* Blaži blur pa se brže razbistri */
+  transform: translateY(15px);  /* Manji pomak na gore */
+  transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
+}
+
 
 /* ===================================================
     ANIMACIJA - Zlatni Odsjaj (Shine)

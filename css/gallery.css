@@ -660,16 +660,3 @@
   transform: translateY(0) !important;
   transition: none !important; /* Gaši CSS animaciju za 0ms odziv */
 }
-
-/* =========================================
-   SPECIFIČNO ZA GALERIJU (BEZ UTICAJA NA OSTATAK SAJTA)
-   ========================================= */
-
-
-/* 2. Blaži i brži blur efekat za ostale kartice u galeriji */
-.gallery-page .scroll-blur-reveal {
-  filter: blur(4px);            /* Blaži blur pa se brže razbistri */
-  transform: translateY(15px);  /* Manji pomak na gore */
-  transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
-}
-
