@@ -301,19 +301,53 @@
     background: rgba(10, 15, 22, 0.85); 
   }
 
-  /* Masivne strelice na dodir unutar kapsule */
-  #lightbox-modal .lightbox-controls-dock .lightbox-arrow {
-    width: 50px !important; /* Ogromna meta za palac */
+  #lightbox-modal .lightbox-controls-dock {
+    position: fixed !important;
+    bottom: 25px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    
+    display: grid !important;
+    grid-template-columns: 38px auto 38px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    
+    width: max-content !important;
     height: 50px !important;
-    background: rgba(255, 255, 255, 0.08); /* Diskretno naglašavanje dugmeta */
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    z-index: 100001 !important;
   }
-  
-  /* Umesto hover-a, na mobilnom koristimo active (kada se pritisne prstom) */
-  #lightbox-modal .lightbox-controls-dock .lightbox-arrow:active {
-    background: var(--premium-blue);
-    border-color: var(--premium-blue);
-    transform: scale(0.92) !important; /* Uvuče se pod prstom */
+
+  #lightbox-modal .lightbox-counter {
+    text-align: center !important;
+    font-size: 0.9rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    padding: 0 4px !important;
   }
+
+  #lightbox-modal .lightbox-arrow {
+    width: 38px !important;
+    height: 38px !important;
+    box-sizing: border-box !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #lightbox-modal .lightbox-arrow svg {
+    width: 18px !important;
+    height: 18px !important;
+    pointer-events: none !important;
+  }
+}
 
   /* Povećan brojač u sredini */
   .lightbox-counter {
