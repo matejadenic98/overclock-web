@@ -101,12 +101,12 @@
     /* Blog se otvara ranije na 85% i izgleda odlicno */
     #blog .scroll-blur-reveal,
     .blog-grid .scroll-blur-reveal {
-        animation-range: cover 0% cover 60%;
+        animation-range: cover 0% cover 50%;
     }
 
     /* Cenovnik ima brz i cist ulaz na mobilnom */
     #cenovnik .scroll-blur-reveal {
-        animation-range: entry 0% cover 20%;
+        animation-range: entry 0% cover 15%;
     }
 }
 
