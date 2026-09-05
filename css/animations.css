@@ -91,7 +91,7 @@
 #cenovnik .scroll-blur-reveal {
     animation-name: cenovnikBlurReveal;
     animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+    animation-range: entry 0% cover 25%;
 }
 
 /* =========================================
@@ -101,12 +101,12 @@
     /* Blog se otvara ranije na 85% i izgleda odlicno */
     #blog .scroll-blur-reveal,
     .blog-grid .scroll-blur-reveal {
-        animation-range: cover 0% cover 85%;
+        animation-range: cover 0% cover 60%;
     }
 
     /* Cenovnik ima brz i cist ulaz na mobilnom */
     #cenovnik .scroll-blur-reveal {
-        animation-range: entry 0% cover 25%;
+        animation-range: entry 0% cover 20%;
     }
 }
 
