@@ -466,6 +466,10 @@
   .ecosystem-teaser { 
     padding: 50px 15px !important; 
   }
+
+  .ecosystem-tag {
+    margin-bottom: 24px !important;
+  }
   
   /* Smanjujemo glavni naslov da bi lepo stao u 2 reda */
   .ecosystem-header h2 { 
