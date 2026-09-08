@@ -1469,6 +1469,162 @@ nav a:hover {
     transform: translateX(6px);
 }
 
+/* ==================================================
+   FROSTED GLASS ADAPTATION (STOPLJENO SA POZADINOM)
+   ================================================== */
+
+.ecosystem-teaser {
+  background: transparent !important;
+  padding: 80px 20px;
+  color: #0f172a;
+  border: none;
+  position: relative;
+}
+
+.ecosystem-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ecosystem-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.ecosystem-tag {
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #0369a1;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+.ecosystem-header h2 {
+  color: #0f172a !important;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* FROSTED GLASS KARTICE (Puno prirodniji prelaz) */
+.eco-card {
+  /* Polu-transparentna mat bela/plava koja upija pozadinu umesto čisto bele */
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  overflow: hidden;
+  /* Meka svetla bordura koja stvara efekat stakla */
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  position: relative;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.eco-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.eco-banner-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  /* Suptilan gradijent prelaz ako se slika još učitava */
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.eco-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.eco-content {
+  background: transparent !important;
+  padding: 25px;
+}
+
+.eco-content h3 {
+  color: #0f172a !important;
+  font-size: 20px;
+  margin: 0 0 6px 0;
+  font-weight: 800;
+}
+
+.eco-tagline {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.eco-desc {
+  color: #1e293b !important;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Hover efekti */
+.eco-web .eco-tagline { 
+  color: #059669; 
+}
+
+.eco-web:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(5, 150, 105, 0.5) !important;
+  box-shadow: 0 15px 30px -5px rgba(5, 150, 105, 0.15);
+}
+
+.eco-web:hover .eco-banner-img { 
+  transform: scale(1.04); 
+}
+
+.eco-digital .eco-tagline { 
+  color: #0284c7; 
+}
+
+.eco-digital:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(2, 132, 199, 0.5) !important;
+  box-shadow: 0 15px 30px -5px rgba(2, 132, 199, 0.15);
+}
+
+.eco-digital:hover .eco-banner-img { 
+  transform: scale(1.04); 
+}
+
 /* =========================================
    ZAJEDNICA & FOOTER
    ========================================= */
