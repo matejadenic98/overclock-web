@@ -33,19 +33,19 @@
 }
 
 /* =========================================
-   PREMIUM SLIDESHOW (HERO CAROUSEL)
+   PREMIUM SLIDESHOW (FRAMER STIL - PROŠIREN)
    ========================================= */
 
 .oc-slideshow-container {
-    width: 100%;
-    max-width: 1200px;
+    width: 95%; /* Proširen na skoro ceo ekran */
+    max-width: 1400px; /* Mnogo veća maska kao u Frameru */
     margin: 0 auto 80px auto;
     position: relative;
-    aspect-ratio: 21 / 9; /* Bioskopski širok format */
-    border-radius: 16px;
+    aspect-ratio: 21 / 9; 
+    border-radius: 32px; /* Veoma obli uglovi (Framer efekat) */
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(56, 189, 248, 0.15);
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8), 0 0 40px rgba(56, 189, 248, 0.1); /* Jaka senka i blagi glow */
+    border: 1px solid rgba(255, 255, 255, 0.08); /* Suptilan okvir */
 }
 
 .oc-slider {
@@ -80,7 +80,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6; /* Zatamnjujemo sliku da tekst dođe do izražaja */
+    opacity: 0.6; 
 }
 
 /* Sadržaj na slajdu */
@@ -147,13 +147,13 @@
     background: #38bdf8;
 }
 
-.prev-btn { left: 20px; }
-.next-btn { right: 20px; }
+.prev-btn { left: 30px; }
+.next-btn { right: 30px; }
 
 /* Tačkice za navigaciju */
 .oc-slider-dots {
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 4;
@@ -192,7 +192,7 @@
     scroll-margin-top: 120px; 
 }
 
-/* ZAGLAVLJE SVAKE USLUGE (Kao u referenci) */
+/* ZAGLAVLJE SVAKE USLUGE */
 .service-block-header {
     display: flex;
     justify-content: space-between;
@@ -213,7 +213,6 @@
     max-width: 60%;
 }
 
-/* Tehnički tagovi na desnoj strani */
 .service-block-meta {
     display: flex;
     flex-direction: column;
@@ -222,7 +221,7 @@
 }
 
 .service-block-meta span {
-    font-family: monospace; /* Programerski/Tech izgled */
+    font-family: monospace;
     color: #38bdf8;
     font-size: 1rem;
     letter-spacing: 1px;
@@ -233,15 +232,14 @@
    ========================================= */
 
 .service-block-media {
-    position: relative; /* Bitno za apsolutno pozicioniranje kartice */
+    position: relative; 
     width: 100%;
     aspect-ratio: 16 / 9;
     border-radius: 12px;
     overflow: hidden;
-    padding: 0; /* Uklanjamo padding iz showcase-card-inner-v2 da bi slika išla do ivice */
+    padding: 0; 
 }
 
-/* Slike unutar bloka */
 .service-block-img {
     width: 100%;
     height: 100%;
@@ -249,14 +247,14 @@
     display: block;
 }
 
-/* Lebdeća tekstualna kartica (Glassmorphism efekat) */
+/* Lebdeća tekstualna kartica */
 .floating-info-box {
     position: absolute;
     bottom: 30px;
     right: 30px;
     max-width: 450px;
     background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(15px); /* Efikasno zamućenje pozadine */
+    backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(56, 189, 248, 0.3);
     border-radius: 12px;
@@ -277,6 +275,78 @@
     color: #ffffff;
     font-weight: 500;
     text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================
+   NOVE 4 KARTICE SA SLIKAMA (ISPOD MEDIA BLOKA)
+   ========================================= */
+
+.oc-stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 30px; /* Prostor ispod glavne slike */
+}
+
+.oc-stat-card {
+    background: #080808;
+    border: 1px solid rgba(56, 189, 248, 0.15); /* Tech plava ivica */
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 280px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.oc-stat-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.5);
+}
+
+.stat-info {
+    padding: 25px 20px 15px 20px;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(8,8,8,1) 50%, rgba(8,8,8,0) 100%); /* Obezbeđuje da tekst bude vidljiv iznad slike */
+}
+
+.stat-info h4 {
+    font-size: 2.2rem;
+    color: #38bdf8; /* Neon plava brojka/naslov */
+    margin: 0 0 5px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.stat-info p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Slike na dnu malih kartica */
+.stat-img {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    margin-top: -20px; /* Gura sliku malo nagore pod tekst, stvarajući slojevitost */
+}
+
+.stat-img img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom; 
+    opacity: 0.5; /* Slika je prigušena */
+    transition: opacity 0.3s ease;
+}
+
+.oc-stat-card:hover .stat-img img {
+    opacity: 1; /* Osvetli se kada kursor pređe */
 }
 
 /* =========================================
@@ -355,20 +425,21 @@
     }
 
     .oc-slideshow-container {
-        aspect-ratio: 16 / 9; /* Smanjuje format na kockastije za mobilne */
+        aspect-ratio: 16 / 9; 
+        border-radius: 24px;
     }
     
     .oc-slide-content h2 {
         font-size: 2.5rem;
     }
+
+    /* Na tabletima, 4 kartice prelaze u mrezu 2x2 */
+    .oc-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .services-page-title {
-        font-size: 2.2rem;
-    }
-
-    /* Na manjim ekranima izvlačimo lebdeću karticu ispod slike da ne bi zaklanjala pogled */
     .service-block-media {
         aspect-ratio: auto;
         display: flex;
@@ -386,7 +457,7 @@
     }
     
     .inline-ba-container, .service-gif-container {
-        height: auto; /* Poništava absolute formiranje visine */
+        height: auto; 
     }
 
     .floating-info-box {
@@ -394,23 +465,14 @@
         bottom: 0;
         right: 0;
         max-width: 100%;
-        margin-top: -20px; /* Preklapa donji deo slike blago odozdo */
+        margin-top: -20px; 
         border: 1px solid rgba(255,255,255,0.1);
         z-index: 10;
     }
 
-    .oc-slide-content h2 {
-        font-size: 1.8rem;
-    }
-    
-    .oc-slide-content p {
-        font-size: 1rem;
-        display: none; /* Sakrivamo dugačak tekst na telefonu na slajderu */
-    }
-    
-    .oc-slider-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+    /* Na telefonima, 4 kartice idu jedna ispod druge u punoj širini */
+    .oc-stats-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 }
