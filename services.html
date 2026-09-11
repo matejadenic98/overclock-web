@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Usluge - Overclock</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/gallery.css"> 
+  <link rel="stylesheet" href="css/services.css"> 
+  <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body class="scroll-journey services-page" id="top">
+
+  <!-- FIKSIRANA NAVIGACIJA -->
+  <header class="showcase-nav">
+    <a href="index.html#hero" class="nav-brand">
+      <img src="images/oc1.png" alt="Logo" class="showcase-logo">
+      <span class="logo-text">Overclock.rs</span>
+    </a>
+  </header>
+
+  <!-- GLAVNI NASLOV I TAGOVI -->
+  <div class="services-header-container">
+    <h1 class="services-page-title">Naše usluge</h1>
+    <div class="showcase-filters">
+      <a href="#premium" class="filter-btn active">PREMIUM</a>
+      <a href="#sklapanje" class="filter-btn">SKLAPANJE</a>
+      <a href="#overclock" class="filter-btn">OVERCLOCK</a>
+      <a href="#pojacavanje" class="filter-btn">UPGRADE</a>
+      <a href="#ciscenje" class="filter-btn">ČIŠĆENJE</a>
+      <a href="#os" class="filter-btn">SISTEM</a>
+      <a href="#web" class="filter-btn">WEB</a>
+      <a href="#dizajn" class="filter-btn">FLAJERI</a>
+    </div>
+  </div>
+
+  <!-- PREMIUM SLIDESHOW (SHOWCASE) -->
+  <section class="oc-slideshow-container scroll-blur-reveal">
+    <div class="oc-slider">
+      <!-- Slajd 1 -->
+      <div class="oc-slide active">
+        <img src="images/premium-after.jpg" alt="Slajd 1" class="oc-slide-img">
+        <div class="oc-slide-content">
+          <span class="oc-slide-badge">ISTAKNUTO</span>
+          <h2>Apsolutna Dominacija</h2>
+          <p>Custom build računari dizajnirani za najzahtevnije korisnike. Bez kompromisa.</p>
+        </div>
+      </div>
+      <!-- Slajd 2 -->
+      <div class="oc-slide">
+        <img src="images/usluge-overclock.jpg" alt="Slajd 2" class="oc-slide-img">
+        <div class="oc-slide-content">
+          <span class="oc-slide-badge">EKSTREMNO</span>
+          <h2>Hlađenje i Overclock</h2>
+          <p>Pomeramo granice tvog hardvera uz maksimalnu stabilnost sistema.</p>
+        </div>
+      </div>
+      <!-- Slajd 3 -->
+      <div class="oc-slide">
+        <img src="images/usluge-sklapanje.jpg" alt="Slajd 3" class="oc-slide-img">
+        <div class="oc-slide-content">
+          <span class="oc-slide-badge">ESTETIKA</span>
+          <h2>Cable Management</h2>
+          <p>Umetnost rutiranja kablova za savršen protok vazduha i vizuelni užitak.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Kontrole Slajdera -->
+    <button class="oc-slider-btn prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="oc-slider-btn next-btn" onclick="moveSlide(1)">&#10095;</button>
+    <div class="oc-slider-dots">
+      <span class="oc-dot active" onclick="currentSlide(1)"></span>
+      <span class="oc-dot" onclick="currentSlide(2)"></span>
+      <span class="oc-dot" onclick="currentSlide(3)"></span>
+    </div>
+  </section>
+
+  <!-- GLAVNI KONTEJNER ZA USLUGE -->
+  <main class="services-main-container">
+    
+    <!-- 1. PREMIUM SERVIS -->
+    <section id="premium" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Premium Servis</h2>
+        <div class="service-block-meta">
+          <span>// Oživljavanje sistema</span>
+          <span>// Detaljno čišćenje</span>
+          <span>// Optimizacija</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <!-- Before/After Slider umesto obične slike -->
+        <div class="inline-ba-container">
+          <img src="images/premium-before.jpg" alt="Pre servisa" class="inline-ba-before">
+          <img src="images/premium-after.jpg" alt="Posle servisa" class="inline-ba-after" id="premium-ba-after">
+          <input type="range" min="0" max="100" value="50" class="inline-ba-slider" id="premium-ba-slider">
+          <div class="inline-ba-line" id="premium-ba-line"></div>
+        </div>
+        
+        <!-- Lebdeća Info Kartica -->
+        <div class="floating-info-box">
+          <p>Naš premium servis predstavlja vrhunac pažnje i posvećenosti vašem računaru. Svaki detalj prolazi kroz <span class="text-highlight">rigorozne provere</span>, od dubinskog čišćenja do napredne optimizacije sistema i ugradnje najkvalitetnijih komponenti. Osetite razliku pre i posle.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 2. SKLAPANJE RAČUNARA -->
+    <section id="sklapanje" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Sklapanje Računara</h2>
+        <div class="service-block-meta">
+          <span>// Custom Build</span>
+          <span>// Gaming & Workstation</span>
+          <span>// Cable Management</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-sklapanje.jpg" alt="Sklapanje računara" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Bilo da vam je potrebna <span class="text-highlight">zver za 4K gaming</span>, pouzdana radna stanica za video produkciju ili stabilan office računar, tu smo da osmislimo i profesionalno sklopimo sistem po vašoj meri.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 3. OVERCLOCK RAČUNARI -->
+    <section id="overclock" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Overclock Računari</h2>
+        <div class="service-block-meta">
+          <span>// CPU & GPU Tuning</span>
+          <span>// Thermal Optimization</span>
+          <span>// BIOS konfiguracija</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-overclock.jpg" alt="Overclock računari" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Izvucite svaki atom snage iz vašeg hardvera. Preciznim podešavanjem napona, frekvencija i protoka vazduha dovodimo vaš računar do <span class="text-highlight">krajnjih, ali potpuno stabilnih granica.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 4. POJAČAVANJE RAČUNARA -->
+    <section id="pojacavanje" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Pojačavanje Računara</h2>
+        <div class="service-block-meta">
+          <span>// Strateški Upgrade</span>
+          <span>// NVMe SSD Ugradnja</span>
+          <span>// Proširenje RAM-a</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-pojacavanje.jpg" alt="Pojačavanje računara" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Vaš računar je počeo da koči? Nema potrebe za kupovinom novog! Kroz upgrade memorije i prelazak na <span class="text-highlight">ultra-brze SSD diskove</span>, vraćamo brzinu na fabrička podešavanja, pa i više od toga.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 5. ČIŠĆENJE RAČUNARA OD PRAŠINE -->
+    <section id="ciscenje" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Čišćenje Prašine</h2>
+        <div class="service-block-meta">
+          <span>// Dubinsko izduvavanje</span>
+          <span>// Zamena termalne paste</span>
+          <span>// Prevencija kvara</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <div class="service-gif-container">
+          <img src="images/ciscenje.gif" alt="Čišćenje prašine GIF">
+        </div>
+        
+        <div class="floating-info-box">
+          <p>Prašina je najveći neprijatelj hardvera. Blokira vazduh i podiže temperature. Naše <span class="text-highlight">dubinsko čišćenje</span> vraća računar u besprekorno, salonsko stanje i produžava mu radni vek.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 6. INSTALACIJA OPERATIVNOG SISTEMA -->
+    <section id="os" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Instalacija Sistema</h2>
+        <div class="service-block-meta">
+          <span>// Windows & Linux</span>
+          <span>// Drajveri & Update</span>
+          <span>// Sigurnosna podešavanja</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-os.jpg" alt="Instalacija OS" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Čist početak za vaš sistem. Nudimo instalaciju najnovijih operativnih sistema uz <span class="text-highlight">paket neophodnih drajvera</span>, zaštite i pratećih programa kako biste odmah počeli sa radom.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 7. IZRADA WEB STRANICA -->
+    <section id="web" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Izrada Web Stranica</h2>
+        <div class="service-block-meta">
+          <span>// Moderni Dizajn</span>
+          <span>// Brzina & SEO</span>
+          <span>// Digitalni Identitet</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-web.jpg" alt="Izrada web stranica" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Vaše online prisustvo je vaša lična karta. Dizajniramo brze, optimizovane i <span class="text-highlight">vizuelno impresivne web stranice</span> koje će jasno preneti vašu poslovnu viziju i privući klijente.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+    <!-- 8. DIZAJNIRANJE REKLAMNIH FLAJERA -->
+    <section id="dizajn" class="service-block scroll-blur-reveal">
+      <div class="service-block-header">
+        <h2 class="service-block-title">Dizajniranje Flajera</h2>
+        <div class="service-block-meta">
+          <span>// Print Materijali</span>
+          <span>// Vizit Karte</span>
+          <span>// Brendiranje</span>
+        </div>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2">
+        <img src="images/usluge-flajeri.jpg" alt="Dizajn flajera" class="service-block-img">
+        
+        <div class="floating-info-box">
+          <p>Od ideje do realizacije. Kreiramo moderne i upečatljive reklamne materijale, flajere i vizit karte koji <span class="text-highlight">ostavljaju snažan utisak</span> na prvi pogled i efikasno komuniciraju vaše usluge.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="tech-divider scroll-blur-reveal">
+      <span class="divider-node"></span>
+      <div class="divider-line"></div>
+      <span class="divider-node"></span>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="inline-footer">
+    <div class="footer-inner">
+        <div class="footer-left">
+          <span class="footer-logo">Overclock.rs</span>
+          <p class="footer-credits">© 2026 Sva prava zadržana.</p>
+        </div>
+        
+        <div class="footer-right">
+          <a href="#top" class="back-to-top-btn" aria-label="Nazad na vrh">NAZAD NA VRH ↑</a>
+        </div>
+    </div>
+  </footer>
+
+  <script src="javascript/transitions.js"></script>
+  <script>
+    // In-line Before/After slajder
+    document.addEventListener("DOMContentLoaded", function () {
+      const baInput = document.getElementById('premium-ba-slider');
+      const baAfter = document.getElementById('premium-ba-after');
+      const baLine = document.getElementById('premium-ba-line');
+
+      if (baInput && baAfter && baLine) {
+        baAfter.style.clipPath = `polygon(${baInput.value}% 0, 100% 0, 100% 100%, ${baInput.value}% 100%)`;
+        baLine.style.left = `${baInput.value}%`;
+
+        baInput.addEventListener('input', (e) => {
+          const val = e.target.value;
+          baAfter.style.clipPath = `polygon(${val}% 0, 100% 0, 100% 100%, ${val}% 100%)`;
+          baLine.style.left = `${val}%`;
+        });
+      }
+    });
+
+    // ScrollSpy skripta 
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll(".service-block");
+      const navLinks = document.querySelectorAll(".showcase-filters .filter-btn");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 300) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+          }
+        });
+      });
+    });
+
+    // Slideshow Skripta
+    let slideIndex = 1;
+    let slideInterval;
+    
+    function showSlides(n) {
+      let slides = document.querySelectorAll(".oc-slide");
+      let dots = document.querySelectorAll(".oc-dot");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      
+      slides.forEach(slide => slide.classList.remove("active"));
+      dots.forEach(dot => dot.classList.remove("active"));
+      
+      slides[slideIndex-1].classList.add("active");
+      dots[slideIndex-1].classList.add("active");
+    }
+
+    function moveSlide(n) {
+      showSlides(slideIndex += n);
+      resetInterval();
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+      resetInterval();
+    }
+
+    function resetInterval() {
+      clearInterval(slideInterval);
+      slideInterval = setInterval(() => { moveSlide(1); }, 5000);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showSlides(slideIndex);
+      slideInterval = setInterval(() => { moveSlide(1); }, 5000); // Menja slajd na 5 sekundi
+    });
+  </script>
+</body>
+</html>

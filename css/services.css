@@ -1,0 +1,416 @@
+/* =========================================
+   USLUGE STRANICA - HEADER & NAVIGACIJA
+   ========================================= */
+
+.services-page {
+    scroll-behavior: smooth; 
+}
+
+/* Kontejner za naslov i filtere */
+.services-header-container {
+    margin: 120px auto 40px auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.services-page-title {
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+}
+
+.showcase-filters a.filter-btn {
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* =========================================
+   PREMIUM SLIDESHOW (HERO CAROUSEL)
+   ========================================= */
+
+.oc-slideshow-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    position: relative;
+    aspect-ratio: 21 / 9; /* Bioskopski širok format */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.oc-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #050505;
+}
+
+.oc-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.oc-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.oc-slide-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6; /* Zatamnjujemo sliku da tekst dođe do izražaja */
+}
+
+/* Sadržaj na slajdu */
+.oc-slide-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+    padding: 0 5%;
+    transform: translateY(20px);
+    transition: transform 0.8s ease;
+}
+
+.oc-slide.active .oc-slide-content {
+    transform: translateY(0);
+}
+
+.oc-slide-badge {
+    background: #38bdf8;
+    color: #000;
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.oc-slide-content h2 {
+    font-size: 3.5rem;
+    color: #fff;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+
+.oc-slide-content p {
+    font-size: 1.2rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+}
+
+/* Dugmići za slajder */
+.oc-slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 4;
+    font-size: 1.5rem;
+    transition: background 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.oc-slider-btn:hover {
+    background: #38bdf8;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Tačkice za navigaciju */
+.oc-slider-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+    display: flex;
+    gap: 10px;
+}
+
+.oc-dot {
+    width: 30px;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 2px;
+}
+
+.oc-dot.active, .oc-dot:hover {
+    background: #38bdf8;
+    box-shadow: 0 0 10px #38bdf8;
+}
+
+
+/* =========================================
+   GLAVNI KONTEJNER I USLUGE (PORTFOLIO STYLE)
+   ========================================= */
+
+.services-main-container {
+    max-width: 1200px; 
+    margin: 0 auto 100px auto;
+    padding: 0 5%;
+}
+
+.service-block {
+    padding-top: 40px; 
+    margin-bottom: 20px;
+    scroll-margin-top: 120px; 
+}
+
+/* ZAGLAVLJE SVAKE USLUGE (Kao u referenci) */
+.service-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 20px;
+}
+
+.service-block-title {
+    font-size: 3.2rem;
+    margin: 0;
+    color: #ffffff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    max-width: 60%;
+}
+
+/* Tehnički tagovi na desnoj strani */
+.service-block-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.service-block-meta span {
+    font-family: monospace; /* Programerski/Tech izgled */
+    color: #38bdf8;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   MEDISKI BLOK & LEBDEĆA KARTICA
+   ========================================= */
+
+.service-block-media {
+    position: relative; /* Bitno za apsolutno pozicioniranje kartice */
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 0; /* Uklanjamo padding iz showcase-card-inner-v2 da bi slika išla do ivice */
+}
+
+/* Slike unutar bloka */
+.service-block-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Lebdeća tekstualna kartica (Glassmorphism efekat) */
+.floating-info-box {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    max-width: 450px;
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(15px); /* Efikasno zamućenje pozadine */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+.floating-info-box p {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0;
+    font-weight: 300;
+}
+
+.text-highlight {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================
+   BEFORE/AFTER & GIF PREPIS (UNUTAR BLOKA)
+   ========================================= */
+.inline-ba-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.inline-ba-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+.inline-ba-after { z-index: 2; }
+.inline-ba-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #00d2ff;
+    z-index: 3;
+    transform: translateX(-50%);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.8);
+    pointer-events: none;
+}
+.inline-ba-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    opacity: 0;
+    cursor: ew-resize;
+    margin: 0;
+}
+
+.service-gif-container {
+    width: 100%;
+    height: 100%;
+}
+.service-gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================================
+   MOBILNA OPTIMIZACIJA
+   ========================================= */
+@media (max-width: 900px) {
+    .service-block-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .service-block-title {
+        font-size: 2.5rem;
+        max-width: 100%;
+    }
+
+    .service-block-meta {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .oc-slideshow-container {
+        aspect-ratio: 16 / 9; /* Smanjuje format na kockastije za mobilne */
+    }
+    
+    .oc-slide-content h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-page-title {
+        font-size: 2.2rem;
+    }
+
+    /* Na manjim ekranima izvlačimo lebdeću karticu ispod slike da ne bi zaklanjala pogled */
+    .service-block-media {
+        aspect-ratio: auto;
+        display: flex;
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+    
+    .service-block-img, .inline-ba-container, .service-gif-container {
+        aspect-ratio: 16 / 9;
+        position: relative;
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .inline-ba-container, .service-gif-container {
+        height: auto; /* Poništava absolute formiranje visine */
+    }
+
+    .floating-info-box {
+        position: relative;
+        bottom: 0;
+        right: 0;
+        max-width: 100%;
+        margin-top: -20px; /* Preklapa donji deo slike blago odozdo */
+        border: 1px solid rgba(255,255,255,0.1);
+        z-index: 10;
+    }
+
+    .oc-slide-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .oc-slide-content p {
+        font-size: 1rem;
+        display: none; /* Sakrivamo dugačak tekst na telefonu na slajderu */
+    }
+    
+    .oc-slider-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
