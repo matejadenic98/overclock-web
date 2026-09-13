@@ -36,7 +36,7 @@
     </div>
   </div>
 
-  <!-- PREMIUM SLIDESHOW (FRAMER STIL) -->
+  <!-- PREMIUM SLIDESHOW -->
   <section class="oc-slideshow-container scroll-blur-reveal">
     <div class="oc-slider">
       <!-- Slajd 1 -->
@@ -81,33 +81,116 @@
   <!-- GLAVNI KONTEJNER ZA USLUGE -->
   <main class="services-main-container">
     
-    <!-- 1. PREMIUM SERVIS -->
+    <!-- ========================================
+         1. PREMIUM SERVIS
+         ======================================== -->
     <section id="premium" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Premium Servis</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Oživljavanje sistema</span>
           <span>// Detaljno čišćenje</span>
           <span>// Optimizacija</span>
         </div>
+        <h2 class="service-block-title">Premium Servis</h2>
       </div>
+
+      <!-- Čist tekst iznad slike -->
+      <p class="service-intro-text">
+        Ovaj servis je dizajniran za korisnike koji žele maksimalne performanse, stabilnost i dugovečnost svog računara. Bez obzira da li je vaš sistem pregrejan, usporen ili jednostavno zahteva redovno održavanje na najvišem nivou, naš proces garantuje vraćanje u salonsko stanje.
+      </p>
       
+      <!-- Velika slika -->
       <div class="service-block-media showcase-card-inner-v2">
-        <!-- Before/After Slider umesto obične slike -->
         <div class="inline-ba-container">
           <img src="images/gallery/rtx3090premiumservis1_2.webp" alt="Pre servisa" class="inline-ba-before">
           <img src="images/gallery/rtx3090premiumservis1_16_1.webp" alt="Posle servisa" class="inline-ba-after" id="premium-ba-after">
           <input type="range" min="0" max="100" value="50" class="inline-ba-slider" id="premium-ba-slider">
           <div class="inline-ba-line" id="premium-ba-line"></div>
         </div>
-        
-        <!-- Lebdeća Info Kartica -->
-        <div class="floating-info-box">
-          <p>Naš premium servis predstavlja vrhunac pažnje i posvećenosti vašem računaru. Svaki detalj prolazi kroz <span class="text-highlight">rigorozne provere</span>, od dubinskog čišćenja do napredne optimizacije sistema i ugradnje najkvalitetnijih komponenti. Osetite razliku pre i posle.</p>
-        </div>
       </div>
 
-      <!-- 4 Male Kartice Ispod Slike -->
+      <!-- Izmešten tekst ispod slike -->
+      <div class="service-description-box">
+        <p>Naš premium servis predstavlja vrhunac pažnje i posvećenosti vašem računaru. Svaki detalj prolazi kroz <span class="text-highlight">rigorozne provere</span>, od dubinskog čišćenja do napredne optimizacije sistema i ugradnje najkvalitetnijih komponenti. Osetite razliku pre i posle.</p>
+      </div>
+
+      <!-- NOVO: Overclock Timeline Proces SA SLIKAMA -->
+      <div class="oc-process-timeline">
+        
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">01</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text">
+              <h3>Dijagnostika</h3>
+              <p>Detaljno testiranje svih komponenti pod opterećenjem kako bismo utvrdili trenutno stanje temperatura, stabilnost i potencijalno usko grlo sistema.</p>
+            </div>
+            <div class="step-media">
+              <img src="images/services/premiumservis1_small.jpg" alt="Dijagnostika">
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">02</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text">
+              <h3>Reorganizacija</h3>
+              <p>Potpuno rasklapanje računara i profesionalni cable management za neometan protok vazduha i besprekoran estetski izgled unutrašnjosti.</p>
+            </div>
+            <div class="step-media">
+              <img src="images/services/premiumservis2_small.jpg" alt="Reorganizacija">
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">03</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text">
+              <h3>Čišćenje</h3>
+              <p>Dubinsko kompresorsko izduvavanje prašine, čišćenje kontakata i zamena stare termalne paste premium kvalitetnom Kryonaut pastom.</p>
+            </div>
+            <div class="step-media">
+              <img src="images/services/premiumservis3_small.jpg" alt="Čišćenje">
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">04</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text">
+              <h3>Instalacija</h3>
+              <p>Sklapanje sistema u celinu, ažuriranje BIOS-a na najnoviju verziju i instalacija aktuelnih drajvera za maksimalnu hardversku kompatibilnost.</p>
+            </div>
+            <div class="step-media">
+              <img src="images/services/premiumservis4_small.jpg" alt="Instalacija">
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">05</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text">
+              <h3>Optimizacija</h3>
+              <p>Fino podešavanje operativnog sistema, kreiranje custom fan profila za tiši rad i finalni stress test od 24h za potvrdu apsolutne stabilnosti.</p>
+            </div>
+            <div class="step-media">
+              <img src="images/services/premiumservis5_small.jpg" alt="Optimizacija">
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- KRAJ: Overclock Timeline Proces -->
+
+      <!-- 4 Male Kartice -->
       <div class="oc-stats-row">
         <div class="oc-stat-card">
           <div class="stat-info">
@@ -149,20 +232,20 @@
     <!-- 2. SKLAPANJE RAČUNARA -->
     <section id="sklapanje" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Sklapanje Računara</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Custom Build</span>
           <span>// Gaming & Workstation</span>
           <span>// Cable Management</span>
         </div>
+        <h2 class="service-block-title">Sklapanje Računara</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-sklapanje.jpg" alt="Sklapanje računara" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Bilo da vam je potrebna <span class="text-highlight">zver za 4K gaming</span>, pouzdana radna stanica za video produkciju ili stabilan office računar, tu smo da osmislimo i profesionalno sklopimo sistem po vašoj meri.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Bilo da vam je potrebna <span class="text-highlight">zver za 4K gaming</span>, pouzdana radna stanica za video produkciju ili stabilan office računar, tu smo da osmislimo i profesionalno sklopimo sistem po vašoj meri.</p>
       </div>
 
       <div class="oc-stats-row">
@@ -206,20 +289,20 @@
     <!-- 3. OVERCLOCK RAČUNARI -->
     <section id="overclock" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Overclock Računari</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// CPU & GPU Tuning</span>
           <span>// Thermal Optimization</span>
           <span>// BIOS konfiguracija</span>
         </div>
+        <h2 class="service-block-title">Overclock Računari</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-overclock.jpg" alt="Overclock računari" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Izvucite svaki atom snage iz vašeg hardvera. Preciznim podešavanjem napona, frekvencija i protoka vazduha dovodimo vaš računar do <span class="text-highlight">krajnjih, ali potpuno stabilnih granica.</span></p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Izvucite svaki atom snage iz vašeg hardvera. Preciznim podešavanjem napona, frekvencija i protoka vazduha dovodimo vaš računar do <span class="text-highlight">krajnjih, ali potpuno stabilnih granica.</span></p>
       </div>
 
       <div class="oc-stats-row">
@@ -263,20 +346,20 @@
     <!-- 4. POJAČAVANJE RAČUNARA -->
     <section id="pojacavanje" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Pojačavanje Računara</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Strateški Upgrade</span>
           <span>// NVMe SSD Ugradnja</span>
           <span>// Proširenje RAM-a</span>
         </div>
+        <h2 class="service-block-title">Pojačavanje Računara</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-pojacavanje.jpg" alt="Pojačavanje računara" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Vaš računar je počeo da koči? Nema potrebe za kupovinom novog! Kroz upgrade memorije i prelazak na <span class="text-highlight">ultra-brze SSD diskove</span>, vraćamo brzinu na fabrička podešavanja, pa i više od toga.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Vaš računar je počeo da koči? Nema potrebe za kupovinom novog! Kroz upgrade memorije i prelazak na <span class="text-highlight">ultra-brze SSD diskove</span>, vraćamo brzinu na fabrička podešavanja, pa i više od toga.</p>
       </div>
 
       <div class="oc-stats-row">
@@ -320,22 +403,22 @@
     <!-- 5. ČIŠĆENJE RAČUNARA OD PRAŠINE -->
     <section id="ciscenje" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Čišćenje Prašine</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Dubinsko izduvavanje</span>
           <span>// Zamena termalne paste</span>
           <span>// Prevencija kvara</span>
         </div>
+        <h2 class="service-block-title">Čišćenje Prašine</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <div class="service-gif-container">
           <img src="images/ciscenje.gif" alt="Čišćenje prašine GIF">
         </div>
-        
-        <div class="floating-info-box">
-          <p>Prašina je najveći neprijatelj hardvera. Blokira vazduh i podiže temperature. Naše <span class="text-highlight">dubinsko čišćenje</span> vraća računar u besprekorno, salonsko stanje i produžava mu radni vek.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Prašina je najveći neprijatelj hardvera. Blokira vazduh i podiže temperature. Naše <span class="text-highlight">dubinsko čišćenje</span> vraća računar u besprekorno, salonsko stanje i produžava mu radni vek.</p>
       </div>
 
       <div class="oc-stats-row">
@@ -379,20 +462,20 @@
     <!-- 6. INSTALACIJA OPERATIVNOG SISTEMA -->
     <section id="os" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Instalacija Sistema</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Windows & Linux</span>
           <span>// Drajveri & Update</span>
           <span>// Sigurnosna podešavanja</span>
         </div>
+        <h2 class="service-block-title">Instalacija Sistema</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-os.jpg" alt="Instalacija OS" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Čist početak za vaš sistem. Nudimo instalaciju najnovijih operativnih sistema uz <span class="text-highlight">paket neophodnih drajvera</span>, zaštite i pratećih programa kako biste odmah počeli sa radom.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Čist početak za vaš sistem. Nudimo instalaciju najnovijih operativnih sistema uz <span class="text-highlight">paket neophodnih drajvera</span>, zaštite i pratećih programa kako biste odmah počeli sa radom.</p>
       </div>
 
       <div class="oc-stats-row">
@@ -436,20 +519,20 @@
     <!-- 7. IZRADA WEB STRANICA -->
     <section id="web" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Izrada Web Stranica</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Moderni Dizajn</span>
           <span>// Brzina & SEO</span>
           <span>// Digitalni Identitet</span>
         </div>
+        <h2 class="service-block-title">Izrada Web Stranica</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-web.jpg" alt="Izrada web stranica" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Vaše online prisustvo je vaša lična karta. Dizajniramo brze, optimizovane i <span class="text-highlight">vizuelno impresivne web stranice</span> koje će jasno preneti vašu poslovnu viziju i privući klijente.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Vaše online prisustvo je vaša lična karta. Dizajniramo brze, optimizovane i <span class="text-highlight">vizuelno impresivne web stranice</span> koje će jasno preneti vašu poslovnu viziju i privući klijente.</p>
       </div>
 
       <div class="oc-stats-row">
@@ -493,20 +576,20 @@
     <!-- 8. DIZAJNIRANJE REKLAMNIH FLAJERA -->
     <section id="dizajn" class="service-block scroll-blur-reveal">
       <div class="service-block-header">
-        <h2 class="service-block-title">Dizajniranje Flajera</h2>
-        <div class="service-block-meta">
+        <div class="service-block-meta-top">
           <span>// Print Materijali</span>
           <span>// Vizit Karte</span>
           <span>// Brendiranje</span>
         </div>
+        <h2 class="service-block-title">Dizajniranje Flajera</h2>
       </div>
       
       <div class="service-block-media showcase-card-inner-v2">
         <img src="images/usluge-flajeri.jpg" alt="Dizajn flajera" class="service-block-img">
-        
-        <div class="floating-info-box">
-          <p>Od ideje do realizacije. Kreiramo moderne i upečatljive reklamne materijale, flajere i vizit karte koji <span class="text-highlight">ostavljaju snažan utisak</span> na prvi pogled i efikasno komuniciraju vaše usluge.</p>
-        </div>
+      </div>
+
+      <div class="service-description-box">
+        <p>Od ideje do realizacije. Kreiramo moderne i upečatljive reklamne materijale, flajere i vizit karte koji <span class="text-highlight">ostavljaju snažan utisak</span> na prvi pogled i efikasno komuniciraju vaše usluge.</p>
       </div>
 
       <div class="oc-stats-row">
