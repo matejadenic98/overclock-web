@@ -1,7 +1,6 @@
 /* MIKRO-HIRURŠKA ANIMACIJA BEZ LAYOUT SHIFT-A */
 @keyframes floatUpwardsTransform {
     0% {
-        /* Kreću sa dna (0px) i malo smanjene */
         transform: translateY(0) translateX(0) scale(0.7);
         opacity: 0;
     }
@@ -9,14 +8,12 @@
         opacity: 0.55;
     }
     50% {
-        /* Na pola puta skreću malo udesno radi prirodnog talasanja */
         transform: translateY(-40vh) translateX(15px) scale(1); 
     }
     85% {
         opacity: 0.55;
     }
     100% {
-        /* Lete skroz do vrha sekcije i malo preko (-90vh jer je visina 80vh) */
         transform: translateY(-92vh) translateX(-15px) scale(1.2);
         opacity: 0;
     }
@@ -28,12 +25,12 @@
 
 @keyframes blurFocusReveal {
     0% {
-        filter: blur(15px);
+        filter: blur(12px);
         opacity: 0;
-        transform: translateY(40px) scale(0.97);
+        transform: translateY(30px) scale(0.98);
     }
-    /* Sačuvano postepeno izoštravanje do 35% ekrana, ali sada tekst ostaje savršeno oštar i čist skroz do vrha (100%) */
-    35%, 100% {
+    /* Brže izoštravanje - već na 100% ulaska u vidno polje je skroz oštar */
+    100% {
         filter: blur(0px);
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -43,7 +40,18 @@
 .scroll-blur-reveal {
     animation: blurFocusReveal linear both;
     animation-timeline: view();
-    animation-range: cover 0% cover 100%;
+    /* KLJUČNA PROMENA: Animacija počinje na ulazu (entry 0%) i završava se čim element pređe 30% ekrana */
+    animation-range: entry 0% cover 30%;
+}
+
+/* =========================================
+   POSEBNO PRAVILO ZA PRVI ELEMENT / PRVU SEKCIJU (PREMIUM SERVIS)
+   ========================================= */
+
+/* Da se prva sekcija ispod slajdera izoštri instant čim digneš pogled */
+#premium.service-block,
+.service-block:first-of-type {
+    animation-range: entry 0% cover 15% !important;
 }
 
 /* =========================================
@@ -55,12 +63,10 @@
         opacity: 0;
         transform: translateY(25px);
     }
-    /* Kada korisnik pređe 85% stranice, tekst počinje da se pomalja iz magle */
     85% {
         filter: blur(6px);
         opacity: 0.4;
     }
-    /* Na 98% (tik pred sam kraj skrola) tekst je potpuno oštar i na svom mestu */
     98%, 100% {
         filter: blur(0px);
         opacity: 1;
@@ -69,7 +75,7 @@
 }
 
 /* =========================================
-   CENOVNIK SCROLL REVEAL (GLAVNO PRAVILO)
+   CENOVNIK SCROLL REVEAL
    ========================================= */
 @keyframes cenovnikBlurReveal {
     0% {
@@ -98,34 +104,32 @@
    SPECIFIČNI SCROLL REVEAL PO SEKCIJAMA (MOBILNI)
    ========================================= */
 @media (max-width: 768px) {
-    /* Blog se otvara ranije na 85% i izgleda odlicno */
+    .scroll-blur-reveal {
+        animation-range: entry 0% cover 20%;
+    }
+
     #blog .scroll-blur-reveal,
     .blog-grid .scroll-blur-reveal {
         animation-range: cover 0% cover 50%;
     }
 
-    /* Cenovnik ima brz i cist ulaz na mobilnom */
     #cenovnik .scroll-blur-reveal {
         animation-range: entry 0% cover 15%;
     }
 }
 
 /* =========================================
-   SPECIFIČNO ZA GALERIJA STRANICU (BEZ UTICAJA NA OSTATAK SAJTA)
+   SPECIFIČNO ZA GALERIJA STRANICU
    ========================================= */
-
-/* 2. Blaži i brži blur efekat za ostale kartice u galeriji */
 .gallery-page .scroll-blur-reveal {
-  filter: blur(4px);            /* Blaži blur pa se brže razbistri */
-  transform: translateY(15px);  /* Manji pomak na gore */
+  filter: blur(4px);
+  transform: translateY(15px);
   transition: opacity 0.35s ease-out, filter 0.35s ease-out, transform 0.35s ease-out;
 }
-
 
 /* ===================================================
     ANIMACIJA - Zlatni Odsjaj (Shine)
    =================================================== */
-
 @keyframes hoverShine {
     0% { left: -100%; }
     100% { left: 200%; }
