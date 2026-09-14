@@ -13,6 +13,7 @@
 </head>
 <body class="scroll-journey services-page" id="top">
 
+
   <!-- FIKSIRANA NAVIGACIJA -->
   <header class="showcase-nav">
     <a href="index.html#hero" class="nav-brand">
@@ -41,7 +42,7 @@
     <div class="oc-slider">
       <!-- Slajd 1 -->
       <div class="oc-slide active">
-        <img src="images/premium-after.jpg" alt="Slajd 1" class="oc-slide-img">
+        <img src="images/services/slide1.webp" alt="Slajd 1" class="oc-slide-img">
         <div class="oc-slide-content">
           <span class="oc-slide-badge">ISTAKNUTO</span>
           <h2>Apsolutna Dominacija</h2>
@@ -50,7 +51,7 @@
       </div>
       <!-- Slajd 2 -->
       <div class="oc-slide">
-        <img src="images/usluge-overclock.jpg" alt="Slajd 2" class="oc-slide-img">
+        <img src="images/services/slide2.webp" alt="Slajd 2" class="oc-slide-img">
         <div class="oc-slide-content">
           <span class="oc-slide-badge">EKSTREMNO</span>
           <h2>Hlađenje i Overclock</h2>
@@ -59,7 +60,7 @@
       </div>
       <!-- Slajd 3 -->
       <div class="oc-slide">
-        <img src="images/usluge-sklapanje.jpg" alt="Slajd 3" class="oc-slide-img">
+        <img src="images/services/slide3.webp" alt="Slajd 3" class="oc-slide-img">
         <div class="oc-slide-content">
           <span class="oc-slide-badge">ESTETIKA</span>
           <h2>Cable Management</h2>
@@ -94,27 +95,12 @@
         <h2 class="service-block-title">Premium Servis</h2>
       </div>
 
-      <!-- Čist tekst iznad slike -->
+      <!-- Čist tekst iznad -->
       <p class="service-intro-text">
         Ovaj servis je dizajniran za korisnike koji žele maksimalne performanse, stabilnost i dugovečnost svog računara. Bez obzira da li je vaš sistem pregrejan, usporen ili jednostavno zahteva redovno održavanje na najvišem nivou, naš proces garantuje vraćanje u salonsko stanje.
       </p>
-      
-      <!-- Velika slika -->
-      <div class="service-block-media showcase-card-inner-v2">
-        <div class="inline-ba-container">
-          <img src="images/gallery/rtx3090premiumservis1_2.webp" alt="Pre servisa" class="inline-ba-before">
-          <img src="images/gallery/rtx3090premiumservis1_16_1.webp" alt="Posle servisa" class="inline-ba-after" id="premium-ba-after">
-          <input type="range" min="0" max="100" value="50" class="inline-ba-slider" id="premium-ba-slider">
-          <div class="inline-ba-line" id="premium-ba-line"></div>
-        </div>
-      </div>
 
-      <!-- Izmešten tekst ispod slike -->
-      <div class="service-description-box">
-        <p>Naš premium servis predstavlja vrhunac pažnje i posvećenosti vašem računaru. Svaki detalj prolazi kroz <span class="text-highlight">rigorozne provere</span>, od dubinskog čišćenja do napredne optimizacije sistema i ugradnje najkvalitetnijih komponenti. Osetite razliku pre i posle.</p>
-      </div>
-
-      <!-- NOVO: Overclock Timeline Proces SA SLIKAMA -->
+      <!-- TIMELINE PROCES (GORE) -->
       <div class="oc-process-timeline">
         
         <div class="oc-process-step scroll-blur-reveal">
@@ -188,20 +174,38 @@
         </div>
 
       </div>
-      <!-- KRAJ: Overclock Timeline Proces -->
 
-      <!-- NOVO: REZULTATI PODNASLOV -->
+<!-- VELIKA BEFORE / AFTER SLIKA -->
+    <div class="service-block-media showcase-card-inner-v2 ba-slider-container scroll-blur-reveal" style="margin-bottom: 70px;">
+          <div class="inline-ba-container">
+          <span class="ba-label ba-label-before">PRE</span>
+          <span class="ba-label ba-label-after">POSLE</span>
+
+          <img src="images/gallery/rtx3090premiumservis1_2.webp" alt="Pre servisa" class="inline-ba-before ba-img-before">
+          <img src="images/gallery/rtx3090premiumservis1_16_1.webp" alt="Posle servisa" class="inline-ba-after ba-img-after" id="premium-ba-after">
+          
+          <input type="range" min="0" max="100" value="50" class="inline-ba-slider ba-slider-input" id="premium-ba-slider">
+          <div class="inline-ba-line ba-slider-line" id="premium-ba-line">
+            <div class="ba-slider-button"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Opisni tekst ispod slike -->
+      <div class="service-description-box scroll-blur-reveal">
+        <p>Naš premium servis predstavlja vrhunac pažnje i posvećenosti vašem računaru. Svaki detalj prolazi kroz <span class="text-highlight">rigorozne provere</span>, od dubinskog čišćenja do napredne optimizacije sistema i ugradnje najkvalitetnijih komponenti. Osetite razliku pre i posle.</p>
+      </div>
+
+      <!-- PODNASLOV REZULTATI -->
       <div class="results-header scroll-blur-reveal">
         <span class="results-sub-tag">// Garantovane Performanse</span>
         <h3 class="results-title">Rezultati</h3>
       </div>
 
-<!-- 4 KARTICE SA SIMBOLIMA/IKONICAMA UNUTAR CSS-a -->
+      <!-- 4 KARTICE REZULTATA -->
       <div class="oc-stats-row scroll-blur-reveal">
-        
         <div class="oc-stat-card">
           <div class="stat-icon-wrapper">
-            <!-- Ikona Termometar / Hlađenje -->
             <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
               <line x1="12" y1="9" x2="12" y2="12"/>
@@ -215,7 +219,6 @@
 
         <div class="oc-stat-card">
           <div class="stat-icon-wrapper">
-            <!-- Ikona Optimizacija / Gauge -->
             <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
               <circle cx="12" cy="12" r="3"/>
@@ -229,7 +232,6 @@
 
         <div class="oc-stat-card">
           <div class="stat-icon-wrapper">
-            <!-- Ikona Detaljno čišćenje / Sparkles -->
             <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
               <path d="M5 3v4M3 5h4M19 17v4M17 19h4"/>
@@ -243,7 +245,6 @@
 
         <div class="oc-stat-card">
           <div class="stat-icon-wrapper">
-            <!-- Ikona Testiranje / Shield Check -->
             <svg class="stat-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <path d="m9 12 2 2 4-4"/>
@@ -254,7 +255,6 @@
             <p>Detaljno testiranje</p>
           </div>
         </div>
-
       </div>
 
     </section>
@@ -265,9 +265,12 @@
       <span class="divider-node"></span>
     </div>
 
-    <!-- 2. SKLAPANJE RAČUNARA -->
-    <section id="sklapanje" class="service-block scroll-blur-reveal">
-      <div class="service-block-header">
+<!-- ========================================
+         2. SKLAPANJE RAČUNARA
+         ======================================== -->
+    <section id="sklapanje" class="service-block"> <!-- UKLONJEN BLUR OVDJE -->
+      
+      <div class="service-block-header scroll-blur-reveal"> <!-- DODATO OVDJE -->
         <div class="service-block-meta-top">
           <span>// Custom Build</span>
           <span>// Gaming & Workstation</span>
@@ -276,44 +279,111 @@
         <h2 class="service-block-title">Sklapanje Računara</h2>
       </div>
       
-      <div class="service-block-media showcase-card-inner-v2">
-        <img src="images/usluge-sklapanje.jpg" alt="Sklapanje računara" class="service-block-img">
+      <p class="service-intro-text scroll-blur-reveal"> <!-- DODATO OVDJE -->
+        Svaki računar je priča za sebe. Bez obzira da li planirate budget gaming mašinu, ozbiljnu radnu stanicu ili ultimativni 4K sistem, naš proces garantuje maksimalnu posvećenost, transparentnost i vrhunske performanse. Sve počinje preciznim planiranjem.
+      </p>
+
+      <!-- UKLONJEN BLUR SA GLAVNOG KONTEJNERA -->
+      <div class="oc-process-timeline text-only-timeline">
+        
+        <!-- BLUR DODAT NA SVAKI POJEDINAČNI KORAK -->
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">01</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text full-width-text">
+              <h3>Sklapanje po budžetu</h3>
+              <p>Detaljna analiza vaših potreba i kreiranje optimalne konfiguracije uz maksimalno poštovanje budžeta. Mogućnost sklapanja od potpuno novih, proverenih polovnih, ili kombinacije komponenti.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">02</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text full-width-text">
+              <h3>Dogovor (Rok / Cena)</h3>
+              <p>Precizno definisanje svih detalja unapred. Utvrđujemo finalnu cenu bez ikakvih skrivenih troškova i tačan rok isporuke računara na vašu adresu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">03</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text full-width-text">
+              <h3>B2B Nabavka</h3>
+              <p>Sigurna i brza nabavka svih dogovorenih komponenti preko naših proverenih B2B dobavljača po najpovoljnijim uslovima na tržištu.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">04</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text full-width-text">
+              <h3>Rad</h3>
+              <p>Fizičko sklapanje računara, umetnost cable management-a za idealan protok vazduha, instalacija softvera i višesatno stress testiranje pod maksimalnim opterećenjem.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="oc-process-step scroll-blur-reveal">
+          <div class="step-bg-number">05</div>
+          <div class="step-marker"></div>
+          <div class="step-content">
+            <div class="step-text full-width-text">
+              <h3>Isporuka</h3>
+              <p>Lično preuzimanje ili bezbedno slanje gotovog, podešenog i istestiranog računara u salonskom stanju, uz uredno spakovane ambalaže svih komponenti i garancije.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
 
-      <div class="service-description-box">
-        <p>Bilo da vam je potrebna <span class="text-highlight">zver za 4K gaming</span>, pouzdana radna stanica za video produkciju ili stabilan office računar, tu smo da osmislimo i profesionalno sklopimo sistem po vašoj meri.</p>
+      <!-- SLOGAN I HERO SLIKA -->
+      <div class="build-slogan-container scroll-blur-reveal">
+        <h3 class="build-slogan">Sklapamo računare s ljubavlju.</h3>
+      </div>
+      
+      <div class="service-block-media showcase-card-inner-v2 scroll-blur-reveal" style="margin-bottom: 70px;">
+        <img src="images/services/sklapanjeracunara.webp" alt="Sklapanje računara" class="service-block-img">
       </div>
 
-      <div class="oc-stats-row">
-        <div class="oc-stat-card">
-          <div class="stat-info">
-            <h4>4K+</h4>
-            <p>Gaming Ready</p>
-          </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
+      <!-- 4 KARTICE (2x2) PRIMERI RADOVA -->
+      <div class="oc-projects-grid">
+        <div class="project-card scroll-blur-reveal">
+          <img src="images/services/sklapanjeracunara1.webp" alt="Blackout Build" class="project-card-img" onerror="this.src='images/premium-after.jpg'">
+          <h4 class="project-card-title">Blackout Build: Stealth & Performance</h4>
         </div>
-        <div class="oc-stat-card">
-          <div class="stat-info">
-            <h4>0</h4>
-            <p>Vidljivih kablova</p>
-          </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
+        <div class="project-card scroll-blur-reveal">
+          <img src="images/services/sklapanjeracunara1_1.webp" alt="RGB Workstation" class="project-card-img" onerror="this.src='images/usluge-overclock.jpg'">
+          <h4 class="project-card-title">RGB Workstation: Video Editing Beast</h4>
         </div>
-        <div class="oc-stat-card">
-          <div class="stat-info">
-            <h4>Sync</h4>
-            <p>RGB Sinhronizacija</p>
-          </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
+        <div class="project-card scroll-blur-reveal">
+          <img src="images/services/sklapanjeracunara1_2.webp" alt="Budget Gaming" class="project-card-img" onerror="this.src='images/usluge-pojacavanje.jpg'">
+          <h4 class="project-card-title">Budget King: 1080p Gaming Setup</h4>
         </div>
-        <div class="oc-stat-card">
-          <div class="stat-info">
-            <h4>Pro</h4>
-            <p>Premium Hardver</p>
-          </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
+        <div class="project-card scroll-blur-reveal">
+          <img src="images/services/sklapanjeracunara1_3.webp" alt="Watercooling Setup" class="project-card-img" onerror="this.src='images/usluge-os.jpg'">
+          <h4 class="project-card-title">Custom Watercooling: Extreme Overclock</h4>
         </div>
       </div>
+
+      <!-- PREMIUM DUGME ZA GALERIJU -->
+      <div class="btn-container-center scroll-blur-reveal">
+        <a href="gallery.html" class="btn-premium-glow">
+          POGLEDAJ SVE PROJEKTE 
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+
     </section>
 
     <div class="tech-divider scroll-blur-reveal">
@@ -347,28 +417,24 @@
             <h4>+20%</h4>
             <p>FPS Boost u igrama</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>5.5+</h4>
             <p>GHz Max Frekvencija</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>BIOS</h4>
             <p>Custom Profil</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>0%</h4>
             <p>Thermal Throttling</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -404,28 +470,24 @@
             <h4>7GB/s</h4>
             <p>NVMe Gen4 Brzine</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>32GB+</h4>
             <p>Dual-Channel RAM</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>100%</h4>
             <p>Kompatibilnost</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>0s</h4>
             <p>Zastajkivanja u radu</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -463,28 +525,24 @@
             <h4>0%</h4>
             <p>Ostataka prašine</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>-20°C</h4>
             <p>Prosečan pad temp.</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>100%</h4>
             <p>Protok vazduha</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>Silent</h4>
             <p>Tiši rad ventilatora</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -520,28 +578,24 @@
             <h4>Win 11</h4>
             <p>Optimizovan OS</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>Clean</h4>
             <p>Bez bloatware smeća</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>V.01</h4>
             <p>Najnoviji drajveri</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>Safe</h4>
             <p>Podešen Defender</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -577,28 +631,24 @@
             <h4>99%</h4>
             <p>PageSpeed Score</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>100%</h4>
             <p>Responsive dizajn</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>SEO</h4>
             <p>Optimizacija pretrage</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>24/7</h4>
             <p>Premium hosting</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -634,28 +684,24 @@
             <h4>300dpi</h4>
             <p>Print Ready format</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>CMYK</h4>
             <p>Kalibracija boja</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>24h</h4>
             <p>Isporuka idejnog rešenja</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
         <div class="oc-stat-card">
           <div class="stat-info">
             <h4>Premium</h4>
             <p>Vizuelni identitet</p>
           </div>
-          <div class="stat-img"><img src="images/placeholder-stat.jpg" alt="Info"></div>
         </div>
       </div>
     </section>
@@ -682,51 +728,52 @@
     </div>
   </footer>
 
+    <!-- PLUTAJUĆE BACK TO TOP DUGME -->
+<button id="floating-back-to-top" class="floating-top-btn" aria-label="Nazad na vrh">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m18 15-6-6-6 6"/>
+  </svg>
+</button>
+
+
   <script src="javascript/transitions.js"></script>
   <script>
-    // In-line Before/After slajder
+    // Before/After slajder logika sa skrivalicom PRE / POSLE bedževa
     document.addEventListener("DOMContentLoaded", function () {
-      const baInput = document.getElementById('premium-ba-slider');
-      const baAfter = document.getElementById('premium-ba-after');
-      const baLine = document.getElementById('premium-ba-line');
+      const baContainers = document.querySelectorAll('.ba-slider-container');
+      
+      baContainers.forEach(container => {
+        const input = container.querySelector('.ba-slider-input');
+        const afterImg = container.querySelector('.ba-img-after');
+        const line = container.querySelector('.ba-slider-line');
+        const labelBefore = container.querySelector('.ba-label-before');
+        const labelAfter = container.querySelector('.ba-label-after');
 
-      if (baInput && baAfter && baLine) {
-        baAfter.style.clipPath = `polygon(${baInput.value}% 0, 100% 0, 100% 100%, ${baInput.value}% 100%)`;
-        baLine.style.left = `${baInput.value}%`;
+        if (input && afterImg && line) {
+          afterImg.style.clipPath = `polygon(${input.value}% 0, 100% 0, 100% 100%, ${input.value}% 100%)`;
+          line.style.left = `${input.value}%`;
 
-        baInput.addEventListener('input', (e) => {
-          const val = e.target.value;
-          baAfter.style.clipPath = `polygon(${val}% 0, 100% 0, 100% 100%, ${val}% 100%)`;
-          baLine.style.left = `${val}%`;
-        });
-      }
-    });
+          let hideTimeout = null;
 
-    // ScrollSpy skripta 
-    document.addEventListener("DOMContentLoaded", function () {
-      const sections = document.querySelectorAll(".service-block");
-      const navLinks = document.querySelectorAll(".showcase-filters .filter-btn");
+          input.addEventListener('input', (e) => {
+            const val = e.target.value;
+            afterImg.style.clipPath = `polygon(${val}% 0, 100% 0, 100% 100%, ${val}% 100%)`;
+            line.style.left = `${val}%`;
 
-      window.addEventListener("scroll", () => {
-        let current = "";
-        
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          if (pageYOffset >= sectionTop - 300) { 
-            current = section.getAttribute("id");
-          }
-        });
+            if (labelBefore) labelBefore.style.opacity = val < 15 ? '0' : '1';
+            if (labelAfter) labelAfter.style.opacity = val > 85 ? '0' : '1';
 
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === "#" + current) {
-            link.classList.add("active");
-          }
-        });
+            clearTimeout(hideTimeout);
+            hideTimeout = setTimeout(() => {
+              if (labelBefore) labelBefore.style.opacity = '0';
+              if (labelAfter) labelAfter.style.opacity = '0';
+            }, 2500);
+          });
+        }
       });
     });
 
-    // Slideshow Skripta
+    // Slideshow & ScrollSpy Skripte
     let slideIndex = 1;
     let slideInterval;
     
@@ -758,10 +805,35 @@
       slideInterval = setInterval(() => { moveSlide(1); }, 5000);
     }
 
+     // Povratak na vrh stranice
     document.addEventListener("DOMContentLoaded", () => {
       showSlides(slideIndex);
       slideInterval = setInterval(() => { moveSlide(1); }, 5000);
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+  const topBtn = document.getElementById("floating-back-to-top");
+
+  if (topBtn) {
+    // Prikaži dugme tek nakon 300px skrola
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        topBtn.classList.add("visible");
+      } else {
+        topBtn.classList.remove("visible");
+      }
+    });
+
+    // Smooth scroll do vrha na klik
+    topBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+});
   </script>
+
 </body>
 </html>

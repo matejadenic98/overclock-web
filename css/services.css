@@ -6,7 +6,6 @@
     scroll-behavior: smooth; 
 }
 
-/* Kontejner za naslov i filtere */
 .services-header-container {
     margin: 140px auto 60px auto; 
     width: 100%;
@@ -33,7 +32,7 @@
 }
 
 /* =========================================
-   PREMIUM SLIDESHOW (FRAMER STIL)
+   PREMIUM SLIDESHOW
    ========================================= */
 
 .oc-slideshow-container {
@@ -76,7 +75,6 @@
     opacity: 0.6; 
 }
 
-/* Sadržaj na slajdu */
 .oc-slide-content {
     position: relative;
     z-index: 3;
@@ -128,30 +126,28 @@
 }
 .oc-dot.active, .oc-dot:hover { background: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
 
-
 /* =========================================
-   GLAVNI KONTEJNER I USLUGE
+   GLAVNI KONTEJNER I VEĆI SPACING
    ========================================= */
 
 .services-main-container {
     max-width: 1200px; 
-    margin: 0 auto 120px auto;
+    margin: 0 auto 150px auto;
     padding: 0 5%;
 }
 
 .service-block {
-    padding-top: 100px; 
-    margin-bottom: 80px; 
+    padding-top: 80px; 
+    margin-bottom: 120px; 
     scroll-margin-top: 140px; 
 }
 
-/* ZAGLAVLJE: META IZNAD, NASLOV ISPOD */
 .service-block-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 15px; 
-    margin-bottom: 40px; 
+    margin-bottom: 30px; 
 }
 
 .service-block-meta-top {
@@ -177,83 +173,28 @@
     line-height: 1.1;
 }
 
-/* =========================================
-   ČIST TEKST IZNAD SLIKE
-   ========================================= */
-
 .service-intro-text {
     font-size: 1.2rem;
     color: #94a3b8;
     line-height: 1.8;
-    margin: 0 0 50px 0; 
+    margin: 0 0 70px 0; 
     font-weight: 400;
     max-width: 950px;
 }
 
 /* =========================================
-   SHOWCASE KARTICA (VELIKA SLIKA)
-   ========================================= */
-
-.service-block-media.showcase-card-inner-v2 {
-    position: relative; 
-    width: 100%;
-    aspect-ratio: 16 / 10; 
-    border-radius: 12px; 
-    overflow: hidden;
-    border: 1px solid rgba(56, 189, 248, 0.2);
-    border-left: 4px solid #00d2ff; 
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6); 
-    margin-bottom: 50px; 
-    background: #050505;
-}
-
-.service-block-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* =========================================
-   IZMEŠTEN TEKST ISPOD SLIKE
-   ========================================= */
-
-.service-description-box {
-    background: rgba(15, 15, 15, 0.6);
-    border-left: 4px solid #38bdf8; 
-    padding: 40px; 
-    border-radius: 0 12px 12px 0; 
-    margin-bottom: 70px; 
-}
-
-.service-description-box p {
-    color: #cbd5e1;
-    font-size: 1.25rem; 
-    line-height: 1.9;
-    margin: 0;
-    font-weight: 300;
-}
-
-.text-highlight {
-    color: #ffffff;
-    font-weight: 500;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-}
-
-/* =========================================
-   TIMELINE PROCES (SA SLIKAMA UZ TEKST)
+   TIMELINE PROCES (GORNJI DEO)
    ========================================= */
 
 .oc-process-timeline {
     position: relative;
-    margin: 0 0 80px 0; 
+    margin: 0 0 110px 0; 
     padding: 20px 0;
     display: flex;
     flex-direction: column;
-    gap: 80px; /* Dodatno povećan razmak pošto sad imamo i slike */
+    gap: 90px; 
 }
 
-/* Vertikalna isprekidana neon plava linija */
 .oc-process-timeline::before {
     content: '';
     position: absolute;
@@ -279,7 +220,6 @@
     justify-content: center;
 }
 
-/* Veliki pozadinski broj (01, 02...) */
 .step-bg-number {
     position: absolute;
     left: 70px; 
@@ -293,7 +233,6 @@
     letter-spacing: -3px;
 }
 
-/* Svetleći marker na liniji */
 .step-marker {
     position: absolute;
     left: 15px; 
@@ -308,20 +247,18 @@
     z-index: 2;
 }
 
-/* Sadržaj koraka (Split Layout za Tekst i Sliku) */
 .step-content {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Gura tekst levo, sliku desno */
-    gap: 40px;
+    justify-content: space-between;
+    gap: 45px;
 }
 
-/* Levi deo sa tekstom */
 .step-text {
     flex: 1;
-    max-width: 500px; /* Zadržava širinu teksta kako bi slika imala mesta */
+    max-width: 500px; 
 }
 
 .step-text h3 {
@@ -338,10 +275,9 @@
     margin: 0;
 }
 
-/* Desni deo sa slikom (Premium Frame) */
 .step-media {
     flex: 1;
-    max-width: 450px; /* Maksimalna širina slike na desktopu */
+    max-width: 450px; 
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(56, 189, 248, 0.2);
@@ -352,56 +288,341 @@
 .step-media img {
     width: 100%;
     height: 100%;
-    aspect-ratio: 16 / 9; /* Bioskopski format za svaku malu sliku */
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
     transition: transform 0.5s ease;
 }
 
-/* Zoom animacija za sliku pri prelasku miša preko celog koraka */
 .oc-process-step:hover .step-media img {
     transform: scale(1.05);
 }
 
 /* =========================================
-   PODNASLOV REZULTATI (OVERCLOCK STIL)
+   ČISTE ZAOHLJENE IVICE ZA HERO I B/A SLIKE
    ========================================= */
 
-.results-header {
-    margin: 80px 0 35px 0;
-    padding-left: 20px;
-    border-left: 3px solid #38bdf8; /* Plava linija koja ga čini uočljivim */
+.service-block-media.showcase-card-inner-v2 {
+    position: relative; 
+    width: 100%;
+    height: auto;
+    border-radius: 20px !important; /* Zaobljene ivice */
+    overflow: hidden !important;      /* Seče sliku tačno po krivini */
+    margin-bottom: 50px; 
+    background: transparent;
+    border: none !important;          /* Bez ikakvih linija i ramova */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Blaga senka za dubinu */
+}
+
+/* Sama slika unutar kontejnera */
+.service-block-media.showcase-card-inner-v2 img,
+.service-block-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px !important;
+}
+
+.inline-ba-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fix za Before/After kontejner (vraća punu 16:10 visinu bez zgnječivanja) */
+.service-block-media.ba-slider-container {
+    aspect-ratio: 16 / 10 !important;
+    height: auto !important;
+}
+
+.inline-ba-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important; /* Sprečava deformisanje slike */
+    pointer-events: none;
+}
+
+.inline-ba-after {
+    z-index: 2;
+}
+
+/* PRE I POSLE TEKST NA BOTTOMU (ČIST TEKST BEZ POZADINSKIH TRAKA) */
+.ba-label {
+    position: absolute !important;
+    bottom: 25px !important;
+    top: auto !important;
+    z-index: 10 !important;
+    font-size: 1.1rem !important;
+    font-weight: 900 !important;
+    letter-spacing: 3px !important;
+    color: #ffffff !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    height: auto !important;
+    width: auto !important;
+    display: block !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.ba-label-before {
+    left: 30px !important;
+}
+
+.ba-label-after {
+    right: 30px !important;
+}
+
+/* VERTIKALNA SPLIT LINIJA I DUGME U SREDINI */
+.inline-ba-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #38bdf8;
+    z-index: 5;
+    transform: translateX(-50%);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.8);
+    pointer-events: none;
+}
+
+.ba-slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #050505;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+    align-items: center;
+    justify-content: center;
 }
 
-.results-sub-tag {
-    font-family: monospace;
+.ba-slider-button::before {
+    content: '‹ ›';
     color: #38bdf8;
-    font-size: 0.95rem;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: -2px;
 }
 
-.results-title {
-    font-size: 2.4rem;
-    color: #ffffff;
-    font-weight: 800;
+.inline-ba-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 6; /* Osigurava da input za slajder uvek prima klikove/touch */
+    opacity: 0;
+    cursor: ew-resize;
     margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 /* =========================================
-   KARTICE SA IKONICAMA (BEZ RUŽNOG CRNOG PRAVOUGAONIKA)
+   SLOGAN IZNAD HERO SLIKE
    ========================================= */
+
+.build-slogan-container {
+    text-align: center;
+    margin: 40px 0 35px 0;
+    width: 100%;
+}
+
+.build-slogan {
+    font-size: 2.2rem;
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+}
+
+.build-slogan::before, 
+.build-slogan::after {
+    content: '//';
+    color: #38bdf8;
+    margin: 0 15px;
+    font-family: monospace;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* =========================================
+   TEXT-ONLY TIMELINE & 2x2 GRID (SKLAPANJE)
+   ========================================= */
+
+/* Širi tekstualni box kada nema slike sa strane */
+.text-only-timeline .step-text.full-width-text {
+    max-width: 850px; 
+}
+
+/* 2x2 Grid za primere radova */
+.oc-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    margin-bottom: 60px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    cursor: pointer;
+}
+
+/* VERTIKALNA PROPORCIJA SLIKA (Portret 3:4) SA BLAGIM BORDEROM */
+.project-card-img {
+    width: 100%;
+    aspect-ratio: 3 / 4; 
+    border-radius: 16px;
+    object-fit: cover;
+    background: #050505;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(56, 189, 248, 0.08);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover .project-card-img {
+    transform: translateY(-5px);
+    border-color: rgba(56, 189, 248, 0.7);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(56, 189, 248, 0.2);
+}
+
+.project-card-title {
+    color: #e2e8f0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.project-card:hover .project-card-title {
+    color: #38bdf8;
+}
+
+/* =========================================
+   PREMIUM GLOW DUGME
+   ========================================= */
+
+.btn-container-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-premium-glow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 42px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), inset 0 0 10px rgba(56, 189, 248, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(8px);
+}
+
+.btn-premium-glow svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-premium-glow:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.35), inset 0 0 15px rgba(56, 189, 248, 0.2);
+    transform: translateY(-2px);
+}
+
+.btn-premium-glow:hover svg {
+    transform: translateX(5px);
+}
+
+/* =========================================
+   OPISNI TEKST ISPOD SLIKE
+   ========================================= */
+
+.service-description-box {
+    background: rgba(15, 15, 15, 0.6);
+    border-left: 4px solid #38bdf8; 
+    padding: 40px; 
+    border-radius: 0 12px 12px 0; 
+    margin-bottom: 90px; 
+}
+
+.service-description-box p {
+    color: #cbd5e1;
+    font-size: 1.25rem; 
+    line-height: 1.9;
+    margin: 0;
+    font-weight: 300;
+}
+
+.text-highlight {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================
+   PODNASLOV REZULTATI I KARTICE
+   ========================================= */
+
+.results-header {
+    margin: 90px 0 35px 0 !important;
+    padding-left: 18px !important;
+    border-left: 3px solid #38bdf8 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+}
+
+.results-sub-tag {
+    font-family: monospace !important;
+    color: #38bdf8 !important;
+    font-size: 1rem !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+}
+
+.results-title {
+    font-size: 2.4rem !important;
+    color: #ffffff !important;
+    font-weight: 800 !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
 
 .oc-stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 25px; 
 }
 
 .oc-stat-card {
@@ -418,15 +639,13 @@
     transition: all 0.35s ease;
 }
 
-/* Hover na celoj kartici */
 .oc-stat-card:hover {
     transform: translateY(-6px);
     border-color: rgba(56, 189, 248, 0.6);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.12);
-    background: #0d1117; /* Čista ujednačena tamna pozadina, bez gradijenata */
+    background: #0d1117;
 }
 
-/* Kontejner za ikonicu */
 .stat-icon-wrapper {
     width: 48px;
     height: 48px;
@@ -452,15 +671,12 @@
     box-shadow: 0 0 18px rgba(56, 189, 248, 0.5);
 }
 
-.oc-stat-card:hover .stat-icon {
-    stroke: #050505;
-}
+.oc-stat-card:hover .stat-icon { stroke: #050505; }
 
-/* TEKST BEZ POZADINSKIH SENKI ILI GRADIJENATA */
 .stat-info {
     padding: 0 !important;
     margin: 0 !important;
-    background: transparent !important; /* UKLANJA CRNI PRAVOUGAONIK */
+    background: transparent !important;
 }
 
 .stat-info h4 {
@@ -478,146 +694,92 @@
     font-weight: 400;
 }
 
-
 /* =========================================
-   4 KARTICE SA SLIKAMA NA DNU SEKCIJE
+   OVERCLOCK PLUTAJUĆE BACK TO TOP DUGME
    ========================================= */
 
-.oc-stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px; 
-}
-
-.oc-stat-card {
-    background: #080808;
-    border: 1px solid rgba(56, 189, 248, 0.15); 
-    border-radius: 16px;
+.floating-top-btn {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(8, 12, 20, 0.75);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    height: 280px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
-.oc-stat-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(56, 189, 248, 0.5);
+.floating-top-btn svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.3s ease;
 }
 
-.stat-info {
-    padding: 30px 20px 15px 20px; 
-    z-index: 2;
-    background: linear-gradient(to bottom, rgba(8,8,8,1) 50%, rgba(8,8,8,0) 100%); 
+/* Prikaži dugme kada se skroluje */
+.floating-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-.stat-info h4 {
-    font-size: 2.2rem;
-    color: #38bdf8; 
-    margin: 0 0 5px 0;
-    font-weight: 800;
-    letter-spacing: -1px;
+/* Hover & Active efekti */
+.floating-top-btn:hover {
+    background: rgba(56, 189, 248, 0.15);
+    border-color: #38bdf8;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4), 0 10px 25px rgba(0, 0, 0, 0.6);
 }
 
-.stat-info p {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    margin: 0;
-    line-height: 1.4;
+.floating-top-btn:hover svg {
+    transform: translateY(-3px);
 }
-
-.stat-img {
-    flex-grow: 1;
-    position: relative;
-    width: 100%;
-    margin-top: -20px; 
-}
-
-.stat-img img {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 100%; height: 100%;
-    object-fit: cover; object-position: center bottom; 
-    opacity: 0.5; transition: opacity 0.3s ease;
-}
-
-.oc-stat-card:hover .stat-img img { opacity: 1; }
-
-/* =========================================
-   BEFORE/AFTER & GIF SLIDER
-   ========================================= */
-.inline-ba-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.inline-ba-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
-.inline-ba-after { z-index: 2; }
-.inline-ba-line { position: absolute; top: 0; bottom: 0; width: 4px; background: #00d2ff; z-index: 3; transform: translateX(-50%); box-shadow: 0 0 15px rgba(0, 210, 255, 0.8); pointer-events: none; }
-.inline-ba-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 4; opacity: 0; cursor: ew-resize; margin: 0; }
-.service-gif-container { width: 100%; height: 100%; }
-.service-gif-container img { width: 100%; height: 100%; object-fit: cover; }
 
 /* =========================================
    MOBILNA OPTIMIZACIJA
    ========================================= */
+
 @media (max-width: 900px) {
-    .service-block {
-        padding-top: 80px; 
-        margin-bottom: 60px;
-    }
+    .service-block { padding-top: 60px; margin-bottom: 80px; }
     .service-block-title { font-size: 3rem; }
     .oc-slideshow-container { aspect-ratio: 16 / 9; border-radius: 24px; margin-bottom: 80px; }
-    .oc-slide-content h2 { font-size: 2.8rem; }
     .oc-stats-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    
-    /* Na tabletima malo smanjujemo sliku u timeline-u */
     .step-content { gap: 20px; }
     .step-media { max-width: 300px; }
 }
 
 @media (max-width: 768px) {
-    .service-block {
-        padding-top: 60px;
-        margin-bottom: 50px;
-    }
-    .service-block-header { margin-bottom: 25px; }
+    .service-block { padding-top: 40px; margin-bottom: 60px; }
     .service-block-title { font-size: 2.4rem; }
-    
-    .service-intro-text { 
-        font-size: 1.05rem; 
-        margin-bottom: 40px; 
-    }
-    
-    .service-description-box { 
-        padding: 25px; 
-        margin-bottom: 50px; 
-    }
-    .service-description-box p { font-size: 1.1rem; }
-    
-    .service-block-media.showcase-card-inner-v2 { 
-        aspect-ratio: 4 / 3; 
-        border-radius: 12px; 
-        margin-bottom: 30px;
-    }
-    
+    .service-intro-text { font-size: 1.05rem; margin-bottom: 50px; }
+    .service-description-box { padding: 25px; margin-bottom: 60px; }
+    .service-block-media.showcase-card-inner-v2 { aspect-ratio: 4 / 3; border-radius: 12px; margin-bottom: 30px; }
     .oc-stats-row { grid-template-columns: 1fr; gap: 15px; }
 
-    /* Timeline responsivnost - STACKOVANJE SLIKE ISPOD TEKSTA */
-    .oc-process-timeline {
-        gap: 60px;
-        margin-bottom: 50px;
-    }
+    .oc-process-timeline { gap: 60px; margin-bottom: 70px; }
     .step-bg-number { font-size: 5rem; left: 50px; }
     .oc-process-step { padding-left: 65px; min-height: 70px; }
-    
-    .step-content { 
-        flex-direction: column; /* Tekst ide gore, slika dole */
-        align-items: flex-start;
-        gap: 20px; 
-    }
+    .step-content { flex-direction: column; align-items: flex-start; gap: 20px; }
     .step-text { max-width: 100%; }
-    .step-media { 
-        max-width: 100%; 
-        width: 100%; /* Na telefonu slika zauzima punu širinu */
-    }
+    .step-media { max-width: 100%; width: 100%; }
     
-    .step-content h3 { font-size: 1.4rem; }
-    .step-content p { font-size: 1rem; }
+    .build-slogan { font-size: 1.5rem; }
+    .build-slogan::before, .build-slogan::after { margin: 0 8px; }
+    
+    .oc-projects-grid { grid-template-columns: 1fr; gap: 40px; }
+    
+    .btn-premium-glow { padding: 14px 30px; font-size: 1rem; width: 100%; justify-content: center; }
+    
+    .floating-top-btn { bottom: 20px; right: 20px; width: 42px; height: 42px; }
 }
