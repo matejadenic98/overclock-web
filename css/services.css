@@ -695,6 +695,258 @@
 }
 
 /* =========================================
+   SOFTWARE KARTICE (INSTALACIJA SISTEMA)
+   ========================================= */
+
+.software-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+.software-card {
+    background: #080808;
+    border: 1px solid rgba(56, 189, 248, 0.15);
+    border-radius: 16px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    transition: all 0.35s ease;
+    height: 100%;
+}
+
+.software-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.6);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(56, 189, 248, 0.12);
+    background: #0d1117;
+}
+
+.software-logo-wrapper {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.software-card:hover .software-logo-wrapper {
+    border-color: rgba(56, 189, 248, 0.4);
+    background: rgba(56, 189, 248, 0.08);
+}
+
+.software-logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.software-info h4 {
+    font-size: 1.15rem;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.software-info p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Mobilna optimizacija za Software Grid */
+@media (max-width: 1200px) {
+    .software-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .software-grid { grid-template-columns: repeat(2, 1fr); gap: 15px;}
+    .software-card { padding: 20px 15px; }
+}
+
+@media (max-width: 480px) {
+    .software-grid { grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   TEKST ISPOD SOFTWARE GRIDA
+   ========================================= */
+
+.software-more-text {
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.software-more-text p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* =========================================
+   OVERCLOCK WEB PREMIUM SHOWCASE KARTICA
+   ========================================= */
+
+.oc-web-showcase {
+    width: 100%;
+    margin: 80px 0 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.oc-web-showcase-inner {
+    width: 100%;
+    background: #080a09; /* Ultra tamna pozadina sa jedva primetnim zelenim tonom */
+    border: 1px solid rgba(0, 220, 89, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 220, 89, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.oc-web-showcase-inner:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 220, 89, 0.5);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 60px rgba(0, 220, 89, 0.15);
+}
+
+.oc-web-showcase-banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 1; /* Idealno za 1200x300 baner */
+    background: #000;
+}
+
+.oc-web-showcase-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Magični prelaz: Baner izbledi u donjem delu i stapa se sa tekstom */
+.oc-web-showcase-banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(8, 10, 9, 0) 0%, rgba(8, 10, 9, 1) 100%);
+    pointer-events: none;
+}
+
+.oc-web-showcase-content {
+    padding: 0 50px 50px 50px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+    z-index: 2;
+    margin-top: -20px; /* Blago povlači tekst preko izbleđenog dela banera */
+}
+
+.oc-web-title {
+    color: #00dc59;
+    font-size: 2rem;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(0, 220, 89, 0.4);
+}
+
+.oc-web-showcase-content p {
+    color: #cbd5e1;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin: 0;
+    max-width: 850px;
+}
+
+.oc-web-showcase-content p strong {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 220, 89, 0.6);
+    font-weight: 700;
+}
+
+/* =========================================
+   HAKER NEON DUGME (OVERCLOCK WEB)
+   ========================================= */
+
+.btn-neon-green {
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 45px;
+    background: rgba(0, 220, 89, 0.05); 
+    border: 1px solid rgba(0, 220, 89, 0.6);
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(0, 220, 89, 0.15), inset 0 0 15px rgba(0, 220, 89, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    backdrop-filter: blur(8px);
+}
+
+.btn-neon-green svg {
+    transition: transform 0.3s ease;
+    color: #00dc59;
+}
+
+.btn-neon-green:hover {
+    background: rgba(0, 220, 89, 0.15);
+    border-color: #00dc59;
+    color: #ffffff;
+    box-shadow: 0 0 40px rgba(0, 220, 89, 0.4), inset 0 0 20px rgba(0, 220, 89, 0.2);
+    transform: translateY(-3px);
+}
+
+.btn-neon-green:hover svg {
+    transform: translateX(5px);
+    color: #ffffff;
+}
+
+/* Mobilna optimizacija */
+@media (max-width: 768px) {
+    .oc-web-showcase-content {
+        padding: 0 25px 40px 25px;
+    }
+    .oc-web-title {
+        font-size: 1.6rem;
+    }
+    .oc-web-showcase-content p {
+        font-size: 1.05rem;
+    }
+    .btn-neon-green {
+        padding: 14px 25px;
+        font-size: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* =========================================
    OVERCLOCK PLUTAJUĆE BACK TO TOP DUGME
    ========================================= */
 
