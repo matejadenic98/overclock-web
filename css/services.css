@@ -763,21 +763,6 @@
     margin: 0;
     line-height: 1.6;
 }
-
-/* Mobilna optimizacija za Software Grid */
-@media (max-width: 1200px) {
-    .software-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (max-width: 768px) {
-    .software-grid { grid-template-columns: repeat(2, 1fr); gap: 15px;}
-    .software-card { padding: 20px 15px; }
-}
-
-@media (max-width: 480px) {
-    .software-grid { grid-template-columns: 1fr; }
-}
-
 /* =========================================
    TEKST ISPOD SOFTWARE GRIDA
    ========================================= */
@@ -927,25 +912,6 @@
     color: #ffffff;
 }
 
-/* Mobilna optimizacija */
-@media (max-width: 768px) {
-    .oc-web-showcase-content {
-        padding: 0 25px 40px 25px;
-    }
-    .oc-web-title {
-        font-size: 1.6rem;
-    }
-    .oc-web-showcase-content p {
-        font-size: 1.05rem;
-    }
-    .btn-neon-green {
-        padding: 14px 25px;
-        font-size: 1rem;
-        width: 100%;
-        justify-content: center;
-    }
-}
-
 /* =========================================
    OVERCLOCK PLUTAJUĆE BACK TO TOP DUGME
    ========================================= */
@@ -996,42 +962,4 @@
 
 .floating-top-btn:hover svg {
     transform: translateY(-3px);
-}
-
-/* =========================================
-   MOBILNA OPTIMIZACIJA
-   ========================================= */
-
-@media (max-width: 900px) {
-    .service-block { padding-top: 60px; margin-bottom: 80px; }
-    .service-block-title { font-size: 3rem; }
-    .oc-slideshow-container { aspect-ratio: 16 / 9; border-radius: 24px; margin-bottom: 80px; }
-    .oc-stats-row { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .step-content { gap: 20px; }
-    .step-media { max-width: 300px; }
-}
-
-@media (max-width: 768px) {
-    .service-block { padding-top: 40px; margin-bottom: 60px; }
-    .service-block-title { font-size: 2.4rem; }
-    .service-intro-text { font-size: 1.05rem; margin-bottom: 50px; }
-    .service-description-box { padding: 25px; margin-bottom: 60px; }
-    .service-block-media.showcase-card-inner-v2 { aspect-ratio: 4 / 3; border-radius: 12px; margin-bottom: 30px; }
-    .oc-stats-row { grid-template-columns: 1fr; gap: 15px; }
-
-    .oc-process-timeline { gap: 60px; margin-bottom: 70px; }
-    .step-bg-number { font-size: 5rem; left: 50px; }
-    .oc-process-step { padding-left: 65px; min-height: 70px; }
-    .step-content { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .step-text { max-width: 100%; }
-    .step-media { max-width: 100%; width: 100%; }
-    
-    .build-slogan { font-size: 1.5rem; }
-    .build-slogan::before, .build-slogan::after { margin: 0 8px; }
-    
-    .oc-projects-grid { grid-template-columns: 1fr; gap: 40px; }
-    
-    .btn-premium-glow { padding: 14px 30px; font-size: 1rem; width: 100%; justify-content: center; }
-    
-    .floating-top-btn { bottom: 20px; right: 20px; width: 42px; height: 42px; }
 }

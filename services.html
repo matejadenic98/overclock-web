@@ -10,32 +10,53 @@
   <link rel="stylesheet" href="css/gallery.css"> 
   <link rel="stylesheet" href="css/services.css"> 
   <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/mobileservices.css">
 </head>
-<body class="scroll-journey services-page" id="top">
+<body class="scroll-journey services-page" id="hero">
 
 
-  <!-- FIKSIRANA NAVIGACIJA -->
-  <header class="showcase-nav">
-    <a href="index.html#hero" class="nav-brand">
-      <img src="images/oc1.png" alt="Logo" class="showcase-logo">
-      <span class="logo-text">Overclock.rs</span>
-    </a>
-  </header>
+<!-- FIKSIRANA NAVIGACIJA -->
+<header class="showcase-nav">
+<a href="index.html#hero" class="nav-brand">
+<img src="images/oc1.png" alt="Logo" class="showcase-logo">
+<span class="logo-text">Overclock.rs</span>
+</a>
 
-  <!-- GLAVNI NASLOV I TAGOVI -->
-  <div class="services-header-container">
-    <h1 class="services-page-title">Naše usluge</h1>
-    <div class="showcase-filters">
-      <a href="#premium" class="filter-btn active">PREMIUM</a>
-      <a href="#sklapanje" class="filter-btn">SKLAPANJE</a>
-      <a href="#overclock" class="filter-btn">OVERCLOCK</a>
-      <a href="#pojacavanje" class="filter-btn">UPGRADE</a>
-      <a href="#ciscenje" class="filter-btn">ČIŠĆENJE</a>
-      <a href="#os" class="filter-btn">SISTEM</a>
-      <a href="#web" class="filter-btn">WEB</a>
-      <a href="#dizajn" class="filter-btn">FLAJERI</a>
-    </div>
-  </div>
+<!-- HAMBURGER DUGME -->
+<button class="mobile-nav-toggle" id="mobile-filter-open" aria-label="Otvori meni">
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+<span class="hamburger-line"></span>
+</button>
+</header>
+
+<!-- OVERLAY ZA ZATAMNJENJE POZADINE NA MOBILNOM -->
+<div class="mobile-filter-overlay" id="mobile-filter-overlay"></div>
+
+<!-- GLAVNI NASLOV I FILTERI -->
+<div class="services-header-container">
+<h1 class="services-page-title">Naše usluge</h1>
+
+<nav class="showcase-filters" id="showcase-filters-menu">
+<div class="mobile-menu-top">
+<div class="mobile-menu-brand">
+<img src="images/oc1.png" alt="Overclock Logo">
+</div>
+<button class="mobile-filter-close" id="mobile-filter-close" aria-label="Zatvori">×</button>
+</div>
+
+<div class="mobile-menu-header">Kategorije Usluga</div>
+
+<a href="#premium" class="filter-btn active"><span>PREMIUM</span></a>
+<a href="#sklapanje" class="filter-btn"><span>SKLAPANJE</span></a>
+<a href="#overclock" class="filter-btn"><span>OVERCLOCK</span></a>
+<a href="#pojacavanje" class="filter-btn"><span>UPGRADE</span></a>
+<a href="#ciscenje" class="filter-btn"><span>ČIŠĆENJE</span></a>
+<a href="#os" class="filter-btn"><span>SISTEM</span></a>
+<a href="#web" class="filter-btn"><span>WEB</span></a>
+<a href="#dizajn" class="filter-btn"><span>FLAJERI</span></a>
+</nav>
+</div>
 
   <!-- PREMIUM SLIDESHOW -->
   <section class="oc-slideshow-container scroll-blur-reveal">
@@ -1362,7 +1383,7 @@
         </div>
         
         <div class="footer-right">
-          <a href="#top" class="back-to-top-btn" aria-label="Nazad na vrh">NAZAD NA VRH ↑</a>
+          <a href="#hero" class="back-to-top-btn" aria-label="Nazad na vrh">NAZAD NA VRH ↑</a>
         </div>
     </div>
   </footer>
@@ -1471,6 +1492,68 @@
       });
     });
   }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // ==========================================
+  // 1. LOGIKA ZA MOBILNI HAMBURGER MENI
+  // ==========================================
+  const menuOpen = document.getElementById("mobile-filter-open");
+  const menuClose = document.getElementById("mobile-filter-close");
+  const menuOverlay = document.getElementById("mobile-filter-overlay");
+  const mobileMenu = document.getElementById("showcase-filters-menu");
+  const filterLinks = document.querySelectorAll(".showcase-filters .filter-btn");
+
+  if (menuOpen && menuClose && menuOverlay && mobileMenu) {
+    menuOpen.addEventListener("click", () => {
+      mobileMenu.classList.add("mobile-active");
+      menuOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    });
+
+    menuClose.addEventListener("click", closeMenu);
+    menuOverlay.addEventListener("click", closeMenu);
+
+    filterLinks.forEach(link => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove("mobile-active");
+      menuOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  }
+
+  // ==========================================
+  // 2. SCROLLSPY LOGIKA (PRAĆENJE AKTIVNOG NASLOVA)
+  // ==========================================
+  window.addEventListener("scroll", () => {
+    // Selektujemo sve glavne blokove usluga i sve linkove u meniju
+    const sections = document.querySelectorAll(".service-block");
+    const navLinks = document.querySelectorAll(".showcase-filters .filter-btn");
+    
+    let current = "";
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      // Aktiviraj naslov malo ranije (250px) pre nego što sekcija udari u vrh ekrana
+      if (window.scrollY >= (sectionTop - 250)) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      // Skini aktivnu klasu sa svih
+      link.classList.remove("active");
+      
+      // Dodaj aktivnu klasu samo onom linku čiji href sadrži ID trenutne sekcije
+      if (current && link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+
 });
   </script>
 </body>
