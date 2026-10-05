@@ -369,7 +369,25 @@
         display: none !important;
         content: none !important;
     }
-    .tech-divider { max-width: 60%; width: 60% !important;  margin: 0 auto !important; overflow: hidden; }
+
+    /* Oštri, čisti tech divider za mobilni prikaz */
+    .tech-divider {
+        width: 60% !important;
+        height: 2px !important;
+        margin: 40px auto !important;
+        position: relative !important;
+        background: linear-gradient(90deg, transparent 0%, #38bdf8 50%, transparent 100%) !important;
+        border: none !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    /* Uklanjanje starih ubagovanih sjenki/slojeva */
+    .tech-divider::before,
+    .tech-divider::after {
+        display: none !important;
+        content: none !important;
+    }
 
     /* =========================================
        REZULTATI I KARTICE
@@ -425,33 +443,83 @@
     .project-card { grid-column: span 1 !important; }
     .project-card-title { font-size: 0.9rem; text-align: center; }
 
-    /* =========================================
-       OVERCLOCK WEB BANER (Filmski 21:9 format)
+/* =========================================
+       OVERCLOCK WEB BANER (Kompletno rešenje)
        ========================================= */
     .oc-web-showcase { 
-        margin: 50px 0 30px 0 !important; 
+        margin: 40px 0 30px 0 !important; 
         padding: 0 15px !important; 
         width: 100% !important; 
     }
-    .oc-web-showcase-inner { border-radius: 16px; display: flex; flex-direction: column; width: 100% !important;}
-    .oc-web-showcase-banner { 
-        aspect-ratio: 21 / 9 !important; 
+
+    .oc-web-showcase-inner { 
+        border-radius: 16px !important; 
         width: 100% !important;
+        overflow: hidden !important;
+        background: #060913 !important;
     }
+
+    /* Slika banera sa blagim odmakom od gornje ivice */
+    .oc-web-showcase-banner { 
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: auto !important; 
+        display: block !important;
+        padding-top: 15px !important; /* Blago odmiče logo od gornje ivice kartice */
+        margin: 0 !important;
+    }
+
     .oc-web-showcase-banner img {
         width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important; 
+        height: auto !important;
+        display: block !important;
+        object-fit: contain !important; 
     }
-    .oc-web-showcase-content { 
-        padding: 0 20px 30px 20px; 
-        margin-top: -15px; 
-        position: relative;
-    }
-    .oc-web-title { font-size: 1.5rem; }
-    .oc-web-showcase-content p { font-size: 0.95rem; line-height: 1.5; }
 
+    /* Kontejner sa prirodnim i ujednačenim razmacima */
+    .oc-web-showcase-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; 
+        text-align: center !important;
+        padding: 20px 20px 30px 20px !important;
+        margin-top: 0 !important; /* Povećava razmak i odmiče naslov od logoa */
+    }
+
+    /* Zelenonaslov */
+    .oc-web-title { 
+        font-size: 1.35rem !important; 
+        line-height: 1.3 !important;
+        margin-top: 5px !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* Opisni tekst sa lepšim poravnanjem */
+    .oc-web-showcase-content p { 
+        font-size: 0.85rem !important; 
+        line-height: 1.55 !important; 
+        margin-bottom: 22px !important;
+        color: #cccccc !important;
+        padding: 0 5px !important;
+    }
+
+    /* Dugme - fiksirano da se nikada ne lomi u dva reda */
+    .oc-web-showcase-content .btn-neon-green {
+        display: inline-flex !important;
+        width: auto !important;
+        min-width: 220px !important; /* Dovoljno prostora za pun tekst i strelicu */
+        max-width: 100% !important;
+        white-space: nowrap !important; /* Prisiljava tekst da ostane u jednom redu */
+        padding: 12px 24px !important;
+        margin: 0 auto !important;
+        font-size: 0.85rem !important;
+        font-weight: 700 !important;
+        letter-spacing: 1.2px !important;
+        border-radius: 25px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
     /* DUGMIĆI I TEKST */
     .btn-container-center { margin: 30px 15px 0 15px; }
     .btn-premium-glow, .btn-neon-green { 
