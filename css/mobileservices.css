@@ -14,8 +14,7 @@
 
 /* === TABLETI I MANJI LAPTOPOVI (max-width: 992px) === */
 @media (max-width: 992px) {
-    
-    /* 1. FIKSIRANA NAVIGACIJA (Kao u gallery) */
+    /* FIKSIRANA NAVIGACIJA */
     .services-page .showcase-nav {
         display: flex;
         justify-content: space-between;
@@ -24,6 +23,7 @@
         height: 71px;
         padding: 0 1.2rem;
         box-sizing: border-box;
+        width: 100% !important;
     }
 
     .services-page .nav-brand {
@@ -75,17 +75,31 @@
     }
 
     /* Osnovni layout za tablete */
-    .services-header-container { margin: 120px auto 40px auto; }
-    .services-page-title { font-size: 2.8rem; }
+    .services-header-container { margin: 120px auto 40px auto; max-width: 100%; }
+    .services-page-title { font-size: 2.4rem; }
     .service-block { padding-top: 60px; margin-bottom: 80px; }
-    .service-block-title { font-size: 3rem; }
+    .service-block-title { font-size: 2.4rem; }
     .oc-process-timeline { gap: 70px; margin-bottom: 80px; }
 }
 
 /* === MOBILNI TELEFONI (max-width: 768px) === */
 @media (max-width: 768px) {
-    .services-header-container { margin: 100px auto 30px auto; padding: 0 15px; }
-    .services-page-title { font-size: 2.2rem; text-align: center; }
+    /* RESET I KONTROLA ŠIRINE */
+    * { box-sizing: border-box !important; }
+    
+    /* SMANJENI GLAVNI NASLOVI ZA MOBILNI */
+    .services-header-container { margin: 100px auto 30px auto; padding: 0 15px; width: 100%; }
+    .services-page-title { font-size: 1.8rem !important; text-align: center; }
+    .service-block-title { font-size: 1.8rem !important; line-height: 1.2 !important; }
+
+    /* Smanjivanje tagova iznad naslova na mobilnom prikazu */
+    .service-block-meta-top {
+        gap: 10px !important; 
+    }
+    .service-block-meta-top span {
+        font-size: 0.85rem !important; 
+        letter-spacing: 0.5px !important;
+    }
     
     /* OFF-CANVAS MENI ZA FILTERE */
     #hero .mobile-filter-overlay {
@@ -146,10 +160,60 @@
         background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.8); border-radius: 2px;
     }
 
-    /* Brisanje razvučenog gradijenta na sredini menija */
-    #hero .showcase-filters::after { display: none !important; }
+    /* Vraćanje prirodne veličine za standardne hero slike (bez kropovanja) */
+    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) {
+        aspect-ratio: auto !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) .service-block-img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: unset !important; /* Gasi cover efekat koji seče ivice */
+        display: block !important;
+    }
 
-    /* BRISANJE STARE DESKTOP ACTIVE LINIJE */
+    /* Smanjivanje razmaka između hero slike i mreže kartica */
+    .service-block-media.showcase-card-inner-v2 {
+        margin-bottom: 5px !important;
+    }
+
+    /* Savršeno centriranje slogana i kosih crta na mobilnom */
+    .build-slogan-container {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .build-slogan {
+        position: relative !important;
+        display: inline-block !important;
+        font-size: 1.35rem !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+        padding: 0 35px !important; /* Pravi tačan prostor za kose crte na ivicama */
+        max-width: 90% !important;
+    }
+
+    /* Gornja leva kosa crta */
+    .build-slogan::before {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Donja desna kosa crta */
+    .build-slogan::after {
+        position: absolute !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Očisti stare gradijentne linije u meniju */
+    #hero .showcase-filters::after,
     #hero .showcase-filters a.filter-btn::after,
     #hero .showcase-filters a.filter-btn::before {
         display: none !important;
@@ -157,18 +221,39 @@
     }
 
     /* =========================================
-       SLAJDER (Fiksirana slika i kontejner)
+       SLAJDER (Prikaz slike na mobilnom)
        ========================================= */
     .oc-slideshow-container { 
-        aspect-ratio: auto; 
-        min-height: 380px; 
-        border-radius: 16px; 
-        margin-bottom: 60px; 
-        width: calc(100% - 30px);
-        margin-left: 15px;
-        margin-right: 15px;
-        position: relative;
+        aspect-ratio: auto !important; 
+        min-height: 380px !important; 
+        border-radius: 16px !important; 
+        margin-bottom: 60px !important; 
+        width: calc(100% - 30px) !important;
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        position: relative !important;
+        overflow: hidden !important;
     }
+    
+    /* Ključno: Unutrašnji kontejner mora pratiti visinu vanjskog */
+    .oc-slider {
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 380px !important;
+        position: absolute !important;
+        top: 0 !important; 
+        left: 0 !important;
+    }
+
+    .oc-slide {
+        width: 100% !important; 
+        height: 100% !important; 
+        position: absolute !important; 
+        top: 0 !important; 
+        left: 0 !important; 
+        z-index: 1 !important;
+    }
+
     .oc-slide-img {
         display: block !important;
         width: 100% !important;
@@ -176,44 +261,59 @@
         object-fit: cover !important;
         opacity: 0.5 !important;
         position: absolute !important;
-        top: 0; left: 0;
+        top: 0 !important; 
+        left: 0 !important;
+        z-index: 2 !important; /* Gura sliku iznad crne pozadine */
     }
-    .oc-slide-content { padding: 0 20px; top: 50%; transform: translateY(-40%); position: absolute; }
-    .oc-slide-content h2 { font-size: 2rem; margin-bottom: 12px; }
-    .oc-slide-content p { font-size: 1rem; line-height: 1.4; }
-    .oc-slider-btn { width: 35px; height: 35px; font-size: 1rem; z-index: 10; }
-    .oc-slider-dots { bottom: 15px; z-index: 10; }
 
-    /* =========================================
-       TIMELINE PROCES (Popravljene tačkice i linija)
-       ========================================= */
-    .oc-process-timeline { gap: 40px; margin-bottom: 50px; padding: 10px 15px; position: relative; }
+.oc-slide-content { 
+        padding: 0 20px !important; 
+        top: auto !important; /* Isključuje staro centriranje po sredini */
+        bottom: 45px !important; /* Spušta tekst dole, tačno iznad tačkica */
+        transform: none !important; /* Gasi staro pomeranje */
+        position: absolute !important; 
+        z-index: 10 !important; 
+        width: 100% !important;
+    }
+
+    .oc-slide-content h2 { font-size: 1.8rem !important; margin-bottom: 12px !important; }
+    .oc-slide-content p { font-size: 1rem !important; line-height: 1.4 !important; }
     
-    /* Centralna linija */
+    /* Kontrole slajdera */
+    .oc-slider-btn { width: 35px !important; height: 35px !important; font-size: 1rem !important; z-index: 15 !important; }
+    .oc-slider-dots { bottom: 15px !important; z-index: 15 !important; }
+
+/* =========================================
+       TIMELINE PROCES (Apsolutno centriranje)
+       ========================================= */
+    .oc-process-timeline { gap: 40px; margin-bottom: 50px; padding: 10px 15px; position: relative; width: 100%; }
+    
+    /* Linija se računa od ivice kontejnera */
     .oc-process-timeline::before {
-        left: 20px !important;
+        left: 24px !important; /* Centar linije je tačno na 25. pikselu (24px + 1px) */
+        width: 2px !important;
     }
-    /* Tačkica (Marker) */
+    
     .step-marker {
-        left: 13px !important; 
-        width: 16px !important;
-        height: 16px !important;
+        /* Stavljamo na 0 jer kontejner već gura tačkicu 15px udesno. */
+        /* 15px (padding) + 10px (pola tačkice) = 25px! Sredina se sada savršeno gađa sa linijom. */
+        left: 0px !important; 
+        width: 20px !important;
+        height: 20px !important;
         border-width: 3px !important;
+        box-sizing: border-box !important; 
     }
-    /* Providni broj iza */
-    .step-bg-number { 
-        font-size: 4rem; 
-        left: 45px !important; 
-        top: -10px; 
-        transform: none; 
-    }
-    .oc-process-step { padding-left: 55px; } /* Da tekst ne gazi liniju */
+    
+    /* Broj u pozadini */
+    .step-bg-number { font-size: 4rem; left: 45px !important; top: -10px; transform: none; }
+    
+    /* Pomjeramo tekst malo nazad kako ne bi bio previše odmaknut od nove pozicije tačkice */
+    .oc-process-step { padding-left: 40px !important; } 
     .step-content { flex-direction: column; gap: 15px; align-items: flex-start; }
     
-    /* Mediji u timeline-u (Slike za čišćenje prašine fiksirane na 16:9) */
+    /* Slike u timeline-u na 16:9 format */
     .step-media { max-width: 100%; border-radius: 12px; overflow: hidden; width: 100%; }
-    .step-media img, 
-    .step-media video {
+    .step-media img, .step-media video {
         aspect-ratio: 16 / 9 !important;
         object-fit: cover !important;
         width: 100% !important;
@@ -222,24 +322,54 @@
     .step-text h3 { font-size: 1.4rem; }
     .step-text p { font-size: 0.95rem; }
 
+    
     /* =========================================
-       BEFORE/AFTER SLAJDER I ZAOBLJENI KANALI
+       BEFORE/AFTER SLAJDER I ZAOBLJENI UGLOVI
        ========================================= */
     .service-block-media.ba-slider-container,
     .service-block-media.showcase-card-inner-v2 { 
-        aspect-ratio: 4 / 3 !important; /* Vraćen pravougaoni oblik */
+        aspect-ratio: 4 / 3 !important; 
         height: auto !important;
         border-radius: 16px !important; 
         margin: 0 15px 40px 15px; 
         width: calc(100% - 30px);
         overflow: hidden !important; 
         box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+        transform: translateZ(0); /* Rešava problem izlivanja slika van okvira na iOS/Android pregledačima */
     }
     .inline-ba-container, .inline-ba-container img {
         border-radius: 16px !important;
         overflow: hidden !important;
+        object-fit: cover !important;
     }
     .inline-ba-line { height: 100% !important; }
+
+    /* Fiksiranje Before/After slika da popune celu visinu kontejnera */
+    .service-block-media.ba-slider-container .inline-ba-container,
+    .service-block-media.ba-slider-container .inline-ba-container img {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important; /* Prisiljava sliku da popuni visinu */
+        object-fit: cover !important; /* Sprečava deformaciju proporcija */
+    }
+
+    /* Zaseban, komotan razmak za Before/After slajdere */
+    .service-block-media.ba-slider-container {
+        margin-bottom: 35px !important;
+    }
+    
+
+    /* =========================================
+       UKLANJANJE ZALUTALIH LINIJA ISPOD REZULTATA
+       ========================================= */
+    .oc-stats-row::after, .oc-stats-row::before,
+    .service-block::after, .service-block::before {
+        display: none !important;
+        content: none !important;
+    }
+    .tech-divider { max-width: 60%; width: 60% !important;  margin: 0 auto !important; overflow: hidden; }
 
     /* =========================================
        REZULTATI I KARTICE
@@ -250,12 +380,13 @@
         text-align: center !important;
         border-left: none !important;
     }
-    .results-title { font-size: 1.8rem !important; }
+    .results-title { font-size: 1.6rem !important; }
     
     .oc-stats-row { 
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr) !important; 
         gap: 15px; 
         padding: 0 15px;
+        width: 100%;
     }
     .oc-stat-card { padding: 15px; min-height: 140px; height: auto; }
     .stat-icon-wrapper { width: 35px; height: 35px; }
@@ -263,12 +394,14 @@
     .stat-info p { font-size: 0.85rem; }
 
     /* =========================================
-       SOFTVER IKONICE (Fiksirano na 2 u redu)
+       SOFTVER IKONICE (Fiksirano 2 u redu)
        ========================================= */
     .software-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
         gap: 12px !important;
         padding: 0 15px !important;
+        width: 100% !important;
     }
     .software-card {
         padding: 15px 10px !important;
@@ -279,25 +412,37 @@
     .software-info h4 { font-size: 1.05rem !important; margin-bottom: 5px; }
     .software-logo-wrapper { width: 40px !important; height: 40px !important; margin-bottom: 10px; }
 
-    /* PROJEKTI (2 U REDU) */
+    /* =========================================
+       PROJEKTI GRID (Fiksirano 2 u redu)
+       ========================================= */
     .oc-projects-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 15px; 
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; 
+        gap: 15px !important; 
         padding: 0 15px;
+        width: 100%;
     }
+    .project-card { grid-column: span 1 !important; }
     .project-card-title { font-size: 0.9rem; text-align: center; }
 
     /* =========================================
        OVERCLOCK WEB BANER (Filmski 21:9 format)
        ========================================= */
-    .oc-web-showcase { margin: 50px 15px 30px 15px; width: calc(100% - 30px); }
-    .oc-web-showcase-inner { border-radius: 16px; display: flex; flex-direction: column; }
+    .oc-web-showcase { 
+        margin: 50px 0 30px 0 !important; 
+        padding: 0 15px !important; 
+        width: 100% !important; 
+    }
+    .oc-web-showcase-inner { border-radius: 16px; display: flex; flex-direction: column; width: 100% !important;}
     .oc-web-showcase-banner { 
-        aspect-ratio: 21 / 9 !important; /* Široki format da stane logo */
+        aspect-ratio: 21 / 9 !important; 
+        width: 100% !important;
     }
     .oc-web-showcase-banner img {
+        width: 100% !important;
+        height: 100% !important;
         object-fit: cover !important;
-        object-position: center center !important; /* Logo ostaje u sredini */
+        object-position: center center !important; 
     }
     .oc-web-showcase-content { 
         padding: 0 20px 30px 20px; 
@@ -323,7 +468,7 @@
         border-top: 4px solid #38bdf8; 
     }
     .service-description-box p { font-size: 1rem; line-height: 1.5; }
-    .service-intro-text { font-size: 1rem; padding: 0 15px; margin-bottom: 30px; }
+    .service-intro-text { font-size: 1rem; padding: 0 15px; margin-bottom: 30px; text-align: left; }
 
     /* FOOTER */
     .inline-footer {
@@ -343,15 +488,11 @@
 
 /* === MALI TELEFONI (max-width: 480px) === */
 @media (max-width: 480px) {
-    .services-page-title { font-size: 1.8rem; }
+    .services-page-title { font-size: 1.6rem !important; }
+    .service-block-title { font-size: 1.6rem !important; }
     .oc-slideshow-container { min-height: 300px; }
-    .oc-slide-content h2 { font-size: 1.5rem; }
-    .results-title { font-size: 1.5rem !important; }
+    .oc-slide-content h2 { font-size: 1.4rem !important; }
+    .results-title { font-size: 1.4rem !important; }
     .stat-info h4 { font-size: 1.3rem; }
     .oc-stat-card { height: 130px; }
-    
-    /* Osigurava da i na najmanjim telefonima softver ikonice ostanu po 2 u redu */
-    .software-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-    }
 }
