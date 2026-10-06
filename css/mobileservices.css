@@ -230,15 +230,43 @@
        2. CENTRIRANJE SAMO REZULTATA I NJIHOVIH TAGOVA
        (// GARANTOVANE PERFORMANSE - REZULTATI, // BEZ SKRIVENIH MANA - OVERCLOCK STANDARD...)
        ------------------------------------------------------------------ */
-    .results-header {
+.results-header {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        text-align: center !important;
         justify-content: center !important;
+        text-align: center !important;
         width: 100% !important;
         margin: 50px auto 25px auto !important;
+        padding: 0 15px !important;
         border-left: none !important;
+        box-sizing: border-box !important;
+    }
+
+    .results-header span,
+    .results-header .results-sub-tag,
+    .results-header h3,
+    .results-header .results-title {
+        display: block !important;
+        text-align: center !important;
+        align-self: center !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .results-header span,
+    .results-header .results-sub-tag {
+        font-size: 0.85rem !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 6px !important;
+    }
+
+    .results-header h3,
+    .results-header .results-title {
+        font-size: 1.6rem !important;
+        line-height: 1.2 !important;
+        margin-top: 0 !important;
     }
 
     .results-title,
