@@ -776,7 +776,7 @@
 
 .software-more-text p {
     font-size: 1.2rem;
-    color: #94a3b8;
+    color: #1e293b;
     font-style: italic;
     letter-spacing: 1px;
     margin: 0;
@@ -963,4 +963,94 @@
 
 .floating-top-btn:hover svg {
     transform: translateY(-3px);
+}
+
+/* ==========================================================================
+   NEŽNIJE NIJANSE TEKSTA I SUPTILNI // TAGOVI (DESKTOP)
+   ========================================================================== */
+
+/* Glavni naslovi i naslovi koraka u beloj boji za #web, #ciscenje i #os */
+#web .service-block-title,
+#ciscenje .service-block-title,
+#os .service-block-title,
+#web .step-text h3,
+#ciscenje .step-text h3,
+#os .step-text h3 {
+    color: #ffffff !important;
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+/* NASLOV ZA DIZAJNIRANJE FLAJERA U NEŽNOJ CRNOJ BOJI */
+#dizajn .service-block-title,
+#dizajn .step-text h3 {
+    color: #1e293b !important;
+    text-shadow: none !important;
+    filter: none !important;
+}
+
+/* // Tagovi iznad naslova - suptilna bela za #web, #ciscenje i #os */
+#web .service-block-meta-top span,
+#ciscenje .service-block-meta-top span,
+#os .service-block-meta-top span,
+#web .results-sub-tag,
+#ciscenje .results-sub-tag,
+#os .results-sub-tag {
+    color: rgba(255, 255, 255, 0.82) !important;
+    font-weight: 500 !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+}
+
+/* // TAGOVI ZA DIZAJNIRANJE FLAJERA U NEŽNOJ CRNOJ BOJI */
+#dizajn .service-block-meta-top span,
+#dizajn .results-sub-tag {
+    color: #1e293b !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    text-shadow: none !important;
+}
+
+/* Opisni tekstovi - nežna antracit/tamno-siva nijansa za sve tri sekcije */
+#web .service-intro-text,
+#dizajn .service-intro-text,
+#ciscenje .service-intro-text,
+#os .service-intro-text,
+#web .step-text p,
+#dizajn .step-text p,
+#ciscenje .step-text p,
+#os .step-text p {
+    color: #1e293b !important;
+    font-weight: 500 !important;
+}
+
+/* Timeline brojevi u pozadini */
+#web .step-bg-number,
+#dizajn .step-bg-number,
+#ciscenje .step-bg-number,
+#os .step-bg-number {
+    color: rgba(30, 41, 59, 0.12) !important;
+    text-shadow: none !important;
+}
+
+/* Vertikalna linija i tačke u vremenskoj liniji */
+#web .oc-process-timeline::before,
+#dizajn .oc-process-timeline::before,
+#ciscenje .oc-process-timeline::before,
+#os .oc-process-timeline::before {
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.7) 0,
+        rgba(255, 255, 255, 0.7) 8px,
+        transparent 8px,
+        transparent 16px
+    ) !important;
+}
+
+#web .step-marker,
+#dizajn .step-marker,
+#ciscenje .step-marker,
+#os .step-marker {
+    background: #1e293b !important;
+    border: 3px solid rgba(255, 255, 255, 0.9) !important;
 }

@@ -336,7 +336,7 @@
 /* ==================================================================
        OFF-CANVAS MENI (TAČNO PREUZETO IZ MOBILEGALLERY.CSS)
        ================================================================== */
-       
+
     #hero .mobile-filter-overlay {
         position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
         background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
@@ -564,4 +564,62 @@
     .oc-slide-content h2 { font-size: 1.45rem !important; }
     .stat-info h4 { font-size: 1.3rem !important; }
     .oc-stat-card { height: 130px !important; }
+}
+
+/* ==========================================================================
+   NEŽNIJE NIJANSE TEKSTA I SUPTILNI // TAGOVI (MOBILNI)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+    #web .service-block-title,
+    #ciscenje .service-block-title,
+    #os .service-block-title,
+    #web .step-text h3,
+    #ciscenje .step-text h3,
+    #os .step-text h3 {
+        color: #ffffff !important;
+        text-shadow: none !important;
+    }
+
+    /* NASLOV ZA FLAJERE U NEŽNOJ CRNOJ */
+    #dizajn .service-block-title,
+    #dizajn .step-text h3 {
+        color: #1e293b !important;
+        text-shadow: none !important;
+    }
+
+    #web .service-block-meta-top span,
+    #ciscenje .service-block-meta-top span,
+    #os .service-block-meta-top span {
+        color: rgba(255, 255, 255, 0.82) !important;
+        font-weight: 500 !important;
+        text-shadow: none !important;
+    }
+
+    /* // TAGOVI ZA FLAJERE U NEŽNOJ CRNOJ */
+    #dizajn .service-block-meta-top span {
+        color: #1e293b !important;
+        font-weight: 600 !important;
+        text-shadow: none !important;
+    }
+
+    #web .service-intro-text,
+    #dizajn .service-intro-text,
+    #ciscenje .service-intro-text,
+    #os .service-intro-text,
+    #web .step-text p,
+    #dizajn .step-text p,
+    #ciscenje .step-text p,
+    #os .step-text p {
+        color: #1e293b !important;
+        font-weight: 500 !important;
+    }
+
+    #web .step-bg-number,
+    #dizajn .step-bg-number,
+    #ciscenje .step-bg-number,
+    #os .step-bg-number {
+        color: rgba(30, 41, 59, 0.12) !important;
+        text-shadow: none !important;
+    }
 }
