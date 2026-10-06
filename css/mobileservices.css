@@ -524,7 +524,7 @@
         gap: 0.8rem !important; padding: 1.5rem 1rem 2.5rem 1rem !important;
     }
     .footer-left { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 0.2rem !important; }
-    .footer-logo { font-size: 1.15rem !important; font-weight: 700 !important; color: #ffffff !important; }
+    .footer-logo { font-size: 1.15rem !important; font-weight: 700 !important; color: #000000 !important; }
     p.footer-credits { font-size: 0.75rem !important; font-weight: 400 !important; color: #555555 !important; margin: 0 !important; }
     .footer-right { display: flex !important; justify-content: center !important; width: 100% !important; margin-top: 5px !important; }
     .back-to-top-btn { font-size: 0.7rem !important; padding: 7px 18px !important; letter-spacing: 0.5px !important; border-radius: 20px !important; }
