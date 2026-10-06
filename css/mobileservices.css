@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MOBILE SERVICES - KOMPLETNA REDIZAJNIRANA I ČISTA OPTIMIZACIJA
+   MOBILE SERVICES - OPTIMIZIRANI CSS (BEZ NEŽELJENOG CENTRIRANJA)
    ========================================================================== */
 
 /* === SAKRIVANJE MOBILNIH ELEMENATA NA DESKTOPU === */
@@ -8,76 +8,76 @@
   .services-page .mobile-filter-overlay,
   .services-page .mobile-menu-top,
   .services-page .mobile-menu-header {
-    display: none;
+    display: none !important;
   }
 }
 
 /* === TABLETI I MANJI LAPTOPOVI (max-width: 992px) === */
 @media (max-width: 992px) {
     .services-page .showcase-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        min-height: 71px;
-        height: 71px;
-        padding: 0 1.2rem;
-        box-sizing: border-box;
-        width: 100%;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        min-height: 71px !important;
+        height: 71px !important;
+        padding: 0 1.2rem !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
     }
 
     .services-page .nav-brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        text-decoration: none;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        text-decoration: none !important;
     }
 
     .services-page .showcase-logo {
-        height: 32px;
-        width: auto;
-        display: block;
-        margin: 0;
+        height: 32px !important;
+        width: auto !important;
+        display: block !important;
+        margin: 0 !important;
     }
 
     .services-page .logo-text {
-        font-size: 1.35rem;
-        font-weight: 800;
-        line-height: 1;
-        margin: 0;
-        padding: 0;
-        display: block;
-        color: #ffffff;
-        transform: translateY(1.5px);
+        font-size: 1.35rem !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        color: #ffffff !important;
+        transform: translateY(1.5px) !important;
     }
 
     .services-page .mobile-nav-toggle {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 28px;
-        height: 18px;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        margin: 0;
-        z-index: 1001;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        width: 28px !important;
+        height: 18px !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 1001 !important;
     }
 
     .services-page .hamburger-line {
-        width: 100%;
-        height: 2px;
-        background-color: #38bdf8;
-        border-radius: 2px;
-        box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
-        transition: all 0.3s ease;
+        width: 100% !important;
+        height: 2px !important;
+        background-color: #38bdf8 !important;
+        border-radius: 2px !important;
+        box-shadow: 0 0 8px rgba(56, 189, 248, 0.6) !important;
+        transition: all 0.3s ease !important;
     }
 
-    .services-header-container { margin: 120px auto 40px auto; max-width: 100%; }
-    .services-page-title { font-size: 2.4rem; }
-    .service-block { padding-top: 60px; margin-bottom: 80px; }
-    .service-block-title { font-size: 2.4rem; }
-    .oc-process-timeline { gap: 70px; margin-bottom: 80px; }
+    .services-header-container { margin: 120px auto 40px auto !important; max-width: 100% !important; }
+    .services-page-title { font-size: 2.4rem !important; }
+    .service-block { padding-top: 60px !important; margin-bottom: 80px !important; }
+    .service-block-title { font-size: 2.4rem !important; }
+    .oc-process-timeline { gap: 70px !important; margin-bottom: 80px !important; }
 }
 
 /* === MOBILNI TELEFONI (max-width: 768px) === */
@@ -96,7 +96,14 @@
         text-align: center !important; 
     }
     
-    /* SPREČAVANJE PRELAMANJA GLAVNIH NASLOVA (Stavka 2) */
+    /* VRAĆENO LIJEVO PORAVNANJE ZA GLAVNE NASLOVE I META TAGOVE */
+    .service-block-header {
+        text-align: left !important;
+        align-items: flex-start !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
     .service-block-title { 
         font-size: 1.7rem !important; 
         line-height: 1.2 !important; 
@@ -104,100 +111,148 @@
         letter-spacing: -0.5px !important;
         width: 100% !important;
         overflow: visible !important;
+        text-align: left !important;
     }
 
     .service-block-meta-top {
-        gap: 10px !important; 
+        gap: 6px !important;
         display: flex !important;
-        flex-wrap: wrap !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        margin-bottom: 12px !important;
     }
+
     .service-block-meta-top span {
         font-size: 0.85rem !important; 
         letter-spacing: 0.5px !important;
+        text-align: left !important;
+        width: auto !important;
     }
 
-    /* OFF-CANVAS MENI & FILTERI */
-    #hero .mobile-filter-overlay {
-        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-        background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(6px);
-        -webkit-backdrop-filter: blur(6px); z-index: 1999;
-        opacity: 0; visibility: hidden; transition: all 0.3s ease;
-    }
-    #hero .mobile-filter-overlay.active { opacity: 1; visibility: visible; }
-
-    #hero .showcase-filters {
-        position: fixed; top: 0; right: -100%; width: 82%; max-width: 320px;
-        height: 100vh; background: #060913; z-index: 2000;
-        display: flex; flex-direction: column; justify-content: flex-start;
-        align-items: stretch; padding: 0; margin: 0; border: none;
-        border-left: 1px solid rgba(56, 189, 248, 0.6);
-        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.95);
-        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        overflow-y: auto; touch-action: pan-y; -webkit-overflow-scrolling: touch;
-    }
-    #hero .showcase-filters.mobile-active { right: 0; }
-
-    #hero .mobile-menu-top {
-        position: relative; display: flex; justify-content: center; align-items: center;
-        min-height: 71px; padding: 0 20px; width: 100%; box-sizing: border-box;
-        border-bottom: 1px solid;
-        border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.4) 50%, transparent 100%) 1;
-    }
-    
-    #hero .mobile-menu-brand { display: flex; align-items: center; justify-content: center; margin: 0; }
-    #hero .mobile-menu-brand img { height: 34px; width: auto; display: block; }
-    
-    #hero .mobile-filter-close {
-        position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
-        background: transparent; border: none; color: #ffffff; font-size: 2rem;
-        line-height: 1; cursor: pointer; z-index: 2010; margin: 0; padding: 0;
+    .service-intro-text {
+        font-size: 1rem !important; 
+        padding: 0 15px !important; 
+        margin-bottom: 30px !important;
+        text-align: left !important;
     }
 
-    #hero .mobile-menu-header {
-        display: block; text-align: left; color: #38bdf8; font-size: 0.72rem;
-        font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;
-        margin: 20px 24px 10px 24px; padding: 0; border: none;
+    /* ------------------------------------------------------------------
+       1. SLAJDER (Potpuno uklonjen plavi tag, teksti stabilan pri dnu)
+       ------------------------------------------------------------------ */
+    .oc-slideshow-container {
+        position: relative !important;
+        overflow: hidden !important;
+        min-height: 380px !important;
+        border-radius: 16px !important;
+        width: calc(100% - 30px) !important;
+        margin: 0 15px 50px 15px !important;
     }
 
-    #hero .showcase-filters a.filter-btn {
-        width: calc(100% - 48px); margin: 0 24px; display: block; text-align: left;
-        padding: 14px 0; font-size: 0.8rem; font-weight: 700; letter-spacing: 1.2px;
-        text-transform: uppercase; background: transparent; color: #888888;
-        border: none !important; transition: all 0.3s ease; position: relative; text-decoration: none;
-    }
-    
-    #hero .showcase-filters a.filter-btn.active { color: #38bdf8; text-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
-    #hero .showcase-filters a.filter-btn span { position: relative; display: inline-block; padding-bottom: 5px; }
-    
-    #hero .showcase-filters a.filter-btn.active span::after {
-        content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
-        background: #38bdf8; box-shadow: 0 0 8px rgba(56, 189, 248, 0.8); border-radius: 2px;
-    }
-
-    #hero .showcase-filters::after,
-    #hero .showcase-filters a.filter-btn::after,
-    #hero .showcase-filters a.filter-btn::before {
-        display: none !important; content: none !important;
-    }
-
-    /* HERO SLIKE & SPACING (Stavka 4) */
-    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) {
-        aspect-ratio: auto !important;
-        margin-bottom: 15px !important;
-    }
-    
-    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) .service-block-img {
+    .oc-slider {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
         width: 100% !important;
-        height: auto !important;
-        object-fit: unset !important;
+        height: 100% !important;
+    }
+
+    .oc-slide {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.4s ease-in-out !important;
+        z-index: 1 !important;
+    }
+
+    .oc-slide.active {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .oc-slide-img {
         display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        opacity: 0.45 !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 2 !important;
     }
 
-    .service-block-media.showcase-card-inner-v2 {
-        margin-bottom: 15px !important;
+    /* SAKRIVANJE PLAVOG UOKVIRENOG TAGA U SLAJDERU */
+    .oc-slide-content .oc-slide-badge,
+    .oc-slide-content span,
+    .oc-slide-content .service-tag,
+    .oc-slide-content .oc-slide-tag {
+        display: none !important;
     }
 
-    /* SLOGAN (Stavka 4) */
+    /* Tekst pri dnu slajdera */
+    .oc-slide-content {
+        position: absolute !important;
+        bottom: 40px !important;
+        top: auto !important;
+        left: 0 !important;
+        width: 100% !important;
+        padding: 0 20px !important;
+        z-index: 10 !important;
+        transform: none !important;
+        text-align: left !important;
+    }
+
+    .oc-slide-content h2 { 
+        font-size: 1.65rem !important; 
+        margin-top: 0 !important;
+        margin-bottom: 8px !important; 
+        line-height: 1.2 !important;
+        text-align: left !important;
+    }
+    
+    .oc-slide-content p { 
+        font-size: 0.95rem !important; 
+        line-height: 1.4 !important; 
+        margin: 0 !important;
+        color: #e2e8f0 !important;
+        text-align: left !important;
+    }
+
+    .oc-slider-btn { width: 35px !important; height: 35px !important; font-size: 1rem !important; z-index: 25 !important; }
+    .oc-slider-dots { bottom: 15px !important; z-index: 25 !important; }
+
+    /* ------------------------------------------------------------------
+       2. CENTRIRANJE SAMO REZULTATA I NJIHOVIH TAGOVA
+       (// GARANTOVANE PERFORMANSE - REZULTATI, // BEZ SKRIVENIH MANA - OVERCLOCK STANDARD...)
+       ------------------------------------------------------------------ */
+    .results-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        margin: 50px auto 25px auto !important;
+        border-left: none !important;
+    }
+
+    .results-title,
+    .results-sub-tag {
+        display: block !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .results-title { font-size: 1.6rem !important; }
+
+    /* SLOGAN "Sklapamo računare s ljubavlju" */
     .build-slogan-container {
         display: flex !important;
         justify-content: center !important;
@@ -221,58 +276,120 @@
     .build-slogan::before { position: absolute !important; left: 0 !important; top: 0 !important; margin: 0 !important; }
     .build-slogan::after { position: absolute !important; right: 0 !important; bottom: 0 !important; margin: 0 !important; }
 
-    /* GLAVNI SLAJDER & TAG NA VRHU (Stavka 1) */
-    .oc-slideshow-container { 
-        aspect-ratio: auto !important; 
-        min-height: 380px !important; 
-        border-radius: 16px !important; 
-        margin-bottom: 60px !important; 
-        width: calc(100% - 30px) !important;
-        margin-left: 15px !important;
-        margin-right: 15px !important;
-        position: relative !important;
-        overflow: hidden !important;
+    /* ------------------------------------------------------------------
+       3. CENTRIRANJE DUGMETA "POGLEDAJ SVE PROJEKTE" SA STRELICOM
+       ------------------------------------------------------------------ */
+    .btn-container-center {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 30px auto 0 auto !important;
+        padding: 0 15px !important;
+    }
+
+    .btn-container-center .btn-premium-glow,
+    a.btn-premium-glow {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        white-space: nowrap !important;
+        width: auto !important;
+        max-width: 100% !important;
+        padding: 14px 28px !important;
+        margin: 0 auto !important;
+        font-size: 0.85rem !important;
+        text-align: center !important;
+    }
+
+    .btn-container-center .btn-premium-glow svg,
+    a.btn-premium-glow svg {
+        display: inline-block !important;
+        vertical-align: middle !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* OFF-CANVAS MENI & FILTERI */
+    #hero .mobile-filter-overlay {
+        position: fixed !important; top: 0 !important; left: 0 !important; width: 100vw !important; height: 100vh !important;
+        background: rgba(0, 0, 0, 0.75) !important; backdrop-filter: blur(6px) !important;
+        -webkit-backdrop-filter: blur(6px) !important; z-index: 1999 !important;
+        opacity: 0 !important; visibility: hidden !important; transition: all 0.3s ease !important;
+    }
+    #hero .mobile-filter-overlay.active { opacity: 1 !important; visibility: visible !important; }
+
+    #hero .showcase-filters {
+        position: fixed !important; top: 0 !important; right: -100% !important; width: 82% !important; max-width: 320px !important;
+        height: 100vh !important; background: #060913 !important; z-index: 2000 !important;
+        display: flex !important; flex-direction: column !important; justify-content: flex-start !important;
+        align-items: stretch !important; padding: 0 !important; margin: 0 !important; border: none !important;
+        border-left: 1px solid rgba(56, 189, 248, 0.6) !important;
+        box-shadow: -15px 0 40px rgba(0, 0, 0, 0.95) !important;
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        overflow-y: auto !important; touch-action: pan-y !important; -webkit-overflow-scrolling: touch !important;
+    }
+    #hero .showcase-filters.mobile-active { right: 0 !important; }
+
+    #hero .mobile-menu-top {
+        position: relative !important; display: flex !important; justify-content: center !important; align-items: center !important;
+        min-height: 71px !important; padding: 0 20px !important; width: 100% !important; box-sizing: border-box !important;
+        border-bottom: 1px solid !important;
+        border-image: linear-gradient(90deg, transparent 0%, rgba(56, 189, 248, 0.4) 50%, transparent 100%) 1 !important;
     }
     
-    .oc-slider, .oc-slide {
-        width: 100% !important; height: 100% !important; min-height: 380px !important;
-        position: absolute !important; top: 0 !important; left: 0 !important;
+    #hero .mobile-menu-brand { display: flex !important; align-items: center !important; justify-content: center !important; margin: 0 !important; }
+    #hero .mobile-menu-brand img { height: 34px !important; width: auto !important; display: block !important; }
+    
+    #hero .mobile-filter-close {
+        position: absolute !important; right: 20px !important; top: 50% !important; transform: translateY(-50%) !important;
+        background: transparent !important; border: none !important; color: #ffffff !important; font-size: 2rem !important;
+        line-height: 1 !important; cursor: pointer !important; z-index: 2010 !important; margin: 0 !important; padding: 0 !important;
     }
 
-    .oc-slide { z-index: 1 !important; }
-
-    .oc-slide-img {
-        display: block !important; width: 100% !important; height: 100% !important;
-        object-fit: cover !important; opacity: 0.5 !important;
-        position: absolute !important; top: 0 !important; left: 0 !important; z-index: 2 !important;
+    #hero .mobile-menu-header {
+        display: block !important; text-align: left !important; color: #38bdf8 !important; font-size: 0.72rem !important;
+        font-weight: 800 !important; text-transform: uppercase !important; letter-spacing: 1.5px !important;
+        margin: 20px 24px 10px 24px !important; padding: 0 !important; border: none !important;
     }
 
-    /* Pomeranje plavog uokvirenog taga na sam vrh slajdera (Stavka 1) */
-    .oc-slide-content span,
-    .oc-slide-content .service-tag,
-    .oc-slide-content .oc-slide-tag {
-        position: absolute !important;
-        top: 20px !important;
-        left: 20px !important;
-        margin: 0 !important;
-        display: inline-block !important;
-        z-index: 12 !important;
+    #hero .showcase-filters a.filter-btn {
+        width: calc(100% - 48px) !important; margin: 0 24px !important; display: block !important; text-align: left !important;
+        padding: 14px 0 !important; font-size: 0.8rem !important; font-weight: 700 !important; letter-spacing: 1.2px !important;
+        text-transform: uppercase !important; background: transparent !important; color: #888888 !important;
+        border: none !important; transition: all 0.3s ease !important; position: relative !important; text-decoration: none !important;
+    }
+    
+    #hero .showcase-filters a.filter-btn.active { color: #38bdf8 !important; text-shadow: 0 0 10px rgba(56, 189, 248, 0.4) !important; }
+    #hero .showcase-filters a.filter-btn span { position: relative !important; display: inline-block !important; padding-bottom: 5px !important; }
+    
+    #hero .showcase-filters a.filter-btn.active span::after {
+        content: '' !important; position: absolute !important; bottom: 0 !important; left: 0 !important; width: 100% !important; height: 2px !important;
+        background: #38bdf8 !important; box-shadow: 0 0 8px rgba(56, 189, 248, 0.8) !important; border-radius: 2px !important;
     }
 
-    .oc-slide-content { 
-        padding: 0 20px !important; 
-        top: auto !important; 
-        bottom: 45px !important; 
-        transform: none !important; 
-        position: absolute !important; 
-        z-index: 10 !important; 
+    #hero .showcase-filters::after,
+    #hero .showcase-filters a.filter-btn::after,
+    #hero .showcase-filters a.filter-btn::before {
+        display: none !important; content: none !important;
+    }
+
+    /* HERO SLIKE & SPACING */
+    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) {
+        aspect-ratio: auto !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .service-block-media.showcase-card-inner-v2:not(.ba-slider-container) .service-block-img {
         width: 100% !important;
+        height: auto !important;
+        object-fit: unset !important;
+        display: block !important;
     }
 
-    .oc-slide-content h2 { font-size: 1.8rem !important; margin-bottom: 12px !important; }
-    .oc-slide-content p { font-size: 1rem !important; line-height: 1.4 !important; }
-    .oc-slider-btn { width: 35px !important; height: 35px !important; font-size: 1rem !important; z-index: 15 !important; }
-    .oc-slider-dots { bottom: 15px !important; z-index: 15 !important; }
+    .service-block-media.showcase-card-inner-v2 {
+        margin-bottom: 15px !important;
+    }
 
     /* TIMELINE PROCES */
     .oc-process-timeline { gap: 40px !important; margin-bottom: 50px !important; padding: 10px 15px !important; position: relative !important; width: 100% !important; }
@@ -311,17 +428,6 @@
         width: 100% !important; height: 100% !important; object-fit: cover !important;
     }
 
-    /* CENTRIRANJE SEKCIJE OVERCLOCK STANDARD (Stavka 3) */
-    #standard .service-block-meta-top,
-    #standard .service-block-title,
-    #standard .service-intro-text {
-        text-align: center !important;
-        justify-content: center !important;
-        width: 100% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
     /* TECH DIVIDER */
     .oc-stats-row::after, .oc-stats-row::before,
     .service-block::after, .service-block::before {
@@ -338,12 +444,6 @@
     .tech-divider::before, .tech-divider::after { display: none !important; content: none !important; }
 
     /* REZULTATI I KARTICE */
-    .results-header {
-        margin: 60px 15px 30px 15px !important; align-items: center !important;
-        text-align: center !important; border-left: none !important;
-    }
-    .results-title { font-size: 1.6rem !important; }
-    
     .oc-stats-row { 
         grid-template-columns: repeat(2, 1fr) !important; gap: 15px !important; 
         padding: 0 15px !important; width: 100% !important;
@@ -363,20 +463,6 @@
     .software-logo-wrapper { width: 40px !important; height: 40px !important; margin-bottom: 10px !important; }
     .project-card { grid-column: span 1 !important; }
     .project-card-title { font-size: 0.9rem !important; text-align: center !important; }
-
-    /* DUGME "POGLEDAJ SVE PROJEKTE" U JEDNOM REDU (Stavka 5) */
-    .btn-container-center .btn-premium-glow,
-    a.btn-premium-glow {
-        white-space: nowrap !important;
-        width: auto !important;
-        max-width: 100% !important;
-        padding: 12px 20px !important;
-        font-size: 0.82rem !important;
-        display: inline-flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 8px !important;
-    }
 
     /* OVERCLOCK WEB BANER */
     .oc-web-showcase { 
@@ -425,13 +511,12 @@
     }
 
     /* OSTALI TEKSTOVI I FOOTER */
-    .btn-container-center { margin: 30px 15px 0 15px !important; }
     .service-description-box { 
         padding: 20px !important; margin: 0 15px 40px 15px !important; 
         border-radius: 12px !important; border-left: none !important; border-top: 4px solid #38bdf8 !important; 
+        text-align: left !important;
     }
-    .service-description-box p { font-size: 1rem !important; line-height: 1.5 !important; }
-    .service-intro-text { font-size: 1rem !important; padding: 0 15px !important; margin-bottom: 30px !important; }
+    .service-description-box p { font-size: 1rem !important; line-height: 1.5 !important; text-align: left !important; }
 
     .inline-footer { border-top: none !important; margin: 1.5rem auto 0 auto !important; }
     .footer-inner {
@@ -449,9 +534,8 @@
 @media (max-width: 480px) {
     .services-page-title { font-size: 1.6rem !important; }
     .service-block-title { font-size: 1.5rem !important; }
-    .oc-slideshow-container { min-height: 300px !important; }
-    .oc-slide-content h2 { font-size: 1.4rem !important; }
-    .results-title { font-size: 1.4rem !important; }
+    .oc-slideshow-container { min-height: 360px !important; }
+    .oc-slide-content h2 { font-size: 1.45rem !important; }
     .stat-info h4 { font-size: 1.3rem !important; }
     .oc-stat-card { height: 130px !important; }
 }
